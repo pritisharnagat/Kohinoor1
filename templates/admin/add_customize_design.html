@@ -1,0 +1,96 @@
+{% extends "admin_base.html" %}
+  {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customize Designs</title>
+    <style>
+        #prodpreview,
+        #backpreview,
+        #leftpreview,
+        #rightpreview {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        #prodpreview img,
+        #backpreview img,
+        #leftpreview img,
+        #rightpreview img {
+            max-width: 100%;
+            max-height: 200px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper compact-wrapper dark-sidebar" id="pageWrapper">
+        <div class="page-body-wrapper">
+          <div class="page-body">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="card p-3">  
+    <h1>Customize Designs</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+    
+      <div class="col-md-6">
+        <div class="form-group m-1">
+          <label for="image1">Image1:</label>
+          <input type="file" class="form-control" id="image1" name="image1" accept="image/*" onchange="previewImage(event, 'backpreview')">
+          <div id="backpreview" style="display: flex; flex-wrap: wrap;"></div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group m-1">
+          <label for="image2">Image2:</label>
+          <input type="file" class="form-control" id="image2" name="image2" accept="image/*" onchange="previewImage(event, 'leftpreview')">
+          <div id="leftpreview" style="display: flex; flex-wrap: wrap;"></div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group m-1">
+          <label for="image3">Image3:</label>
+          <input type="file" class="form-control" id="image3" name="image3" accept="image/*" onchange="previewImage(event, 'rightpreview')">
+          <div id="rightpreview" style="display: flex; flex-wrap: wrap;"></div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group m-1">
+          <label for="image4">Image4:</label>
+          <input type="file" class="form-control" id="image4" name="image4" accept="image/*" onchange="previewImage(event, 'rightpreview')">
+          <div id="rightpreview" style="display: flex; flex-wrap: wrap;"></div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group m-1">
+          <label for="product_image">Image5:</label>
+          <input type="file" class="form-control p-" id="product_image" name="image5" accept="image/*" onchange="previewImage(event, 'prodpreview')">
+          <div id="prodpreview" style="display: flex; flex-wrap: wrap;"></div>
+        </div>
+      </div>
+
+      
+      <!-- Add other fields as needed -->
+      <button type="submit" class="btn btn-primary w-25 mt-3">Update</button>
+    </div>
+  </form>
+  <script>
+    function previewImage(event, previewId) {
+        var reader = new FileReader();
+        reader.onload = function() {
+            var output = document.getElementById(previewId);
+            output.innerHTML = '';
+            var img = document.createElement('img');
+            img.src = reader.result;
+            output.appendChild(img);
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
+
+</body>
+</html>
+{% endblock %}

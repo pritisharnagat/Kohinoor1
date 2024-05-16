@@ -1,0 +1,752 @@
+{% extends 'base.html' %}{% block title %} Customer Register {% endblock %}
+
+{% block content %}
+
+<!DOCTYPE html>
+{% load static %}
+
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="{% static 'assets1\images\logos\vr_main.png' %}"
+      type="image/x-icon"
+    />
+    <link
+      rel="shortcut icon"
+      href="{% static 'assets1\images\logos\vr_main.png' %}"
+      type="image/x-icon"
+    />
+    <title>Customer Registration</title>
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- bootstrap css -->
+    <link
+      id="rtl-link"
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/bootstrap.css"
+    />
+
+    <!-- font-awesome css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/font-awesome.css"
+    />
+
+    <!-- feather icon css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/feather-icon.css"
+    />
+
+    <!-- animation css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/animate.css"
+    />
+
+    <!-- slick css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/slick/slick-theme.css"
+    />
+
+    <!-- Theme css -->
+    <link
+      id="color-link"
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/demo2.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- icons -->
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+    />
+
+    <style>
+      .vr-logo {
+        width: 110px;
+      }
+
+      .vr-logo img {
+        width: 100%;
+        height: 100%;
+      }
+      /*
+      * Prefixed by https://autoprefixer.github.io
+      * PostCSS: v8.4.14,
+      * Autoprefixer: v10.4.7
+      * Browsers: last 4 version
+      */
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        font-family: "Poppines", sans-serif;
+      }
+
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      .customer_register-section {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+        background-color: #ffffff;
+      }
+
+      .customer_register-section-child {
+        width: 40rem;
+        height: fit-content;
+        border: 1.5px solid rgb(198, 198, 198);
+        padding: 20px;
+        margin: 50px;
+        margin-left: 0;
+        margin-right: 0;
+        border-radius: 20px;
+        background-color: white;
+        transition: all 0.4s ease-out
+      }
+
+      .customer_register-section-child:hover{
+        border: 1.5px solid rgb(0, 0, 0);
+      }
+
+      .user-profile-section-child-title {
+        padding: 20px;
+        padding-left: 0;
+        padding-top: 0;
+      }
+
+      .user-profile-section-child-title span {
+        font-size: 30px;
+        font-weight: 600;
+      }
+
+      .name-section {
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+
+      .email-mobNo-section {
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+
+      .pass-section {
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+
+      .password-container {
+        position: relative;
+        margin-bottom: 1rem;
+      }
+      .password-container span i {
+        font-size: 25px;
+      }
+
+      .password-toggle {
+        position: absolute;
+        bottom: 0;
+        top: 46px;
+        right: 15px;
+        transform: translateY(-50%);
+        cursor: pointer;
+      }
+
+      .sub-section {
+        width: 50%;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+
+      .sub-section label {
+        width: 100%;
+
+        padding-bottom: 10px;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        font-weight: 400;
+      }
+
+      .sub-section input {
+        width: 100%;
+        background-color: rgb(255, 240, 240);
+        border: 1.1px solid rgba(0, 0, 0, 0);
+        flex-grow: 1;
+        border-radius: 6px;
+        padding: 12px;
+        font-size: 15px;
+        transition: all 0.3s ease-out;
+      }
+
+      .sub-section input:focus {
+        border: 1.1px solid rgb(179, 179, 179);
+        outline: none;
+        background-color: transparent;
+      }
+
+      .error-message {
+        position: absolute;
+        bottom: 0;
+        top: 70px;
+        color: red;
+
+        width: 100%;
+        padding: 10px;
+        font-size: 12px;
+        line-height: 1.25rem;
+        font-weight: 400;
+      }
+
+      .error-messagev2 {
+        color: red;
+
+        width: 100%;
+        padding: 10px;
+        font-size: 12px;
+        line-height: 1.25rem;
+        font-weight: 400;
+      }
+
+      .forgot-remember-section {
+        padding: 15px;
+        padding-top: 20px;
+        padding-bottom: 10px;
+        padding-left: 0;
+        padding-right: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        flex-wrap: wrap;
+        flex-direction: row;
+      }
+
+      .forgot-remember-section a {
+        color: #686868;
+        font-size: 15px;
+      }
+
+      .forgot-remember-section label {
+        color: #686868;
+        font-size: 15px;
+      }
+
+      .forgot-remember-section input {
+        color: #686868;
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 15px;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 10px;
+      }
+
+      .submit-btn button {
+        width: 100%;
+        padding: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 20px;
+        background-color: black;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        transition: all 0.3s ease-out;
+      }
+
+      .submit-btn button:hover {
+        background-color: rgb(42, 42, 42);
+      }
+
+      .another-regestraion-method-ex1 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        width: 100%;
+      }
+
+      .another-regestraion-method-ex1 span {
+        font-size: 15px;
+      }
+
+      .another-regestraion-method-ex1 a {
+        border: 1px solid #b2b2b2;
+        border-radius: 10px;
+        padding: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-decoration: none;
+        color: #000000;
+        transition: all 0.3s ease-out;
+      }
+
+      .another-regestraion-method-ex1 a:hover {
+        background-color: rgb(42, 42, 42);
+        border: 1px solid #b2b2b200;
+        color: white;
+      }
+
+      .social-div {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+      }
+
+      .social-div span {
+        padding: 20px;
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+
+      .divider {
+        height: 1px;
+        width: 100%;
+        background-color: #b2b2b2;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .social-logins {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .social-logins a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        color: #686868;
+        border: 1px solid #b2b2b2;
+        padding: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+        margin: 15px;
+
+        text-decoration: none;
+        border-radius: 10px;
+        transition: all 0.3s ease-out;
+      }
+
+      .social-logins a:hover {
+        background-color: rgb(42, 42, 42);
+        border: 1px solid #b2b2b200;
+        color: white;
+      }
+
+      .social-logins a span {
+        padding-right: 5px;
+        font-size: 15px;
+      }
+
+      .social-logins a img {
+        width: 20px;
+      }
+
+      @media screen and (max-width: 1000px) {
+      }
+
+      @media screen and (max-width: 768px) {
+        .customer_register-section-child {
+          width: 30rem;
+        }
+      }
+
+      @media screen and (max-width: 450px) {
+        .customer_register-section-child {
+          width: 18rem;
+        }
+
+        .user-profile-section-child-title span {
+          font-size: 20px;
+        }
+
+        .sub-section input {
+          padding: 8px;
+          font-size: 12px;
+        }
+
+        .sub-section label {
+          font-size: 13px;
+        }
+
+        .submit-btn button {
+          font-size: 15px;
+        }
+
+        .password-toggle {
+          position: absolute;
+          bottom: 0;
+          top: 42px;
+          right: 15px;
+          transform: translateY(-50%);
+          cursor: pointer;
+          background-color: rgb(255, 240, 240);
+        }
+
+        .password-container span i {
+          font-size: 15px;
+        }
+
+        .error-messagev2 {
+          margin-top: 25px;
+          color: red;
+          width: 100%;
+          padding: 10px;
+          font-size: 10px;
+          line-height: 1.25rem;
+          font-weight: 400;
+        }
+
+        .error-message {
+          position: absolute;
+          bottom: 0;
+          top: 70px;
+          color: red;
+          width: 100%;
+          padding: 10px;
+          font-size: 9px;
+        }
+
+        .password-container span i:focus {
+          background-color: white;
+        }
+      }
+    </style>
+  </head>
+  <body class="theme-color2 light ltr">
+    <div class="container-fluid customer_register-section">
+      <div class="customer_register-section-child">
+        <div class="user-profile-section-child-title">
+          <span>Register</span>
+        </div>
+        <form action="#" method="post">
+          {% csrf_token %}
+
+          <div class="name-section">
+            <div class="sub-section">
+              <label for="firstName">First name</label>
+              <input
+                type="text"
+                id="first_name"
+                name="first_name"
+                placeholder="John"
+                required
+              />
+            </div>
+
+            <div class="sub-section">
+              <label for="lastName">Last name</label>
+              <input
+                type="text"
+                id="last_name"
+                name="last_name"
+                placeholder="Doe"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="email-mobNo-section">
+            <div class="sub-section">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="john.doe@example.com"
+                required
+              />
+              <p style="color: red;">{{ error_message }}</p>
+            </div>
+
+            <div class="sub-section">
+              <label for="mobileNumber">Contact No.</label>
+              <input
+              type="number"
+              id="mobile_number"
+              name="mobile_number"
+              placeholder="+91-7845129635"
+              maxlength="10"
+              oninput="this.value = this.value.slice(0, this.maxLength)"
+              required
+            />
+            
+              <p style="color: red;">{{ error_message1 }}</p>
+            </div>
+          </div>
+
+          <div class="pass-section">
+            <div class="password-container sub-section">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter password"
+                required
+              />
+
+              <span
+                class="password-toggle"
+                onclick="togglePasswordVisibility('password')"
+              >
+                <i class="uil uil-eye"></i>
+              </span>
+            </div>
+
+            <div class="password-container sub-section">
+              <label for="confirmPassword">Confirm Password</label>
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="Enter password again"
+                required
+              />
+
+              <span
+                class="password-toggle"
+                onclick="togglePasswordVisibility('confirmPassword')"
+              >
+                <i class="uil uil-eye"></i>
+              </span>
+              <div
+                class="error-message"
+                id="passwordMismatchError"
+                style="display: none"
+              >
+                <span>Passwords do not match.</span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="error-messagev2"
+            id="passwordRequirementsError"
+            style="display: none"
+          >
+            <span>
+              Password should contain at least 6 characters including special
+              character, number, and capital letter.</span
+            >
+          </div>
+
+          <div class="submit-btn">
+            <button type="submit">Register</button>
+          </div>
+
+          <div class="another-regestraion-method-ex1">
+            <span>Already have an account?</span>
+            <a href="/customer_login/"> Log in </a>
+          </div>
+
+          <!-- <div class="social-div">
+            <div class="divider"></div>
+            <span>Or</span>
+            <div class="divider"></div>
+          </div> -->
+
+          <!-- <div class="social-logins">
+            <a href="{% url 'social:begin' 'google-oauth2' %}">
+              <span>Login with Google</span>
+              <img
+                src="{% static 'assets1\images\logos\search.png' %}"
+                alt=""
+              />
+            </a>
+            <a href="{% url 'social:begin' 'facebook' %}">
+              <span>Login with Facebook</span>
+              <img
+                src="{% static 'assets1\images\logos\facebook.png' %}"
+                alt=""
+              />
+            </a>
+          </div> -->
+        </form>
+      </div>
+    </div>
+
+
+    <script>
+      function togglePasswordVisibility(inputId) {
+        var passwordInput = document.getElementById(inputId);
+        var icon = passwordInput.nextElementSibling.querySelector("i");
+
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+          icon.classList.remove("uil-eye");
+          icon.classList.add("uil-eye-slash");
+        } else {
+          passwordInput.type = "password";
+          icon.classList.remove("uil-eye-slash");
+          icon.classList.add("uil-eye");
+        }
+      }
+
+      function validatePasswords() {
+        var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("confirmPassword").value;
+        var errorDivPassword = document.getElementById(
+          "passwordRequirementsError"
+        );
+        var errorDivMismatch = document.getElementById("passwordMismatchError");
+
+        var containsSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+        var containsNumber = /[0-9]/.test(password);
+        var containsCapitalLetter = /[A-Z]/.test(password);
+
+        if (password !== confirmPassword) {
+          errorDivMismatch.style.display = "block";
+        } else {
+          errorDivMismatch.style.display = "none";
+        }
+
+        if (
+          password.length < 6 ||
+          !containsSpecialChar ||
+          !containsNumber ||
+          !containsCapitalLetter
+        ) {
+          errorDivPassword.style.display = "block";
+        } else {
+          errorDivPassword.style.display = "none";
+        }
+      }
+
+      document
+        .getElementById("confirmPassword")
+        .addEventListener("input", validatePasswords);
+      document
+        .getElementById("password")
+        .addEventListener("input", validatePasswords);
+    </script>
+
+    <!-- latest jquery-->
+    <script src="/static/assets1/js/jquery-3.5.1.min.js"></script>
+
+    <!-- Bootstrap js-->
+    <script src="/static/assets1/js/bootstrap/bootstrap.bundle.min.js"></script>
+
+    <!-- feather icon js-->
+    <script src="/static/assets1/js/feather/feather.min.js"></script>
+
+    <!-- lazyload js-->
+    <script src="/static/assets1/js/lazysizes.min.js"></script>
+
+    <!-- Slick js-->
+    <script src="/static/assets1/js/slick/slick.js"></script>
+    <script src="/static/assets1/js/slick/slick-animation.min.js"></script>
+    <script src="/static/assets1/js/slick/custom_slick.js"></script>
+
+    <!-- newsletter js -->
+    <script src="/static/assets1/js/newsletter.js"></script>
+
+    <!-- add to cart modal resize -->
+    <script src="/static/assets1/js/cart_modal_resize.js"></script>
+
+    <!-- Add To Home js -->
+    <script src="/static/assets1/js/pwa.js"></script>
+
+    <!-- add to cart modal resize -->
+    <script src="/static/assets1/js/cart_modal_resize.js"></script>
+
+    <!-- feather icon js-->
+    <script src="/static/assets1/js/timer1.js"></script>
+
+    <!-- notify js -->
+    <script src="/static/assets1/js/bootstrap/bootstrap-notify.min.js"></script>
+
+    <!-- script js -->
+    <script src="/static/assets1/js/theme-setting.js"></script>
+    <script src="/static/assets1/js/script.js"></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </body>
+</html>
+
+{% endblock content %}

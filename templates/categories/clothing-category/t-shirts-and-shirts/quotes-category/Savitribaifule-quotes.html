@@ -1,0 +1,2150 @@
+{% extends 'base.html' %} 
+
+{% block title %} Empowering Elegance: Savitribai Phule T-shirt Collection - Vibetara {% endblock %}
+
+{% block extra_meta %} 
+<meta name="Keywords" content=" Savitribai Phule T-shirt Collection ">
+<meta name="description" content=" Embrace empowerment and equality in style by wearing our Savitribai Phule T-shirt collection by Vibetara.">
+<link rel="canonical" href="https://vibetara.com/Savitribai_Phule/"/>
+{% endblock %}
+
+{% block content %}
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- bootstrap css -->
+    <link
+      id="rtl-link"
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/bootstrap.css"
+    />
+
+    <!-- font-awesome css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/font-awesome.css"
+    />
+
+    <!-- feather icon css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/feather-icon.css"
+    />
+
+    <!-- animation css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/animate.css"
+    />
+
+    <!-- slick css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/slick/slick-theme.css"
+    />
+
+    <!-- Theme css -->
+    <link
+      id="color-link"
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/demo2.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- icons -->
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+    />
+
+    <style>
+      body{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        font-family: 'Poppins', sans-serif;
+      }
+
+        .animation {
+        background-color: gray;
+        margin-bottom: 30px;
+        margin-top: 0px;
+      }
+
+      .spacer {
+        height: 30px;
+      }
+
+      .marquee {
+        position: relative;
+        background-color: white;
+        color: black;
+        padding: 20px 0;
+        font-family:'Roboto', sans-serif;
+        font-weight: 700;
+        font-size: 15px;
+        text-transform: uppercase;
+        overflow: hidden;
+      }
+
+      .marquee_inner {
+        display: flex;
+        width: fit-content;
+        flex: auto;
+        flex-direction: row;
+      }
+
+      .marquee_part {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        padding: 0 4px;
+      }
+
+      .animation-icon img {
+        margin-right: 15px;
+        margin-left: 15px;
+        width: 20px;
+        height: 20px;
+        transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+        filter: brightness(0);
+      }
+
+
+      .vr-logo{
+        width: 110px;
+      }
+
+
+
+      .animated{
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        width: 100vw;
+        height: 100%;
+        overflow: hidden;
+
+        
+      }
+      
+      .carousel-container {
+      
+      overflow: hidden;
+      width: 100%;
+      height : 100%;
+      position : relative;
+      
+      margin: auto;
+      z-index: 0;
+      
+      background-color: white;
+      }
+      
+      /* Hide the images by default */
+      .mySlides {
+      display: none;
+      }
+      .mySlides img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      
+      }
+      
+      .prev,
+      .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translate(0, -50%);
+          -ms-transform: translate(0, -50%);
+              transform: translate(0, -50%);
+      width: 50px;
+      height: 50px;
+      margin-left: 15px;
+      margin-right: 15px;
+      color: white;
+      font-weight: bold;
+      padding-left: 8px;
+      padding-top: 2px;
+      font-size: 30px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.266);
+      -webkit-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+      }
+      
+      .prev i{
+      color: white;
+      }
+      
+      .next i{
+      color: white;
+      }
+      .next {
+      right: 0;
+      width: 50px;
+      height: 50px;
+      margin-left: 15px;
+      margin-right: 15px;
+      color: white;
+      font-weight: bold;
+      padding-left: 14px;
+      padding-top: 6px;
+      font-size: 25px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.266);
+      -webkit-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+      }
+      .prev:hover,
+      .next:hover {
+      background: rgba(255, 255, 255, 0.597);
+      
+      }
+      
+      /* Caption text 
+      .text {
+      color: #f2f2f2;
+      background-color: rgba(10, 10, 20, 0.1);
+      backdrop-filter: blur(6px);
+      border-radius: 10px;
+      font-size: 20px;
+      padding: 8px 12px;
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translate(-50%);
+      text-align: center;
+      }*/
+      
+      /* Number text (1/3 etc) 
+      .number {
+      color: #f2f2f2;
+      font-size: 16px;
+      background-color: rgba(173, 216, 230, 0.15);
+      backdrop-filter: blur(6px);
+      border-radius: 10px;
+      padding: 8px 12px;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      }*/
+      .dots-container {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      -webkit-transform: translate(-50%);
+          -ms-transform: translate(-50%);
+              transform: translate(-50%);
+      -webkit-transition: all cubic-bezier(0.39, 0.575, 0.565, 1) ease;
+      -o-transition: all cubic-bezier(0.39, 0.575, 0.565, 1) ease;
+      transition: all cubic-bezier(0.39, 0.575, 0.565, 1) ease;
+      background-color: rgba(10, 10, 20, 0.1);
+      -webkit-backdrop-filter: blur(6px);
+              backdrop-filter: blur(6px);
+      padding: 15px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      border-radius: 50px;
+      
+      }
+      
+      
+      .dots {
+      cursor: pointer;
+      height: 10px;
+      width: 10px;
+      margin: 0 4px;
+      background-color: rgba(0, 0, 0, 0.171);
+      -webkit-backdrop-filter: blur(2px);
+              backdrop-filter: blur(2px);
+      border-radius: 50%;
+      display: inline-block;
+      -webkit-transition: all 0.2s ease-out;
+      -o-transition: all 0.2s ease-out;
+      transition: all 0.2s ease-out;
+      }
+      
+      
+      .active,
+      .dots:hover {
+      background-color: rgb(255, 255, 255);
+      -webkit-transform: translateY(-2px);
+          -ms-transform: translateY(-2px);
+              transform: translateY(-2px);
+      }
+      
+      .animate {
+      -webkit-animation-name: animate;
+      -webkit-animation-duration: 1s;
+      animation-name: animate;
+      animation-duration: 1s;
+      }
+      
+      @-webkit-keyframes animate {
+      from {
+        -webkit-transform: scale(1.05) rotateY(10deg);
+                transform: scale(1.05) rotateY(10deg);
+      }
+      to {
+        -webkit-transform: scale(1) rotateY(0deg);
+                transform: scale(1) rotateY(0deg);
+      }
+      }
+      
+      @keyframes animate {
+        from {
+          -webkit-transform: scale(1.05) rotateY(10deg);
+                  transform: scale(1.05) rotateY(10deg);
+        }
+        to {
+          -webkit-transform: scale(1) rotateY(0deg);
+                  transform: scale(1) rotateY(0deg);
+        }
+      } 
+
+
+
+      .sub-categories-title{
+        width: 100%;
+        height: 100%;
+        padding: 30px;
+        margin-top: 20px;
+        padding-top: 0;
+        padding-bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+
+      }
+
+      .sub-categories-title h1{
+        font-family:'Helvetica Neue', sans-serif;
+        font-weight: 400;
+        font-size: 3rem;
+      }
+
+
+
+      
+      .sub-categories-section{
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        
+      }
+
+
+      .sub-category{
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        
+       margin: 20px;
+       cursor: pointer;
+      }
+
+      .sub-category-img-container{
+        width: 250px;
+        height: 250px;
+        border-radius: 20px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease-out;
+
+      }
+
+
+
+      .sub-category-img-container img{
+        width: 100%;
+        height: 100%;
+        
+      }
+
+      .redirect-icon{
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        bottom: 0;
+        right: 0;
+        background-color: red;
+        
+        
+        width: 40px;
+        height: 40px;
+        margin: 15px;
+        border-radius: 50%;
+        border: none;
+        transform: translateY(15px);
+        transition: all 0.2s ease-in;
+        color: white;
+        visibility: hidden;
+        opacity: 0;
+        z-index: 998;
+      }
+
+      .sub-category-img-container:hover .redirect-icon {
+        opacity: 1;
+        visibility:visible;
+        transform: translateY(0px);
+      }
+      .redirect-icon i{
+        font-size: 20px;
+      }
+
+
+
+      .redirect-title{
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        bottom: 0;
+        left: 0;
+        padding: 20px;
+        border: none;
+        transform: translateY(15px);
+        transition: all 0.2s ease-in;
+        color: rgb(255, 255, 255);
+        visibility: hidden;
+        opacity: 0;
+        z-index:  999;
+      }
+
+      .redirect-title span{
+        font-size: 15px;
+        font-weight: 700;
+
+      }
+
+      .sub-category-img-container:hover .redirect-title {
+        opacity: 1;
+        visibility:visible;
+        transform: translateY(0px);
+      }
+
+
+      .redirect-bg{
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        bottom: 0;
+        width: 100%;
+        height: 60px;
+        background: linear-gradient(96deg, rgba(255, 255, 255, 0.60) 0%, rgba(255, 255, 255, 0.10) 100%);
+        backdrop-filter: blur(4.5px);
+        border: none;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        transition: all 0.3s ease-in;
+        color: rgb(0, 0, 0);
+        z-index: 997;
+        opacity: 0;
+        
+        
+      
+                
+      }
+
+
+      .sub-category-img-container:hover .redirect-bg {
+        opacity: 1;
+        
+        
+      }
+
+
+
+      .cat-csm-title {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        margin: 40px;
+        margin-bottom: 60px;
+        margin-left: 0;
+        margin-right: 0;
+      }
+      
+      .cat-csm-title span{
+        font-size: 25px;
+        font-weight: 500;
+        text-transform: capitalize;
+        
+      }
+      
+      
+      .single-product-section{
+        border-radius: 20px;
+        padding: 15px;
+        box-shadow: 0px 0px 15px -3px rgba(0,0,0,0.1);
+        transition: all 0.2s ease-out;
+      }
+      
+      .single-product-section:hover{
+        transform: translateY(3px);
+        
+      }
+      
+      .product-details{
+        font-family: "Poppins", sans-serif;
+      }
+      
+      .main-price{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+      }
+      .product-title{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-bottom: 0;
+      }
+      
+      .product-title a span{
+        font-size: 20px;
+        text-transform: capitalize;
+        width: 100%;
+      }
+      
+      .product-price-section{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+      }
+      
+      .product-discount-price{
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        margin-right: 10px;
+      }
+      
+      .product-discount-price span{
+        font-size: 18px;
+        font-weight: 700;
+      }
+      
+      .product-actual-price{
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        
+      }
+      
+      .product-actual-price span{
+        font-size: 14px;
+        color: rgb(135, 135, 135);
+        text-decoration: line-through;
+      }
+      
+      
+      .categories-title{
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+      }
+      
+      
+      .categories-title span{
+      
+      font-size: 25px;
+      padding: 20px;
+      padding-bottom: 5px;
+      padding-top: 5px;
+      
+      text-transform: capitalize;
+      }
+
+
+
+      .t-shirt-area{
+        padding: 25px;
+      }
+      
+      
+      .t-shirt-section{
+        border-radius: 25px;
+        background-color: black;
+        width: 100%;
+        height: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+      
+        -webkit-box-shadow: 0px 0px 26px -3px rgba(0,0,0,0.1);
+                box-shadow: 0px 0px 26px -3px rgba(0,0,0,0.1);
+        
+        
+      }
+      
+      
+      .t-shirt-parent{
+        position: relative;
+      }
+      
+      
+      .div3d{
+        position: absolute;
+        top: 512px;
+        left: 410px;
+        width: 157px;
+        height: 43px;
+        background-color: rgb(255, 255, 255);
+        border-radius: 20px;
+        background: url("/static/bg-images/header/3delementhint.png") no-repeat;
+        background-position: center;
+        background-size: contain;
+      }
+      
+      
+      
+      .t-shirt{
+      
+        display: -webkit-box;
+      
+        display: -ms-flexbox;
+      
+        display: flex;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+      
+        width: 600px;
+        height: 600px;
+        
+        
+      }
+      
+      .t-shirt iframe{
+        padding: 30px;
+      }
+      
+      
+      .t-shirt-section-desc{
+        width: 40%;
+        height: 100%;
+        
+        display: -webkit-box;
+        
+        display: -ms-flexbox;
+        
+        display: flex;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        margin: 20px;
+      }
+      
+      .t-shirt-section-desc span{
+        font-size: 25px;
+        text-align: center;
+      
+      }
+      
+      
+      .t-shirt-section-desc-title{
+        width: 100%;
+      }
+      
+      
+      .t-shirt-section-desc-title span{
+        font-size: 20px;
+        color: white;
+      }
+      
+      
+      .t-shirt-section-desc-button{
+        width: 100%;
+        height: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: end;
+            -ms-flex-pack: end;
+                justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        padding: 15px;
+        margin-top: 30px;
+      }
+      
+      .t-shirt-section-desc-button a button{
+        font-size: 22px;
+        padding: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-transform: capitalize;
+        background: -o-linear-gradient(310deg, rgba(255, 0, 0, 0.800) 0%, rgba(0, 52, 255, 0.800) 100%);
+        background: linear-gradient(140deg, rgba(255, 0, 0, 0.800) 0%, rgba(0, 52, 255, 0.800) 100%);
+        border: none;
+        border-radius: 20px;
+        color: white;
+        -webkit-transition: all 0.2s ease-out;
+        -o-transition: all 0.2s ease-out;
+        transition: all 0.2s ease-out;
+      }
+      
+      .t-shirt-section-desc-button a button i{
+        padding-left: 10px;
+      }
+      
+      .t-shirt-section-desc-button a button:hover{
+        -webkit-transform: translateX(2px) translateY(-2px);
+            -ms-transform: translateX(2px) translateY(-2px);
+                transform: translateX(2px) translateY(-2px);
+                 box-shadow: -5px -5px 25px 2px rgba(255, 0, 0, 0.200), 5px 5px 25px 2px rgb(0, 68, 255,0.200);
+      }
+
+      .t-shirts-and-shirts{
+        width: 100%;
+        height: 100%;
+        padding: 25px;
+      }
+
+      .t-shirts-and-shirts-sub-categories{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        
+      }
+
+      .t-shirts-and-shirts-heading h1{
+        font-size: 5em;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+
+
+      .cat-1{
+        height: 400px;
+        width: 250px;
+        margin: 20px;
+        border-radius:25px ;
+        transition: all 0.2s ease-out;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .cat-1:hover{
+        box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+        transform: translateY(3px);
+      }
+
+      .cat-1-img{
+        height: 300px;
+        width: 230px;
+        padding: 15px;
+        
+      }
+
+      .cat-1-img img{
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      .cat-1-title span{
+        font-size: 20px;
+        text-transform: uppercase;
+        padding: 20px;
+        color: black;
+      }
+
+      .cat-3-title span{
+        font-size: 20px;
+        text-transform: uppercase;
+        padding: 10px;
+        color: black;
+      }
+
+
+            section{
+        padding: 30px;
+        margin: 0;
+      }
+      section h1{
+        font-size: 25px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        line-height: 1;
+      }
+
+      section h2{
+        font-size: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        line-height: 1;
+      }
+
+      section p{
+        font-size: 15px;
+        font-family: "Poppines" ,sans-serif;
+        line-height: 1.7;
+        text-align: justify;
+        color: rgb(76, 76, 76);
+        margin-bottom: 20px;
+      }
+
+
+      .accordion-section {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        z-index: 1;
+        border: 1.5px solid rgb(182, 182, 182);
+        border-radius: 15px;
+        background-color: white;
+        transition: all 0.3s ease-out;
+      }
+
+      .accordion-section:hover {
+
+        border: 1.5px solid black;
+      }
+
+      .accordion {
+        background-color: #ffffff;
+        color: rgb(76, 76, 76);
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 20px;
+        transition: 0.6s ease-out;
+        border-bottom: 1px solid #ccc;
+        border-radius: 15px;
+      }
+
+      .accordion:last-of-type {
+        border-bottom: 0;
+      }
+
+      .active,
+      .accordion:hover {
+        background-color: #ffffff00;
+      }
+
+      .accordion:after {
+        content: "\002B";
+        color: #000000;
+        font-weight: 1000;
+        float: right;
+        margin-left: 5px;
+        transition: all 0.3s ease-out;
+      }
+
+      .active:after {
+        
+        content: "\2212";
+        transition: all 0.3s ease-out;
+      }
+
+      .panel {
+        background-color: #ffffff00;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+        
+
+      }
+      .panel p {
+        padding: 15px;
+        margin-bottom: 0;
+        font-weight: 200;
+        color: #666666;
+        text-align: justify;
+      }
+
+
+      .color-list {
+        list-style: none;
+        padding: 0;
+    }
+    
+
+    
+    .color-label {
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        
+        border-radius: 50%;
+        cursor: pointer;
+        
+        border: 2px solid rgb(126, 126, 126);
+       
+    }
+    
+    .red {
+        background-color: red;
+    }
+    
+    .blue {
+        background-color: blue;
+    }
+    
+    .black {
+        background-color: black;
+    }
+    
+    .white {
+        background-color: white;
+    }
+    
+    .yellow {
+        background-color: yellow;
+    }
+    
+    .orange {
+        background-color: orange;
+    }
+    
+    .pink {
+        background-color: pink;
+    }
+
+    .filter-title{
+      width: 100%;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      
+    }
+
+    .filter-parent{
+      width: 100%;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      margin-bottom: 10px;
+    }
+
+    .filter-title span{
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+
+    .filter-btn{
+      width: 100%;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      padding: 15px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      
+    }
+
+
+    .filter-btn label{
+      font-size: 15px;
+      color: black;
+      margin-left: 5px ;
+    }
+
+    .filter-btn a span{
+      border: none;
+      background-color: #dfdfdf;
+      padding: 10px;
+      padding-top: 3px;
+      padding-bottom: 3px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #000000;
+      border-radius: 10px;
+    }
+
+    .filter-btn-color{
+      width: 100%;
+      display: flex;
+      justify-content: start;
+      align-items: center ;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      padding: 15px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+
+
+    .filter-btn-color input{
+      margin-right: 5px;
+      border-radius: 50%;
+    }
+
+    .filter-btn-color label{
+      
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      flex-wrap: wrap;
+      
+    }
+
+    .filter-btn-color span{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-left: 5px;
+      color: #000000;
+    }
+
+    .filter-apply-btn{
+      width: 80%;
+      display: flex;
+      justify-content: end;
+      align-items: center;
+      margin:20px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      
+    }
+    
+    .filter-apply-btn button{
+      font-size: 15px;
+      padding: 15px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      border: none;
+      color: white;
+      background-color: rgb(255, 0, 0);
+      border-radius: 15px;
+    }
+
+    .label-black{
+      border-radius: 10px;
+    }
+    .label-theme{
+      border-radius: 10px;
+      
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      flex-wrap: nowrap;
+  
+    }
+  
+    .label-theme i{
+      font-size: 15px;
+      font-weight: bold;
+      margin-right: 5px;
+    }
+  
+    .label-theme span{
+      font-size: 15px;
+    }
+  
+    .delivery-rating-section{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+  
+    .delivery-section{
+      width: 100%;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+    }
+  
+    .delivery-section span strong{
+      color: orangered;
+    }
+  
+    .ratings-section{
+      display: flex;
+      justify-content: end;
+      align-items: center;
+      background-color: rgb(0, 206, 41);
+      padding: 8px;
+      padding-top: 4px;
+      padding-bottom: 4px;
+      color: white;
+      border-radius: 10px;
+  
+    }
+  
+    .ratings-section i{
+      margin-right: 5px;
+    }
+  
+    .ratings-section i, span{
+      font-size: 15px;
+    }
+
+    .reviews-section{
+      width: 100%;
+      display: flex;
+      justify-content: end;
+      align-items: center;
+      flex-direction: row;
+      flex-wrap: nowrap;
+    }
+
+
+    .reviews-section span{
+      padding-left: 3px;
+      padding-right: 3px;
+    }
+
+  
+    .cart-btn-show a button{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      background-color: transparent;
+      color: #FF0000;
+    }
+
+
+
+
+
+
+        @media screen and (max-width:1400px) {
+
+        }
+
+
+
+
+
+
+
+        @media screen and (max-width:1000px) {
+
+
+          .t-shirts-and-shirts-heading h1{
+            font-size: 4em;
+            padding: 20px;
+            margin-bottom: 20px;
+          }
+
+
+        }
+
+
+
+        @media screen and (max-width:768px){
+
+          .sub-category-img-container {
+            width: 200px;
+            height: 200px;
+            border-radius: 15px;
+          }
+          
+
+
+          .t-shirts-and-shirts-heading h1{
+            font-size: 3em;
+            padding: 20px;
+            margin-bottom: 20px;
+          }
+
+        }
+
+
+
+
+        @media screen and (max-width:450px){
+          .label-block{
+            padding: 0;
+           
+          }
+          
+          
+          .ratings-section i, span {
+            font-size: 10px;
+          }
+
+          .reviews-section span{
+            font-size: 10px;
+          }
+          
+
+          .sub-categories-title h1 {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-weight: 400;
+            font-size: 30px;
+          }
+
+          .sub-category-img-container {
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease-out;
+            margin-top: 10px;
+          }
+
+
+          .redirect-title {
+            padding: 15px;
+          }
+         
+          .redirect-title span {
+            font-size: 9px;
+            font-weight: 700;
+          
+          
+          }
+
+          .redirect-icon {
+            width: 30px;
+            height: 30px;
+            margin: 10px;
+          }
+
+          .redirect-icon i {
+            font-size: 15px;
+          }
+
+
+          .redirect-bg {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            bottom: 0;
+            width: 100%;
+            height: 45px;
+            background: linear-gradient(96deg, rgba(255, 255, 255, 0.60) 0%, rgba(255, 255, 255, 0.10) 100%);
+            backdrop-filter: blur(4.5px);
+            border: none;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+          }
+
+          .t-shirts-and-shirts-heading h1{
+            font-size: 2em;
+            padding: 20px;
+            margin-bottom: 20px;
+          }
+
+
+          .product-title a span {
+            font-size: 15px;
+          }
+
+          .product-discount-price span {
+            font-size: 12px;
+          }
+
+          .product-actual-price span {
+            font-size: 10px;
+          }
+
+          .label-block{
+            padding: 0;
+            
+          }
+
+          .label {
+            padding: 4px 6px;
+            font-size: 8px;
+            border-radius: 5px;
+          }
+
+
+
+         
+                 
+        }
+
+    </style>
+  </head>
+
+  <body class="theme-color2 light ltr">
+    <div class="col-md-12 cat-csm-title">
+      <span>Savitribai Phule Collection</span>
+    </div>
+
+    <div class="col-md-12 t-shirt-area">
+      <div class="t-shirt-section">
+        <div class="t-shirt-parent">
+          <div class="t-shirt">
+            <iframe
+              src="https://my.spline.design/tshirtbodymaledarkcopy-dbd87600ec197e8e16e52103f41d5edb/"
+              frameborder="0"
+              width="100%"
+              height="100%"
+            ></iframe>
+          </div>
+          <div class="div3d"></div>
+        </div>
+
+        <div class="t-shirt-section-desc">
+          <div class="t-shirt-section-desc-title">
+            <span
+              >Elevate your mind and be the part of the change with our T-shirts
+              featuring powerful quotes from social reformers today</span
+            >
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <!-- product section 2 start -->
+
+
+
+     <!-- headline animation start -->
+
+    <div class="animation">
+      <div class="marquee">
+        <div class="marquee_inner">
+          <div class="marquee_part">
+            Wear the change you wish to see
+            <div class="animation-icon">
+              <img src="/static/header-animation/animation-icon1.png" alt="" />
+            </div>
+          </div>
+
+          <div class="marquee_part">
+            Wear the change you wish to see,
+            <div class="animation-icon">
+              <img src="/static/header-animation/animation-icon2.png" alt="" />
+            </div>
+          </div>
+
+          <div class="marquee_part">
+            Wear the change you wish to see
+            <div class="animation-icon">
+              <img src="/static/header-animation/animation-icon3.png" alt="" />
+            </div>
+          </div>
+
+          <div class="marquee_part">
+            Wear the change you wish to see,
+            <div class="animation-icon">
+              <img src="/static/header-animation/animation-icon1.png" alt="" />
+            </div>
+          </div>
+
+          <div class="marquee_part">
+            Wear the change you wish to see,
+            <div class="animation-icon">
+              <img src="/static/header-animation/animation-icon2.png" alt="" />
+            </div>
+          </div>
+
+          <div class="marquee_part">
+            Wear the change you wish to see,
+            <div class="animation-icon">
+              <img src="/static/header-animation/animation-icon3.png" alt="" />
+            </div>
+          </div>
+
+          <div class="marquee_part">
+            Wear the change you wish to see,
+            <div class="animation-icon">
+              <img src="/static/header-animation/animation-icon1.png" alt="" />
+            </div>
+          </div>
+
+          <div class="marquee_part">
+            Wear the change you wish to see,
+            <div class="animation-icon">
+              <img src="/static/header-animation/animation-icon2.png" alt="" />
+            </div>
+          </div>
+
+          <div class="marquee_part">
+            Wear the change you wish to see,
+            <div class="animation-icon">
+              <img src="/static/header-animation/animation-icon3.png" alt="" />
+            </div>
+          </div>
+
+          <div class="marquee_part">
+            Wear the change you wish to see,
+            <div class="animation-icon">
+              <img src="/static/header-animation/animation-icon1.png" alt="" />
+            </div>
+          </div>
+
+          <div class="marquee_part">
+            Wear the change you wish to see,
+            <div class="animation-icon">
+              <img src="/static/header-animation/animation-icon2.png" alt="" />
+            </div>
+          </div>
+
+          <div class="marquee_part">
+            Wear the change you wish to see,
+            <div class="animation-icon">
+              <img src="/static/header-animation/animation-icon3.png" alt="" />
+            </div>
+          </div>
+
+          <div class="marquee_part">
+            Wear the change you wish to see,
+            <div class="animation-icon">
+              <img src="/static/header-animation/animation-icon1.png" alt="" />
+            </div>
+          </div>
+
+          <div class="marquee_part">
+            Wear the change you wish to see,
+            <div class="animation-icon">
+              <img src="/static/header-animation/animation-icon2.png" alt="" />
+            </div>
+          </div>
+
+          <div class="marquee_part">
+            Wear the change you wish to see,
+            <div class="animation-icon">
+              <img src="/static/header-animation/animation-icon3.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- headline animation end -->
+
+
+     <!-- Shop Section start -->
+     <section class="section-b-space">
+      <div class="container">
+          <div class="row">
+            <div class="col-lg-3 col-md-4">
+              <div class="category-option">
+                  <div class="button-close mb-3">
+                      <button class="btn p-0"><i data-feather="arrow-left"></i> Close</button>
+                  </div>
+
+                  <div class="filter-title">
+                    <span>Filters</span>
+                  </div>
+                  <div class=" category-name" id="accordionExample">
+
+
+                    <div class="accordion-section">
+                      <button class="accordion">
+                        Sort By
+                      </button>
+                      <div class="panel">
+
+
+                        <div class="filter-parent">
+                          <div class="filter-btn">
+                            <a href="{% url 'tshirt_male_shivaji_maharaj' %}?gender=male&sub_category=savitribaiphule">
+                              <span>Men</span>
+                            </a>
+                          </div>
+
+                          <div class="filter-btn">
+                            <a href="{% url 'tshirt_female_shivaji_maharaj' %}?gender=female&sub_category=savitribaiphule">
+                              <span>Women</span>
+                            </a>
+                          </div>
+
+                          <div class="filter-btn">
+                            <a href="{% url 'filter_products_collection' data='low_to_high' %}?price=lowtohigh&sub_category=savitribaiphule">
+                              <span>Low to High</span>
+                            </a>
+                          </div>
+
+                          <div class="filter-btn">
+                            <a href="{% url 'filter_products_collection' data='price_high_to_low' %}?price=lowtohigh&sub_category=savitribaiphule">
+                              <span>High to Low</span>
+                            </a>
+                          </div>
+
+                          <div class="filter-btn">
+                            <a href="{% url 'updated_products' %}?sub_category=savitribaiphule">
+                              <span>New</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="accordion-section">
+                      <button class="accordion">
+                          Color
+                      </button>
+                      <div class="panel">
+                          <form id="colorFilterForm" action="{% url 'filter_colour_collection' data='savitribaiphule' %}" method="GET">
+                              
+                                
+                            <div class="filter-parent">
+                                        
+                            <div class="filter-btn-color">
+                              <input type="checkbox" name="colour" value="red">
+                              <label class="color-label red"> </label>
+                              <span>Red</span>
+                            </div>
+                                  
+                                
+
+                            <div class="filter-btn-color">
+                              <input type="checkbox" name="colour" value="blue">
+                              <label class="color-label blue"> </label>
+                              <span>Blue</span>
+
+                            </div>
+                                
+
+                            <div class="filter-btn-color">
+                              <input type="checkbox" name="colour" value="black">
+                              <label class="color-label black"> </label>
+                              <span>Black</span>
+
+                            </div>
+                                
+
+                            <div class="filter-btn-color">
+                              <input type="checkbox" name="colour" value="white">
+                              <label class="color-label white"> </label>
+                              <span>White</span>
+
+                            </div>
+                                
+
+                            <div class="filter-btn-color">
+                              <input type="checkbox" name="colour" value="yellow">
+                              <label class="color-label yellow"> </label>
+                              <span>Yellow</span>
+
+                            </div>
+                                
+
+                            <div class="filter-btn-color">
+                              <input type="checkbox" name="colour" value="orange">
+                              <label class="color-label orange"> </label>
+                              <span>Orange</span>
+
+                            </div>
+                                
+
+                            <div class="filter-btn-color">
+                              <input type="checkbox" name="colour" value="pink">
+                              <label class="color-label pink"> </label>
+                              <span>Pink</span>
+
+                            </div>
+                                
+
+                            <div class="filter-btn-color">
+                              <input type="checkbox" name="colour" value="blue">
+                              <label class="color-label blue"> </label>
+                              <span>Blue</span>
+
+                            </div>
+                              
+                              <div class="filter-apply-btn">
+                                <button type="submit" >Apply Filters</button>
+                              </div>
+                            </div>
+                          </form>
+                      </div>
+                  </div>
+
+
+                    <div class="accordion-section">
+                      <button class="accordion">
+                        Price range
+                      </button>
+                      <div class="panel">
+
+
+                        <div class="filter-parent">
+                          <div class="filter-btn">
+                            <a href="{% url 'filter_product_price' data='100_500' %}?sub_category=savitribaiphule">
+                              <span>&#8377; 100 to &#8377; 500</span>
+                            </a>
+                          </div>
+
+                          <div class="filter-btn">
+                            <a href="{% url 'filter_product_price' data='500_1000' %}?sub_category=savitribaiphule">
+                              <span>&#8377; 500 to &#8377; 1000</span>
+                            </a>
+                          </div>
+
+                          <div class="filter-btn">
+                            <a href="{% url 'filter_product_price' data='above_1000' %}?sub_category=savitribaiphule">
+                              <span>above &#8377; 1000</span>
+                            </a>
+                          </div>
+                        </div>
+
+                        <!-- <div class="form-check ps-0 custome-form-check">
+                          <input type="number" class="form-control" placeholder="Min Price" id="minPrice" />
+                          <input type="number" class="form-control" placeholder="Max Price" id="maxPrice" />
+                          <button class="btn btn-primary" onclick="applyPriceFilter()">Apply</button>
+                      </div>  -->
+
+                      </div>
+                    </div>
+                    
+
+                 
+                  
+                    <div class="accordion-section">
+                      <button class="accordion">
+                        Size
+                      </button>
+                      <div class="panel">
+
+                        <form action="{% url 'filter_size_collection' data='savitribaiphule' %}" method="GET">
+                          
+
+                              
+                                  
+                          <div class="filter-parent">
+                            
+                                      
+                            <div class="filter-btn">
+                              <input type="checkbox" name="size" value="S" >
+                                <label> S</label>
+                            </div>
+
+                            <div class="filter-btn">
+                              <input type="checkbox" name="size" value="M">
+                                <label> M</label>
+                            </div>
+
+                            <div class="filter-btn">
+                              <input type="checkbox" name="size" value="L">
+                                <label> L</label>
+                            </div>
+
+                            <div class="filter-btn">
+                              <input type="checkbox" name="size" value="XL">
+                                <label> XL</label>
+                            </div>
+
+                            <div class="filter-btn">
+                              <input type="checkbox" name="size" value="XXL">
+                                <label> XXL</label>
+                            </div>
+                        
+                        
+                            <div class="filter-apply-btn">
+                              <button type="submit">Apply Filter</button>
+                            </div>
+                          </div>
+                                  
+                              
+                          
+                      </form>
+                      </div>
+                    </div>
+  
+                      <!-- Slider section start -->
+                      
+                      <!-- Slider Section End -->
+                  </div>
+              </div>
+          </div>
+
+              <div class="col-lg-9 col-12 ratio_30">
+
+                <div class="row g-4">
+                      <!-- filter button -->
+                      <div class="filter-button">
+                          <button class="btn filter-btn p-0"><i data-feather="align-left"></i> Filter</button>
+                      </div>
+                      <!-- filter button -->
+
+                  </div>
+                  <!-- label and featured section -->
+
+                  <!-- Prodcut setion -->
+                  <div
+                      class=" custom-gy-5 product-style-2 ratio_asos product-list-section">
+                      <div class="row m-0">
+                        <div class="col-sm-12 p-0">
+                          <div class="product-wrapper product-style-2 row g-sm-4 g-3">
+                            {% for i in data %}
+
+                            <div class="col-xl-3 col-lg-4 col-6 " >
+                              <div class="product-box single-product-section">
+                                <div class="img-wrapper">
+                                  {% if i.product_image %}
+                                  <div class="front">
+                                    <a href="/prod_details/{{i.prod_id}}/">
+                                      <img src="{{i.product_image.url}}"
+                                          class="bg-img blur-up lazyload" alt="">
+                                    </a>
+                                  </div>
+                                  {% endif %}
+                                  {% if i.back_image %}
+                                    <div class="back">
+                                        <a href="/prod_details/{{i.prod_id}}/">
+                                            <img src="{{i.back_image.url}}"
+                                                class="bg-img blur-up lazyload" alt="">
+                                        </a>
+                                    </div>
+                                  {% endif %}
+                                  <div class="label-block">
+                                    <span class="label label-black">New</span>
+                                  </div>
+                                  <div class="cart-wrap">
+                                    <ul>
+                                      <!-- <li>
+                                        <a href="javascript:void(0)" 
+                                          data-product-image=" {% if i.product_image %} {{ i.product_image.url }} {% endif %}"
+                                          data-title="{{ i.title }}"
+                                          data-discount-price="{{ i.actual_price }}"
+                                          data-selling-price="{{ i.selling_price }}"
+                                          data-product-type="{{ i.product_type }}"
+                                          data-category="{{ i.category }}"
+                                          data-description="{{ i.description }}"
+                                          data-back-image=" {% if i.back_image %} {{ i.back_image.url }} {% endif %}"
+                                          data-left-image=" {% if i.left_image %} {{ i.left_image.url }} {% endif %}"
+                                          data-right-image="{% if i.right_image %} {{ i.right_image.url }} {% endif %}"
+                                          onclick="openModal(this)">
+                                           <i data-feather="eye"></i>
+                                           
+                                       </a>
+                                    </li> -->
+                                   <li>
+                                        {% if user.is_authenticated %}
+                                            <form action="/add_to_cart/" method="POST">
+                                                {% csrf_token %}
+                                                <div class="col text-center">
+                                                    <input type="hidden" id="prod_id" name="prod_id" value="{{ i.prod_id }}">
+                                                    <button id="cartEffect" style="border:none;" type="submit" name="action" value="add_to_cart">
+                                                        <i style="font-size: 20px;" class="uil uil-shopping-cart-alt"></i>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        {% else %}
+                                            <form action="{% url 'customer_login' %}" method="GET">
+                                                <button style="border:none;" type="submit">
+                                                        <i style="font-size: 20px;" class="uil uil-shopping-cart-alt"></i>
+                                                </button>
+                                            </form>
+                                        {% endif %}
+                                    </li>
+              
+                                      
+                                      <li >
+                                        {% if user.is_authenticated %}
+                                            <form action="/add_wishlist/{{i.prod_id}}/" method="POST">
+                                                {% csrf_token %}
+                                                {% if item_already_in_wish %}
+                                                    <a href="/show_wishlist/">WISHLIST</a>
+                                                {% else %}
+                                                    <input type="hidden" id='item_id' name='prod_id' value='{{i.prod_id}}'>
+                                                    <button id="cartEffect" style="border:none;" type="submit">
+                                                        <!-- <span>WISHLIST</span> -->
+                                                        <i style="font-size: 20px;"  class="uil uil-heart"></i>
+                                                    </button>
+                                                {% endif %}
+                                            </form>
+                                        {% else %}
+                                        <form action="/customer_login/">
+                                          <button style="border:none;" type="submit">
+                                            <!-- <span>WISHLIST</span> -->
+                                            <i style="font-size: 20px;"  class="uil uil-heart"></i>
+                                        </button>
+                                        </form>
+                              
+                                        {% endif %}
+                                        </li>
+                                    </ul>
+                                  </div>
+                                </div>
+                                <div class="product-details">
+                                  <div class="rating-details">
+                                    <!-- <span class="font-light grid-content text-center w-100" style="font-size:13px">{{ i.brand }}</span> -->
+                                    <div class="rating-details">
+                                      <!-- <div class="rating my-2 d-inline-block">
+                                          <div class="star-rating">
+                                              {% for _ in "12345"|make_list %}
+                                                  {% if forloop.counter <= i.average_rating %}
+                                                      <span class="star filled" style="font-size: 15px;">&#x2605;</span>  
+                                                  {% else %}
+                                                      <span class="star" style="font-size: 15px;">&#9734;</span>
+                                                  {% endif %}
+                                              {% endfor %}
+                                              
+                                          </div>
+                                      </div> -->
+                                    </div>
+                                  </div>
+                                  <div class="main-price">
+                                    <div class="product-title">
+                                      <a href="/prod_details/{{i.prod_id}}/" class="font-default text-center">
+                                        <span>{{ i.title }}</span>
+                                      </a>
+                                    </div>
+                                    <div class="product-price-section">
+                                      <div class="product-discount-price">
+                                        <span>&#8377 {{ i.selling_price }}</span>
+                                      </div>
+              
+                                      <div class="product-actual-price">
+                                        <span>&#8377 {{i.actual_price}}</span>
+                                      </div>
+                                    </div>
+                                    <button
+                                      onclick="location.href = 'cart.html';"
+                                      class="btn listing-content"
+                                    >
+                                      Add To Cart
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            {% endfor %}
+                          </div>
+                        </div>
+                      </div>
+                      
+
+
+
+                      <!-- Prodcut setion -->
+                  </div>
+
+              </div>
+          </div>
+      </div>
+  </section>
+  <!-- Shop Section end -->
+
+
+    
+
+    <hr>
+
+    <section>
+      <h1>
+         {% if data1 %}
+         {{data1.0.heading}}
+         {% endif %}
+        
+      </h1>
+
+
+      <p>
+        {% if data1 %}
+        {{data1.0.paragraph1}}
+        {% endif %}   
+      </p>
+      <h2>
+        {% if data1 %}
+        {{data1.0.heading1}}
+        {% endif %}
+       
+     </h2>
+
+
+      <p>
+        {% if data1 %}
+        {{data1.0.paragraph2}}
+        {% endif %}  
+      </p>
+      <h2>
+        {% if data1 %}
+        {{data1.0.heading2}}
+        {% endif %}
+       
+     </h2>
+
+      <p>
+        {% if data1 %}
+        {{data1.0.paragraph3}}
+        {% endif %}  
+      </p>
+      <h2>
+        {% if data1 %}
+        {{data1.0.heading3}}
+        {% endif %}
+       
+     </h2>
+
+      <p>
+        {% if data1 %}
+        {{data1.0.paragraph4}}
+        {% endif %}  
+      </p>
+      <h2>
+        {% if data1 %}
+        {{data1.0.heading4}}
+        {% endif %}
+       
+     </h2>
+
+      <p>
+        {% if data1 %}
+        {{data1.0.paragraph5}}
+        {% endif %}  
+      </p>
+
+      <h2>
+        {% if data1 %}
+        {{data1.0.heading5}}
+        {% endif %}
+       
+     </h2>
+
+      <p>
+        {% if data1 %}
+        {{data1.0.paragraph6}}
+        {% endif %}  
+      </p>
+
+      <h2>
+        {% if data1 %}
+        {{data1.0.heading6}}
+        {% endif %}
+       
+     </h2>
+
+      <p>
+        {% if data1 %}
+        {{data1.0.paragraph7}}
+        {% endif %}  
+      </p>
+    </section>
+
+    <!-- <section>
+      <h1>
+        Savitribai Phule T-shirt collection
+      </h1>
+
+
+      <p>
+        The Savitribai Phule t-shirt Collection pays homage to one of India's most pioneering and inspirational
+figures, Savitribai Phule. A social reformer, educator and feminist icon, Savitribai Phule dedicated
+her life to advocating for women's rights, education and social equality during the 19th century.
+This clothing line which includes shirts, tshirts, kurtas seeks to celebrate her legacy and continue
+her mission of empowerment and enlightenment.
+      </p>
+
+      <p>
+        The t-shirt collection features a range of garments that are designed to honour Savitribai Phule's
+remarkable contributions to Indian society. T-shirts , shirts, kurtas are adorned with her portrait and
+powerful quotes that serve as symbols of her enduring impact and the ongoing fight for gender
+equality and education. These garments not only make a fashion statement but also serve as
+catalysts for conversation and awareness about her legacy.
+      </p>
+
+      <p>
+        Each garment serves as a reminder of her tireless efforts to uplift communities and promote social
+justice.By purchasing items from these t-shirt collection, individuals not only honour Savitribai Phule's
+legacy but also contribute to the continuation of her work in promoting education and social reform.
+      </p>
+
+      
+    </section> -->
+
+    <!-- latest jquery-->
+    <script src="/static/assets1/js/jquery-3.5.1.min.js"></script>
+
+    <!-- Bootstrap js-->
+    <script src="/static/assets1/js/bootstrap/bootstrap.bundle.min.js"></script>
+
+    <!-- feather icon js-->
+    <script src="/static/assets1/js/feather/feather.min.js"></script>
+
+    <!-- lazyload js-->
+    <script src="/static/assets1/js/lazysizes.min.js"></script>
+
+    <!-- Slick js-->
+    <script src="/static/assets1/js/slick/slick.js"></script>
+    <script src="/static/assets1/js/slick/slick-animation.min.js"></script>
+    <script src="/static/assets1/js/slick/custom_slick.js"></script>
+
+    <!-- newsletter js -->
+    <script src="/static/assets1/js/newsletter.js"></script>
+
+    <!-- add to cart modal resize -->
+    <script src="/static/assets1/js/cart_modal_resize.js"></script>
+
+    <!-- Add To Home js -->
+    <script src="/static/assets1/js/pwa.js"></script>
+
+    <!-- add to cart modal resize -->
+    <script src="/static/assets1/js/cart_modal_resize.js"></script>
+
+    <!-- feather icon js-->
+    <script src="/static/assets1/js/timer1.js"></script>
+
+    <!-- notify js -->
+    <script src="/static/assets1/js/bootstrap/bootstrap-notify.min.js"></script>
+
+    <!-- script js -->
+    <script src="/static/assets1/js/theme-setting.js"></script>
+    <script src="/static/assets1/js/script.js"></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script>
+      let tween = gsap
+        .to(".marquee_part", {
+          xPercent: -100,
+          repeat: -1,
+          duration: 5,
+          ease: "linear",
+        })
+        .totalProgess(0.5);
+    </script>
+
+<script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+    
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                // Close all accordion items
+                var allAccordions = document.getElementsByClassName("accordion");
+                for (var j = 0; j < allAccordions.length; j++) {
+                    var panel = allAccordions[j].nextElementSibling;
+                    if (allAccordions[j] !== this && allAccordions[j].classList.contains("active")) {
+                        allAccordions[j].classList.remove("active");
+                        panel.style.maxHeight = null;
+                    }
+                }
+    
+                // Toggle the active class and expand or collapse the clicked accordion
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
+  </body>
+</html>
+
+{% endblock content %}

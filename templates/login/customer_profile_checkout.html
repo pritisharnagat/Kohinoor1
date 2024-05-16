@@ -1,0 +1,810 @@
+{% extends 'base.html' %} {% block title %} Customer Profile {% endblock %}
+
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="{% static 'assets1\images\logos\vr_main.png' %}"
+      type="image/x-icon"
+    />
+    <link
+      rel="shortcut icon"
+      href="{% static 'assets1\images\logos\vr_main.png' %}"
+      type="image/x-icon"
+    />
+    <title>Customer Dashboard</title>
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- bootstrap css -->
+    <link
+      id="rtl-link"
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/bootstrap.css"
+    />
+
+    <!-- font-awesome css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/font-awesome.css"
+    />
+
+    <!-- feather icon css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/feather-icon.css"
+    />
+
+    <!-- animation css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/animate.css"
+    />
+
+    <!-- slick css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/slick/slick-theme.css"
+    />
+
+    <!-- Theme css -->
+    <link
+      id="color-link"
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/demo2.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- icons -->
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+    />
+
+    <style>
+      .vr-logo {
+        width: 110px;
+      }
+
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background-color: white;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background-color: rgb(255, 0, 0);
+        border-radius: 5px;
+        transition: all ease;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background-color: rgb(255, 156, 156);
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        font-family: "Poppines", sans-serif;
+      }
+
+      .user-profile-section {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+        background-color: #fff5f5;
+      }
+
+      .user-profile-section-child {
+        width: 40rem;
+        height: fit-content;
+        box-shadow: 0px 10px 23px -3px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin: 50px;
+        margin-left: 0;
+        margin-right: 0;
+        border-radius: 20px;
+        background-color: white;
+      }
+
+      .user-profile-section-child-title {
+        padding: 20px;
+        padding-left: 0;
+        padding-top: 0;
+      }
+
+      .user-profile-section-child-title span {
+        font-size: 30px;
+        font-weight: 600;
+      }
+
+      .user-profile-img-section {
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        padding: 15px;
+      }
+
+      .user-profile-img {
+        position: relative;
+        width: 100px;
+        height: 100px;
+      }
+
+      .user-profile-img img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .change-profile-icon {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        padding: 5px;
+        width: 35px;
+        height: 35px;
+        background-color: white;
+        border-radius: 50%;
+
+        transition: all 0.3s ease-out;
+      }
+
+      .user-profile-img:hover .change-profile-icon {
+        background-color: black;
+        color: white;
+      }
+
+      .name-section {
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+
+      .sub-section {
+        width: 50%;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+
+      .sub-section label {
+        width: 100%;
+
+        padding-bottom: 10px;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        font-weight: 400;
+      }
+
+      .sub-section input {
+        width: 100%;
+        background-color: rgb(255, 240, 240);
+        border: 1.1px solid rgba(0, 0, 0, 0);
+        flex-grow: 1;
+        border-radius: 6px;
+        padding: 12px;
+        font-size: 15px;
+        transition: all 0.3s ease-out;
+      }
+
+      .dob-section {
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+
+      .email-mobNo-section {
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+
+      .sub-section input:focus {
+        border: 1.1px solid rgb(179, 179, 179);
+        outline: none;
+        background-color: transparent;
+      }
+
+      .locality-city-section {
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+
+      .state-pin-section {
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+
+      .save-btn button {
+        width: 100%;
+
+        margin-top: 15px;
+
+        padding: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 20px;
+        background-color: black;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        transition: all 0.3s ease-out;
+      }
+
+      .save-btn button:hover {
+        background-color: rgb(42, 42, 42);
+      }
+
+      @media screen and (max-width: 1000px) {
+      }
+
+      @media screen and (max-width: 768px) {
+        .user-profile-section-child {
+          width: 30rem;
+        }
+      }
+
+      @media screen and (max-width: 450px) {
+
+        .user-profile-section-child {
+          width: 18rem;
+        }
+
+        .user-profile-section-child-title span {
+          font-size: 20px;
+        }
+
+        .user-profile-img {
+          position: relative;
+          width: 80px;
+          height: 80px;
+        }
+
+        .sub-section input {
+          padding: 8px;
+          font-size: 12px;
+        }
+
+        .sub-section label {
+          font-size: 13px;
+        }
+
+        .save-btn button {
+          font-size: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body class="theme-color2 light ltr">
+
+
+    <div class="user-profile-section">
+      <div class="user-profile-section-child">
+        <div class="user-profile-section-child-title">
+          <span>Manage Account</span>
+        </div>
+        <form
+          enctype="multipart/form-data"
+          action="{% url 'customer_profile_checkout' %}"
+          method="post"
+        >
+        {% csrf_token %}
+          <!-- <div class="user-profile-img-section">
+            <div class="user-profile-img">
+              {% csrf_token %} {% if user.image %}
+              <img src="{{ user.image.url }}" alt="User Image" />
+              {% else %}
+              <img src="{% static 'media/user_images/' %}" alt="User Image" />
+              {% endif %}
+
+              <div class="change-profile-icon">
+
+                <i class="uil uil-pen upload-icon"></i>
+                <input
+                  type="file"
+                  class="upload"
+                  value="{{ image }}"
+                  name="image"
+                  style="display: none"
+                />
+              </div>
+            </div>
+          </div> -->
+
+          <div class="name-section">
+            <div class="sub-section">
+              <label>First Name</label>
+              <input
+                type="text"
+                name="first_name"
+                value="{{data.first_name}}"
+                id="first_name"
+                oninput="this.value = this.value.replace(/[^a-z A-Z]/g, '')"
+              />
+            </div>
+
+            <div class="sub-section">
+              <label>Last Name</label>
+              <input
+                type="text"
+                name="last_name"
+                value="{{data.last_name}}"
+                id="last_name"
+                oninput="this.value = this.value.replace(/[^a-z A-Z]/g, '')"
+              />
+            </div>
+          </div>
+
+          <!-- <div class="dob-section">
+            <div class="sub-section">
+              <label>Date of Birth</label>
+              <input
+                type="date"
+                name="date_of_birth"
+                id="dob"
+                value="{{data.date_of_birth}}"
+              />
+            </div>
+          </div> -->
+
+          <div class="email-mobNo-section">
+            <div class="sub-section">
+              <label>Email ID</label>
+              <input
+                type="email"
+                name="email"
+                value="{{data.email}}"
+                id="email"
+              />
+            </div>
+
+            <div class="sub-section">
+              <label>Mobile</label>
+              <input
+                type="text"
+                name="mobile_number"
+                value="{{data.mobile_number}}"
+                id="mobile_number"
+                maxlength="10"
+                oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="locality-city-section">
+            <div class="sub-section">
+              <label>Address</label>
+              <input
+                type="text"
+                name="locality"
+                id="address"
+                value="{{data.locality}}"
+                oninput="this.value = this.value.replace(/[^a-z A-Z 0-9]/g, '')"
+                required
+              />
+            </div>
+
+            <div class="sub-section">
+              <label>City</label>
+              <input
+                type="text"
+                name="city"
+                id="city"
+                value="{{data.city}}"
+                oninput="this.value = this.value.replace(/[^a-z A-Z]/g, '')"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="state-pin-section">
+            <div class="sub-section">
+              <label>State</label>
+              <input
+                type="text"
+                name="state"
+                id="state"
+                value="{{data.state}}"
+                oninput="this.value = this.value.replace(/[^a-z A-Z]/g, '')"
+                required
+              />
+            </div>
+
+            <div class="sub-section">
+              <label>Pin Code</label>
+              <input
+                type="number"
+                name="pincode"
+                value="{{data.pincode}}"
+                id="pincode"
+                oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- <input type="submit" class="btn btn-primary submit-btn">Save Changes</button> -->
+
+          <div class="save-btn">
+            <button type="submit" value="Save" id="saveButton">
+              Update Information
+            </button>
+            <!-- <input type="submit" value="Save" id="saveButton" /> -->
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+
+          <!-- footer start -->
+          <footer class="footer-sm-space">
+            <div class="main-footer">
+              <div class="container">
+                <div class="row gy-4">
+                  <div class="col-xl-3 col-lg-4 col-md-6">
+                  <div class="footer-contact">
+                    <div class="brand-logo vr-logo">
+                      <a href="/" class="footer-logo">
+                        <!-- <svg class="svg-icon">
+                          <use
+                            class="fill-color"
+                            xlink:href="/static/assets1/svg/icons.svg#logo"
+                          ></use>
+                        </svg> -->
+                        <img
+                          src="/static/assets1/images/logos/vr logo.png"
+                          class="img-fluid blur-up lazyload"
+                          alt="logo"
+                        />
+                      </a>
+                    </div>
+                    <ul class="contact-lists">
+                      <li>
+                        <span>
+                          <b>phone:</b>
+                          <span class="font-light">+91 9511761157</span>
+                        </span>
+                      </li>
+                      <li>
+                        <span>
+                          <b>Address:</b>
+                          <span class="font-light">
+                            Plot No. 16, IT Park Rd, Gayatri Nagar, Main Road, Opposite Checkers, Nagpur, Maharashtra 440022</span
+                          >
+                        </span>
+                      </li>
+                      <li>
+                        <span>
+                          <b>Email:</b>
+                          <span class="font-light">myvishwaratna@gmail.com</span>
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                  <div class="footer-links">
+                    <div class="footer-title">
+                      <h3>ABOUT US</h3>
+                    </div>
+                    <div class="footer-content">
+                      <ul>
+                        <li>
+                          <a href="/seller_registeration/" class="font-dark">SELLER REGISTRATION</a>
+                        </li>
+                        <li>
+                          <a href="/seller_login/" class="font-dark">SELLER LOGIN</a>
+                        </li>
+                        <li>
+                          <a href="/contact_us/" class="font-dark"
+                            >CONTACT US</a
+                          >
+                        </li>
+                        <li>
+                          <a href="/terms_&_condition/" class="font-dark">TERMS & CONDITIONS</a>
+                        </li>
+                        <li>
+                          <a href="/privacy_policy/" class="font-dark">PRIVACY POLICY</a>
+                        </li>
+                        <li>
+                          <a href="/refund_&_return/" class="font-dark">REFUND & RETURN</a>
+                        </li>
+                        <!-- <li>
+                          <a href="#" class="font-dark">BLOGS</a>
+                        </li> -->
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                  <div class="footer-links">
+                    <div class="footer-title">
+                      <h3>CATEGORIES</h3>
+                    </div>
+                    <div class="footer-content">
+                      <ul>
+                        <li>
+                          <a style="text-transform: uppercase;" href="/tshirt/" class="font-dark"
+                            >T-shirts</a
+                          >
+                        </li>
+    
+                        <li>
+                          <a style="text-transform: uppercase;" href="/shirts/" class="font-dark"
+                            >Shirts</a
+                          >
+                        </li>
+                        <li>
+                          <a style="text-transform: uppercase;" href="/kurtas/" class="font-dark"
+                            >Kurtas</a
+                          >
+                          
+                        </li>
+    
+    
+    
+    
+                        <li>
+                          <a style="text-transform: uppercase;" href="/hoodies/" class="font-dark"
+                            >hoodies</a
+                          >
+                          
+                        </li>
+    
+                        <!-- <li>
+                          <a style="text-transform: uppercase;" href="shop-left-sidebar.html" class="font-dark"
+                            >Paintings</a
+                          >
+                        </li>
+    
+    
+                        <li>
+                          <a style="text-transform: uppercase;" href="shop-left-sidebar.html" class="font-dark"
+                            >Books</a
+                          >
+                        </li> -->
+    
+                        <li>
+                          <a style="text-transform: uppercase;" href="shop-left-sidebar.html" class="font-dark"
+                            >Customization</a
+                          >
+                        </li>
+    
+    
+    
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                  <div class="footer-links">
+                    <div class="footer-title">
+                      <h3>HELP</h3>
+                    </div>
+                    <div class="footer-content">
+                      <ul>
+                        <li>
+                          <a href="user-dashboard.html" class="font-dark"
+                            >YOUR ORDERS</a
+                          >
+                        </li>
+                        <li>
+                          <a href="user-dashboard.html" class="font-dark"
+                            >ACCOUNT</a
+                          >
+                        </li>
+                        <li>
+                          <a href="order-tracking.html" class="font-dark"
+                            >TRACK ORDERS</a
+                          >
+                        </li>
+                        <li>
+                          <a href="wishlist.html" class="font-dark"
+                            >WISHLIST</a
+                          >
+                        </li>
+                        <li>
+                          <a href="/shopping_faqs/" class="font-dark">SHOPING FAQs</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6 d-none d-sm-block">
+                  <div class="footer-newsletter">
+                    <h3>Got Question? Connect with Us 24/7</h3>
+                    <h4><i class="uil uil-phone " style="padding-right: 10px;"></i>+91 9511761157</h4>
+    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sub-footer">
+            <div class="container">
+              
+                <!-- <div class="col-md-6">
+                  <ul>
+                    <li class="font-dark">We accept:</li>
+                    <li>
+                      <a href="javascript:void(0)">
+                        <img
+                          src="/static/assets1/images/payment-icon/1.jpg"
+                          class="img-fluid blur-up lazyload"
+                          alt="payment icon"
+                      /></a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0)">
+                        <img
+                          src="/static/assets1/images/payment-icon/2.jpg"
+                          class="img-fluid blur-up lazyload"
+                          alt="payment icon"
+                      /></a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0)">
+                        <img
+                          src="/static/assets1/images/payment-icon/3.jpg"
+                          class="img-fluid blur-up lazyload"
+                          alt="payment icon"
+                      /></a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0)">
+                        <img
+                          src="/static/assets1/images/payment-icon/4.jpg"
+                          class="img-fluid blur-up lazyload"
+                          alt="payment icon"
+                      /></a>
+                    </li>
+                  </ul>
+                </div> -->
+                <div class="col-md-12" >
+                  <p class="mb-0 font-dark text-center">
+                    © 2024, VishwaRatna. Made & Designed by Zappkode
+                  </p>
+                </div>
+              
+            </div>
+          </div>
+        </footer>
+        <!-- footer end -->
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const uploadIcon = document.querySelector(".upload-icon");
+        const fileInput = document.querySelector(".upload");
+
+        uploadIcon.addEventListener("click", function () {
+          fileInput.click();
+        });
+      });
+    </script>
+    <!-- latest jquery-->
+    <script src="/static/assets1/js/jquery-3.5.1.min.js"></script>
+
+    <!-- Bootstrap js-->
+    <script src="/static/assets1/js/bootstrap/bootstrap.bundle.min.js"></script>
+
+    <!-- feather icon js-->
+    <script src="/static/assets1/js/feather/feather.min.js"></script>
+
+    <!-- lazyload js-->
+    <script src="/static/assets1/js/lazysizes.min.js"></script>
+
+    <!-- Slick js-->
+    <script src="/static/assets1/js/slick/slick.js"></script>
+    <script src="/static/assets1/js/slick/slick-animation.min.js"></script>
+    <script src="/static/assets1/js/slick/custom_slick.js"></script>
+
+    <!-- newsletter js -->
+    <script src="/static/assets1/js/newsletter.js"></script>
+
+    <!-- add to cart modal resize -->
+    <script src="/static/assets1/js/cart_modal_resize.js"></script>
+
+    <!-- Add To Home js -->
+    <script src="/static/assets1/js/pwa.js"></script>
+
+    <!-- add to cart modal resize -->
+    <script src="/static/assets1/js/cart_modal_resize.js"></script>
+
+    <!-- feather icon js-->
+    <script src="/static/assets1/js/timer1.js"></script>
+
+    <!-- notify js -->
+    <script src="/static/assets1/js/bootstrap/bootstrap-notify.min.js"></script>
+
+    <!-- script js -->
+    <script src="/static/assets1/js/theme-setting.js"></script>
+    <script src="/static/assets1/js/script.js"></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  </body>
+</html>
+
+{% endblock content %}

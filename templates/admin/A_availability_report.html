@@ -1,0 +1,103 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Dashboard</title>
+    <!-- Bootstrap CSS link -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS for hover effect and attractiveness -->
+    <style>
+
+        .table {
+            margin-top: 50px;
+            
+            width: 100%;
+            color: #212529;
+
+            
+        }
+        /* Add hover effect */
+        table tbody tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        /* Add some styling for attractiveness */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        
+        h1, h2 {
+            color: #343a40;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+        
+        #popup {
+            background-color: #dc3545;
+            color: #fff;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid" style="margin-left: 270px;">
+        <h1 class="mt-5 mb-4">Welcome to Your Dashboarduhnhgnghnmj</h1>
+        <div>
+            <h2>Your Products</h2>
+            <table class="table table-striped" style="overflow-x: auto;">
+                <thead>
+                    <tr>
+                        <th style="width: 150px;">Title</th>
+                        <th style="width: 60px;" >Brand</th>
+                        <th style="width: 60px;" >Product Type</th>
+                        <th style="width: 50px;" >Category</th>
+                        <th style="width: 150px;" >Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                    <tr>
+                        <td>{{ product.title }}</td>
+                        <td>{{ product.brand }}</td>
+                        <td>{{ product.product_type }}</td>
+                        <td>{{ product.category }}</td>
+                        <td>{{ product.quantity }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <!-- Popup message for low quantity products -->
+       <!--  <div id="popup">
+            <p>Some of your products have low quantities!</p>
+        </div> -->
+    </div>
+
+    <!-- Bootstrap JS link (optional, if you need Bootstrap JS functionality) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock %}

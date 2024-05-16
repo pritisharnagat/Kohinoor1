@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+
+
+
+        <!-- Google font -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+    
+        <!-- bootstrap css -->
+        <link
+          id="rtl-link"
+          rel="stylesheet"
+          type="text/css"
+          href="/static/assets1/css/vendors/bootstrap.css"
+        />
+    
+        <!-- font-awesome css -->
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="/static/assets1/css/vendors/font-awesome.css"
+        />
+    
+        <!-- feather icon css -->
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="/static/assets1/css/vendors/feather-icon.css"
+        />
+    
+        <!-- animation css -->
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="/static/assets1/css/vendors/animate.css"
+        />
+    
+        <!-- slick css -->
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="/static/assets1/css/vendors/slick/slick.css"
+        />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="/static/assets1/css/vendors/slick/slick-theme.css"
+        />
+    
+        <!-- Theme css -->
+        <link
+          id="color-link"
+          rel="stylesheet"
+          type="text/css"
+          href="/static/assets1/css/demo2.css"
+        />
+    
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+          rel="stylesheet"
+        />
+    
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+          rel="stylesheet"
+        />
+    
+        <!-- icons -->
+        <link
+          rel="stylesheet"
+          href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+        />
+    
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    
+        <!-- Theme css -->
+        <link
+          id="color-link"
+          rel="stylesheet"
+          type="text/css"
+          href="{% static 'assets/css/demo2.css' %}"
+        />
+    
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet"
+        />
+
+
+
+
+
+    <style>
+
+        * {
+            padding: 0;
+            margin: 0;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+          }
+
+
+          .download-btn{
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            margin: 20px;
+          }
+
+          .download-btn button{
+            font-size: 18px;
+            font-family: "Poppins", sans-serif;
+            font-weight: 500;
+            padding: 15px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 15px;
+            background-color: rgb(1, 109, 250);
+            color: white;
+            border: none;
+            transition: all 0.2s ease-out;
+          }
+
+          .download-btn button:hover{
+            
+            
+            transform: translateY(3px);
+          }
+
+
+
+
+          .logo-and-title{
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+
+          .title{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 20px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+          }
+
+
+
+          .vr-logo{
+            width: 200px;
+            height: auto;
+            margin: 20px;
+            
+          }
+
+          .vr-logo img{
+            width: 100%;
+            height: 100%;
+          }
+
+
+          .seller-info{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            margin: 20px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+          }
+
+          .seller-name-address-country{
+            display: flex;
+            justify-content: start;
+            
+            flex-direction: column;
+            flex-wrap: nowrap;
+          }
+
+
+          .seller-pan{
+            display: flex;
+            align-items: center;
+            justify-content: start;
+          }
+
+          .seller-pan-label span{
+            font-weight: bold;
+            margin-right: 10px;
+          }
+
+          .seller-gst{
+            display: flex;
+            align-items: center;
+            justify-content: start;
+          }
+
+
+          .seller-gst-label span{
+            font-weight: bold;
+            margin-right: 10px;
+          }
+
+          .customer-info{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+          }
+
+          .billing-info{
+            display: flex;
+            justify-content: start;
+            flex-direction: column;
+            flex-wrap: wrap;
+          }
+
+          .shipping-info{
+            display: flex;
+            justify-content: start;
+            flex-direction: column;
+            flex-wrap: wrap;
+          }
+
+          .supply-delivery{
+            display: flex;
+            justify-content: start;
+            margin: 20px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            flex-direction: column;
+          }
+
+
+          .supply-p{
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            flex-direction: row;
+          }
+
+          .supply-p-label span{
+            font-weight: bold;
+            margin-right: 10px;
+          }
+
+
+          .delivery-p{
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            flex-direction: row;
+          }
+
+          .delivery-p-label span{
+            font-weight: bold;
+            margin-right: 10px;
+          }
+
+
+          .order-invoice-info{
+            display: flex;
+            justify-content: space-between;
+            
+            margin: 20px;
+            margin-top: 20px;
+            margin-bottom: 5px;
+          }
+
+
+          .order-info{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            flex-wrap: nowrap;
+          }
+
+          .order-no, .order-date{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+          }
+
+
+          .order-no-label span{
+            font-weight: bold;
+            margin-right: 10px;
+          }
+
+          .order-date-label span{
+            font-weight: bold;
+            margin-right: 10px;
+          }
+
+          
+
+
+          .invoice-info{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            flex-wrap: nowrap;
+          }
+
+          .invoice-no, .invoice-date{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+          }
+
+          .invoice-no-label span{
+            font-weight: bold;
+            margin-right: 10px;
+          }
+
+          .invoice-date-label span{
+            font-weight: bold;
+            margin-right: 10px;
+          }
+
+
+
+
+
+
+          
+
+
+
+          table thead, tbody{
+            border: 1.5px solid black;
+          }
+
+          table thead tr th{
+            font-size: 12px;
+            background-color: black;
+          }
+
+
+          .main-table{
+            
+            background-color: rgba(0, 0, 0, 0.162);
+            border: 1.5px solid black;
+          }
+
+
+          table tbody tr td{
+            font-size: 13px;
+          }
+
+
+
+
+          @media screen and (max-width: 1000px) {
+        }
+  
+        @media screen and (max-width: 768px) {
+        }
+  
+        @media screen and (max-width: 450px) {
+
+        }
+
+    </style>
+</head>
+<body>
+
+    
+
+
+
+    <div class="container-fluid invoice">
+
+
+      <div class="download-btn">
+        <button id="pdf-button" onclick="savePage()" >Download Invoice</button>
+      </div>
+
+
+      <div class="logo-and-title">
+        <div class="vr-logo">
+          <img src="/static/assets1/images/logos/vr logo.png" alt="">
+        </div>
+  
+        <div class="title">
+          <span>Tax Invoice/Bill of Supply</span>
+          <span>(Original for Recipient)</span>
+        </div>
+      </div>
+
+
+      <div class="seller-info">
+        
+        <div class="seller-name-address-country">
+          <span><strong>Sold by:</strong></span>
+          <span>Vishwaratna.in</span>
+          <span>It park, nagpur, maharashtra - 440022</span>
+          <span>IN</span>
+
+
+          <div class="seller-pan">
+            <div class="seller-pan-label">
+              <span>PAN no.</span>
+            </div>
+  
+            <div class="seller-pan-value">
+              <span>XXXXXXXXXXX</span>
+            </div>
+          </div>
+
+          <div class="seller-gst">
+            <div class="seller-gst-label">
+              <span>GST no.</span>
+            </div>
+  
+            <div class="seller-gst-value">
+              <span>XXXXXXXXXXX</span>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+
+
+      {% for i in order %}
+      <div class="customer-info">
+
+
+        <div class="billing-info">
+            <span><strong>Billed To:</strong></span>
+            <span>{{ i.customer.first_name }} {{ i.customer.last_name }}</span>
+            <span>{{ i.customer.locality }}</span>
+            <span>{{ i.customer.city }},{{ i.customer.state }}</span>
+            <span>{{ i.customer.pincode }}</span>
+            <span>{{ i.customer.mobile_number }}</span>
+        </div>
+        
+        <div class="shipping-info">
+
+            <span><strong>Shipped To:</strong></span>
+            <span>{{ i.customer.first_name }} {{ i.customer.last_name }}</span>
+            <span>{{ i.customer.locality }}</span>
+            <span>{{ i.customer.city }},{{ i.customer.state }}</span>
+            <span>{{ i.customer.pincode }}</span>
+            <span>{{ i.customer.mobile_number }}</span>
+        </div>
+      
+      </div>
+
+      {% endfor %}
+
+      <div class="supply-delivery">
+        <div class="supply-p">
+          <div class="supply-p-label">
+            <span>Place of Supply:</span>
+          </div>
+
+          <div class="supply-p-value">
+            <span>MAHARASHTRA</span>
+          </div>
+        </div>
+
+        <div class="delivery-p">
+          <div class="delivery-p-label">
+            <span>Place of Delivery:</span>
+          </div>
+
+          <div class="delivery-p-value">
+            <span>MAHARASHTRA</span>
+          </div>
+        </div>
+      </div>
+
+      {% if order %}
+
+
+      <div class="order-invoice-info">
+        <div class="order-info">
+
+          <div class="order-no">
+            <div class="order-no-label">
+              <span>Order ID:</span>
+            </div>
+            <div class="order-no-value">
+              <span>{{ order.0.order_id }}</span>
+            </div>
+          </div>
+  
+          <div class="order-date">
+            <div class="order-date-label">
+              <span>Order Date :</span>
+            </div>
+  
+            <div class="order-date-value">
+              <span>{{ order.0.Order_date }}</span>
+            </div>
+          </div>
+  
+        </div>
+
+        <div class="invoice-info">
+          <div class="invoice-no">
+            <div class="invoice-no-label">
+              <span>Invoice No.:</span>
+            </div>
+
+            <div class="invoice-no-value">
+              <span>{{  order.0.invoice_no  }}</span>
+            </div>
+
+
+          </div>
+
+
+          <div class="invoice-date">
+            <div class="invoice-date-label">
+              <span>Invoice Date:</span>
+            </div>
+
+
+            <div class="invoice-date-value">
+              <span>{{ order.0.Order_date }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+        
+       
+        <!-- <div class="invoice-details">
+        
+            <p><strong>Invoive No.:</strong>{{  order.0.invoice_no  }}</p>
+            <p><strong>Order ID:</strong>{{ order.0.order_id }}</p>
+            <p><strong>Date:</strong> {{ order.0.Order_date }} </p>
+            
+        </div> -->
+
+        <div class="table-responsive p-3">
+            <table class="table table-bordered mb-0">
+                <thead class="thead-dark">
+                    <tr class="main-table">
+                        <th>Sr no.</th>
+                        <th>Description</th>
+                        <th>Unit price</th>
+                        <th>Quantity</th>
+                        <th>Net Amount</th>
+                        <th>Tax Rate</th>
+                        <th>Tax Type</th>
+                        <th>Tax Amount</th>
+                        
+                        
+                    </tr>
+                </thead>
+                 <tbody>
+                    {% for i in order %}
+                    <tr>
+
+                        <td style="width: 2%;">{{forloop.counter}}</td>
+                        <td style="width: 4%;">{{ i.product.title }}</td>
+                        <td style="width: 4%;"><span>&#8377</span>{{ i.product.selling_price }}</td>
+                        <td style="width: 4%;">{{ i.quantity }}</td>
+                        <td style="width: 4%;">{{ i.product_price }}</td>
+
+                        {% comment %} <td style="width:4%;"><span>&#8377</span>{{ i.net_amount }}</td> {% endcomment %}
+                        <td style="width:4%;">18%</td>
+                        <td style="width:4%;">GST</td>
+                        <td style="width:4%;"><span>&#8377</span>{{ i.tax }}</td>
+                        
+                    </tr>
+
+
+                    {% endfor %}
+                </tbody> 
+
+                <!-- Display aggregated values -->
+ <tfoot>
+  <tr>
+      <td colspan="7">Total Amount</td>
+      {% comment %} <td><span>&#8377;</span>{{ total_tax }}</td> {% endcomment %}
+        {% comment %} <td><span>&#8377;</span>{{ total_shipping_charges }}</td> {% endcomment %}
+        <td style="margin-left:20px;"><span>&#8377;</span>{{ order_cost.total_cost|floatformat:02 }}</td>
+  </tr>
+</tfoot> 
+
+
+
+
+
+            </table>
+
+            <table class="table  table-bordered mb-0">
+                <thead>
+                    <tr>
+                        <td>Amount in Words: {{ total_cost_in_words }}</td>
+                    </tr>
+                </thead>
+
+            </table>
+
+            <table class="table  table-bordered">
+                <thead>
+                    <tr>
+                        <td>block for signature</td>
+                    </tr>
+                </thead>
+
+
+            </table>
+
+        </div>
+        
+        
+        
+        
+
+
+
+
+    
+{% endif %}
+    </div>
+
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.js"></script>
+<script type="text/javascript">
+    function savePage() {
+        console.log("Attempting to generate PDF...");
+
+        // Hide the buttons temporarily
+        var pdfButton = document.getElementById('pdf-button');
+        pdfButton.style.display = 'none';
+
+        // Get the current HTML of the page
+        var html = document.documentElement;
+
+        // Set the options for the PDF conversion
+        var options = {
+            margin: [10, 10],
+            filename: 'Invoice.pdf',
+            image: { type: 'jpeg', quality: 1.0 }, // Set image quality to 1 (maximum quality)
+            html2canvas: { 
+                scale: 4, // Increase scale for better image quality
+                letterRendering: true, // Improve text rendering
+            },
+            jsPDF: { 
+                unit: 'mm', 
+                format: 'a4', 
+                orientation: 'portrait',
+                compressPDF: true, // Enable PDF compression
+                precision: 16, // Increase precision for better quality
+            }
+        };
+
+        // Convert the HTML to PDF using html2pdf.js
+        html2pdf().set(options).from(html).save()
+            .then(function() {
+                console.log("PDF generated successfully.");
+                // Restore the visibility of the button after PDF generation
+                pdfButton.style.display = 'block';
+            })
+            .catch(function(error) {
+                console.error("Error generating PDF:", error);
+                // Restore the visibility of the button after PDF generation
+                pdfButton.style.display = 'block';
+            });
+    }
+</script>
+
+    
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.js"></script>
+    <script type="text/javascript">
+        function savePage() {
+            console.log("Attempting to generate PDF...");
+
+            // Hide the buttons temporarily
+            var pdfButton = document.getElementById('pdf-button');
+            pdfButton.style.display = 'none';
+
+            // Get the current HTML of the page
+            var html = document.documentElement;
+
+            // Set the options for the PDF conversion
+            var options = {
+                margin: [10, 10],
+                filename: 'Invoice.pdf', // Fixed filename typo "Bill View .pdf" to "Invoice.pdf"
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 1 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' } // Fixed orientation to portrait
+            };
+
+            // Convert the HTML to PDF using html2pdf.js
+            html2pdf().set(options).from(html).save()
+                .then(function() {
+                    console.log("PDF generated successfully.");
+                    // Restore the visibility of the button after PDF generation
+                    pdfButton.style.display = 'block';
+                })
+                .catch(function(error) {
+                    console.error("Error generating PDF:", error);
+                    // Restore the visibility of the button after PDF generation
+                    pdfButton.style.display = 'block';
+                });
+        }
+    </script> -->
+</body>
+</html>

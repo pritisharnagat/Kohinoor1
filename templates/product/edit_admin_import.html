@@ -1,0 +1,252 @@
+{% extends "admin_base.html" %}
+  {% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Product</title>
+
+    <style>
+        #prodpreview,
+        #backpreview,
+        #leftpreview,
+        #rightpreview {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        #prodpreview img,
+        #backpreview img,
+        #leftpreview img,
+        #rightpreview img {
+            max-width: 100%;
+            max-height: 200px;
+            margin: 5px;
+        }
+    </style>
+
+</head>
+<body>
+  <div class="page-wrapper compact-wrapper dark-sidebar" id="pageWrapper">
+    <div class="page-body-wrapper">
+      <div class="page-body">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="card p-3">  
+
+              <h2 class="mb-5">Update Product</h2>
+              <form method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+                
+                  <div class="col-md-12">
+                    <div class="row d-flex">
+                      
+                  {% comment %} <div class="col-md-6">
+                    <div class="form-group m-1">
+                      <label for="title">Title:</label>
+                      <input type="text" class="form-control" id="title" name="title" value="{{ seller.title }}">
+                    </div>
+                  </div> {% endcomment %}
+                  <div class="col-md-6">
+                    <div class="form-group m-1">
+                      <label for="seller_sku">Seller SKU:</label>
+                      <input type="text" class="form-control" id="SKUId" name="SKUId" value="{{ seller.SKUId }}">
+                    </div>
+                  </div>
+                  {% comment %} <div class="col-md-6">
+                    <div class="form-group m-1">
+                      <label for="brand_name">Brand:</label>
+                      <input type="text" class="form-control" id="brand" name="brand" value="{{ seller.brand }}">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group m-1">
+                      <label for="color">color:</label><br>
+                      <input type="text" class="form-control" id="colour" name="colour" value="{{ seller.colour }}">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group m-1">
+                      <label for="title">Category</label><br>
+                      <input type="text" class="form-control" id="category" name="category" value="{{ seller.category }}">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group m-1">
+                      <label for="seller_sku">Product Type</label>
+                      <input type="text" class="form-control" id="product_type" name="product_type" value="{{ seller.product_type }}">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group m-1">
+                      <label for="brand_name">Sub Category</label>
+                      <input type="text" class="form-control" id="sub_category" name="sub_category" value="{{ seller.sub_category }}">
+                    </div>
+                  </div> {% endcomment %}
+                  <div class="col-md-6">
+                    <div class="form-group m-1">
+                      <label for="color">Product ID</label>
+                      <input type="text" class="form-control" id="product_id" name="product_id" value="{{ seller.product_id }}">
+                    </div>
+                  </div>
+                  {% comment %} <div class="col-md-6">
+                    <div class="form-group m-1">
+                      <label for="color">Model Number</label>
+                      <input type="text" class="form-control" id="model_number" name="model_number" value="{{ seller.model_number }}">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group m-1">
+                      <label for="brand_name">Quantity</label>
+                      <input type="text" class="form-control" id="quantity" name="quantity" value="{{ seller.quantity }}">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group m-1">
+                      <label for="color">Model Number</label>
+                      <input type="text" class="form-control" id="model_number" name="model_number" value="{{ seller.model_number }}">
+                    </div>
+                  </div>
+                    </div>
+                  </div> {% endcomment %}
+              
+                  <div class="col-md-12">
+                    <div class="row d-flex">
+                      <div class="col-md-6">
+                        <div class="form-group m-1">
+                          <label for="product_image">Product Image:</label>
+                         <input type="file" class="form-control p-" id="product_image" name="product_image" accept="image/*" onchange="previewImage(event, 'prodpreview')">                         
+
+                          <div id="prodpreview" style="display: flex; flex-wrap: wrap;">
+                            {% if seller.product_image %}
+                                <img src="{{ seller.product_image.url }}" alt="Product Image">
+                            {% else %}
+                                No Image Available
+                            {% endif %}
+                          </div>
+                        </div>
+                      </div>    
+                      <div class="col-md-6">
+                        <div class="form-group m-1">
+                          <label for="back_image">Back Image:</label>
+                          <input type="file" class="form-control" id="back_image" name="back_image" accept="image/*" onchange="previewImage(event, 'backpreview')">
+                          <div id="backpreview" style="display: flex; flex-wrap: wrap;">
+                            {% if seller.back_image %}
+                                <img src="{{ seller.back_image.url }}" alt="Back Image">
+                            {% else %}
+                                No Image Available
+                            {% endif %}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group m-1">
+                          <label for="left_image">Left Image:</label>
+                          <input type="file" class="form-control" id="left_image" name="left_image" accept="image/*" onchange="previewImage(event, 'leftpreview')">
+                          <div id="leftpreview" style="display: flex; flex-wrap: wrap;">
+                            {% if seller.left_image %}
+                            <img src="{{ seller.left_image.url }}" alt="Left Image">
+                        {% else %}
+                            No Image Available
+                        {% endif %}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group m-1">
+                          <label for="right_image">Right Image:</label>
+                          <input type="file" class="form-control" id="right_image" name="right_image" accept="image/*" onchange="previewImage(event, 'rightpreview')">
+                          <div id="rightpreview" style="display: flex; flex-wrap: wrap;">
+                            {% if seller.right_image %}
+                                <img src="{{ seller.right_image.url }}" alt="right Image">
+                            {% else %}
+                                No Image Available
+                            {% endif %}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Add other fields as needed -->
+                  <button type="submit" class="btn btn-primary w-25 mt-3">Update</button>
+                
+              </form>
+
+    <script>
+      function previewImage(event, previewId) {
+        var input = event.target;
+        var previewsContainer = document.getElementById(previewId);
+  
+        previewsContainer.innerHTML = '';
+    
+
+        if (input.files && input.files[0]) {
+          var fileSize = input.files[0].size; // Size of the selected file in bytes
+          var maxSize = 1048576; // Maximum allowed size (1 MB in bytes)
+
+          if (fileSize > maxSize) {
+            // Display error message if the file size exceeds the maximum allowed size
+            alert("Please select an image smaller than 1 MB.");
+            input.value ='';
+          }else{
+            if (input.files && input.files.length > 0) {
+              for (var i = 0; i < input.files.length; i++) {
+                var reader = new FileReader();
+                var filePreview = document.createElement(input.accept.includes("image") ? 'img' : 'video');
+                filePreview.style.maxWidth = '100%';
+                filePreview.style.maxHeight = '200px';
+                filePreview.style.margin = '5px';
+        
+                reader.onload = function (e) {
+                  filePreview.src = e.target.result;
+                  if (input.accept.includes("video")) {
+                    filePreview.controls = true;
+                    filePreview.loop = true;
+                  }
+                  previewsContainer.appendChild(filePreview);
+                };
+                reader.readAsDataURL(input.files[i]);
+              }
+            }
+          }
+        }
+      }
+    </script>
+
+
+    <!-- <script>
+      function previewImage(event, previewId) {
+        var input = event.target;
+        var previewsContainer = document.getElementById(previewId);
+  
+        previewsContainer.innerHTML = '';
+    
+        if (input.files && input.files.length > 0) {
+          for (var i = 0; i < input.files.length; i++) {
+            var reader = new FileReader();
+            var filePreview = document.createElement(input.accept.includes("image") ? 'img' : 'video');
+            filePreview.style.maxWidth = '100%';
+            filePreview.style.maxHeight = '200px';
+            filePreview.style.margin = '5px';
+    
+            reader.onload = function (e) {
+              filePreview.src = e.target.result;
+              if (input.accept.includes("video")) {
+                filePreview.controls = true;
+                filePreview.loop = true;
+              }
+              previewsContainer.appendChild(filePreview);
+            };
+            reader.readAsDataURL(input.files[i]);
+          }
+        }
+      }
+    </script> -->
+
+
+</body>
+</html>
+{% endblock %}
+

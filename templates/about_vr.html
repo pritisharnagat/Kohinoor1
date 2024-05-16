@@ -1,0 +1,32 @@
+<!-- about_us.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>About Us</h2>
+        <div class="mb-4">
+            <h4>History</h4>
+            <p>{{ about_us_obj.history }}</p>
+        </div>
+        <div class="mb-4">
+            <h4>Vision</h4>
+            <p>{{ about_us_obj.vision }}</p>
+        </div>
+        <div class="mb-4">
+            <h4>Mission</h4>
+            <p>{{ about_us_obj.mission }}</p>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS (optional) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

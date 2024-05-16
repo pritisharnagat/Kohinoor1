@@ -1,0 +1,79 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Blogs</title>
+    <style>
+        .icon{
+            text-align: center;
+            background-color: #E22454;
+            color: white;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            border: none;
+            
+            margin-top: 15px;
+        }
+        .iconbox{
+            float: right;
+        }
+        .addhead{
+            display: none;
+        }
+        .iconbox:hover .addhead{
+            display: inline-block;
+            background-color: #E22454;
+            border-radius: 5px;
+            padding: 5px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper compact-wrapper dark-sidebar" id="pageWrapper">
+        <div class="page-body-wrapper">
+            <div class="page-body">
+                <div class="title-header">Add About Us</div>
+                    <div class="card">
+                    <div class="row m-1">
+                                 
+                        <form action="/aboutus/" method="POST" enctype="multipart/form-data">
+
+                            {% csrf_token %}
+                            <div id="headings">
+                                <div class="row form-row">
+                                    <div class="form-group mt-2 col-md-6">
+                                        <label for="blogTitle">Histroy</label>
+                                        <textarea class="form-control" name="history" id="history" value="{{about_us_obj.history}}" rows="5"></textarea>
+                                    </div>
+                                    
+                                    <div class="form-group mt-2 col-md-6">
+                                        <label for="blogTitle">Vision</label>
+                                        <textarea class="form-control" name="vision" id="vision" value="{{about_us_obj.vision}}" rows="5"></textarea>
+                                    </div>
+                                    <div class="form-group mt-2 col-md-6">
+                                        <label for="blogTitle">Mission</label>
+                                        <textarea class="form-control" name="mission" id="mission" value="{{about_us_obj.mission}}" rows="5"></textarea>
+                                    </div>                                    
+                                </div>
+                            </div>
+                            <div>
+                                <button class="btn btn-primary mt-5" type="submit">Add</button>
+                            </div>
+                            
+                        </form>
+                    </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+{% endblock content %}
+

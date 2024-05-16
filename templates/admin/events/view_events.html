@@ -1,0 +1,58 @@
+{% extends "admin_base.html" %}
+ 
+{% block content %}
+{% load static %}
+<!DOCTYPE html>        
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<style>
+   
+</style>
+<body>
+    <div class="page-wrapper compact-wrapper dark-sidebar" id="pageWrapper">
+        <div class="page-body-wrapper">
+            <div class="page-body">
+                <div class="title-header"> <h5>Eventsrrrrrr</h5> </div>
+                <div class="card">
+                <div class="row m-1">
+                    <div class="col-sm-12 form-row">
+                        {% for i in events %}
+                            <div class="col-md-6">
+                                <div class="card blog-categority p-1">
+                                    
+                                    <div class="events-profile">
+                                        <div class="event_name">
+                                            <!-- event name -->
+                                            <h6>Event Name: {{i.event_name}}</h6> 
+                                            <!-- date -->
+                                            <h6>Date: {{i.event_date}}</h6>
+
+                                            <h6>Discount: {{i.event_discount}}</h6>
+                                        </div>
+                                    </div>
+                                    <a href="/delete_event/{{i.id}}/" type="submit" class="btn btn-danger">Delete</a>
+                                     <a href="/edit_event/{{i.id}}/"><button class="btn btn-primary me-2">Edit</button></a>
+                                    
+                                </div> 
+                            </div>
+                        {% endfor %}
+                    </div>
+                           
+                </div>
+                        
+                </div>
+            </div>
+        </div>
+    </div>
+           
+    
+</body>
+</html>
+{% endblock content %}

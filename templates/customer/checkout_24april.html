@@ -1,0 +1,1082 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="icon" href="{% static 'assets/images/favicon/2.png' %}" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="{% static 'assets/images/favicon/2.png' %}" />
+    <meta name="theme-color" content="#e22454" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="Voxo" />
+    <meta name="msapplication-TileImage" content="{% static 'assets/images/favicon/2.png' %}" />
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Voxo">
+    <meta name="keywords" content="Voxo">
+    <meta name="author" content="Voxo">
+    <link rel="icon" href="{% static 'assets/images/favicon/2.png' %}" type="image/x-icon" />
+    <title>Checkout</title>
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- bootstrap css -->
+    <link
+      id="rtl-link"
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/bootstrap.css"
+    />
+
+    <!-- font-awesome css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/font-awesome.css"
+    />
+
+    <!-- feather icon css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/feather-icon.css"
+    />
+
+    <!-- animation css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/animate.css"
+    />
+
+    <!-- slick css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/slick/slick-theme.css"
+    />
+
+    <!-- Theme css -->
+    <link
+      id="color-link"
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/demo2.css"
+    />
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+
+    <!-- icons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+
+
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+        <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+
+    <!-- Theme css -->
+    <link id="color-link" rel="stylesheet" type="text/css" href="{% static 'assets/css/demo2.css' %}">
+    
+    <style>
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
+
+* {
+    padding: 0;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    ::-webkit-scrollbar{
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-track{
+        background-color: white;
+      }
+
+      ::-webkit-scrollbar-thumb{
+        background-color: rgb(255, 0, 0);
+        border-radius: 5px;
+        -webkit-transition: all ease;
+        transition: all ease;
+      }
+
+      ::-webkit-scrollbar-thumb:hover{
+        background-color: rgb(255, 156, 156);
+      }
+}
+
+
+.item-review-section{
+    
+    padding: 30px;
+    -webkit-box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+            box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    border-radius: 20px;
+}
+
+.item-details-title span{
+    font-size: 30px;
+    font-weight: bold;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.item-img{
+    width: 170px;
+    height: 170px;
+}
+
+.item-img img{
+    width: 100%;
+    height: 100%;
+    
+}
+
+
+.item-details span{
+    font-size: 15px;
+    text-transform: uppercase;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding-left: 20px;
+}
+
+.cancel-item-btn{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: end;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+.cancel-item-btn button{
+    border-radius: 50%;
+    background-color: transparent;
+    border: none;
+    width: 40px;
+    height: 40px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    color: black;
+
+}
+
+.cancel-item-btn button:hover{
+    background-color: black;
+    color: white;
+}
+
+
+
+
+.cancel-item-btn button i{
+    font-size: 30px;
+    
+}
+
+
+.promo-code-section{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack:start;
+        -ms-flex-pack:start;
+            justify-content:start;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    
+}
+
+.promo-code-section input{
+    padding: 15px;
+    font-size: 15px;
+    width: 100%;
+    margin-right: 15px;
+    text-align: center;
+    border: none;
+
+
+}
+
+.promo-code-section button{
+    font-size: 15px;
+    padding: 15px;
+    background-color: red;
+    color: white;
+    border: none;
+
+}
+
+
+
+
+.add-addres-btn{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+}
+
+.add-addres-btn button{
+    padding: 10px;
+    border: none;
+    background-color: transparent;
+}
+
+.add-addres-btn button i{
+    font-size: 15px;
+    padding: 10px;
+    
+}
+
+.address-section-title span{
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+
+.added-address{
+    border: 2px solid transparent;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin: 20px;
+    -webkit-box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+            box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    border-radius: 20px;
+}
+
+.addres-radio{
+    padding: 20px;
+}
+.addres-radio input{
+    margin-right: 20px;
+}
+
+.addres-radio label{
+   
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+
+.added-address{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+}
+
+.user-info{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+}
+
+.user-info span{
+    font-size: 15px;
+    padding: 20px;
+}
+
+.user-addres{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+}
+
+.user-addres span{
+    font-size: 15px;
+    padding: 20px;
+}
+
+
+.pay-place-section{
+    
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 20px;
+    
+}
+
+.pay-options{
+    -webkit-box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+            box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.pay-title span{
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+.radio-input{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    
+}
+
+.radio-input label{
+    font-size: 20px;
+    padding: 15px;
+}
+
+.place-order-section-title{
+    font-size: 30px;
+    font-weight: bold;
+    padding: 20px;
+}
+
+.place-order-section{
+    padding: 0px 20px 0px 20px;
+    
+}
+
+.place-order{
+    -webkit-box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+            box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    padding: 30px;
+    padding-top: 0;
+    padding-bottom: 10px;
+    border-radius: 20px;
+}
+
+
+.order-summery{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    
+    -webkit-box-orient: vertical;
+    
+    -webkit-box-direction: normal;
+    
+        -ms-flex-direction: column;
+    
+            flex-direction: column;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+}
+
+
+.total-mrp{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+}
+
+.total-mrp span{
+    padding: 5px;
+    font-size: 15px;
+}
+
+.place-order-btn {
+    padding: 10px;
+}
+
+.place-order-btn button{
+    padding: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 20px;
+    
+    border: none;
+    background-color: red;
+    color: white;
+
+    width: 100%;
+    -webkit-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+.place-order-btn button:hover{
+    
+    
+    -webkit-transform: translateX(2px);
+        -ms-transform: translateX(2px);
+            transform: translateX(2px);
+
+}
+
+
+
+
+
+@media screen and (max-width:1000px) {
+
+
+
+
+}
+
+
+
+@media screen and (max-width:768px){
+  
+
+
+
+}
+
+
+
+
+@media screen and (max-width:450px){
+
+
+    .item-review-section {
+        padding: 14px;
+        -webkit-box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+                box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+        border-radius: 20px;
+        margin: 15px;
+    }
+
+
+    .item-details-title span {
+        font-size: 17px;
+        font-weight: bold;
+        /* padding-top: 15px; */
+        /* padding-bottom: 15px; */
+        padding: 15px;
+    }
+
+
+    .item-img {
+        width: 250px;
+        height: 250px;
+    }
+
+
+    .promo-code-section input {
+        padding: 10px;
+        font-size: 10px;
+        width: 95px;
+        margin-right: 10px;
+    }
+
+
+    .promo-code-section button {
+        font-size: 10px;
+        padding: 10px;
+        background-color: red;
+        color: white;
+        border: none;
+    }
+ 
+
+
+
+
+    .added-address {
+        border: 2px solid transparent;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        margin: 15px;
+        -webkit-box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+                box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+        border-radius: 20px;
+    }
+
+    .address-section-title span {
+        font-size: 17px;
+        font-weight: bold;
+        /* margin-bottom: 15px; */
+        padding: 15px;
+    }
+
+
+
+    .pay-title span {
+        font-size: 15px;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+
+    .radio-input label {
+        font-size: 15px;
+        padding: 15px;
+    }
+
+
+    .pay-place-section {
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 10px;
+    }
+
+    .place-order-section-title{
+        font-size: 17px;
+        font-weight: bold;
+        padding: 15px;
+    }
+
+
+    .place-order {
+        -webkit-box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+                box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+        padding: 10px;
+        padding-top: 0;
+        padding-bottom: 10px;
+        border-radius: 20px;
+    }
+
+    .total-mrp span{
+        padding: 5px;
+        font-size: 10px;
+    }
+
+    .place-order-section {
+        padding: 15px;
+    }
+
+}
+    </style>
+</head>
+
+<body>
+    <div class="d-flex flex-wrap justify-content-center align-center  check-out-section p-3">
+        <div class="col-md-5 item-review-address-section p-0 m-0">
+            <div class=" p-0 m-0">
+                <div class="col-md-12 mt-2 p-2 rounded" style="box-shadow: 1px 1px 5px rgba(0,0,0,0.1);">
+                    <div class="text-center">
+                        <h5>REVIEW ITEMS FOR DELIVERY</h5>
+                    </div>
+                    
+                    <div class="mt-2">
+                        {% for c in cart_items %}
+                    <div class="">
+                        <div class="col-md-6 m-2  text-center">
+                            <img src="{{c.product.product_image.url}}" alt="product image" width="200px" height="200px" style="border: 1px solid #ccc; border-radius:5px" >
+                        </div>
+
+                        <div class=" m-2">
+                            <div class="">
+                                <div class="fw-bold">{{c.product.title}} </div>
+                                <div class="mt-2">quantity: <span class="fw-bold">{{c.quantity}}</span></div>
+                                <div  class="mt-2">Size: <span class="fw-bold">{{c.size}}</span></div>
+                                <div  class="mt-2">total cost: <span class="fw-bold">Rs.{{c.product_price}}</span></div>
+                            </div>
+                            <div class="mt-2 input-group">
+                                <input type="text" placeholder="PROMOCODE" class="form-control">
+                                <button type="submit" class="btn btn-danger btn-sm">REDEEM</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-5 place-order-section">
+            <div class="col-md-12 mt-2 p-2 rounded" style="box-shadow: 1px 1px 5px rgba(0,0,0,0.1);">
+                <div class="col-md-12 ">
+                    <h5 class="text-center">ORDER SUMMARY</h5>
+                </div>
+                <div class=" col-md-12 order-summery">
+                    <div class="total-mrp"><span>ITEM TOTAL MRP:</span><span class="fw-bold">Rs. {{mrp_amount}} </span></div>
+                    
+                    {% comment %} 
+                    <div class="total-mrp"><span>DISCOUNT ADDED:</span><span class="fw-bold">Rs. {{discountonmrp}} </span></div>
+                     {% endcomment %}
+
+                    <div class="total-mrp"><span>TAX:</span><span class="fw-bold">Rs. {{tax}}</span></div>
+                    <div class="total-mrp"><span>DELIVERY CHARGES</span><span class="fw-bold">Rs. {{ship}}</span></div>
+
+                    {% if request.user.is_authenticated %}
+                        {% if not first_order_condition %}
+                            <div class="total-mrp"><span>DISCOUNT AMOUNT</span><span class="fw-bold">Rs. {{discount_on_mrp}}</span></div>
+                        {% elif event_discount %}
+                            <div class="total-mrp"><span>DISCOUNT AMOUNT</span><span class="fw-bold">Rs. {{discount_on_mrp}}</span></div>
+                        {% else %}
+                        <div class="total-mrp"><span>DISCOUNT AMOUNT</span><span class="fw-bold">Rs. {{discount_on_mrp}}</span></div>
+                        {% endif %}
+                     {% endif %}
+                     
+
+                    <div class="total-mrp"><span>ITEM TOTAL MRP(including all taxes)</span><span class="fw-bold">Rs. {{grand_total}}</span></div>
+                </div>
+            </div>
+        
+
+<!-- Cart Section Start -->
+    <div class="">
+        <div class="p-2 mt-3 rounded" style="box-shadow: 1px 1px 5px rgba(0,0,0,0.1);">
+            <h5 class="text-center">SELECT BILLING ADDRESS</h5>
+            <form class="needs-validation" action="/payment_method/" id="paymentForm">
+                {% csrf_token %}
+                <input type="hidden" name="total_amount" value="{{grand_total}}">
+                {% for i in add %}
+                {% if forloop.first %}
+                    <div class="">
+                    <div class="">
+                        <div class="card-body" id="selectedAddressDetails">
+                            <div class="form-check mt-2 mb-2 custome-radio-box">
+                                <input class="form-check-input" type="hidden" name="custid"
+                                    id="custadd{{forloop.counter}}" value="{{i.id}}" {% if forloop.first %}checked="checked"{% endif %} required>
+                                <label class="form-check-label fw-bold" for="custadd{{forloop.counter}}">Address: {{ forloop.counter }} </label>
+                            </div>
+                            <div class="save-details ms-4" >
+                                <div class="save-name" id="checkoutname"><span class="fw-bold">{{i.fname}}</span></div>
+                                <div class="" id="checkoutadd">{{i.locality}}, {{i.city}}</div>
+                                <div>{{i.state}} - {{i.pincode}}</div>
+                                <div class="">{{i.mobile}}, {{i.email}}</div>
+                            </div> 
+                        </div>
+                    </div>
+                </div> 
+                {% endif %}
+                {% endfor %}
+
+            </div>
+            <div class="d-flex">
+                <button type="button" class="btn btn-danger mt-2" data-bs-toggle="modal" data-bs-target="#addressbtn">Change Address</button>
+                <button class="btn btn-outline-danger mt-2 ms-2" data-bs-toggle="modal" data-bs-target="#addAddress" onclick="addressaddbtn(event)"><i class="fas fa-plus"></i>
+                    Add New Address</button> 
+            </div> 
+            
+
+            <div class="modal fade" id="addressbtn" tabindex="-1" aria-labelledby="addresslabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="addresslabel">Change Address</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex flex-wrap"> 
+                          
+                            {% csrf_token %}
+                            {% for i in add %}
+                            <div class="col-md-6 p-1">
+                                <div class="card">
+                                    <div class="card-body p-2">
+                                        <div class="form-check mt-2 custome-radio-box">
+                                            <input class="form-check-input" type="radio" name="custid"
+                                                id="custadd{{forloop.counter}}"  value="{{i.id}}" {% if forloop.first %}checked="checked"{% endif %} required>
+                                            <label class="form-check-label fw-bold" for="custadd{{forloop.counter}}">
+                                                Address: {{ forloop.counter }} </label>
+                                        </div>
+            
+                                         <div class="save-details">
+                                            <div class="save-name">
+                                                <h6>{{i.first_name}}</h6>
+                                                <div class="save-position">
+                                                    
+                                                </div>
+                                            </div>
+            
+                                            <div class="save-address">
+                                                <p>{{i.locality}}, {{i.city}}</p>
+                                                <p>{{i.state}}</p>
+                                                
+                                            </div>
+            
+                                            <div class="mobile">
+                                                <p>{{i.mobile_number}}</p>
+                                                <p>{{i.email}}</p>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+
+                        </div>
+                            <div class="modal-footer">
+                           
+                                <button type="button" id="changeadd" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close"> Confirm</button> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+
+       
+        
+         {% comment %} <div class="row">
+            <div class="col-md-12">
+                <h3 class="mb-3">Payment</h3>
+                <div class="d-block my-3">
+                    <div class="form-check custome-radio-box">
+                        <input type="radio" value="cod" name="flexRadioDefault" id="debit">
+                        <label for="debit">COD</label>
+                    </div>
+                    <div class="custome-radio-box">
+                        <input value='razorpay' type="radio" name="" id="pay-btn">
+                        <label for="razorpay">Razorpay</label>
+                    </div>
+                </div> 
+                
+            </div>
+        </div> {% endcomment %}
+        
+        <div class=" w-50 text-center mt-4">
+            <button type="submit" id="pay-btn" class="btn btn-danger w-50">Checkout</button>
+        </div>
+    </form> <!-- Close the form here -->
+    </div>
+</div>
+        
+</div>
+    <!-- Cart Section End -->
+
+    <!-- Add Address Modal Start -->
+    <div class="modal fade add-address-modal" id="addAddress">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form method='POST' action="{% url 'save_address1'%}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name" class="form-label font-light">Full Name</label>
+                            <input class="form-control" name='fname' type="text" placeholder="Enter Your Full Name"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label font-light">Mobile No.</label>
+                            <input class="form-control" type="number" name='mobile' placeholder="Enter Your Number"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="number" class="form-label font-light">Email</label>
+                            <input class="form-control" type="email" name='email' placeholder="Enter Your Email Address"
+                                required>
+                        </div>
+                        <div class="d-flex justify-content-evenly">
+                            <div class="mb-3">
+                                <label for="number" class="form-label font-light">Area</label>
+                                <input class="form-control" type="text" name='locality' placeholder="Enter area"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="number" class="form-label font-light">City</label>
+                                <input class="form-control" type="text" name='city' placeholder="Enter city" required>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-evenly">
+                            <div class="mb-3">
+                                <label for="number" class="form-label font-light">State</label>
+                                <input class="form-control" type="text" name='state' placeholder="Enter state" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="number" class="form-label font-light">Pincode</label>
+                                <input class="form-control" type="number" name='pincode' placeholder="Enter Pin Code"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="modal-footer pt-0 text-end d-block">
+                            <button type="button" class="btn bg-secondary text-white rounded-1 modal-close-button"
+                                data-bs-dismiss="modal">Close</button>
+                            <button class="btn btn-danger" type="submit">Save Address</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add Address Modal End -->
+
+
+
+    <!-- tap to top Section Start -->
+    <div class="tap-to-top">
+        <a href="#home">
+            <i class="fas fa-chevron-up"></i>
+        </a>
+    </div>
+    <!-- tap to top Section End -->
+
+    <div class="bg-overlay"></div>
+    <script>
+        function addressaddbtn(e){
+            e.preventDefault();
+        }
+
+      
+var radioButtons = document.querySelectorAll('input[type="radio"]');
+
+// Add click event listener to each radio button
+radioButtons.forEach(function(radioButton) {
+    radioButton.addEventListener('click', function() {
+        // Get the selected radio button's value
+        var selectedAddressId = this.value;
+        
+        // Find the address details corresponding to the selected radio button
+        var selectedAddress = findAddressById(selectedAddressId);
+        
+        // Update the display div with the selected address details
+        displaySelectedAddress(selectedAddress);
+    });
+});
+
+// Function to find address details by ID
+function findAddressById(id) {
+    // Loop through the addresses to find the one with the matching ID
+    {% for i in add %}
+        if ("{{ i.id }}" === id) {
+            return {
+                name: "{{ i.first_name }}",
+                locality: "{{ i.locality }}",
+                city: "{{ i.city }}",
+                state: "{{ i.state }}",
+                mobile: "{{ i.mobile_number }}",
+                email: "{{ i.email }}"
+            };
+        }
+    {% endfor %}
+    return null; // Return null if address is not found
+}
+
+// Function to display the selected address details
+function displaySelectedAddress(address) {
+    if (address) {
+        document.getElementById('selectedAddressDetails').innerHTML = `
+            <h6>${address.name}</h6>
+            <p>${address.locality}, ${address.city}</p>
+            <p>${address.state}</p>
+            <p>${address.mobile}</p>
+            <p>${address.email}</p>
+        `;
+    } else {
+        // Clear the display if no address is selected
+        document.getElementById('selectedAddressDetails').innerHTML = '';
+    }
+}
+    </script>
+   
+    
+   
+    <!-- latest jquery-->
+    <script src="{% static 'assets/js/jquery-3.5.1.min.js' %}"></script>
+
+    <!-- Bootstrap js -->
+    <script src="{% static 'assets/js/bootstrap/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- feather icon js -->
+    <script src="{% static 'assets/js/feather/feather.min.js' %}"></script>
+
+    <!-- lazyload js -->
+    <script src="{% static 'assets/js/lazysizes.min.js' %}"></script>
+
+    <!-- Slick js -->
+    <script src="{% static 'assets/js/slick/slick.js' %}"></script>
+    <script src="{% static 'assets/js/slick/slick-animation.min.js' %}"></script>
+    <script src="{% static 'assets/js/slick/custom_slick.js' %}"></script>
+
+    <!-- Notify js -->
+    <script src="{% static 'assets/js/bootstrap/bootstrap-notify.min.js' %}"></script>
+
+    <!-- script js -->
+    <script src="{% static 'assets/js/theme-setting.js' %}"></script>
+    <script src="{% static 'assets/js/script.js' %}"></script>
+
+    {% comment %} <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    var options = {
+    
+    // Enter the Key ID generated from the Dashboard
+    key: "{{ razorpay_merchant_key }}",
+    
+    // Amount is in currency subunits.
+    // Default currency is INR. Hence, 
+    // 50000 refers to 50000 paise
+    amount: "{{ razorpay_amount }}" , 
+    currency: "{{ currency }}",
+    
+    // Your/store name.
+    name: "VISHWARATNA", 
+    
+    // Pass the `id` obtained in the response of Step 1
+    order_id: "{{ razorpay_order_id }}", 
+    callback_url: "{{ callback_url }}",
+    };
+    
+    // initialise razorpay with the options.
+    var rzp1 = new Razorpay(options);
+    
+    // add event listener to the payment button.
+    document.getElementById("pay-btn").onclick = function (e) {
+    rzp1.open();
+    e.preventDefault();
+    };
+</script> {% endcomment %}
+
+
+</body>
+
+</html>

@@ -1,0 +1,792 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Orders</title>
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- bootstrap css -->
+    <link
+      id="rtl-link"
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/bootstrap.css"
+    />
+
+    <!-- font-awesome css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/font-awesome.css"
+    />
+
+    <!-- feather icon css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/feather-icon.css"
+    />
+
+    <!-- animation css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/animate.css"
+    />
+
+    <!-- slick css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/slick/slick-theme.css"
+    />
+
+    <!-- Theme css -->
+    <link
+      id="color-link"
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/demo2.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- icons -->
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Theme css -->
+    <link
+      id="color-link"
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/demo2.css' %}"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+
+
+      body {
+        padding: 0;
+        margin: 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .orders {
+        width: 100%;
+        height: 100%;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 110px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+      }
+
+      .orders-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .orders-title span {
+        font-size: 30px;
+        font-weight: 500;
+        padding: 30px;
+      }
+
+      .orders-count {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .orders-count span {
+        font-size: 17px;
+      }
+
+      .cancel-orders-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .cancel-orders-btn button {
+        font-size: 15px;
+        margin: 10px;
+
+        padding: 15px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        background-color: white;
+        border: 1.5px solid rgb(131, 131, 131);
+        color: black;
+        
+        border-radius: 10px;
+        transition: all 0.3s ease-out;
+      }
+
+      .cancel-orders-btn button:hover {
+        transform: translateY(-2px);
+        background-color: black;
+        color: white;
+        border: 1.5px solid rgba(131, 131, 131, 0);
+      }
+
+      .returned-orders-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .returned-orders-btn button {
+        font-size: 17px;
+        padding: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin: 20px;
+        background-color: #45a2ff;
+        border: none;
+        border-radius: 25px;
+        color: white;
+        transition: all 0.2s ease-in;
+      }
+
+      .returned-orders-btn button:hover {
+        transform: translateY(3px);
+      }
+
+      .orders-section {
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .single-order-section {
+        padding: 0;
+
+        border-radius: 20px;
+        background-color: white;
+        width: 25rem;
+        height: auto;
+        margin: 15px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 20px;
+        transition: all 0.4s ease-out;
+        border: 1.5px solid rgb(198, 198, 198);
+        
+      }
+
+      .single-order-section:hover {
+        border: 1.5px solid rgb(80, 80, 80);
+        transform: translateY(-3px);
+      }
+
+      .product-details {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+
+      .prod-img-info{
+       
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .product-img {
+        width: 130px;
+        height: 130px;
+        margin: 15px;
+        border-radius: 15px;
+        
+      }
+
+      .product-img img {
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+      }
+
+      .product-info {
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: column;
+        flex-wrap: wrap;
+        padding-left: 20px;
+        width: 100%;
+        
+      }
+
+      .product-info-sub {
+        display: flex;
+        justify-content: start;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .product-info-sub-label span {
+        font-size: 13px;
+        margin-right: 0px;
+        text-transform: uppercase;
+        padding-right: 5px;
+      }
+
+      .product-info-sub-value span {
+        font-size: 13px;
+      }
+
+      .action-btns {
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+
+      .action-btn-sub {
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .track-rder-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+      }
+
+      .track-order-btn button {
+        font-size: 15px;
+        margin: 10px;
+
+        padding: 15px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        background-color: white;
+        border: 1.5px solid rgb(131, 131, 131);
+        color: black;
+        
+        border-radius: 10px;
+        transition: all 0.3s ease-out;
+      }
+
+      .track-order-btn button i {
+        font-size: 14px;
+
+        padding-left: 10px;
+      }
+
+      .track-order-btn button:hover {
+        transform: translateY(-2px);
+        background-color: black;
+        color: white;
+        border: 1.5px solid rgba(131, 131, 131, 0);
+      }
+
+      .cnacel-order-btn button {
+        font-size: 15px;
+        margin: 10px;
+
+        padding: 15px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        background-color: white;
+        border: 1.5px solid rgb(131, 131, 131);
+        color: black;
+        
+        border-radius: 10px;
+        transition: all 0.3s ease-out;
+      }
+
+      .cnacel-order-btn button:hover {
+        transform: translateY(-2px);
+        background-color: rgb(255, 0, 0);
+        color: white;
+        border: 1.5px solid rgba(131, 131, 131, 0);
+      }
+
+      .return-order-btn button {
+        font-size: 15px;
+        margin: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+        padding: 15px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        background-color: #4f91d2;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        transition: all 0.2s ease-in;
+      }
+
+      .return-order-btn button i {
+        font-size: 14px;
+
+        padding-left: 5px;
+      }
+
+      .return-order-btn button:hover {
+        transform: translateY(2px);
+        background-color: #67bdec;
+      }
+
+      .animation {
+        width: 100%;
+        /* height: 100vh; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        margin-top: 55px;
+      }
+
+      .no-order-animation {
+        background-color: white;
+        width: fit-content;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        width: 350px;
+        height: fit-content;
+        padding: 30px;
+        border-radius: 30px;
+      }
+
+      .lottie-animation {
+        display: flex;
+        justify-content: center;
+
+        width: 250px;
+        height: 250px;
+      }
+
+      .no-orders-message {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+      }
+
+      .no-orders-message span {
+        font-size: 20px;
+      }
+
+      .back-to-home-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .back-to-home-btn button {
+        font-size: 17px;
+        padding: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin: 20px;
+        background-color: #ff2424;
+        border: none;
+        border-radius: 25px;
+        color: white;
+        transition: all 0.2s ease-in;
+      }
+
+      .back-to-home-btn button i {
+        padding-left: 10px;
+        padding-right: 5px;
+      }
+
+      .back-to-home-btn button:hover {
+        transform: translateY(3px);
+      }
+
+      @media screen and (max-width: 1000px) {
+      }
+
+      @media screen and (max-width: 768px) {
+        .single-order-section {
+          padding: 0;
+
+          border-radius: 20px;
+          background-color: white;
+          width: 100%;
+          height: auto;
+          margin: 15px;
+
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-direction: row;
+          flex-wrap: wrap;
+          padding: 20px;
+        }
+      }
+
+      @media screen and (max-width: 450px) {
+
+        .header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-direction: row;
+          flex-wrap: wrap;
+          margin: 10px;
+          margin-bottom: 10px;
+          margin-top: 10px;
+        }
+
+        .orders-title span {
+          font-size: 15px;
+          font-weight: 500;
+          padding: 10px;
+        }
+        .orders-count span {
+          font-size: 15px;
+        }
+
+        .orders-count {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 10px;
+        }
+        .product-details {
+          display: flex;
+          justify-content: start;
+          align-items: start;
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+
+        .product-img {
+          width: 70px;
+          height: auto;
+          margin: 10px;
+
+        }
+        .no-order-animation {
+          background-color: white;
+          width: fit-content;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          width: 270px;
+          height: fit-content;
+          padding: 30px;
+          border-radius: 20px;
+        }
+
+        .lottie-animation {
+          display: flex;
+          justify-content: center;
+
+          width: 100px;
+          height: 100px;
+        }
+
+        .no-orders-message span {
+          font-size: 15px;
+        }
+
+        .back-to-home-btn button {
+          font-size: 10px;
+        }
+
+        .animation {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: baseline;
+          margin-top: 70px;
+          padding: 0;
+        }
+
+        .cancel-orders-btn button {
+          font-size: 10px;
+          border-radius: 10px;
+        }
+
+        .returned-orders-btn button {
+          font-size: 10px;
+          border-radius: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid orders">
+      <div class="header">
+        <div class="orders-title">
+          <span>Your Orders</span>
+        </div>
+
+        <div class="orders-btn">
+          <div class="cancel-orders-btn">
+            <a href="/canceled_orders/">
+              <button>Your Canceled Orders</button>
+            </a>
+          </div>
+
+          <!-- <div class="returned-orders-btn">
+            <a href="#">
+              <button>Your Returned Orders</button>
+            </a>
+          </div> -->
+        </div>
+      </div>
+
+      {% if order %}
+
+      <div class="orders-count">
+        <span
+          >You have <strong>( {{ order|length }} )</strong> order in List</span
+        >
+      </div>
+
+      <div class="orders-section">
+        {% for i in order %}
+        <div class="single-order-section">
+          <div class="product-details">
+
+            <div class="prod-img-info">
+              <div class="product-img">
+                <img
+                  src="{{i.product.product_image.url}}"
+                  alt="{{i.product.title}}"
+                />
+              </div>
+              <div class="product-info">
+                <div class="product-info-sub">
+                  <div class="product-info-sub-value">
+                    <span>{{i.product.title}}</span>
+                  </div>
+                </div>
+  
+                <div class="product-info-sub">
+                  <div class="product-info-sub-label">
+                    <span>Quantity: </span>
+                  </div>
+                  <div class="product-info-sub-value">
+                    <span>{{i.quantity}}</span>
+                  </div>
+                </div>
+  
+                <div class="product-info-sub">
+                  <div class="product-info-sub-label">
+                    <span>Size: </span>
+                  </div>
+                  <div class="product-info-sub-value">
+                    <span>{{i.size}}</span>
+                  </div>
+                </div>
+  
+                <div class="product-info-sub">
+                  <div class="product-info-sub-value">
+                    <span
+                      style="
+                        font-family: Arial, Helvetica, sans-serif;
+                        font-weight: bold;
+                      "
+                      >&#8377; {{i.selling_price}}</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="product-info">
+              <div class="product-info-sub">
+                <div class="product-info-sub-label">
+                  <span>Order ID:</span>
+                </div>
+                <div class="product-info-sub-value">
+                  <span>{{i.order_id}}</span>
+                </div>
+              </div>
+
+              <div class="product-info-sub">
+                <div class="product-info-sub-label">
+                  <span>Invoice No.: </span>
+                </div>
+                <div class="product-info-sub-value">
+                  <span>{{i.invoice_no}}</span>
+                </div>
+              </div>
+
+              <div class="product-info-sub">
+                <div class="product-info-sub-label">
+                  <span>order placed on: </span>
+                </div>
+                <div class="product-info-sub-value">
+                  <span>{{i.Order_date}}</span>
+                </div>
+              </div>
+
+              <div class="product-info-sub">
+                <div class="product-info-sub-label">
+                  <span>Payments method</span>
+                </div>
+                <div class="product-info-sub-value">
+                  <span>{{i.payment_method}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="action-btns">
+            <div class="track-order-btn">
+              <a href="/order_tracking/{{ i.order_id }}">
+                <button>Track Order</button>
+              </a>
+            </div>
+
+            <div class="action-btn-sub">
+              <div class="cnacel-order-btn">
+                <a href="/cancel_order_api/{{i.order_id}}/">
+                  <button>Cancel Order</button>
+                </a>
+              </div>
+
+              <div class="return-order-btn">
+                {% if i.status == 'Delivered' %}
+                <a href="/return_order/{{i.order_id}}/">
+                  <button>Return Order <i class="uil uil-box"></i></button>
+                </a>
+                {% else %}
+                <!-- The else part here is not necessary if there's no action to take when the condition is not met, 
+                or you can provide an alternative message or action -->
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% endfor %}
+      </div>
+      {% else %}
+
+      <div class="animation">
+        <div class="no-order-animation">
+          <script
+            src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+            type="module"
+          ></script>
+
+          <dotlottie-player
+            class="lottie-animation"
+            src="https://lottie.host/b30a9864-dfeb-4cea-bcfb-bca02d27707d/aV9zXGVCr1.json"
+            background="transparent"
+            speed="1"
+            loop
+            autoplay
+          ></dotlottie-player>
+
+          <div class="no-orders-message">
+            <span>You have no orders Yet.</span>
+          </div>
+
+          <div class="back-to-home-btn">
+            <a href="#">
+              <button>
+                Explore Products<i class="uil uil-arrow-up-right"></i>
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
+{% endblock content %}

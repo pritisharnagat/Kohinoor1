@@ -1,0 +1,122 @@
+{% extends "admin_base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Approved Products</title>
+    <style>
+        /* Style for the search input */
+        #searchInput {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        #totalCost {
+        display: inline-block;
+        padding: 8px 12px;
+        border-radius: 4px;
+        background-color: #4CAF50;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+    }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper compact-wrapper dark-sidebar" id="pageWrapper">
+        <div class="page-body-wrapper">
+          <div class="page-body">
+            <div class="title-header"> <h5>Delivered Product</h5> </div>
+            <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search...">
+            <div class="card">
+                <div class="row " >
+                    <div class="col-sm-12">
+                        <div class="table-responsive table-desi">
+                            <table class="table table-hover table-striped table-bordered text-center " id="dataTable">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Customer Name</th>
+                                        <th>Email</th>
+                                        <th>Mobile.No</th>
+                                        <!-- <th>Product Type</th> -->
+                                        <!-- <th>Category</th> -->
+                                        <th>Product ID</th>
+                                        <th>Price</th>
+                                        <th>Order ID</th>
+                                        <th>Invoice.No</th>
+                                        <th>Payment Method</th>
+                                        <th>Delivered Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in data2 %}
+                                        <tr>
+                                            <td>{{i.customer.first_name}}</td>
+                                            <td>{{i.customer.email}}</td>
+                                            <td>{{i.customer.mobile_number}}</td>
+                                            <!-- <td>{{i.product.product_type}}</td> -->
+                                            <!-- <td>{{i.product.category}}</td> -->
+                                            <td>{{i.product.prod_id}}</td>
+                                            <td>{{i.total_cost}}</td>
+                                            <td>{{i.order_id}}</td>
+                                            <td>{{i.invoice_no}}</td>
+                                            <td>{{i.payment_method}}</td>
+                                            <td>{{i.delivered_date}}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>Total Cost: <span id="totalCost"></span></div>
+          </div>
+        </div>
+    </div>
+
+    <script>
+        function searchTable() {
+            // Declare variables
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("dataTable");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td");
+                for (var j = 0; j < td.length; j++) {
+                    if (td[j]) {
+                        txtValue = td[j].textContent || td[j].innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                            break; // Break the inner loop, move to the next row
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+     <script>
+        // Calculate and display the total cost
+        window.onload = function () {
+            var totalCost = 0;
+            var costElements = document.querySelectorAll('#dataTable tbody tr td:nth-child(5)'); // Assuming the 5th column contains total_cost
+
+            costElements.forEach(function (element) {
+                totalCost += parseFloat(element.textContent);
+            });
+
+            document.getElementById('totalCost').textContent = totalCost.toFixed(2); // Set total cost in the span
+        };
+    </script>
+
+</body>
+</html>
+{% endblock %}

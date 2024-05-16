@@ -1,0 +1,1162 @@
+{% extends 'base.html' %} {% block title %} Checkout {% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="manifest" href="./manifest.json" />
+    <link
+      rel="icon"
+      href="/static/assets1/images/logos/vr_main.png"
+      type="image/x-icon"
+    />
+    <link rel="apple-touch-icon" href="/static/assets1/images/logos/vr_main.png" />
+    <meta name="theme-color" content="#e22454" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="Voxo" />
+    <meta
+      name="msapplication-TileImage"
+      content="/static/assets1/images/logos/vr_main.png"
+    />
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Voxo" />
+    <meta name="keywords" content="Voxo" />
+    <meta name="author" content="Voxo" />
+    <link
+      rel="icon"
+      href="/static/assets1/images/logos/vr_main.png"
+      type="image/x-icon"
+    />
+    <title>Select Your Payment Method</title>
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- bootstrap css -->
+    <link
+      id="rtl-link"
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/bootstrap.css"
+    />
+
+    <!-- font-awesome css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/font-awesome.css"
+    />
+
+    <!-- feather icon css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/feather-icon.css"
+    />
+
+    <!-- animation css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/animate.css"
+    />
+
+    <!-- slick css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/slick/slick-theme.css"
+    />
+
+    <!-- Theme css -->
+    <link
+      id="color-link"
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/demo2.css"
+    />
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- icons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+
+    <style>
+
+
+
+
+
+      body{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        font-family: 'Poppines', sans-serif;
+    
+      }
+
+
+
+      .payment-method-section{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+        background-color: #ffffff;
+        padding: 20px;
+      }
+
+
+      .breadcrumb-payemnt-process-section{
+        width: 100%;
+        height: auto;
+        
+      }
+
+      .breadcrumb-payemnt-payement-section{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        padding: 10px;
+        
+      }
+
+      .breadcrumb-payemnt-payement-section-sub-section-previous{
+        background-color: white;
+        padding: 10px;
+        margin: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        height: fit-content;
+        width: fit-content;
+      }
+
+      .status-badge-previous{
+        background-color: red;
+        margin: 5px;
+        margin-right: 15px;
+        width: 45px;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+      }
+
+      .status-badge-previous span{
+        font-size: 15px;
+        color: white;
+        font-weight: 600;
+      }
+
+
+
+      .status-previous span{
+        font-size: 15px;
+      }
+
+
+      .status-divider-previous{
+        width: 80px;
+        height: 2px;
+        background-color: red;
+
+        margin-right: 15px;
+      }
+
+
+
+
+
+
+
+      .breadcrumb-payemnt-payement-section-sub-section-current{
+        background-color: white;
+        padding: 10px;
+        margin: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        height: fit-content;
+        width: fit-content;
+      }
+
+      .status-badge-current{
+        background-color: rgb(255, 241, 241);
+        
+        margin: 5px;
+        margin-right: 15px;
+        width: 45px;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+      }
+
+      .status-badge-current span{
+        font-size: 15px;
+        color: rgb(255, 0, 0);
+        font-weight: 600;
+
+      }
+
+
+
+      .status-current span{
+        font-size: 15px;
+      }
+
+
+
+      .status-divider-next{
+        width: 80px;
+        height: 2px;
+        background-color: rgb(179, 179, 179);
+
+        margin-right: 15px;
+      }
+
+
+
+      .breadcrumb-payemnt-payement-section-sub-section-next{
+        background-color: white;
+        padding: 10px;
+        margin: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        height: fit-content;
+        width: fit-content;
+      }
+
+      .status-badge-next{
+        background-color: rgb(179, 179, 179);
+        margin: 5px;
+        margin-right: 15px;
+        width: 45px;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+      }
+
+      .status-badge-next span{
+        font-size: 15px;
+        color: white;
+        font-weight: 600;
+      }
+
+
+
+      .status-next span{
+        font-size: 15px;
+        color: rgb(179, 179, 179);
+      }
+
+      .order-review-section{
+        width: 30rem;
+        height: auto;
+        display: flex;  
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        border: 1.5px solid rgb(198, 198, 198);
+        transition: all 0.3s ease-out;
+        margin: 10px;
+        border-radius: 15px;
+        padding: 10px;
+      }
+
+      .order-review-section:hover{
+        border: 1.5px solid rgb(0, 0, 0);
+        
+      }
+
+      .product-details-section{
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: row;
+        flex-wrap: wrap;
+        
+        padding: 10px;
+      }
+
+
+
+
+
+      .price-summary-section{
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: row;
+        flex-wrap: wrap;
+       
+        padding: 10px;
+      }
+
+      .prod-img{
+        width: 100px;
+        height: 100px;
+        
+      }
+
+      .prod-img img{
+        width: 100%;
+        height: 100%;
+      }
+
+      .product-desc{
+        width: auto;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+        
+        padding: 10px;
+      }
+
+      .prod-title{
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+      }
+
+      .prod-desc-section{
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+      }
+
+
+      .prod-desc-sub-section{
+        
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        margin-right: 10px;
+        margin-top: 10px;
+      }
+
+      .prod-desc-sub-section span{
+        font-size: 15px;
+        margin-right: 5px;
+      }
+
+      
+
+
+
+
+
+
+      .payment-method-section-child{
+        max-width: 70rem;
+        height: fit-content;
+        
+        padding: 20px;
+        margin: 10px;
+        margin-left: 0;
+        margin-right: 0;
+        border-radius: 15px;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .payment-method-section-child-title{
+        width: 100%;
+        padding: 20px;
+        padding-top: 0px;
+        padding-left: 0px;
+        padding-right: 0;
+      }
+
+      .payment-method-section-child-title span{
+        font-size: 25px;
+        font-weight: 600;
+        
+      }
+
+      .billing-section{
+        width: 30rem;
+        height: auto;
+        display: flex;  
+        justify-content: start;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+         border: 1.5px solid rgb(198, 198, 198);
+         transition: all 0.3s ease-out;
+         border-radius: 15px;
+         padding: 15px;
+         margin: 10px;
+      }
+
+      
+      .billing-section:hover{
+        border: 1.5px solid rgb(0, 0, 0);
+        
+      }
+
+
+
+      .billingAddress-mrp-section{
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
+
+      .billingAddres-section{
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
+
+
+
+      .billingAddres-label span{
+
+        font-size: 18px;
+      }
+
+      .billingAddres-value{
+        
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
+
+      .mrp-section{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        
+      }
+
+      .mrp-value span {
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      .product-purchase{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        margin-top: 15px;
+      }
+
+
+      .divider{
+        height: 1px;
+        width: 100%;
+        background-color: #b2b2b2;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .needs-validation{
+        width: 100%;
+      }
+
+      .pay-btn{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        margin-bottom: 10px;
+        
+      }
+
+      .pay-btn button{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        font-size: 15px;
+        padding: 15px;
+        border: none;
+        background-color: black;
+        color: #ffffff;
+        border-radius: 15px;
+
+        transition: all 0.3s ease-out;
+      }
+
+      .pay-btn button:hover{
+        background-color: rgb(66, 66, 66);;
+      }
+
+   
+      @media screen and (max-width:1000px) {
+
+
+
+
+      }
+
+
+
+      @media screen and (max-width:768px){
+        
+
+        .payment-method-section-child{
+            width: 35rem;
+
+        }
+
+        .status-badge-previous {
+          background-color: red;
+          margin: 5px;
+          margin-right: 15px;
+          width: 40px;
+          height: 40px;
+        }
+
+        .breadcrumb-payemnt-payement-section-sub-section-previous {
+          background-color: white;
+          padding: 0px;
+          margin: 0px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: row;
+          flex-wrap: wrap;
+          width: -webkit-fill-available;
+          height: -webkit-fill-available;
+        }
+
+        .breadcrumb-payemnt-payement-section-sub-section-current {
+          background-color: white;
+          padding: 0px;
+          margin: 0px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: row;
+          flex-wrap: wrap;
+          width: -webkit-fill-available;
+          height: -webkit-fill-available;
+        }
+        .breadcrumb-payemnt-payement-section-sub-section-next {
+          background-color: white;
+          padding: 0px;
+          margin: 0px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: row;
+          flex-wrap: wrap;
+          width: -webkit-fill-available;
+          height: -webkit-fill-available;
+        }
+
+
+
+      }
+
+
+
+
+      @media screen and (max-width:450px){
+
+        .payment-method-section{
+            width: 100%;
+            height: 100%;
+        }
+       
+
+        .status-badge-previous {
+          background-color: red;
+          margin: 5px;
+          /* margin-right: 15px; */
+          width: 30px;
+          height: 30px;
+        }
+
+        .status-previous span {
+          font-size: 10px;
+          text-align: center;
+        }
+
+        .status-badge-previous span {
+          font-size: 10px;
+          color: white;
+          font-weight: 600;
+        }
+
+        .status-badge-current {
+          background-color: rgb(255, 241, 241);
+          margin: 5px;
+          /* margin-right: 15px; */
+          width: 30px;
+          height: 30px;
+        }
+
+        .status-current span {
+          font-size: 10px;
+          text-align: center;
+         
+        }
+
+        .status-badge-current span {
+          font-size: 10px;
+          color: white;
+          font-weight: 600;
+          color: red;
+        }
+
+
+        .status-badge-next {
+          background-color: rgb(179, 179, 179);
+          margin: 5px;
+          /* margin-right: 15px; */
+          width: 30px;
+          height: 30px;
+        }
+
+        .status-next span {
+          font-size: 10px;
+          text-align: center;
+         
+        }
+
+        .status-badge-next span {
+          font-size: 10px;
+          color: white;
+          font-weight: 600;
+          
+        }
+
+        .payment-method-section-child{
+            width: 23rem;
+        }
+
+
+        .billingAddres-label span {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-size: 13px;
+        }
+
+        .billingAddres-value span{
+            font-size: 13px;
+        }
+
+        .mrp-label span{
+            font-size: 15px;
+        }
+
+        .mrp-value span{
+            font-size: 17px;
+        }
+
+
+
+        .payment-method-section-child-title span {
+            font-size: 20px;
+        }
+
+
+
+
+
+       
+               
+      }
+
+
+
+    </style>
+</head>
+<body class="theme-color2 light ltr">
+
+
+  
+  <div class="breadcrumb-payemnt-process-section">
+    <div class="breadcrumb-payemnt-payement-section">
+      <div class="breadcrumb-payemnt-payement-section-sub-section-previous">
+        <div class="status-badge-previous">
+          <span>1</span>
+        </div>
+        <div class="status-previous">
+          <span>Price summary</span>
+        </div>
+      </div>
+
+      <div class="status-divider-previous"></div>
+
+      <div class="breadcrumb-payemnt-payement-section-sub-section-previous">
+        <div class="status-badge-previous">
+          <span>2</span>
+        </div>
+        <div class="status-previous">
+          <span>Payment</span>
+        </div>
+      </div>
+
+      <div class="status-divider-next"></div>
+
+      <div class="breadcrumb-payemnt-payement-section-sub-section-next">
+        <div class="status-badge-next">
+          <span>3</span>
+        </div>
+        <div class="status-next">
+          <span>Order complete</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="breadcrumb-payemnt-process-section">
+    <div class="breadcrumb-payemnt-payement-section">
+      <div class="breadcrumb-payemnt-payement-section-sub-section-previous">
+        <div class="status-badge-previous">
+          <span>1</span>
+        </div>
+        <div class="status-previous">
+          <span>Price summary</span>
+        </div>
+      </div>
+
+      <div class="status-divider-previous"></div>
+
+      <div class="breadcrumb-payemnt-payement-section-sub-section-current">
+        <div class="status-badge-current">
+          <span>2</span>
+        </div>
+        <div class="status-current">
+          <span>Payment</span>
+        </div>
+      </div>
+
+      <div class="status-divider-next"></div>
+
+      <div class="breadcrumb-payemnt-payement-section-sub-section-next">
+        <div class="status-badge-next">
+          <span>3</span>
+        </div>
+        <div class="status-next">
+          <span>Order complete</span>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+    <div class="payment-method-section">
+
+
+
+
+        <div class="payment-method-section-child">
+
+
+
+
+
+           <div class="order-review-section">
+            
+            
+
+           
+                       
+            {% for c in cart %}
+            <div class="product-details-section">
+
+              <div class="prod-img">
+                <img src="{{c.product.product_image.url}}" alt="product image"  >
+            </div>
+    
+      
+
+            <div class="product-desc">
+              <div class="prod-title">
+                <div>{{c.product.title}}</div>
+              </div>
+
+              <div class="prod-desc-section">
+                <div class="prod-desc-sub-section">
+                  <span>Qty:</span>
+                  <strong >{{c.quantity}}</strong>
+                </div>
+
+
+ 
+
+                
+                <div class="prod-desc-sub-section">
+                  <span>Size:</span>
+                  <strong >{{c.size}}</strong>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+
+          
+                
+          
+
+             
+        {% endfor %}
+          
+
+
+
+
+           
+       
+
+             
+
+            <div class="price-summary-section">
+
+              <div class="mrp-section">
+                <div class="mrp-section-label">
+                  <span>Item MRP</span>
+                </div>
+                <div class="mrp-section-value">
+                  <span>
+                    &#8377; {{mrpamount}} 
+                  </span>
+                </div>
+              </div>
+
+              <div class="mrp-section">
+                <div class="mrp-section-label">
+                  <span>Tax</span>
+                </div>
+                <div class="mrp-section-value">
+                  <span>
+                    &#8377; {{tax}}
+                  </span>
+                </div>
+              </div>
+
+              <!-- <div class="mrp-section">
+                <div class="mrp-section-label">
+                  <span>Shipping Chargers</span>
+                </div>
+                <div class="mrp-section-value">
+                  <span>
+                    &#8377; {{ship}}
+                  </span>
+                </div>
+              </div>
+ -->
+              {% if request.user.is_authenticated %}
+              {% if not first_order_condition %}
+              <div class="mrp-section">
+                <div class="mrp-section-label">
+                  <span>Discount</span>
+                </div>
+                <div class="mrp-section-value">
+                  <span>
+                    -&#8377; {{discount_on_mrp|floatformat:2}}
+                  </span>
+                </div>
+              </div>
+                  <!-- <div ><span>DISCOUNT AMOUNT</span><span ></span></div> -->
+              {% elif event_discount %}
+              <div class="mrp-section">
+                <div class="mrp-section-label">
+                  <span>Discount</span>
+                </div>
+                <div class="mrp-section-value">
+                  <span>
+                    -&#8377; {{discount_on_mrp|floatformat:2}}
+                  </span>
+                </div>
+              </div>
+                  <!-- <div ><span>DISCOUNT AMOUNT</span><span >&#8377; {{discount_on_mrp}}</span></div> -->
+              {% else %}
+              <div class="mrp-section">
+                <div class="mrp-section-label">
+                  <span>Discount</span>
+                </div>
+                <div class="mrp-section-value">
+                  <span>
+                    -&#8377; {{discount_on_mrp|floatformat:2}}
+                  </span>
+                </div>
+              </div>
+              <!-- <div ><span>DISCOUNT AMOUNT</span><span >&#8377; {{discount_on_mrp}}</span></div> -->
+              {% endif %}
+           {% endif %} 
+
+           <div class="divider"></div>
+
+
+           <div class="mrp-section">
+            <div class="mrp-section-label">
+              <span>Total MRP(incl of taxes)</span>
+            </div>
+            <div class="mrp-section-value">
+              <span>
+                &#8377; {{total_amount}}
+              </span>
+            </div>
+          </div>
+          <div class="mrp-section">
+            <div class="mrp-section-label">
+              <span>If you procceded with Cash On Delivery</span>
+            </div>
+            <div class="mrp-section-value">
+              <span>
+                + &#8377; 50
+              </span>
+            </div>
+          </div>
+               
+
+              <!-- <div ><span>Total MRP(incl of taxes)</span><span >&#8377; {{total_amount}}</span></div> -->
+ 
+
+            </div>
+
+
+           </div>
+
+
+
+
+           <div class="billing-section">
+            <div class="billingAddress-mrp-section">
+
+              <div class="billingAddres-section">
+                  <div class="billingAddres-label">
+                      <span>Your Order is Billing To :</span>
+                  </div>
+  
+                  <div class="billingAddres-value">
+                      <span>{{cust.first_name}}{{cust.last_name}}</span>
+                      <span>{{cust.locality}}, {{cust.city}}, {{cust.state}}</span>
+                      <span>{{cust.pincode}}</span>
+                      <span>{{cust.mobile_number}}</span>
+                      <span>{{cust.email}}</span>
+                  </div>
+              </div>
+  
+  
+  
+              
+             </div>
+  
+  
+             <!-- <div class="divider"></div> -->
+        <div class="product-purchase">
+  
+      <form class="needs-validation" action="/create_order_api/" id="paymentForm">
+          {% csrf_token %}
+          <input type="hidden" name="custid" value="{{ custid }}">
+          <input type="hidden" name="total_amount" value="{{total_amount}}">
+                  
+                  
+                      <div class="pay-btn">
+                          <button type="submit" value="Pay By COD" name="COD" id="debit">Pay By COD </button>
+                          
+                      </div>
+                     <!--  <div class="pay-btn">
+                          
+                          <button type="submit" id="pay-btn"> Pay By Razorpay</button>
+                          
+                      </div> -->
+                  
+  
+            
+          
+          </form>
+    
+         
+  
+          <!-- Form for Pay By Razorpay -->
+          <form class="needs-validation" action="/payment_method/" method="post" id="paymentForm">
+              {% csrf_token %}
+              <input type="hidden" name="custid" value="{{ custid }}">
+              <input type="hidden" name="total_amount" value="{{grand_total}}">
+              
+                  <div class="pay-btn">
+                      <button type="submit" id="pay-btn">Pay By Razorpay </button>
+                  </div>
+              
+          </form>
+  
+          </div>
+           </div>
+
+        
+
+    </div>
+    </div>
+
+
+
+    
+       
+        
+    
+</body>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+    var options = {
+    
+        // Enter the Key ID generated from the Dashboard
+        key: "{{ razorpay_merchant_key }}",
+        
+        // Amount is in currency subunits.
+        // Default currency is INR. Hence, 
+        // 50000 refers to 50000 paise
+        amount: "{{ razorpay_amount }}" , 
+        currency: "{{ currency }}",
+        
+        // Your/store name.
+        name: "VISHWARATNA", 
+        
+        // Pass the `id` obtained in the response of Step 1
+        order_id: "{{ razorpay_order_id }}", 
+        callback_url: "{{ callback_url }}",
+        };
+        
+        // initialise razorpay with the options.
+        var rzp1 = new Razorpay(options);
+        
+        // add event listener to the payment button.
+        document.getElementById("pay-btn").onclick = function (e) {
+        rzp1.open();
+        e.preventDefault();
+        };
+</script>
+
+
+    <!-- latest jquery-->
+    <script src="/static/assets1/js/jquery-3.5.1.min.js"></script>
+
+    
+    
+
+    <!-- Bootstrap js-->
+    <script src="/static/assets1/js/bootstrap/bootstrap.bundle.min.js"></script>
+
+    <!-- feather icon js-->
+    <script src="/static/assets1/js/feather/feather.min.js"></script>
+
+    <!-- lazyload js-->
+    <script src="/static/assets1/js/lazysizes.min.js"></script>
+
+    <!-- Slick js-->
+    <script src="/static/assets1/js/slick/slick.js"></script>
+    <script src="/static/assets1/js/slick/slick-animation.min.js"></script>
+    <script src="/static/assets1/js/slick/custom_slick.js"></script>
+
+    <!-- newsletter js -->
+    <script src="/static/assets1/js/newsletter.js"></script>
+
+    <!-- add to cart modal resize -->
+    <script src="/static/assets1/js/cart_modal_resize.js"></script>
+
+    <!-- Add To Home js -->
+    <script src="/static/assets1/js/pwa.js"></script>
+
+    <!-- add to cart modal resize -->
+    <script src="/static/assets1/js/cart_modal_resize.js"></script>
+
+    <!-- feather icon js-->
+    <script src="/static/assets1/js/timer1.js"></script>
+
+    <!-- notify js -->
+    <script src="/static/assets1/js/bootstrap/bootstrap-notify.min.js"></script>
+
+    <!-- script js -->
+    <script src="/static/assets1/js/theme-setting.js"></script>
+    <script src="/static/assets1/js/script.js"></script>
+
+     <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer">
+        
+      </script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+
+</script>
+
+</html>
+{% endblock content %}

@@ -1,0 +1,67 @@
+{% extends "seller_base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Return  products</title>
+</head>
+<body>
+    <div class="page-wrapper compact-wrapper dark-sidebar" id="pageWrapper">
+        <div class="page-body-wrapper">
+          <div class="page-body">
+            <div class="title-header">  <h3>All Return orders</h3> </div>
+            <div class="card">
+                <div class="row " >
+                    <div class="col-sm-12">
+                        <div class="table-responsive table-desi">
+                            <table class="table table-hover table-striped table-bordered text-center ">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Customer Name</th>
+                                        <th>Email</th>
+                                        <th>Mobile.No</th>
+                                        <th>Product Type</th>
+                                        <th>Category</th>
+                                        <th>Product Image</th>
+                                        <th>Product ID</th>
+                                        <th>Price</th>
+                                        <th>Order ID</th>
+                                        <th>Invoice.No</th>
+                                        <th>Payment Method</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Reason</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for order in order %}
+                                    <tr>
+                                        <td>{{order.customer.first_name}}</td>
+                                        <td>{{order.customer.email}}</td>
+                                        <td>{{order.customer.mobile_number}}</td>
+                                        <td>{{order.product.product_type}}</td>
+                                        <td>{{order.product.category}}</td>
+                                        <td><img src="{{order.product.product_image.url}}" height="100" width="100"></td>
+                                        <td>{{order.product.prod_id}}</td>
+                                        <td>{{order.total_cost}}</td>
+                                        <td>{{order.order_id}}</td>
+                                        <td>{{order.invoice_no}}</td>
+                                        <td>{{order.payment_method}}</td>
+                                        <td>{{order.Order_date}}</td>
+                                        <td>{% if order.returned %}Return {% endif %}</td>
+                                        <td>{{order.return_reason}}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+</body>
+</html>
+{% endblock %}

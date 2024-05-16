@@ -1,0 +1,523 @@
+{% extends 'base.html' %}
+{% block title %}
+Contact Us
+{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - VR</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="{% static 'assets1\images\logos\vr_main.png' %}"
+      type="image/x-icon"
+    />
+    <link
+      rel="shortcut icon"
+      href="{% static 'assets1\images\logos\vr_main.png' %}"
+      type="image/x-icon"
+    />
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- bootstrap css -->
+    <link
+      id="rtl-link"
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/bootstrap.css"
+    />
+
+    <!-- font-awesome css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/font-awesome.css"
+    />
+
+    <!-- feather icon css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/feather-icon.css"
+    />
+
+    <!-- animation css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/animate.css"
+    />
+
+    <!-- slick css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/slick/slick-theme.css"
+    />
+
+    <!-- Theme css -->
+    <link
+      id="color-link"
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/demo2.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- icons -->
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+    />
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        font-family: "Poppines", sans-serif;
+      }
+
+      .contact-us-section {
+        width: 100%;
+        height: 100vh;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        background-color: #fff5f5;
+      }
+
+      .contact-us-form-section {
+        width: 30rem;
+        height: fit-content;
+        box-shadow: 0px 10px 23px -3px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin: 50px;
+        margin-left: 0;
+        margin-right: 0;
+        border-radius: 20px;
+        background-color: white;
+      }
+
+      .contact-us-hero-section {
+        width: 30rem;
+        height: fit-content;
+
+        padding: 30px;
+      }
+
+      .contact-us-form-section-title span {
+        font-size: 30px;
+        font-weight: 600;
+      }
+
+      .sub-section {
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        padding-left: 5px;
+        padding-right: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .sub-section label {
+        width: 100%;
+
+        padding-bottom: 10px;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        font-weight: 400;
+      }
+
+      .sub-section input {
+        width: 100%;
+        background-color: rgb(255, 240, 240);
+        border: 1.1px solid rgba(0, 0, 0, 0);
+        flex-grow: 1;
+        border-radius: 6px;
+        padding: 12px;
+        font-size: 15px;
+        transition: all 0.3s ease-out;
+      }
+
+      .sub-section input:focus {
+        border: 1.1px solid rgb(179, 179, 179);
+        outline: none;
+        background-color: transparent;
+      }
+
+      .sub-section textarea {
+        width: 100%;
+        height: 5rem;
+        background-color: rgb(255, 240, 240);
+        border: 1.1px solid rgba(0, 0, 0, 0);
+        flex-grow: 1;
+        border-radius: 6px;
+
+        padding: 12px;
+        font-size: 15px;
+        transition: all 0.3s ease-out;
+      }
+
+      .sub-section textarea:focus {
+        border: 1.1px solid rgb(179, 179, 179);
+        outline: none;
+        background-color: transparent;
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 15px;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 10px;
+      }
+
+      .submit-btn button {
+        width: 100%;
+        padding: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 20px;
+        background-color: black;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        transition: all 0.3s ease-out;
+      }
+
+      .submit-btn button:hover {
+        background-color: rgb(42, 42, 42);
+      }
+
+      .founder-img-section {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        margin-top: 30px;
+        margin-bottom: 30px;
+      }
+
+      .founder-img-section img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+      }
+      .founder-msg-section {
+        margin-bottom: 20px;
+      }
+
+      .founder-msg-section span {
+        text-align: center;
+        font-size: 15px;
+      }
+
+      .founder-socail-link {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .founder-socail-link a {
+        text-decoration: none;
+      }
+
+      .founder-socail-link a span {
+        color: #000000;
+        font-size: 17px;
+      }
+
+      .founder-desg {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-top: 5px;
+        margin-bottom: 10px;
+      }
+
+      .founder-desg span {
+        font-size: 13px;
+        font-weight: 600;
+        color: #666666;
+      }
+
+      .other-firm-section {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        margin-top: 20px;
+        margin-bottom: 30px;
+      }
+
+      .other-firm-section img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin: 15px;
+        filter: grayscale(1);
+        transition: all 0.2s ease-out;
+      }
+
+      .other-firm-section img:hover {
+        filter: grayscale(0);
+      }
+
+      @media screen and (max-width: 1200px) {
+        .contact-us-form-section {
+          width: 25rem;
+        }
+      }
+
+      @media screen and (max-width: 1000px) {
+      }
+
+      @media screen and (max-width: 768px) {
+        .contact-us-hero-section {
+          padding: 30px;
+          padding-top: 0;
+        }
+
+        .contact-us-section {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      @media screen and (max-width: 450px) {
+        .contact-us-section {
+          width: 100%;
+          height: 100%;
+        }
+        .contact-us-form-section-title span {
+          font-size: 20px;
+        }
+        .contact-us-form-section {
+          width: 20rem;
+        }
+
+        .sub-section input {
+          padding: 8px;
+          font-size: 12px;
+        }
+
+        .sub-section label {
+          font-size: 13px;
+        }
+
+        .submit-btn button {
+          font-size: 15px;
+        }
+
+        .contact-us-hero-section {
+          padding: 30px;
+          padding-top: 0;
+        }
+      }
+
+      @media screen and (max-width: 320px) {
+        .contact-us-form-section {
+          width: 15rem;
+        }
+      }
+    </style>
+  </head>
+  <body class="theme-color2 light ltr">
+    <div class="contact-us-section">
+      <div class="contact-us-form-section">
+        <form method="post" action="">
+          {% csrf_token %}
+
+          <div class="contact-us-form-section-title">
+            <span>Lets get in touch</span>
+          </div>
+
+          <div class="name-section">
+            <div class="sub-section">
+              <label for="first_name">First Name</label>
+              <input
+                type="text"
+                id="first_name"
+                name="first_name"
+                placeholder="John"
+                required
+              />
+            </div>
+
+            <div class="sub-section">
+              <label for="last_name">Last Name</label>
+              <input
+                type="text"
+                id="last_name"
+                name="last_name"
+                placeholder="Doe"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="email-section">
+            <div class="sub-section">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="john.doe@example.com"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="comment-section">
+            <div class="sub-section">
+              <label for="comment">Comment</label>
+              <textarea
+                id="comment"
+                name="comment"
+                placeholder="Your comment"
+                required
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="submit-btn">
+            <button type="submit">Send</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- <div class="contact-us-hero-section">
+        <div class="founder-img-section">
+          <img src="/static/founder/founder.jpg" alt="" />
+        </div>
+
+        <div class="founder-msg-section">
+          <span
+            >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut
+            architecto consequatur itaque provident. Voluptatibus nobis magni
+            quaerat minima quibusdam ea.</span
+          >
+        </div>
+
+        <div class="founder-socail-link">
+          <a href="https://twitter.com/Digitalsanjog">
+            <span>@Digitalsanjog</span>
+          </a>
+        </div>
+
+        <div class="founder-desg">
+          <span>Founder & CEO</span>
+        </div>
+
+        <div class="other-firm-section">
+          <img
+            src="/static/assets1/images/logos/vr_main.png"
+            alt="Vishwaratna"
+          />
+          <img
+            style="border-radius: 0"
+            src="/static/assets1/images/logos/zappkode logo.png"
+            alt="zappkode solutions"
+          />
+        </div>
+      </div> -->
+    </div>
+
+    <!-- latest jquery-->
+    <script src="/static/assets1/js/jquery-3.5.1.min.js"></script>
+
+    <!-- Bootstrap js-->
+    <script src="/static/assets1/js/bootstrap/bootstrap.bundle.min.js"></script>
+
+    <!-- feather icon js-->
+    <script src="/static/assets1/js/feather/feather.min.js"></script>
+
+    <!-- lazyload js-->
+    <script src="/static/assets1/js/lazysizes.min.js"></script>
+
+    <!-- Slick js-->
+    <script src="/static/assets1/js/slick/slick.js"></script>
+    <script src="/static/assets1/js/slick/slick-animation.min.js"></script>
+    <script src="/static/assets1/js/slick/custom_slick.js"></script>
+
+    <!-- newsletter js -->
+    <script src="/static/assets1/js/newsletter.js"></script>
+
+    <!-- add to cart modal resize -->
+    <script src="/static/assets1/js/cart_modal_resize.js"></script>
+
+    <!-- Add To Home js -->
+    <script src="/static/assets1/js/pwa.js"></script>
+
+    <!-- add to cart modal resize -->
+    <script src="/static/assets1/js/cart_modal_resize.js"></script>
+
+    <!-- feather icon js-->
+    <script src="/static/assets1/js/timer1.js"></script>
+
+    <!-- notify js -->
+    <script src="/static/assets1/js/bootstrap/bootstrap-notify.min.js"></script>
+
+    <!-- script js -->
+    <script src="/static/assets1/js/theme-setting.js"></script>
+    <script src="/static/assets1/js/script.js"></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </body>
+</html>
+
+{% endblock content %}

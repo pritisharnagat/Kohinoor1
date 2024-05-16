@@ -1,0 +1,58 @@
+{% extends "admin_base.html" %}
+  {% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Approved Products</title>
+</head>
+<body>
+    <div class="page-wrapper compact-wrapper dark-sidebar" id="pageWrapper">
+        <div class="page-body-wrapper">
+            <div class="page-body">
+                <div class="title-header"> <h5>Admin Approved Products</h5> </div>
+                <div class="card">
+                <div class="row">
+                    <div class="col-sm-12">
+                    <div class="table-responsive table-desi">
+                        <table class="table table-hover table-striped table-bordered text-center">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Product Image</th>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Brand</th>
+                                    <th>Category</th>
+                                    <th>Product type</th>
+                                    <th>Selling price</th>
+                                    <th>Discount price</th>
+                                    <th>Actual price</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for product in products %}
+                                    <tr>
+                                        <td><img src="{{ product.product_image.url }}" alt="Product Image" width="60" height="80"></td>
+                                        <td>{{ product.title }}</td>
+                                        <td>{{ product.description }}</td>
+                                        <td>{{ product.brand }}</td>
+                                        <td>{{ product.category }}</td>
+                                        <td>{{ product.product_type }}</td>
+                                        <td>{{ product.selling_price }}</td>
+                                        <td>{{ product.discount_price }}</td>
+                                        <td>{{ product.actual_price }}</td>
+                                        <td>{{ product.product_date }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</body>
+</html>
+{% endblock %}

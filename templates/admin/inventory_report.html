@@ -1,0 +1,389 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- Bootstrap CSS link -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS for hover effect and attractiveness -->
+
+    <link
+    rel="icon"
+    href="{% static 'assets1\images\logos\vr_main.png' %}"
+    type="image/x-icon"
+  />
+  <link
+    rel="shortcut icon"
+    href="{% static 'assets1\images\logos\vr_main.png' %}"
+    type="image/x-icon"
+  />
+  <title>Vishwaratna - Dashboard</title>
+
+  <!-- Google font-->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Linear Icon css -->
+  <link rel="stylesheet" href="/static/assets/css/linearicon.css" />
+
+  <!-- fontawesome css -->
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="/static/assets/css/vendors/font-awesome.css"
+  />
+
+  <!-- Themify icon css-->
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="/static/assets/css/vendors/themify.css"
+  />
+
+  <!-- ratio css -->
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="/static/assets/css/ratio.css"
+  />
+
+  <!-- Feather icon css-->
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="/static/assets/css/vendors/feather-icon.css"
+  />
+
+  <!-- Plugins css -->
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="/static/assets/css/vendors/scrollbar.css"
+  />
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="/static/assets/css/vendors/animate.css"
+  />
+
+  <!-- Bootstrap css-->
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="/static/assets/css/vendors/bootstrap.css"
+  />
+
+  <!-- vector map css -->
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="/static/assets/css/vector-map.css"
+  />
+
+  <!-- slick slider css -->
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="/static/assets/css/slick.css"
+  />
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="/static/assets/css/slick-theme.css"
+  />
+
+  <!-- App css -->
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="/static/assets/css/style.css"
+  />
+
+  <!-- Responsive css-->
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="/static/assets/css/responsive.css"
+  />
+    <style>
+        #popup {
+            background-color: #dc3545;
+            color: #fff;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="page-wrapper compact-wrapper dark-sidebar" id="pageWrapper">
+        <div class="page-body-wrapper">
+            <div class="page-body " style="margin-top: 200px;">
+                <button id="export-btn" class="btn btn-primary">Export to Excel</button>
+                <input class="form-group" type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search..." style="width: 100%; padding: 15px;">
+                <div class="title-header"> <h5>Your Products</h5> </div>
+                <div class="card">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="table-responsive table-desi">
+                                
+                                <table class="table table-hover table-striped table-bordered text-center vendor-table" id="vendor-table">
+                                    <thead class="table-dark">
+                                        
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>Brand</th>
+                                            <th>Product Type</th>
+                                            <th>Category</th>
+                                            <th>Colour</th>
+                                            <th>Size</th>
+                                            <th>Selling Price</th>
+                                            <th>Total Available</th>
+                                            <th>Total Ordered</th>
+                                            <th>Total Returned</th>
+                                            <th>Total Cancelled</th>
+                                        </tr>
+                                        <tr id="dropdowns-row">
+                                            <th></th> <!-- This column will hold the filter dropdown for Title -->
+                                            <th></th> <!-- This column will hold the filter dropdown for Brand -->
+                                            <th></th> <!-- This column will hold the filter dropdown for Product Type -->
+                                            <th></th> <!-- This column will hold the filter dropdown for Category -->
+                                            <th></th> <!-- This column will hold the filter dropdown for Colour -->
+                                            <th></th> <!-- This column will hold the filter dropdown for Size -->
+                                            <th></th> <!-- This column will hold the filter dropdown for Selling Price -->
+                                            <th></th> <!-- This column will hold the filter dropdown for Total Available -->
+                                            <th></th> <!-- This column will hold the filter dropdown for Total Ordered -->
+                                            <th></th> <!-- This column will hold the filter dropdown for Total Returned -->
+                                            <th></th> <!-- This column will hold the filter dropdown for Total Cancelled -->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for product in products %}
+                                        <tr>
+                                            <td>{{ product.title }}</td>
+                                            <td>{{ product.brand }}</td>
+                                            <td>{{ product.product_type }}</td>
+                                            <td>{{ product.category }}</td>
+                                            <td>{{ product.colour }}</td>
+                                            <td>{{ product.size }}</td>
+                                            <td>{{ product.selling_price }}</td>
+                                            <td>{{ product.total_quantity }}</td>
+                                            <td>{{ product.total_ordered }}</td>
+                                            <td>{{ product.total_returned }}</td>
+                                            <td>{{ product.total_canceled }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- Popup message for low quantity products -->
+                            <div id="popup">
+                                <p>Some of your products have low quantities!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JS link (optional, if you need Bootstrap JS functionality) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- export to excel -->
+<script>
+    document.getElementById("export-btn").addEventListener("click", function() {
+        var table = document.getElementById("vendor-table");
+        var rows = table.querySelectorAll("tr");
+        var csvData = [];
+        
+        for (var i = 0; i < rows.length; i++) {
+            if(i !== 1){
+            if (rows[i].style.display !== "none") { // Check if the row is displayed
+                var row = [], cols = rows[i].querySelectorAll("td, th");
+
+                for (var j = 0; j < cols.length; j++) {
+                    row.push(cols[j].innerText);
+                }
+
+                csvData.push(row.join(","));
+            }
+        }
+        }
+
+        var csvString = csvData.join("\n");
+        var a = document.createElement("a");
+        a.href = "data:text/csv;charset=utf-8," + encodeURIComponent(csvString);
+        a.download = "table_data.csv";
+        a.style.display = "none";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    });
+
+</script>    
+
+<!-- search bar -->
+    <script>
+        function searchTable() {
+            // Declare variables
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("vendor-table"); // Corrected ID here
+            tr = table.getElementsByTagName("tr");
+    
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td");
+                for (var j = 0; j < td.length; j++) {
+                    if (td[j]) {
+                        txtValue = td[j].textContent || td[j].innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                            break; // Break the inner loop, move to the next row
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+     
+    <!-- jQuery CDN link -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Custom JavaScript for dropdown filters -->
+    <script>
+        // Function to create dropdown filters for each column
+        /* function createFilters() {
+            var table = document.getElementById("vendor-table");
+            var headerRow = table.rows[1];
+
+            // Loop through each column in the header row
+            for (var i = 0; i < headerRow.cells.length; i++) {
+                var uniqueValues = []; // Array to store unique values for each column
+
+                // Loop through each row in the table (starting from second row)
+                for (var j = 1; j < table.rows.length; j++) {
+                    var cell = table.rows[j].cells[i];
+                    var cellValue = cell.textContent || cell.innerText;
+
+                    // Add unique cell values to the array
+                    if (!uniqueValues.includes(cellValue.trim())) {
+                        uniqueValues.push(cellValue.trim());
+                    }
+                }
+
+                // Create a select element for the current column
+                var select = document.createElement("select");
+                select.classList.add("filter-dropdown");
+                select.setAttribute("onchange", "filterTable(this)");
+
+                // Add an "All" option to the select element
+                var allOption = document.createElement("option");
+                allOption.text = "Sort by";
+                allOption.value = "";
+                select.add(allOption);
+
+                // Add unique cell values as options to the select element
+                for (var k = 0; k < uniqueValues.length; k++) {
+                    var option = document.createElement("option");
+                    option.text = uniqueValues[k];
+                    option.value = uniqueValues[k];
+                    select.add(option);
+                }
+
+                // Insert the select element into the header cell
+                headerRow.cells[i].innerHTML = "";
+                headerRow.cells[i].appendChild(select);
+            }
+        } */
+
+        function createFilters() {
+    var table = document.getElementById("vendor-table");
+    var headerRow = table.rows[0]; // Get the first row (header row)
+    var filterRow = table.rows[1]; // Get the second row (filter row)
+
+    // Loop through each column in the header row
+    for (var i = 0; i < headerRow.cells.length; i++) {
+        var uniqueValues = []; // Array to store unique values for each column
+
+        // Loop through each row in the table (starting from second row)
+        for (var j = 1; j < table.rows.length; j++) {
+            var cell = table.rows[j].cells[i];
+            var cellValue = cell.textContent || cell.innerText;
+
+            // Add unique cell values to the array
+            if (!uniqueValues.includes(cellValue.trim())) {
+                uniqueValues.push(cellValue.trim());
+            }
+        }
+
+        // Create a select element for the current column
+        var select = document.createElement("select");
+        select.classList.add("filter-dropdown");
+        select.className="";
+        select.setAttribute("onchange", "filterTable(this)");
+
+        // Add an "All" option to the select element
+        var allOption = document.createElement("option");
+        allOption.text = "Sort by";
+        allOption.value = "";
+        select.add(allOption);
+
+        // Add unique cell values as options to the select element
+        for (var k = 0; k < uniqueValues.length; k++) {
+            var option = document.createElement("option");
+            if(k !== 0){
+                option.text = uniqueValues[k];
+                option.value = uniqueValues[k];
+                select.add(option);
+            }else{
+                option.value="ttt";
+            }
+        }
+
+        // Insert the select element into the filter row
+        filterRow.cells[i].innerHTML = ""; // Clear existing content
+        filterRow.cells[i].appendChild(select);
+    }
+}
+
+
+        // Function to filter the table based on selected dropdown values
+        function filterTable(select) {
+            var columnIndex = select.parentNode.cellIndex;
+            var selectedValue = select.value.toUpperCase();
+            var table = document.getElementById("vendor-table");
+            var rows = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those that don't match the filter
+            for (var i = 1; i < rows.length; i++) {
+                var cell = rows[i].getElementsByTagName("td")[columnIndex];
+                if (cell) {
+                    var cellValue = cell.textContent || cell.innerText;
+                    if (cellValue.toUpperCase().indexOf(selectedValue) > -1 || selectedValue === "") {
+                        rows[i].style.display = "";
+                    } else {
+                        rows[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+        // Call the createFilters function when the DOM is ready
+        $(document).ready(function() {
+            createFilters();
+        });
+    </script>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,153 @@
+{% extends "admin_base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Collections Thought</title>
+    <style>
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .form-group input[type="text"],
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper compact-wrapper dark-sidebar" id="pageWrapper">
+        <div class="page-body-wrapper">
+            <div class="page-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card p-3">
+                            <h1>Add Collections Thought</h1>
+                            <form method="POST">
+                                {% csrf_token %}
+
+                                <div class="form-group">
+                                    <label for="subcategory">Subcategory:</label>
+                                    <select id="subcategory" name="subcategory" required>
+                                        <option value="">Select Subcategory</option>
+                                        <option value="BR_ambedkar_quotes">BR_ambedkar_quotes</option>
+                                        <option value="Chrapati_shivaji_maharaj_quotes">Chrapati_shivaji_maharaj_quotes </option>
+                                        <option value="A_P_J_Abdul_kalam_tshirts">A_P_J_Abdul_kalam_tshirts</option>
+                                        <option value="Bhagat_Singh">Bhagat_Singh</option>
+                                        <option value="Budha_quotes">Budha_quotes</option>
+                                        <option value="Birsa_munda">Birsa_munda</option>
+                                        <option value="Savitribai_Phule">Savitribai_Phule</option>
+                                        <option value="Martin_Luther_King">Martin_Luther_King</option>
+                                        <option value="Sant_Kabir_Saheb">Sant_Kabir_Saheb</option>
+                                        <option value="Sri_Guru_Nanak_Dev_ji">Sri_Guru_Nanak_Dev_ji</option>
+                                        <option value="Osho_quotes">Osho_quotes</option> 
+                                        <option value="tshirt">tshirt</option>                                
+                                        <option value="quote_tshirts">quote_tshirts</option>                                
+                                        <option value="Signature_tshirts">Signature_tshirts</option>                                
+                                        <option value="graphictees">graphictees</option>                                
+                                        <option value="minimalisttees">minimalisttees</option>                                
+                                        <option value="inspirationaltees">inspirationaltees</option>                                
+
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="heading">Heading:</label>
+                                    <input type="text" id="heading" name="heading" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="paragraph1">Paragraph 1:</label>
+                                    <textarea id="paragraph1" name="paragraph1" rows="1" 
+                                    ></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="heading1">Heading1:</label>
+                                    <input type="text" id="heading1" name="heading1" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="paragraph2">Paragraph 2:</label>
+                                    <textarea id="paragraph2" name="paragraph2" rows="2" ></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="heading2">Heading2:</label>
+                                    <input type="text" id="heading2" name="heading2" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="paragraph3">Paragraph 3:</label>
+                                    <textarea id="paragraph3" name="paragraph3" rows="3" ></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="heading3">Heading3:</label>
+                                    <input type="text" id="heading3" name="heading3" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="paragraph4">Paragraph 4:</label>
+                                    <textarea id="paragraph4" name="paragraph4" rows="4" ></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="heading4">Heading4:</label>
+                                    <input type="text" id="heading4" name="heading4" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="paragraph5">Paragraph 5:</label>
+                                    <textarea id="paragraph5" name="paragraph5" rows="5" ></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="heading5">Heading5:</label>
+                                    <input type="text" id="heading5" name="heading5" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="paragraph6">Paragraph 6:</label>
+                                    <textarea id="paragraph6" name="paragraph6" rows="6" ></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="heading6">Heading6:</label>
+                                    <input type="text" id="heading6" name="heading6" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="paragraph7">Paragraph 7:</label>
+                                    <textarea id="paragraph7" name="paragraph7" rows="7" ></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Add Thought</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {% for thought in thoughts %}
+                <div class="row mt-4">
+                    <div class="col-sm-12">
+                        <div class="card p-3">
+                            <h2>{{ thought.heading }}</h2>
+                            <p>{{ thought.paragraph1 }}</p>
+                            <p>{{ thought.paragraph2 }}</p>
+                            <p>{{ thought.paragraph3 }}</p>
+                            <p>{{ thought.paragraph4 }}</p>
+                            <p>{{ thought.paragraph5 }}</p>
+                            <!-- Display other fields as needed -->
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

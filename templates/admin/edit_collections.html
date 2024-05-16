@@ -1,0 +1,131 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Collection</title>
+
+    <style type="text/css">
+        .context-section-head{
+            width: 100%;
+            display: flex;
+            justify-content: start;
+            align-items: flex-start;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            margin-bottom:20px        
+        }
+
+        .context-section-head input{
+            width: 100%;
+            padding: 10px;
+            margin: 5px;
+        }
+
+        .context-section-para{
+            width: 100%;
+            display: flex;
+            justify-content: start;
+            align-items: flex-start;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            margin-bottom:20px
+        }
+
+        .context-section-para input{
+            display: inline-block; /* Display as block element */
+            width: 100%; /* Full width of its container */
+            min-height: 100px; /* Set a minimum height */
+            padding: 8px; /* Add padding for spacing */
+            resize: vertical; /* Allow vertical resizing */
+            box-sizing: border-box; /* Include padding in width/height calculation */
+            border: 1px solid #ced4da; /* Add border for visual clarity */
+            border-radius: 4px; /* Add border radius for rounded corners */
+            overflow-y: auto; /* Enable vertical scrolling when content exceeds height */
+            font-family: inherit; /* Use the same font as the parent */
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper compact-wrapper dark-sidebar" id="pageWrapper">
+        <div class="page-body-wrapper">
+            <div class="page-body">
+                <div class="title-header">Edit Collection</div>
+                <div class="card">
+                    <div class="row m-1">
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="subcategory">Subcategory:</label>
+                                <input type="text" id="subcategory" name="subcategory" value="{{thoughts.subcategory}}"readonly>
+                            </div>
+                            <div class="form-group context-section-head">
+                                <label for="heading">Heading:</label>
+                                <input type="text" id="heading" name="heading" value="{{thoughts.heading}}"required>
+                            </div>
+                            <div class="form-group context-section-para">
+                                <label for="paragraph1">Paragraph 1:</label>
+                                <input type="text" id="paragraph1" name="paragraph1" value="{{thoughts.paragraph1}}" required>
+                            </div>
+                            <div class="form-group context-section-head">
+                                <label for="heading1">Heading1:</label>
+                                <input type="text" id="heading1" name="heading1" value="{{thoughts.heading1}}">
+                            </div>
+                            <div class="form-group context-section-para">
+                                <label for="paragraph2">Paragraph 2:</label>
+                                <input  type="text"id="paragraph2" name="paragraph2" rows="2" value="{{thoughts.paragraph2}}" required>
+                            </div>
+                            <div class="form-group context-section-head">
+                                <label for="heading2">Heading2:</label>
+                                <input type="text" id="heading2" name="heading2" value="{{thoughts.heading2}}">
+                            </div>
+                            <div class="form-group context-section-para">
+                                <label for="paragraph3">Paragraph 3:</label>
+                                <input  type="text" id="paragraph3" name="paragraph3" rows="3" value="{{ thoughts.paragraph3}}"required>
+                            </div>
+                            <div class="form-group context-section-head">
+                                <label for="heading3">Heading3:</label>
+                                <input type="text" id="heading3" name="heading3" value="{{thoughts.heading3}}">
+                            </div>
+                            <div class="form-group context-section-para">
+                                <label for="paragraph4">Paragraph 4:</label>
+                                <input  type="text" id="paragraph4" name="paragraph4" rows="4" value="{{thoughts.paragraph4}}" >
+                            </div>
+                            <div class="form-group context-section-head">
+                                <label for="heading4">Heading4:</label>
+                                <input type="text" id="heading4" name="heading4" value="{{thoughts.heading4}}">
+                            </div>
+                            <div class="form-group context-section-para">
+                                <label for="paragraph5">Paragraph 5:</label>
+                                <input  type="text" id="paragraph5" name="paragraph5" rows="5" value="{{thoughts.paragraph5}}">
+                            </div>
+                            <div class="form-group context-section-head">
+                                <label for="heading5">Heading5:</label>
+                                <input type="text" id="heading5" name="heading5" value="{{thoughts.heading5}}">
+                            </div>
+                            <div class="form-group context-section-para">
+                                <label for="paragraph6">Paragraph 6:</label>
+                                <input  type="text" id="paragraph6" name="paragraph6" rows="6" value="{{thoughts.paragraph6}}">
+                            </div>
+                            <div class="form-group context-section-head">
+                                <label for="heading6">Heading6:</label>
+                                <input type="text" id="heading6" name="heading6" value="{{thoughts.heading6}}">
+                            </div>
+                            <div class="form-group context-section-para">
+                                <label for="paragraph7">Paragraph 7:</label>
+                                <input  type="text" id="paragraph7" name="paragraph7" rows="7" value="{{thoughts.paragraph7}}">
+                            </div>
+                            <div>
+                                <button class="btn btn-primary mt-5" type="submit">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock content %}

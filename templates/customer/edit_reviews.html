@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Reviews</title>
+</head>
+<style>
+    
+    .star-rating {
+        display: inline-block;
+        }
+        
+        .star-rating input {
+        display: none;
+        }
+        
+        .star-rating label {
+        float: right;
+        cursor: pointer;
+        color: #ccc;
+        font-size: 30px;
+        }
+        
+        .star-rating label:before {
+        content: '\2605'; / Unicode character for a star /
+        }
+        
+        .star-rating input:checked ~ label {
+        color: #ffdd00; / Yellow color for selected stars /
+        }
+    
+        .star-review {
+            display: inline-block;
+        }
+        
+        .star-review input {
+            display: none;
+        }
+        
+        .star-review label {
+            float: right;
+            cursor: pointer;
+            color: #ccc;
+            font-size: 20px;
+        }
+        
+        .star-review label:before {
+            content: '\2605'; / Unicode character for a star /
+        }
+        
+        .star-review input:checked ~ label {
+            color: #ffdd00; / Yellow color for selected stars /
+        }
+
+
+    / Add CSS styles for the saving review /
+    .star-rating {
+        display: inline-block;
+        }
+        
+        .star-rating input {
+        display: none;
+        }
+        
+        .star-rating label {
+        float: right;
+        cursor: pointer;
+        color: #ccc;
+        font-size: 30px;
+        }
+        
+        .star-rating label:before {
+        content: '\2605'; / Unicode character for a star /
+        }
+        
+        .star-rating input:checked ~ label {
+        color: #ffdd00; / Yellow color for selected stars /
+        }
+
+
+
+    .rating-title span{
+      font-size: 20px;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .rating-title-stars svg{
+      font-size: 20px;
+    }
+
+    .global-rating h5{
+      font-size: 18px;
+    
+    }
+</style>
+<body>
+    <div class="page-wrapper compact-wrapper dark-sidebar" id="pageWrapper">
+        <div class="page-body-wrapper">
+            <div class="page-body">
+                <div class="title-header">Edit Reviews</div>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                
+                <!-- Add the hidden input field for review_id -->
+                    <input type="hidden" name="review_id" value="{{ review.id }}">
+
+                      <div class="customer-section">
+                        <div class="customer-review-section">
+                          <div class="customer-details">
+                            <div class="review-star-name">
+                              <div class="user-name">
+
+                                <span>{{ reviews.name }}</span>
+                              </div>
+
+                              
+                            <!-- <div class="star-review">
+                                {% for i in "54321" %}
+                                <input type="radio" id="star{{ i }}_{{ reviews.id }}" name="review_star" value="{{ i }}" {% if review.review_star == i %}checked{% endif %}>
+                                <label for="star{{ i }}_{{ reviews.id }}"></label>
+                                {% endfor %}
+                            </div> -->
+                            
+                            
+                            </div>
+                            <div class="review-desc">
+                                <textarea class="form-control" name="review">{{ reviews.review }}</textarea>
+
+                            </div>
+                          </div>
+                          {% comment %} <div class="customer-order-image">
+                            <input type="text" class="form-control" value="{{ reviews.customer_image.url }}" readonly>
+
+                            {% comment %} <img src="" alt=""> 
+                          </div> {% endcomment %}
+                          <button class="btn btn-primary mt-5" type="submit">Update</button>
+                        </div>
+                      </div>
+                     
+                    </form>  
+        </div>
+    </div>
+</body>
+</html>
+{% endblock content %}

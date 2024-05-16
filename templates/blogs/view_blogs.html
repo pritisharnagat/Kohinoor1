@@ -1,0 +1,70 @@
+{% extends "admin_base.html" %}
+ 
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs Details</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<style>
+   
+</style>
+<body>
+    <div class="page-wrapper compact-wrapper dark-sidebar" id="pageWrapper">
+        <div class="page-body-wrapper">
+            <div class="page-body">
+                <div class="title-header"> <h5>Blogs</h5> </div>
+                <div class="card">
+                <div class="row m-1">
+                    <div class="col-sm-12 form-row">
+                        {% for i in blogs %}
+                        <div class="col-md-6">
+                            <div class="card blog-categority p-1">
+                                <a href="{% url 'blog_details' id=i.id %}" class="blog-img">
+                                    <!-- image -->
+                                {% if i.image1 %}
+                                    <img src="{{ i.image1.url }}" alt="{{ i.title }} Image" class="m-1 rounded" style="width: 98%;">
+                                {% endif %}
+                                </a>
+                                <div class="card-body p-2">
+                                    <a href="{% url 'blog_details' id=i.id %}">
+                                        <!-- title -->
+                                        <h2 class="card-title text-dark">{{ i.title }}</h2>
+                                    </a>
+                                    <div class="blog-profile">
+                                        <div class="image-name">
+                                            <!-- author name -->
+                                            <h6>Vishwaratna</h6> 
+                                            <!-- date -->
+                                            <h6>{{i.date_created}}</h6>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex ">
+                                        <a href="{% url 'edit_blog' i.id %}"><button class="btn btn-primary me-2">Edit</button></a>
+                                        <div>
+                                            <form method="post" action="{% url 'delete_blog' i.id %}">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
+{% endblock content %}

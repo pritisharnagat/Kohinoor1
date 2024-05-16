@@ -1,0 +1,315 @@
+{% extends "seller_base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    {% comment %} <link rel="stylesheet" href="{% static 'css/style.css' %}"> {% endcomment %}
+    <title>Add Product</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width:80%;
+            margin-top:110px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            float:right;
+            background-image: linear-gradient(to bottom left, #FFB3B3 5%, white 95%);
+        }
+        
+        .inputRow{
+            width:48%;
+        }
+        
+        .formbox {
+            display:flex;
+            flex-wrap:wrap;
+            gap: 15px;
+        }
+        
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-control, .form-select{
+            padding:10px;   
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            border: 1px solid #A6A6A6;
+            border-radius: 8px;
+        }
+        
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top:20px;
+            
+            
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        @media screen and (max-width: 700px){
+            .inputRow{
+                width:100%;
+            }  
+        }
+    </style>
+
+    <style>
+    #adddataModal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+    }
+
+    #adddataModal > div {
+        width: 50%;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    #closeModal {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
+</style>
+
+
+
+      <script>
+        function previewImage(event, previewId) {
+          var input = event.target;
+          var previewsContainer = document.getElementById(previewId);
+    
+          previewsContainer.innerHTML = '';
+      
+          if (input.files && input.files.length > 0) {
+            for (var i = 0; i < input.files.length; i++) {
+              var reader = new FileReader();
+              var filePreview = document.createElement(input.accept.includes("image") ? 'img' : 'video');
+              filePreview.style.maxWidth = '100%';
+              filePreview.style.maxHeight = '200px';
+              filePreview.style.margin = '5px';
+      
+              reader.onload = function (e) {
+                filePreview.src = e.target.result;
+                if (input.accept.includes("video")) {
+                  filePreview.controls = true;
+                  filePreview.loop = true;
+                }
+                previewsContainer.appendChild(filePreview);
+              };
+              reader.readAsDataURL(input.files[i]);
+            }
+          }
+        }
+      </script>
+      
+</head>
+<body>
+    <div class="container">
+         <form method="post" enctype="multipart/form-data" action="{% url 'seller_add_product' %}">
+            {% csrf_token %}
+            <div class="d-flex justify-content-between">
+                <input type="file" name="myfile" class="form-control w-50">
+                <button type="submit" class="btn btn-danger w-25" >Upload</button> 
+            </div>              
+            <p style="color:red;">The upload data should be in CSV format.</p>        
+        </form>
+
+        <button id="#adddataModal">
+            <i class="fa fa-plus"></i> Sample Sheet
+        </button>
+
+        <div id="adddataModal">
+
+            <div>
+                <div style="width:190%;height:60%;">
+                    <div>
+                        <h2>Import Sample Sheet </h2>
+                        <span id="closeModal" class="close text-end mb-2" onclick="closeModal();" style="font-size: 20px; color:#f1e5f1; cursor: pointer;">✕</span>
+
+                    </div>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <img src="{% static 'assets/images/sample_excel.png' %}" alt="Image description" width="550" height="400">
+                        <p style="color:red;">The upload data should be in CSV format.</p>
+                        <!-- <input type="file" name="myfile">
+                        <button type="submit">Upload</button> -->
+                        <button><a href="{% url 'excel_export_view' %}">Download Excel Format</a></button>
+                    </form>
+                    <span id="closeModal" class="close text-end mb-2" onclick="closeModal();" style="font-size: 20px; color:#00569d; cursor: pointer;">✕</span>
+                </div>
+                 
+            </div>
+        </div>
+
+        <script>
+            function closeModal() {
+                var modal = document.getElementById('adddataModal');
+                modal.style.display = "none";
+            }
+        </script>
+
+
+        <!-- <div class="fw-bold text-center">
+            <h2>Add Product</h2>
+        </div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="formbox">
+                <div class="inputRow">
+                    <label for="title">Title:</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Title" required>
+                </div>
+                <div class="inputRow">
+                    <label for="brand">Brand:</label>
+                    <input type="text" class="form-control" id="brand" name="brand" placeholder="Brand" required>
+                </div>
+                <div class="inputRow">
+                    <label for="category">Category:</label>
+                    <select id="category" class="form-select" name="category" required>
+                            <option>tshirt</option>
+                            <option>books</option>
+                            <option>watchs</option>
+                            <option>mugs</option>
+                    </select>
+                </div>
+                <div class="inputRow">
+                    <label for="product_type">Product Type:</label>
+                    <select id="product_type" class="form-select" name="product_type" required>
+                            <option>tshirt</option>
+                            <option>kurta</option>
+                            <option>books</option>
+                            <option>mugs</option>
+                    </select>
+                </div>
+                <div class="inputRow">
+                    <label for="product_image">Product Image:</label>
+                    <input type="file" class="form-control p-" id="product_image" name="product_image" accept="image/*" onchange="previewImage(event, 'prodpreview')">
+                    <div id="prodpreview" style="display: flex; flex-wrap: wrap;"></div>
+                </div>
+                <div class="inputRow">
+                    <label for="back_image">Back Image:</label>
+                    <input type="file" class="form-control" id="back_image" name="back_image" accept="image/*" onchange="previewImage(event, 'backpreview')">
+                    <div id="backpreview" style="display: flex; flex-wrap: wrap;"></div>
+                </div>
+                <div class="inputRow">
+                    <label for="left_image">Left Image:</label>
+                    <input type="file" class="form-control" id="left_image" name="left_image" accept="image/*" onchange="previewImage(event, 'leftpreview')">
+                    <div id="leftpreview" style="display: flex; flex-wrap: wrap;"></div>
+                </div>
+                <div class="inputRow">
+                    <label for="right_image">Right Image:</label>
+                    <input type="file" class="form-control" id="right_image" name="right_image" accept="image/*" onchange="previewImage(event, 'rightpreview')">
+                    <div id="rightpreview" style="display: flex; flex-wrap: wrap;"></div>
+                </div>
+                <div class="inputRow">
+                    <label class=" form-label form-label-title">Upload Video</label>
+                    <input type="file" class="form-control" name="product_video" accept="video/*" onchange="previewImage(event, 'videopreview')">
+                    <div id="videopreview" style="display: flex; flex-wrap: wrap;"></div>
+                </div>
+                <div class="inputRow">
+                    <label for="description">Description:</label>
+                    <textarea id="description" class="form-control" name="description" placeholder="Description" required></textarea>
+                </div>
+                <div class="inputRow">
+                    <label for="selling_price">Selling Price:</label>
+                    <input type="number" class="form-control" id="selling_price" name="selling_price" placeholder="Selling Price" required oninput="calculateDiscount()">
+                </div>
+                <div class="inputRow">
+                    <label for="discount_type">Discount Type:</label>
+                    <select class="form-control" id="discount_type" name="discount_type" required oninput="calculateDiscount()">
+                        <option value="rupees">Rupees</option>
+                        <option value="percent">Percent</option>
+                    </select>
+                </div>
+                <div class="inputRow">
+                    <label for="discount_price">Discount Price:</label>
+                    <input type="number" class="form-control" id="discount_price" name="discount_price" placeholder="Discount Price" required oninput="calculateDiscount()">
+                </div>
+                
+                <div class="inputRow">
+                    <label for="discount_price">Actual Price:</label>
+                    <input type="number" class="form-control" id="actual_price" name="actual_price" placeholder="Actual Price" required readonly>
+                </div>
+            </div>
+        </div>
+            
+            <div class="text-center">
+                <button type="submit">Submit</button>
+             </div>
+        </form>
+    </div>
+ -->
+    <script>
+        function calculateDiscount() {
+            var sellingPrice = parseFloat(document.getElementById('selling_price').value);
+            var discountPrice = parseFloat(document.getElementById('discount_price').value);
+            var discountType = document.getElementById('discount_type').value;
+            var actualPrice;
+    
+            if (discountType === 'rupees') {
+                actualPrice = sellingPrice - discountPrice;
+            } else if (discountType === 'percent') {
+                var discountPercentage = discountPrice; // Assuming discountPrice directly represents percentage
+                actualPrice =  (sellingPrice * (discountPercentage / 100));
+            }
+    
+            document.getElementById('actual_price').value = actualPrice.toFixed(2);
+        }
+    </script>
+    
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var modal = document.getElementById('adddataModal');
+        var btn = document.getElementById('#adddataModal');
+        var closeBtn = document.getElementById('closeModal');
+
+        btn.onclick = function () {
+            modal.style.display = "flex";
+        }
+
+        closeBtn.onclick = function () {
+            modal.style.display = "flex";
+        }
+
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    });
+</script>
+
+
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,136 @@
+{% extends "admin_base.html" %}
+  {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Details</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .social i{
+            padding: 8px 13px 8px 13px;
+            height: 40px;
+            width: 40px;
+            border: 1px solid gray;
+            border-radius: 50%;
+            margin: 8px;
+            font-size: 20px;
+            align-items: center; 
+        }
+        i::before{
+            text-align: center;
+        }
+        .social i:hover{
+            background-color: #dcdcdc;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper compact-wrapper dark-sidebar" id="pageWrapper">
+        <div class="page-body-wrapper">
+            <div class="page-body">
+                <div class="title-header">  </div>
+                    <div class="card">
+                    <div class="row m-1">
+                        <div class="blog-details">
+                            <div class="blog-image-box">
+                                <img src="{{ blog.image1.url }}" alt="{{ blog.title }}" class="card-img-top rounded" style="width: 90%;">
+                                <div class="blog-title">
+                                    <div>
+                                        <div class="social-media media-center d-flex m-1">
+                                            <a href="https://www.facebook.com/" target="new">
+                                                <div class="social">
+                                                    <i class="fab fa-facebook-f" title="facebook"></i>
+                                                </div>
+                                            </a>
+                                            <a href="https://twitter.com/" target="new">
+                                                <div class="social">
+                                                    <i class="fab fa-twitter ps-2" title="twitter"></i>
+                                                </div>
+                                            </a>
+                                            <a href="https://in.pinterest.com/" target="new">
+                                                <div class="social">
+                                                    <i class="fab fa-pinterest-p text-danger" title="pinterest"></i>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="blog-detail-contain">
+                            <span class="">{{blog.blog_created_date}}</span>
+                            <h1>{{blog.title}}</h1>
+                            <br>
+                            {% if blog.heading1 %}<h2 class="card-title">1.{{blog.heading1}} :</h2> {% endif %}
+                            {% if blog.content1 %}<p class="">{{blog.content1}}</p> <br>{% endif %}
+
+                            {% if blog.heading2 %}<h2 class="card-title">2. {{blog.heading2}} :</h2>{% endif %}
+                            {% if blog.content2 %}<p class="">{{blog.content2}}</p>{% endif %}
+                            <br>
+                            <p class="">
+                            </p> <br>
+                            {% if blog.heading3 %}<h2 class="card-title">3. {{blog.heading3}} :</h2>{% endif %}
+                            {% if blog.content3 %}<p class="">{{blog.content3}}</p>{% endif %}
+                            <br>
+                            <p class="">
+                            </p> <br>
+                            {% if blog.heading4 %}<h2 class="card-title">4. {{blog.heading4}} :</h2>{% endif %}
+                            {% if blog.content4 %}<p class="">{{blog.content4}}</p>{% endif %}
+                            <br>
+                            <p class="">
+                            </p><br>
+                            <p class="">
+                            </p> <br>
+                            {% if blog.heading5 %}<h2 class="card-title">5. {{blog.heading5}} :</h2>{% endif %}
+                            {% if blog.content5 %}<p class="">{{blog.content5}}</p>{% endif %}
+                            <br>
+                            </p><br>
+                            {% if blog.heading6 %}<h2 class="card-title">6. {{blog.heading6}} :</h2>{% endif %}
+                            {% if blog.content6 %}<p class="">{{blog.content6}}</p>{% endif %}
+                            <br>
+                            {% if blog.heading7 %}<h2 class="card-title">7. {{blog.heading7}} :</h2>{% endif %}
+                            {% if blog.content7 %}<p class="">{{blog.content7}}</p>{% endif %}
+                            <br>
+                            {% if blog.heading8 %}<h2 class="card-title">8. {{blog.heading8}} :</h2>{% endif %}
+                            {% if blog.content8 %}<p class="">{{blog.content8}}</p>{% endif %}
+                            <br>
+                            {% if blog.heading9 %}<h2 class="card-title">9. {{blog.heading9}} :</h2>{% endif %}
+                            {% if blog.content9 %}<p class="">{{blog.content9}}</p>{% endif %}
+                            <br>
+                            {% if blog.heading10 %}<h2 class="card-title">10. {{blog.heading10}} :</h2>{% endif %}
+                            {% if blog.content10 %}<p class="">{{blog.content10}}</p>{% endif %}
+                        </div>
+                        <div class="blog-profile box-center mb-lg-5 mb-4">
+                            {% if blog.image2 %}
+                            <div class="image-profile">
+                                <img src="{{ blog.image2.url }}"
+                                    class="img-fluid blur-up lazyload" alt=""> 
+                            </div>
+                            {% endif %}
+
+                            <div class="image-name text-weight">
+                                <h3>Vishwaratna</h3>
+                                <h6>{{blog.date_created}}</h6>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-U7UqfsqMz9AUc82s9XTdP6czF0B/u5dz0IuoKb5FZKcb2s4f+QojEcq5fiWNaUt4" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>
+{% endblock %}

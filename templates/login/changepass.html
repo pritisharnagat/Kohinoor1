@@ -1,0 +1,130 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'assets1\images\logos\vr_main.png' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'assets1\images\logos\vr_main.png' %}" type="image/x-icon">
+    <title>Customer Changepassword</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .registration-container {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 4px;
+            margin-bottom: 12px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="registration-container">
+        <h2>Change Password</h2>
+        <form action="#" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Old Password</label>
+                <input type="password" class="form-control"  id="password" name="password"  required>
+                
+            </div>
+            <div class="form-group">
+                <label>New Password</label>
+                <input type="password" class="form-control" id="new_pass1 " name="new_pass1" required>
+            </div>
+            <div class="form-group">
+                <label>Confirm Password</label>
+                <input type="password" class="form-control" id="new_pass2" name="new_pass2" required>
+            </div>
+            {% if message %}
+                    <p>{{ message }}</p>
+                {% endif %}
+                
+                
+                {% if error_message %}
+                    <p>{{ error_message }}</p>
+                {% endif %}
+            
+                 {% if request.user.is_authenticated and request.user.is_admin %}
+            <div class="submit-section">
+                
+              
+                <button type="submit" class="btn btn-primary submit-btn" href="/admin_login/"  >Save Changes</button>
+            </div>
+            
+            
+            {% endif %}
+            {% if request.user.is_authenticated and request.user.is_seller %}
+            <div class="submit-section">
+                
+                <button type="submit" class="btn btn-primary submit-btn" href="/Seller_login/"  >Save Changes</button>
+            </div>
+            
+            
+            {% endif %} 
+            {% if request.user.is_authenticated and request.user.is_customer %}
+            <div class="submit-section">
+                {% comment %} <button type="submit" class="btn btn-primary submit-btn" href="/astrologer-login/"  >Save Changes</button>
+            </div> {% endcomment %}
+              
+                <button type="submit" class="btn btn-primary submit-btn" href="/customer_login/"  >Save Changes</button>
+            </div>
+            
+            
+            {% endif %}
+       
+
+        </form>
+    </div>
+
+</body>
+</html>
+
+
+
+
+

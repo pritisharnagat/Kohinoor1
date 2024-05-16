@@ -1,0 +1,95 @@
+{% extends "admin_base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collection Thoughts</title>
+    <style>
+        / Your CSS styles here /
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+                .table-responsive {
+            overflow-x: auto; /* Enable horizontal scrolling */
+            width: 100%; /* Adjust this width based on your layout */
+            margin-bottom: 15px; /* Optional: Add margin to the bottom */
+            }
+            .table {
+                min-width: 300px; /* Set a minimum width for the table */
+                min-height: 400px;
+
+                
+            }
+            .table td {
+                min-width: 300px;
+                min-height: 100%;
+                padding: 8px;
+                white-space: nowrap;
+                text-wrap: wrap;
+                text-align: justify;
+            }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper compact-wrapper dark-sidebar" id="pageWrapper">
+        <div class="page-body-wrapper">
+            <div class="page-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Subcategory</th>
+                                <th>Heading</th>
+                                <th>Paragraph 1</th>
+                                <th>Heading 1</th>
+                                <th>Paragraph 2</th>
+                                <th>Heading 2</th>
+                                <th>Paragraph 3</th>
+                                <th>Heading 3</th>
+                                <th>Paragraph 4</th>
+                                <th>Heading 4</th>
+                                <th>Paragraph 5</th>
+                                <th>Edit</th>
+                                <th>Delete</th> 
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for thought in thoughts %}
+                            <tr>
+                                <td>{{ thought.subcategory }}</td>
+                                <td>{{ thought.heading }}</td>
+                                <td>{{ thought.paragraph1 }}</td>
+                                <td>{{ thought.heading1 }}</td>
+                                <td>{{ thought.paragraph2 }}</td>
+                                <td>{{ thought.heading2 }}</td>
+                                <td>{{ thought.paragraph3 }}</td>
+                                <td>{{ thought.heading3 }}</td>
+                                <td>{{ thought.paragraph4 }}</td>
+                                <td>{{ thought.heading4 }}</td>
+                                <td>{{ thought.paragraph5 }}</td>
+                                <td><a href="/edit_collections/{{ thought.id }}/" class="btn btn-primary">Edit</a></td>
+                                <td><a href="/delete_collections/{{ thought.id }}/" class="btn btn-danger">Delete</a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

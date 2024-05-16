@@ -1,0 +1,81 @@
+<!-- update_product.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Product</title>
+</head>
+<body>
+    <h2>Update Product</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title" value="{{ product.title }}"><br>
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description">{{ product.description }}</textarea><br>
+        <label for="brand">Brand:</label><br>
+        <input type="text" id="brand" name="brand" value="{{ product.brand }}"><br>
+        <label for="category">Category:</label><br>
+        <input type="text" id="category" name="category" value="{{ product.category }}"><br>
+        <label for="product_type">Product Type:</label><br>
+        <input type="text" id="product_type" name="product_type" value="{{ product.product_type }}"><br>
+        <label for="selling_price">Selling Price:</label><br>
+        <input type="text" id="selling_price" name="selling_price" value="{{ product.selling_price }}"><br>
+        <label for="discount_price">Discount Price:</label><br>
+        <input type="text" id="discount_price" name="discount_price" value="{{ product.discount_price }}"><br>
+
+        
+        <div class="inputRow">
+            <label for="new_product_image">Product Image:</label>
+            <input type="file" class="form-control p-" id="new_product_image" name="new_product_image" accept="image/*" onchange="previewImage(event, 'prodpreview')">
+            <div id="prodpreview" style="display: flex; flex-wrap: wrap;"></div>
+          </div>
+          <div class="inputRow">
+            <label for="new_back_image">Back Image:</label>
+            <input type="file" class="form-control" id="new_back_image" name="new_back_image" accept="image/*" onchange="previewImage(event, 'backpreview')">
+            <div id="backpreview" style="display: flex; flex-wrap: wrap;"></div>
+          </div>
+          <div class="inputRow">
+            <label for="new_left_image">Left Image:</label>
+            <input type="file" class="form-control" id="new_left_image" name="new_left_image" accept="image/*" onchange="previewImage(event, 'leftpreview')">
+            <div id="leftpreview" style="display: flex; flex-wrap: wrap;"></div>
+          </div>
+          <div class="inputRow">
+            <label for="new_right_image">Right Image:</label>
+            <input type="file" class="form-control" id="new_right_image" name="new_right_image" accept="image/*" onchange="previewImage(event, 'rightpreview')">
+            <div id="rightpreview" style="display: flex; flex-wrap: wrap;"></div>
+          </div>
+        <button type="submit">Update</button>
+    </form>
+    <script>
+        function previewImage(event, previewId) {
+          var input = event.target;
+          var previewsContainer = document.getElementById(previewId);
+    
+          previewsContainer.innerHTML = '';
+      
+          if (input.files && input.files.length > 0) {
+            for (var i = 0; i < input.files.length; i++) {
+              var reader = new FileReader();
+              var filePreview = document.createElement(input.accept.includes("image") ? 'img' : 'video');
+              filePreview.style.maxWidth = '100%';
+              filePreview.style.maxHeight = '200px';
+              filePreview.style.margin = '5px';
+      
+              reader.onload = function (e) {
+                filePreview.src = e.target.result;
+                if (input.accept.includes("video")) {
+                  filePreview.controls = true;
+                  filePreview.loop = true;
+                }
+                previewsContainer.appendChild(filePreview);
+              };
+              reader.readAsDataURL(input.files[i]);
+            }
+          }
+        }
+      </script>
+</body>
+</html>

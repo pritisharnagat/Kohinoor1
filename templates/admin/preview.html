@@ -1,0 +1,138 @@
+{% extends "admin_base.html" %}
+  {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Preview</title>
+    <style>
+       
+        .product-image {
+
+            width: 300px;
+            height: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 10px;
+        }
+        p{
+            font-size: 18px;
+            margin-left: 15px;
+            padding: 0px;
+        }
+
+        .product-context{
+            display: flex;
+            justify-content: start;
+            align-items: start;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            margin: 20px;
+        }
+
+        .product-context span{
+            font-size: 15px;
+            padding-right: 10px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper compact-wrapper dark-sidebar" id="pageWrapper">
+        <div class="page-body-wrapper">
+          <div class="page-body">
+            <div class="title-header"> <h5>Product Preview</h5> </div>
+            <div class="card p-2">
+                <div class="row p-2" >
+                    <div class="col-sm-12">
+                        <div>
+
+                            <div class="product-context">
+                                <strong><span>Product Title:</span></strong>
+                                <span >{{ product.title }}</span>
+                            </div>
+
+                            
+                            <div class="product-context">
+                                <strong><span>Description:</span></strong>
+                                <span>{{ product.description }}</span>
+                            </div>
+
+                            
+                            <div class="product-context">
+                                <strong><span>Brand:</span></strong>
+                                <span>{{ product.brand }}</span>
+                            </div>
+
+
+                            
+                            <div class="product-context">
+                                <strong><span>Category:</span></strong>
+                                <span>{{ product.category }}</span>
+                            </div>
+
+                            <div class="product-context">
+                                <strong><span>Product Type:</span></strong>
+                                <span>{{ product.product_type }}</span>
+                            </div>
+                           
+                                <!-- <p><b>Description:</b> {{ product.description }}</p>
+                                <p><b>Brand:</b> {{ product.brand }}</p>
+                                <p><b>Category: </b>{{ product.category }}</p>
+                                <p><b>Product Type:</b> {{ product.product_type }}</p>
+                             -->
+
+                             <div class="product-context">
+                                <strong><span>Selling Price:</span></strong>
+                                <span>Rs {{ product.selling_price }}</span>
+                            </div>
+
+                            <div class="product-context">
+                                <strong><span>Selling Price:</span></strong>
+                                <span>Rs {{ product.discount_price }}</span>
+                            </div>
+
+
+                            <div class="product-context">
+                                <strong><span>Product images:</span></strong>
+                                
+                            </div>
+
+
+                            <!-- Check if any image is available -->
+                            {% if product.product_image or product.back_image or product.left_image or product.right_image %}
+                                <!-- Display all uploaded images -->
+                                {% if product.product_image %}
+                                    <img src="{{ product.product_image.url }}" alt="Product Image" class="product-image">
+                                {% endif %}
+                                {% if product.back_image %}
+                                    <img src="{{ product.back_image.url }}" alt="Back Image" class="product-image" >
+                                {% endif %}
+                                {% if product.left_image %}
+                                    <img src="{{ product.left_image.url }}" alt="Left Image" class="product-image" >
+                                {% endif %}
+                                {% if product.right_image %}
+                                    <img src="{{ product.right_image.url }}" alt="Right Image" class="product-image">
+                                {% endif %}
+                            {% else %}
+                                <p>No images available</p>
+                            {% endif %}
+                            
+                            <!-- You can add more logic here for displaying other images -->
+
+
+                            <!-- <p><b>Selling Price: </b> Rs {{ product.selling_price }}</p>
+                            <p><b>Selling Price:</b> Rs {{ product.discount_price }}</p> -->
+                            <!-- Add more fields as needed -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+                    
+</body>
+</html>
+{% endblock %}  

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approve Seller Product</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        /* Add spacing between table cells and header cells */
+        table {
+            border-collapse: separate;
+            border-spacing: 10px; /* Adjust the value as needed */
+        }
+
+        th, td {
+            padding: 10px; /* Adjust the value as needed */
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h3>Approve Products</h3>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Seller</th>
+                    <th>title</th>
+                    <th>description</th>
+                    <th>brand</th>
+                    <th>category</th>
+                    <th>product_type</th>
+                    <th>product_image</th>
+                    <th>back_image</th>
+                    <th>left_image</th>
+                    <th>right_image</th>
+                    <th>product_video</th>
+                    <th>product_video_url</th>
+                    <th>selling_price</th>
+                    <th>discount_price</th>
+                    <th>product_date</th> 
+                    {% comment %} <th>URL</th>  {% endcomment %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in product_details %} 
+                <tr>
+                    <td>{{ product.user.username }}</td>
+                    <td>{{ product.title }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.brand }}</td>
+                    <td>{{ product.category }}</td>
+                    <td>{{ product.product_type }}</td>
+                    
+                    <td>
+                        {% if product.product_image %}
+                            <img src="{{ product.product_image.url }}" alt="Product Image" width="80" height="70">
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if product.back_image %}
+                            <img src="{{ product.back_image.url }}" alt="Product Image" width="80" height="70">
+                        {% endif %}
+                    </td> 
+                    <td>
+                        {% if product.left_image %}
+                            <img src="{{ product.left_image.url }}" alt="Left Image" width="80" height="70">
+                        {% endif %}
+                    </td> 
+                    <td>
+                        {% if product.right_image %}
+                            <img src="{{ product.right_image.url }}" alt="Right Image" width="80" height="70">
+                        {% endif %}
+                    </td> 
+                    <td>{{ product.product_video }}</td> 
+                    <td>{{ product.product_video_url }}</td> 
+                    <td>{{ product.selling_price }}</td> 
+                    <td>{{ product.discount_price }}</td> 
+                    <td>{{ product.product_date }}</td> 
+                    {% comment %} <td>{{ product.right_image }}</td>  {% endcomment %}
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-rs4/wEEjXhz6W5xupJNCiB/T8XPboFOEvVKDO9Ag5zI4MawUO+KVeqp0YHj5bEXl" crossorigin="anonymous"></script>
+
+    
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>customer queries</title>
+    
+</head>
+<body>
+
+    <h3>customer queries</h3>
+
+    
+    <div>
+        <p>query subject : {{customer_query.subject}} </p>
+        <p>query : {{customer_query.message}} </p>
+    </div>
+
+    <div>
+        <h2>Answer:</h2>
+        <form method="post" action="">
+            {% csrf_token %}
+            
+            
+            <input type="hidden" name="query_id" value="{{ customer_query.id }}">
+            
+            <label for="answer">Your Answer:</label>
+            <textarea id="answer" name="answer" rows="4" cols="50" required></textarea>
+            
+            <button type="submit">Submit Answer</button>
+        </form>
+    </div>
+</body>
+</html>

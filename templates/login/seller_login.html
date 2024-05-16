@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="{% static 'assets1\images\logos\vr_main.png' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'assets1\images\logos\vr_main.png' %}" type="image/x-icon">
+    <title>Seller LogIn</title>
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- bootstrap scss -->
+    <link
+      id="rtl-link"
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/bootstrap.css' %}"
+    />
+
+    <!-- font-awesome scss -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets\css\font-awesome.css' %}"
+    />
+
+    <!-- feather icon scss -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/feather-icon.css' %}"
+    />
+
+    <!-- animation scss -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/animate.css' %}"
+    />
+
+    <!-- slick scss -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/slick/slick.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/slick/slick-theme.css' %}"
+    />
+
+    <!-- Theme css -->
+    <link
+      id="color-link"
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/landing-page.css' %}"
+    />
+
+    <style>
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
+      
+      body {
+        margin: 0;
+        padding: 0;
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        
+      }
+
+      .customer_register {
+        width: 100%;
+        height: 100%;
+      }
+
+      .from-left-section {
+        width: 100%;
+        border: 2px solid rgb(255, 255, 255);
+        
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      .vr-logo img {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        width: 250px;
+        padding: 20px;
+      }
+
+      .left-section-animation {
+        
+        display: -webkit-box;
+        
+        display: -ms-flexbox;
+        
+        display: flex;
+        width: 450px;
+        /* padding-top: 70px; */
+        /* margin-top: 149px; */
+        margin-left: 84px;
+        height: 450px;
+        margin-top: 50px;
+      }
+
+      .form-right-section {
+        
+        padding-top: 0;
+
+       
+        
+        padding-right: 60px;
+        
+      }
+
+
+      .form-right-section h1{
+        font-size: 50px;
+      }
+
+      .submit-btn button{
+        width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        padding: 15px;
+        border-radius: 15px;
+        background-color: transparent;
+        color: blue;
+        -webkit-transition: all 0.2s ease-in;
+        -o-transition: all 0.2s ease-in;
+        transition: all 0.2s ease-in;
+        border: 2px solid blue;
+      }
+
+      .submit-btn button:hover{
+        background-color: blue;
+        color: white;
+        
+      }
+
+      .social-login{
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        
+      }
+
+      .social-login img{
+        width: 30px;
+        margin-left: 30px;
+        margin-right: 30px;
+        cursor: pointer;
+        margin-top: 0;
+      }
+
+
+      .form-right-section input:hover{
+        background-color: rgb(255, 189, 189);
+        -webkit-transition: all 0.2s ease-in;
+        -o-transition: all 0.2s ease-in;
+        transition: all 0.2s ease-in;
+      }
+
+      @media screen and (max-width: 1100px) {
+        .left-section-animation {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          width: 350px;
+          /* padding-top: 70px; */
+          /* margin-top: 149px; */
+          margin-left: 20px;
+          height: 350px;
+          
+        }
+
+        
+      }
+
+      @media screen and (max-width: 400px) {
+        .left-section-animation {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          width: 270px;
+          /* padding-top: 70px; */
+          /* margin-top: 149px; */
+          margin-left: 10px;
+          height: 270px;
+        }
+
+        .form-right-section {
+          padding: 0px;
+        }
+
+        .form-right-section h1{
+          font-size: 30px;
+          text-align: center;
+        }
+        .vr-logo img {
+            display: flex;
+            width: 150px;
+            padding: 20px;
+          }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid customer_register">
+      <div class="row d-flex" style="height: 100vh;">
+        <div class="col-md-5">
+          <div class="conatiner-fluid from-left-section">
+            <div class="vr-logo">
+              <img
+                src="{% static 'assets1\images\logos\vr logo.png' %}"
+                alt="Vishwa ratna logo"
+              />
+            </div>
+            <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+
+            <dotlottie-player class="left-section-animation" src="https://lottie.host/57550523-00b2-45bf-ac2b-137d55cc4456/soL6tMj9Ti.json" background="transparent" speed="2"  loop autoplay></dotlottie-player>
+          </div>
+        </div>
+        <div class="col-md-7" style=" background: url('/static/bg-images/customer/customer_register_bg.png') no-repeat fixed; ">
+          <div class="container-fluid form-right-section">
+            <div class="col-md-12">
+              <h1>
+                <span style="color: red">B</span>ECOME SELLER
+              </h1>
+            </div>
+
+            <div class="col-md-12">
+              <form action="#" method="post">
+                {% csrf_token %}
+
+                <div class="row d-flex">
+
+
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label
+                              class="input-group mb-2"
+                              for="username"
+                              style="
+                                font-size: 15px;
+                                font-weight: 700;
+                                padding-left: 10px;
+                              "
+                              >EMAIL<Address></Address></label
+                            >
+                            <input
+                              class="mb-2 col-md-12"
+                              style="
+                                height: 45px;
+                                width:100%;
+                                border-radius: 15px;
+                                padding-left: 20px;
+                              "
+                              type="text"
+                              id="email"
+                              name="email"
+                              placeholder="john.doe@example.com"
+                              required
+                            />
+                          </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label
+                              class="input-group mb-2"
+                              for="password"
+                              style="
+                                font-size: 15px;
+                                font-weight: 700;
+                                padding-left: 10px;
+                              "
+                              >PASSWORD</label
+                            >
+                            <input
+                              class="mb-3 col-md-12"
+                              style="
+                                height: 45px;
+                                width:100%;
+                                border-radius: 15px;
+                                padding-left: 20px;
+                              "
+                              type="password"
+                              id="password"
+                              name="password"
+                              placeholder="Enter your password"
+                              required
+                            />
+                          </div>
+                    </div>
+
+                    <div class="col-md-12" style="display: flex; justify-content:space-between">
+                        <a class="m-2" style="color: red; text-decoration:none" href="/password_reset/" >Forgot Password?</a></span>
+                        <label class="m-2" for="remember">
+                            <input type="checkbox" id="remember" name="remember"> Remember Me
+                        </label>
+                      </div>
+
+                  <div class="col-md-12 text-center submit-btn">
+                    <button class="btn-primary" value="login" type="submit">Log In</button>
+                  </div>
+
+                  <div class="col-md-12 mt-3" style="display: flex; justify-content:center">
+                    <p>Don't have an Account?<a style="color: red; text-decoration:none" href="/seller_registeration/">  Register Now</a></span></p>
+                  </div>
+
+                  <!-- <div class="col-md-12 text-center p-2">
+                    <p>
+                      or
+                    </p>
+                  </div> -->
+
+                  <!-- <div class="col-md-12 social-login mb-4">
+                      <img src="{% static 'assets1\images\logos\search.png' %}" alt="">
+                      <img src="{% static 'assets1\images\logos\facebook.png' %}" alt="">
+                  </div> -->
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!-- <div class="col-md-12 mb-3 mt-3" >
+  <div class="btn" style="font-size: 20px;" >Register</div>
+</div> -->

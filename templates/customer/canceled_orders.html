@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canceled Orders</title>
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- bootstrap css -->
+    <link
+      id="rtl-link"
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/bootstrap.css"
+    />
+
+    <!-- font-awesome css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/font-awesome.css"
+    />
+
+    <!-- feather icon css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/feather-icon.css"
+    />
+
+    <!-- animation css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/animate.css"
+    />
+
+    <!-- slick css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/slick/slick-theme.css"
+    />
+
+    <!-- Theme css -->
+    <link
+      id="color-link"
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/demo2.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- icons -->
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Theme css -->
+    <link
+      id="color-link"
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/demo2.css' %}"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        width: 100%;
+        height: 100%;
+      }
+
+      .orders {
+        width: 100%;
+        height: 100%;
+
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .orders-title span {
+        font-size: 30px;
+        font-weight: 500;
+        padding: 30px;
+      }
+
+      .orders-count {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .orders-count span {
+        font-size: 17px;
+      }
+
+      .cancel-orders-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .cancel-orders-btn button {
+        font-size: 17px;
+        padding: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin: 20px;
+        background-color: #ff2424;
+        border: none;
+        border-radius: 25px;
+        color: white;
+        transition: all 0.2s ease-in;
+      }
+
+      .cancel-orders-btn button:hover {
+        transform: translateY(3px);
+      }
+
+      .orders-section {
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .single-order-section {
+        padding: 0;
+        border-radius: 20px;
+        background-color: white;
+        height: auto;
+        width: 25rem;
+        margin: 15px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 20px;
+        transition: all 0.4s ease-out;
+        border: 1.5px solid rgb(198, 198, 198);
+      }
+
+      .single-order-section:hover {
+        border: 1.5px solid rgb(80, 80, 80);
+        transform: translateY(-3px);
+      }
+
+      .product-details {
+        display: flex;
+        justify-content: start;
+        align-items: flex-start;
+        flex-direction: column;
+        flex-wrap: wrap;
+        
+      }
+
+      .product-img {
+        width: 130px;
+        height: 130px;
+        border-radius: 15px;
+        margin-bottom: 15px;
+      }
+
+      .product-img img {
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+      }
+
+      .product-info {
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: column;
+        flex-wrap: wrap;
+        padding: 0px;
+      }
+
+      .product-info-sub {
+        display: flex;
+        justify-content: start;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .product-info-sub-label span {
+        font-size: 13px;
+        margin-right: 0px;
+        text-transform: uppercase;
+        padding-right: 5px;
+      }
+
+      .product-info-sub-value span {
+        font-size: 13px;
+      }
+
+      .action-btns {
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 100%;
+      }
+
+      .action-btn-sub {
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .track-rder-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+      }
+
+      .track-order-btn button {
+        font-size: 15px;
+        margin: 10px;
+
+        padding: 15px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        background-color: white;
+        border: 1.5px solid rgb(131, 131, 131);
+        color: black;
+        
+        border-radius: 10px;
+        transition: all 0.3s ease-out;
+      }
+
+      .track-order-btn button i {
+        font-size: 14px;
+
+        padding-left: 10px;
+      }
+
+      .track-order-btn button:hover {
+        transform: translateY(-2px);
+        background-color: black;
+        color: white;
+        border: 1.5px solid rgba(131, 131, 131, 0);
+      }
+
+      .cnacel-order-btn button {
+        font-size: 15px;
+        margin: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+        padding: 15px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        background-color: #d24f4f;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        transition: all 0.2s ease-in;
+      }
+
+      .cnacel-order-btn button:hover {
+        transform: translateY(2px);
+        background-color: #ec6767;
+      }
+
+      .return-order-btn button {
+        font-size: 15px;
+        margin: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+        padding: 15px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        background-color: #4f91d2;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        transition: all 0.2s ease-in;
+      }
+
+      .return-order-btn button i {
+        font-size: 14px;
+
+        padding-left: 5px;
+      }
+
+      .return-order-btn button:hover {
+        transform: translateY(2px);
+        background-color: #67bdec;
+      }
+
+      .animation {
+        width: 100%;
+        /* height: 100vh; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        margin-top: 55px;
+      }
+
+      .no-order-animation {
+        background-color: white;
+        width: fit-content;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        width: 350px;
+        height: fit-content;
+        padding: 30px;
+        border-radius: 30px;
+      }
+
+      .lottie-animation {
+        display: flex;
+        justify-content: center;
+
+        width: 250px;
+        height: 250px;
+      }
+
+      .no-orders-message {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+      }
+
+      .no-orders-message span {
+        font-size: 20px;
+      }
+
+      .back-to-home-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .back-to-home-btn button {
+        font-size: 17px;
+        padding: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin: 20px;
+        background-color: #ff2424;
+        border: none;
+        border-radius: 25px;
+        color: white;
+        transition: all 0.2s ease-in;
+      }
+
+      .back-to-home-btn button i {
+        padding-left: 10px;
+        padding-right: 5px;
+      }
+
+      .back-to-home-btn button:hover {
+        transform: translateY(3px);
+      }
+
+      @media screen and (max-width: 1000px) {
+        .single-order-section {
+          padding: 0;
+
+          border-radius: 20px;
+          background-color: white;
+          width: 100%;
+          height: auto;
+          margin: 15px;
+
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-direction: row;
+          flex-wrap: wrap;
+          padding: 20px;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        .single-order-section {
+          padding: 0;
+
+          border-radius: 20px;
+          background-color: white;
+          width: 100%;
+          height: auto;
+          margin: 15px;
+
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-direction: row;
+          flex-wrap: wrap;
+          padding: 20px;
+        }
+      }
+
+      @media screen and (max-width: 450px) {
+        .product-details {
+          display: flex;
+          justify-content: start;
+          align-items: start;
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+
+        .product-img {
+          width: 70px;
+          height: auto;
+          margin: 0px;
+          margin-top: 30px;
+          /* margin-right: 0; */
+        }
+        .no-order-animation {
+          background-color: white;
+          width: fit-content;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          width: 270px;
+          height: fit-content;
+          padding: 30px;
+          border-radius: 20px;
+        }
+
+        .lottie-animation {
+          display: flex;
+          justify-content: center;
+
+          width: 100px;
+          height: 100px;
+        }
+
+        .no-orders-message span {
+          font-size: 15px;
+        }
+
+        .back-to-home-btn button {
+          font-size: 10px;
+        }
+
+        .animation {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: baseline;
+          margin-top: 70px;
+          padding: 0;
+        }
+
+        .cancel-orders-btn button {
+          font-size: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid orders">
+      <div class="header">
+        <div class="orders-title">
+          <span>Canceled Orders</span>
+        </div>
+        <!-- <div class="cancel-orders-btn">
+          <a href="/canceled_orders/">
+            <button>Canceled Orders</button>
+          </a>
+        </div> -->
+      </div>
+
+      <div class="orders-count">
+        <span
+          >You have Canceled
+          <strong>( {{ canceled_orders|length }} )</strong> order</span
+        >
+      </div>
+      <div class="orders-section">
+        {% for i in canceled_orders %}
+        <div class="single-order-section">
+          <div class="product-details">
+            <div class="product-img text-center">
+              <img
+                src="{{i.product.product_image.url}}"
+                alt="{{i.product.title}}"
+              />
+            </div>
+            <div class="product-info">
+              <div class="product-info-sub">
+                <div class="product-info-sub-value">
+                  <span >{{i.product.title}}</span>
+                </div>
+              </div>
+              <div class="product-info-sub">
+                <div class="product-info-sub-label">
+                  <span>Quantity: </span>
+                </div>
+                <div class="product-info-sub-value">
+                  <span>1</span>
+                </div>
+              </div>
+              <div class="product-info-sub">
+                <div class="product-info-sub-label">
+                  <span>Size: </span>
+                </div>
+                <div class="product-info-sub-value">
+                  <span>XXL</span>
+                </div>
+              </div>
+
+              <div class="product-info-sub">
+                <div class="product-info-sub-value">
+                  <span
+                    style="
+                      font-family: Arial, Helvetica, sans-serif;
+                      font-weight: bold;
+                    "
+                    >&#8377; {{i.total_cost}}</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-info-sub">
+                <div class="product-info-sub-label">
+                  <span>Order ID:</span>
+                </div>
+                <div class="product-info-sub-value">
+                  <span>{{i.order_id}}</span>
+                </div>
+              </div>
+              <div class="product-info-sub">
+                <div class="product-info-sub-label">
+                  <span>Invoice No.: </span>
+                </div>
+                <div class="product-info-sub-value">
+                  <span>{{i.invoice_no}}</span>
+                </div>
+              </div>
+              <div class="product-info-sub">
+                <div class="product-info-sub-label">
+                  <span>order placed on: </span>
+                </div>
+                <div class="product-info-sub-value">
+                  <span>{{i.Order_date}}</span>
+                </div>
+              </div>
+
+              <div class="product-info-sub">
+                <div class="product-info-sub-label">
+                  <span>Payments method</span>
+                </div>
+                <div class="product-info-sub-value">
+                  <span>{{i.payment_method}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="action-btns">
+            <div class="track-order-btn">
+              <a href="">
+                <button>Buy this again</button>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {% endfor %}
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

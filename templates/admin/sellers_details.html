@@ -1,0 +1,64 @@
+{% extends "admin_base.html" %}
+  {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Sellers</title>
+    
+</head>
+<body>
+    <div class="page-wrapper compact-wrapper dark-sidebar" id="pageWrapper">
+        <div class="page-body-wrapper">
+            <div class="page-body">
+            <div class="title-header"> <h5>All Sellers</h5></div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <!-- Table Start -->
+                            <div class="table-responsive table-desi">
+                                <table class="table table-hover table-striped table-bordered text-center ">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>Seller Username</th>
+                                            <th>Email</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Phone Number</th>
+                                            <th>Company Address</th>
+                                            <th>Company Name</th>
+                                            <!-- <th>Commision</th> -->
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for i in all_sellers %} 
+                                        <tr>
+                                            <td>{{ i.user.username }}</td>
+                                            <td>{{ i.user.email }}</td>
+                                            <td>{{ i.user.first_name }}</td>
+                                            <td>{{ i.user.last_name }}</td>
+                                            <td>{{ i.mobile_number }}</td>
+                                            <td>{{ i.company_address }}</td>
+                                            <td>{{ i.company_name }}</td>
+                                            <!-- <td>{{ i.commision }}</td> -->
+                                            <td>
+                                                <a href="{% url 'view_products' i.user.id %}">View</a>
+                                                
+                                            </td> 
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
+{% endblock %}

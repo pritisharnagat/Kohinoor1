@@ -1,0 +1,1667 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <link rel="manifest" href="./manifest.json" />
+    <link
+      rel="icon"
+      href="{% static 'assets/images/favicon/2.png' %}"
+      type="image/x-icon"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="{% static 'assets/images/favicon/2.png' %}"
+    />
+    <meta name="theme-color" content="#e22454" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="Voxo" />
+    <meta
+      name="msapplication-TileImage"
+      content="{% static 'assets/images/favicon/2.pn' %}"
+    />
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Voxo" />
+    <meta name="keywords" content="Voxo" />
+    <meta name="author" content="Voxo" />
+    <link
+      rel="icon"
+      href="{% static 'assets/images/favicon/2.png' %}"
+      type="image/x-icon"
+    />
+    <title>Order Success</title>
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- bootstrap css -->
+    <link
+      id="rtl-link"
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/bootstrap.css"
+    />
+
+    <!-- font-awesome css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/font-awesome.css"
+    />
+
+    <!-- feather icon css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/feather-icon.css"
+    />
+
+    <!-- animation css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/animate.css"
+    />
+
+    <!-- slick css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/slick/slick-theme.css"
+    />
+
+    <!-- Theme css -->
+    <link
+      id="color-link"
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/demo2.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- icons -->
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Theme css -->
+    <link
+      id="color-link"
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/demo2.css' %}"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .order-review {
+        width: 100%;
+        height: 100%;
+
+      }
+
+
+      .breadcrumb-payemnt-process-section{
+        width: 100%;
+        height: auto;
+        
+      }
+
+      .breadcrumb-payemnt-payement-section{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        padding: 10px;
+        
+      }
+
+      .breadcrumb-payemnt-payement-section-sub-section-previous{
+        background-color: white;
+        padding: 10px;
+        margin: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        height: fit-content;
+        width: fit-content;
+      }
+
+      .status-badge-previous{
+        background-color: red;
+        margin: 5px;
+        margin-right: 15px;
+        width: 45px;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+      }
+
+      .status-badge-previous span{
+        font-size: 15px;
+        color: white;
+        font-weight: 600;
+      }
+
+
+
+      .status-previous span{
+        font-size: 15px;
+      }
+
+
+      .status-divider-previous{
+        width: 80px;
+        height: 2px;
+        background-color: red;
+
+        margin-right: 15px;
+      }
+
+
+
+
+
+
+
+      .breadcrumb-payemnt-payement-section-sub-section-current{
+        background-color: white;
+        padding: 10px;
+        margin: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        height: fit-content;
+        width: fit-content;
+      }
+
+      .status-badge-current{
+        background-color: rgb(255, 241, 241);
+        
+        margin: 5px;
+        margin-right: 15px;
+        width: 45px;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+      }
+
+      .status-badge-current span{
+        font-size: 15px;
+        color: rgb(255, 0, 0);
+        font-weight: 600;
+
+      }
+
+
+
+      .status-current span{
+        font-size: 15px;
+      }
+
+
+
+      .status-divider-next{
+        width: 80px;
+        height: 2px;
+        background-color: rgb(179, 179, 179);
+
+        margin-right: 15px;
+      }
+
+
+
+      .breadcrumb-payemnt-payement-section-sub-section-next{
+        background-color: white;
+        padding: 10px;
+        margin: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        height: fit-content;
+        width: fit-content;
+      }
+
+      .status-badge-next{
+        background-color: rgb(179, 179, 179);
+        margin: 5px;
+        margin-right: 15px;
+        width: 45px;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+      }
+
+      .status-badge-next span{
+        font-size: 15px;
+        color: white;
+        font-weight: 600;
+      }
+
+
+
+      .status-next span{
+        font-size: 15px;
+        color: rgb(179, 179, 179);
+      }
+
+      .product-detail-section {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .order-success-title{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-bottom: 15px;
+      }
+
+      .order-success-title span{
+        text-align: center;
+        font-size: 20px;
+      }
+
+
+
+
+      .product-detail {
+        padding: 0;
+      }
+
+      .product-purchase-details {
+        padding: 0;
+      }
+
+      .single-product-detail {
+        background-color: white;
+        border-radius: 25px;
+        max-width: 60rem;
+        border: 2px solid rgb(198, 198, 198);
+        padding: 15px;
+        margin: 10px;
+        transition: all 0.3s ease-out;
+        
+      }
+
+
+      .single-product-detail:hover{
+        border: 1.5px solid rgb(80, 80, 80);
+      }
+      .title {
+        padding: 20px;
+        margin-bottom: 10px;
+      }
+
+      .title span i {
+        color: #5cb85c;
+        font-weight: bold;
+        padding: 0;
+        font-size: 70px;
+        margin-right: 20px;
+      }
+
+      .title span {
+        font-size: 40px;
+        text-transform: capitalize;
+        font-weight: 500;
+        color: #5cb85c;
+      }
+
+      .single-product-detail-child {
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: row;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .num-of-products span {
+        width: 100%;
+        padding: 20px;
+        padding-bottom: 5px;
+      }
+
+      .product-img {
+
+        width: 100px;
+        height: 100px;
+      }
+
+      .product-img img {
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+      }
+
+
+      .prod-details{
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: row;
+        flex-wrap: wrap;
+        
+      }
+
+
+      .product-details-info {
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: column;
+        flex-wrap: wrap;
+        padding: 10px;
+      }
+
+      .product-details-name-cat {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+
+      }
+
+      .product-name span {
+        margin-right: 10px;
+        text-transform: uppercase;
+        font-size: 15px;
+      }
+
+      .product-cat span {
+        text-transform: uppercase;
+        font-size: 10px;
+      }
+
+      .product-desc span {
+        font-size: 13px;
+        padding: 10px 20px 10px 20px;
+        text-align: justify;
+      }
+
+      .divider {
+        height: 1.5px;
+        width: 100%;
+        background-color: black;
+        margin: 20px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+
+      .product-q {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin-top: 5px;
+
+      }
+
+      .product-q-label span {
+        margin-right: 10px;
+        text-transform: uppercase;
+      }
+
+      .product-s {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin-top: 5px;
+
+      }
+
+      .product-p-label span {
+        margin-right: 10px;
+        text-transform: uppercase;
+      }
+
+      .product-p {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        padding: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+
+      .product-p-label span {
+        margin-right: 10px;
+        text-transform: uppercase;
+      }
+
+      .product-s-value span {
+        text-transform: uppercase;
+      }
+
+      .product-purchase {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+
+      .product-purchase-label span {
+        font-size: 13px;
+        text-transform: uppercase;
+        padding: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+
+      .product-purchase-value span {
+        font-size: 13px;
+        text-transform: uppercase;
+        padding: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-weight: bold;
+      }
+
+
+      .divider{
+        height: 1px;
+        width: 100%;
+        background-color: #b2b2b2;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+
+      .order-details {
+        display: flex;
+        justify-content: start;
+        align-items: flex-start;
+        flex-direction: column;
+        flex-wrap: wrap;
+        background-color: white;
+        border-radius: 25px;
+        max-width: 50rem;
+        margin: 10px;
+        padding: 15px;
+        border: 1.5px solid rgb(198, 198, 198);
+        transition: all 0.3s ease-out;
+      }
+
+      .order-details:hover{
+        border: 1.5px solid rgb(80, 80, 80);
+      }
+
+      .order-id {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        padding: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+
+      .order-id-label span {
+        font-size: 15px;
+        font-weight: 500;
+        padding-right: 10px;
+        text-transform: uppercase;
+      }
+
+      .order-id-value span {
+        font-size: 18px;
+        font-weight: 500;
+        padding-right: 10px;
+      }
+
+      .order-date-label span {
+        font-size: 15px;
+        font-weight: 500;
+        padding-right: 10px;
+        text-transform: uppercase;
+      }
+
+      .order-total-mrp-label span {
+        font-size: 15px;
+        font-weight: 500;
+        padding-right: 10px;
+        text-transform: uppercase;
+      }
+
+      .order-date-value span {
+        font-size: 15px;
+        font-weight: 500;
+        padding-right: 10px;
+      }
+
+      .order-total-mrp-value span {
+        font-size: 15px;
+        font-weight: 500;
+        padding-right: 10px;
+      }
+
+      .order-date {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        padding: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+
+      .order-total-mrp {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        padding: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+
+      .order-desc{
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .payment-method {
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        margin: 15px;
+        width: fit-content;
+        border: 2px solid red;
+        padding: 5px;
+      }
+
+      .payment-method-label{
+        display: flex;
+        justify-content: start;
+        align-items: start;
+      }
+
+      .payment-method-label span {
+        font-size: 20px;
+        font-weight: 500;
+        text-transform: uppercase;
+        color: black;
+        margin: 0px;
+        text-align: start;
+      }
+
+      .user-billing {
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        margin: 15px;
+        width: 40%;
+        
+        padding: 5px;
+      }
+
+      .user-billing-label{
+        display: flex;
+        justify-content: start;
+        align-items: start;
+      }
+
+
+      .user-billing-value {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+      }
+
+      .user-shipping {
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        margin: 15px;
+        width: fit-content;
+        border: 2px solid red;
+        padding: 5px;
+      }
+
+      .user-shipping-label{
+        display: flex;
+        justify-content: start;
+        align-items: start;
+      }
+
+      .user-shipping-label span {
+        font-size: 20px;
+        font-weight: 500;
+        text-transform: uppercase;
+        color: black;
+        margin: 0px;
+        text-align: start;
+      }
+
+      .user-shipping-value {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+      }
+
+      .delivery-date {
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        border: 2px solid red;
+        margin: 15px;
+      }
+
+      .delivery-date-label span {
+        font-size: 17px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-right: 10px;
+      }
+
+      .action-btn {
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .track-order-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+      }
+
+      .track-order-btn button {
+        font-size: 20px;
+        margin: 15px;
+        padding: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-weight: 500;
+        color: black;
+        background-color: white;
+        border: none;
+        border-radius: 20px;
+        transition: all 0.2s ease-out;
+      }
+
+      .track-order-btn button:hover {
+        transform: translateY(3px);
+        background-color: #5cb85c;
+        color: white;
+      }
+
+      .track-order-btn button i {
+        font-size: 20px;
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+
+      .invoice-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+      }
+
+      .invoice-btn button {
+        font-size: 20px;
+        margin: 15px;
+        padding: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-weight: 500;
+        color: black;
+        background-color: white;
+        border: none;
+        border-radius: 20px;
+        transition: all 0.2s ease-out;
+      }
+
+      .invoice-btn button:hover {
+        transform: translateY(3px);
+        background-color: #0077ff;
+        color: white;
+      }
+
+      .invoice-btn button i {
+        font-size: 20px;
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+
+      .orders-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+      }
+
+      .orders-btn button {
+        font-size: 15px;
+        margin: 5px;
+        padding: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-weight: 500;
+        color: black;
+        background-color: #ffffff;
+        border: 1.5px solid rgb(156, 156, 156);
+        border-radius: 10px;
+        transition: all 0.3s ease-out;
+      }
+
+      .orders-btn button:hover {
+        border: 1.5px solid rgba(0, 0, 0, 0);
+        background-color: black;
+        color: white;
+      }
+
+      .orders-btn button i {
+        font-size: 15px;
+        padding-left: 5px;
+        
+      }
+
+      @media screen and (max-width: 1000px) {
+      }
+
+      @media screen and (max-width: 768px) {
+        
+        .status-badge-previous {
+          background-color: red;
+          margin: 5px;
+          margin-right: 15px;
+          width: 40px;
+          height: 40px;
+        }
+
+        .breadcrumb-payemnt-payement-section-sub-section-previous {
+          background-color: white;
+          padding: 0px;
+          margin: 0px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: row;
+          flex-wrap: wrap;
+          width: -webkit-fill-available;
+          height: -webkit-fill-available;
+        }
+
+        .breadcrumb-payemnt-payement-section-sub-section-current {
+          background-color: white;
+          padding: 0px;
+          margin: 0px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: row;
+          flex-wrap: wrap;
+          width: -webkit-fill-available;
+          height: -webkit-fill-available;
+        }
+        .breadcrumb-payemnt-payement-section-sub-section-next {
+          background-color: white;
+          padding: 0px;
+          margin: 0px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: row;
+          flex-wrap: wrap;
+          width: -webkit-fill-available;
+          height: -webkit-fill-available;
+        }
+
+
+      }
+
+      @media screen and (max-width: 450px) {
+
+
+        
+        .status-badge-previous {
+          background-color: red;
+          margin: 5px;
+          /* margin-right: 15px; */
+          width: 30px;
+          height: 30px;
+        }
+
+        .status-previous span {
+          font-size: 10px;
+          text-align: center;
+        }
+
+        .status-badge-previous span {
+          font-size: 10px;
+          color: white;
+          font-weight: 600;
+        }
+
+        .status-badge-current {
+          background-color: rgb(255, 241, 241);
+          margin: 5px;
+          /* margin-right: 15px; */
+          width: 30px;
+          height: 30px;
+        }
+
+        .status-current span {
+          font-size: 10px;
+          text-align: center;
+         
+        }
+
+        .status-badge-current span {
+          font-size: 10px;
+          color: white;
+          font-weight: 600;
+          color: red;
+        }
+
+
+        .status-badge-next {
+          background-color: rgb(179, 179, 179);
+          margin: 5px;
+          /* margin-right: 15px; */
+          width: 30px;
+          height: 30px;
+        }
+
+        .status-next span {
+          font-size: 10px;
+          text-align: center;
+         
+        }
+
+        .status-badge-next span {
+          font-size: 10px;
+          color: white;
+          font-weight: 600;
+          
+        }
+
+        
+      .order-success-title span{
+        text-align: center;
+        font-size: 15px;
+       
+        }
+ 
+        .title span i {
+          color: #5cb85c;
+          font-weight: bold;
+          padding: 0;
+          font-size: 50px;
+          margin-right: 20px;
+        }
+
+        .title span {
+          font-size: 15px;
+          text-transform: uppercase;
+          font-weight: 500;
+        }
+
+        .product-desc span {
+          font-size: 10px;
+          padding: 10px 20px 10px 20px;
+          text-align: justify;
+        }
+
+        .product-purchase-label span {
+          font-size: 10px;
+          text-transform: uppercase;
+          padding: 20px;
+          padding-top: 5px;
+          padding-bottom: 5px;
+        }
+
+        .product-purchase-value span {
+          font-size: 10px;
+          text-transform: uppercase;
+          padding: 20px;
+          padding-top: 5px;
+          padding-bottom: 5px;
+        }
+
+        .user-billing{
+          width: 100%;
+        }
+
+
+
+        .user-billing-label span {
+          font-size: 15px;
+          font-weight: 400;
+          text-transform: capitalize;
+          color: black;
+          margin: 0px;
+          text-align: start;
+          margin-bottom: 5px;
+        }
+
+        .payment-method-label span {
+          font-size: 15px;
+          text-transform: uppercase;
+          font-weight: bold;
+        }
+
+        .delivery-date-label span {
+          font-size: 12px;
+          font-weight: bold;
+          text-transform: uppercase;
+          margin-right: 10px;
+        }
+
+        .place-order-btn button {
+          width: 95%;
+          padding: 10px;
+          font-size: 15px;
+          /* font-weight: bold; */
+          background-color: #262626;
+          color: white;
+          border: none;
+          border-radius: 25px;
+          margin-top: 40px;
+          margin-bottom: 40px;
+          transition: all 0.1s ease-out;
+        }
+
+        .order-review {
+          padding-bottom: 0px;
+        }
+
+        .order-id-label span {
+          font-size: 12px;
+          font-weight: 500;
+          padding-right: 10px;
+          text-transform: uppercase;
+        }
+
+        .order-id-value span {
+          font-size: 15px;
+          font-weight: 500;
+          padding-right: 10px;
+        }
+
+        .order-date-label span {
+          font-size: 12px;
+          font-weight: 500;
+          padding-right: 10px;
+          text-transform: uppercase;
+        }
+
+        .order-date-value span {
+          font-size: 12px;
+          font-weight: 500;
+          padding-right: 10px;
+        }
+
+        .order-total-mrp-label span {
+          font-size: 12px;
+          font-weight: 500;
+          padding-right: 10px;
+          text-transform: uppercase;
+        }
+
+        .order-total-mrp-value span {
+          font-size: 13px;
+          font-weight: 500;
+          padding-right: 10px;
+        }
+
+        .track-order-btn button {
+          font-size: 12px;
+          margin: 10px;
+          padding: 10px;
+          padding-top: 5px;
+          padding-bottom: 5px;
+          font-weight: 500;
+          color: black;
+          background-color: white;
+          border: none;
+          border-radius: 10px;
+          transition: all 0.2s ease-out;
+        }
+
+        .track-order-btn button i {
+          font-size: 15px;
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+
+        .invoice-btn button {
+          font-size: 12px;
+          margin: 10px;
+          padding: 10px;
+          padding-top: 5px;
+          padding-bottom: 5px;
+          font-weight: 500;
+          color: black;
+          background-color: white;
+          border: none;
+          border-radius: 10px;
+          transition: all 0.2s ease-out;
+        }
+
+        .invoice-btn button i {
+          font-size: 15px;
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+
+        .orders-btn button {
+          font-size: 12px;
+          margin: 10px;
+          padding: 10px;
+          padding-top: 5px;
+          padding-bottom: 5px;
+          font-weight: 500;
+          color: black;
+          background-color: white;
+          border: none;
+          border-radius: 10px;
+          transition: all 0.2s ease-out;
+        }
+
+        .orders-btn button i {
+          font-size: 15px;
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+      }
+    </style>
+  </head>
+
+  <body >
+    <div class="order-review">
+      <!-- <div class="col-md-12 title">
+        <span><i class="uil uil-check"></i></span>
+        <span>Thank you, your order has been placed</span>
+      </div> -->
+
+      <div class="breadcrumb-payemnt-process-section">
+        <div class="breadcrumb-payemnt-payement-section">
+          <div class="breadcrumb-payemnt-payement-section-sub-section-previous">
+            <div class="status-badge-previous">
+              <span>1</span>
+            </div>
+            <div class="status-previous">
+              <span>Price summary</span>
+            </div>
+          </div>
+    
+          <div class="status-divider-previous"></div>
+    
+          <div class="breadcrumb-payemnt-payement-section-sub-section-previous">
+            <div class="status-badge-previous">
+              <span>2</span>
+            </div>
+            <div class="status-previous">
+              <span>Payment</span>
+            </div>
+          </div>
+
+          <div class="status-divider-previous"></div>
+    
+          <!-- <div class="status-divider-next"></div> -->
+    
+          <div class="breadcrumb-payemnt-payement-section-sub-section-previous">
+            <div class="status-badge-previous">
+              <span>3</span>
+            </div>
+            <div class="status-previous">
+              <span>Order complete</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="order-success-title">
+        <span>Thank you, your order has been placed</span>
+      </div>
+
+
+
+
+      <!-- <div class="action-btn">
+        <div class="orders-btn">
+          <a href="/order_tracking/{{order_id}}/">
+            <button>
+              Track your order <i class="uil uil-map-marker-alt"></i>
+            </button>
+          </a>
+        </div>
+        <div class="orders-btn">
+          <a href="/invoice/{{order_id}}/">
+            <button>Invoice <i class="uil uil-arrow-down"></i></button>
+          </a>
+        </div>
+
+        <div class="orders-btn">
+          <a href="/orders/">
+            <button>Your Orders <i class="uil uil-box"></i></button>
+          </a>
+        </div>
+
+        <div class="orders-btn">
+          <a href="/tshirt/">
+            <button>Continue shopping <i class="uil uil-box"></i></button>
+          </a>
+        </div>
+      </div> -->
+
+      <div class="product-detail-section">
+
+        <div class="product-detail">
+          <!-- <div class="product-detail-title">
+            <span>Product Details</span>
+          </div> -->
+
+          <div class="single-product-detail">
+
+            <div class="single-product-detail-child">
+              {% for i in data %}
+
+              <div class="prod-details">
+                <div class="product-img">
+                  <img src="{{i.product.product_image.url}}" alt="" />
+                </div>
+  
+                <div class="product-details-info">
+                  <div class="product-details-name-cat">
+                    <div class="product-name">
+                      <span>{{i.product.title}}</span>
+                    </div>
+         
+                  </div>
+                  <div class="product-q">
+                    <div class="product-q-label"><span>Qty: </span></div>
+                    <div class="product-q-value">
+                      <span>{{i.quantity}}</span>
+                    </div>
+                  </div>
+  
+                  
+                  <div class="product-s">
+                    <div class="product-s-label"><span>Size: </span></div>
+                    <div class="product-s-value"><span>: {{i.size}}</span></div>
+                  </div>
+                </div>
+              </div>
+
+              {% endfor %}
+
+
+
+              <div class="divider"></div>
+
+              <div class="product-purchase">
+                <div class="product-purchase-label">
+                  <span>Total MRP(incl of tax)</span>
+                </div>
+
+                <div class="product-purchase-value">
+                  <span>&#8377; {{ mrpamount }}</span>
+                </div>
+              </div>
+
+              <!-- <div class="product-purchase">
+                <div class="product-purchase-label">
+                  <span>discount :</span>
+                </div>
+
+                <div class="product-purchase-value">
+                  <span>&#8377;{{ price }}</span>
+                </div>
+              </div> -->
+              {% if pay == 'Pay By COD' %}
+              <div class="product-purchase">
+                <div class="product-purchase-label">
+                  <span>shipping charges</span>
+                </div>
+
+                <div class="product-purchase-value">
+                  <span>&#8377; 50</span>
+                </div>
+              </div>
+              {% endif %}
+
+              <div class="product-purchase">
+                <div class="product-purchase-label">
+                  <span>tax</span>
+                </div>
+
+                <div class="product-purchase-value">
+                  <span>&#8377; {{tax}}</span>
+                </div>
+              </div>
+
+              <!-- {% if request.user.is_authenticated %}
+              <div class="product-purchase">
+                <div class="product-purchase-label">
+                  <span>Discount</span>
+                </div>
+                {% if not first_order_condition %}
+                <div class="product-purchase-value">
+                  <span>&#8377; {{discount_on_mrp}}</span>
+                </div>
+                {% elif event_discount %}
+                <div class="product-purchase-value">
+                  <span>&#8377; {{discount_on_mrp}}</span>
+                </div>
+                {% endif %}
+              </div>
+              {% endif %} -->
+
+              <div class="divider"></div>
+
+
+              <div class="product-purchase pb-3">
+                <div class="product-purchase-label">
+                  <span>grand total</span>
+                </div>
+
+                <div class="product-purchase-value">
+                  <span>&#8377; {{grand_total1|floatformat:2}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+              <div class="order-details">
+                <div class="order-id">
+                  <div class="order-id-label"><span>Order ID:</span></div>
+                  <div class="order-id-value"><span>{{order_id}}</span></div>
+                </div>
+                <div class="order-date">
+                  <div class="order-date-label"><span>order date:</span></div>
+                  <div class="order-date-value">
+                    <span>{{ data.first.Order_date }}</span>
+                  </div>
+                </div>
+                <!-- <div class="order-total-mrp">
+                  <div class="order-total-mrp-label">
+                    <span>order total mrp:</span>
+                  </div>
+                  <div class="order-total-mrp-value">
+                    <span>&#8377; {{grand_total1}}</span>
+                  </div>
+                </div> -->
+
+                <div class="order-desc">
+                  <div class=" user-billing">
+                    <div class="user-billing-label">
+                      <span>billed to <i class="uil uil-invoice"></i></span>
+                    </div>
+      
+                    <div class="user-billing-value">
+                      <span>{{cust.name}}</span>
+                      <span>{{cust.locality}}, {{cust.city}}, {{cust.state}}</span>
+                      <span>{{cust.pincode}}</span>
+                      <span>{{cust.mobile}}</span>
+                    </div>
+                  </div>
+  
+                  <div class=" user-billing">
+                    <div class="user-billing-label">
+                      <span>shipped to <i class="uil uil-truck"></i></span>
+                    </div>
+      
+                    <div class="user-billing-value">
+                      <span>{{cust.name}}</span>
+                      <span>{{cust.locality}}, {{cust.city}}, {{cust.state}}</span>
+                      <span>{{cust.pincode}}</span>
+                      <span>{{cust.mobile}}</span>
+                    </div>
+                  </div>
+  
+  
+                  <div class=" user-billing ">
+                    <div class="user-billing-label">
+                      <span>payment method <i class="uil uil-rupee-sign"></i></span>
+                    </div>
+        
+                    <div class="user-billing-value">
+                      <span>cash on delivery</span>
+                    </div>
+                  </div>
+        
+                  <div class=" user-billing">
+                    <div class="user-billing-label">
+                      <span>expected date of delivery :</span>
+                    </div>
+        
+                    <div class="user-billing-value">
+                    <span>{{ estimated_delivery_date }}24</span>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="action-btn">
+                  <div class="orders-btn">
+                    <a href="/order_tracking/{{order_id}}/">
+                      <button>
+                        Track your order <i class="uil uil-map-marker-alt"></i>
+                      </button>
+                    </a>
+                  </div>
+                  <div class="orders-btn">
+                    <a href="/invoice/{{order_id}}/">
+                      <button>Invoice <i class="uil uil-import"></i></button>
+                    </a>
+                  </div>
+      
+                  <div class="orders-btn">
+                    <a href="/orders/">
+                      <button>Your Orders <i class="uil uil-box"></i></button>
+                    </a>
+                  </div>
+      
+                  <div class="orders-btn">
+                    <a href="/tshirt/">
+                      <button>Continue shopping <i class="uil uil-box"></i></button>
+                    </a>
+                  </div>
+                </div>
+
+
+              </div>
+
+
+           
+
+
+
+          
+
+
+
+
+        
+      </div>
+    </div>
+
+    <!-- Oder Details Section Start
+    <section class="section-b-space cart-section order-details-table">
+      <div class="container">
+        <div class="title title1 title-effect mb-1 title-left">
+          <h2 class="mb-3">Order Details</h2>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="col-sm-12 table-responsive">
+              <table class="table cart-table table-borderless">
+                <tbody>
+                  {% for i in data %}
+                  <tr class="table-order">
+                    <td>
+                      <a href="javascript:void(0)">
+                        <img
+                          src="{{i.product.product_image.url}}"
+                          class="img-fluid blur-up lazyload"
+                          alt=""
+                        />
+                      </a>
+                    </td>
+                    <td>
+                      <p>{{i.product.title}}</p>
+                    </td>
+                    <td>
+                      {% comment %}
+                      <p>Quantity</p>
+                      <h5>{{i.product.quantity}}</h5>
+                      {% endcomment %}
+                    </td>
+                    <td>
+                      <p>Price Quantity</p>
+                      <h5>{{i.product.discount_price}} * {{i.quantity}}</h5>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+                <tfoot>
+                  <tr class="table-order">
+                    <td colspan="3">
+                      <h5 class="font-light">Subtotal :</h5>
+                    </td>
+                    <td>
+                      <h4>{{total}}/-</h4>
+                    </td>
+                  </tr>
+
+                  <tr class="table-order">
+                    <td colspan="3">
+                      <h5 class="font-light">Shipping :</h5>
+                    </td>
+                    <td>
+                      <h4>50/-</h4>
+                    </td>
+                  </tr>
+
+                  <tr class="table-order">
+                    <td colspan="3">
+                      <h5 class="font-light">Tax(GST) :</h5>
+                    </td>
+                    <td>
+                      <h4>{{tax}}/-</h4>
+                    </td>
+                  </tr>
+
+                  <tr class="table-order">
+                    <td colspan="3">
+                      <h4 class="theme-color fw-bold">Total Price :</h4>
+                    </td>
+                    <td>
+                      <h4 class="theme-color fw-bold">{{grand_total}}/-</h4>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="order-success">
+              <div class="row g-4">
+                <div class="col-sm-6">
+                  <h4>summery</h4>
+                  <ul class="order-details">
+                    <li>Order ID: {{order_id}}</li>
+                    <li>Order Date: {{ data.first.Order_date }}</li>
+                    <li>Order Total: {{grand_total}}</li>
+                  </ul>
+                </div>
+
+                <div class="col-sm-6">
+                  <h4>shipping address</h4>
+                  <ul class="order-details">
+                    <li>{{cust.name}}</li>
+                    <li>{{cust.locality}}</li>
+                    <li>{{cust.city}}</li>
+                    <li>{{cust.state}}, {{cust.pincode}}</li>
+                    <li>Contact No. {{cust.mobile}}</li>
+                  </ul>
+                </div>
+
+                <div class="col-12">
+                  <div class="payment-mode">
+                    <h4>payment method</h4>
+                    <p>
+                      Pay on Delivery (Cash/Card). Cash on delivery (COD)
+                      available. Card/Net banking acceptance subject to device
+                      availability.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="delivery-sec">
+                    <h3>
+                      expected date of delivery: <span>october 22, 2018</span>
+                    </h3>
+                    <a href="order-tracking.html">track order</a>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="delivery-sec">
+                    {% comment %}
+                    <h3>
+                      expected date of delivery: <span>october 22, 2018</span>
+                    </h3>
+                    {% endcomment %}
+                    <a href="/invoice/{{order_id}}/">invoice</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+    <!-- Order Details Section End -->
+
+    <!-- tap to top Section Start -->
+    <div class="tap-to-top">
+      <a href="#home">
+        <i class="fas fa-chevron-up"></i>
+      </a>
+    </div>
+    <!-- tap to top Section End -->
+
+<!--     <script>
+      setTimeout(function () {
+          window.location.href = "/tshirt/";
+      }, 20000);
+    </script> -->
+
+    <!-- latest jquery-->
+    <script src="{% static 'assets/js/jquery-3.5.1.min.js' %}"></script>
+
+    <!-- Add To Home js -->
+    <script src="{% static 'assets/js/pwa.js' %}"></script>
+
+    <!-- Bootstrap js-->
+    <script src="{% static 'assets/js/bootstrap/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- feather icon js-->
+    <script src="{% static 'assets/js/feather/feather.min.js' %}"></script>
+
+    <!-- lazyload js-->
+    <script src="{% static 'assets/js/lazysizes.min.js' %}"></script>
+
+    <!-- Slick js-->
+    <script src="{% static 'assets/js/slick/slick.js' %}"></script>
+    <script src="{% static 'assets/js/slick/slick-animation.min.js' %}"></script>
+    <script src="{% static 'assets/js/slick/custom_slick.js' %}"></script>
+
+    <!-- Notify js-->
+    <script src="{% static 'assets/js/bootstrap/bootstrap-notify.min.js' %}"></script>
+
+    <!-- script js -->
+    <script src="{% static 'assets/js/theme-setting.js' %}"></script>
+    <script src="{% static 'assets/js/script.js' %}"></script>
+  </body>
+</html>
+{% endblock content %}

@@ -1,0 +1,1091 @@
+
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="icon" href="{% static 'assets/images/favicon/2.png' %}" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="{% static 'assets/images/favicon/2.png' %}" />
+
+    <title>Checkout</title>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="{% static 'assets1\images\logos\vr_main.png' %}"
+      type="image/x-icon"
+    />
+    <link
+      rel="shortcut icon"
+      href="{% static 'assets1\images\logos\vr_main.png' %}"
+      type="image/x-icon"
+    />
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- bootstrap css -->
+    <link
+      id="rtl-link"
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/bootstrap.css"
+    />
+
+    <!-- font-awesome css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/font-awesome.css"
+    />
+
+    <!-- feather icon css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/feather-icon.css"
+    />
+
+    <!-- animation css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/animate.css"
+    />
+
+    <!-- slick css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/slick/slick-theme.css"
+    />
+
+    <!-- Theme css -->
+    <link
+      id="color-link"
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/demo2.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- icons -->
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+    />
+    <style>
+
+
+        body {
+            margin: 0;
+            padding: 0;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    
+            overflow-x: hidden;
+            font-family: "Poppins", sans-serif;
+          }
+
+          .checkout-page-parent{
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            flex-direction: row;
+            flex-wrap: wrap;
+          }
+
+
+          .checkout-page-parent-title{
+            width: 100%;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            margin: 15px;
+
+          }
+
+          .checkout-page-parent-title span{
+            font-size: 48px;
+            font-weight: 600;
+          }
+          .item-review-section{
+            width: 35rem;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            
+            padding: 15px;
+            margin: 20px;
+            margin-top: 0;
+            padding-top: 0;
+          }
+
+          .product-image-and-details-section{
+            width: 100%;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            border: 1.5px solid rgb(183, 183, 183);
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease-out;
+            
+          }
+
+          .product-image-and-details-section:hover{
+            border: 1.5px solid rgb(36, 36, 36);
+            
+          }
+
+          .product-image-secion{
+            width: 100px;
+            height: 100px;
+            border: none;
+          }
+
+          .product-image-secion img{
+            width: 100%;
+            height: 100%;
+          }
+
+          .product-details-section{
+            padding-left: 15px;
+            width: 70%;
+            display: flex;
+            justify-content: center;
+            align-items : center;
+            flex-direction: column;
+            flex-wrap: nowrap;
+          }
+
+          .prdouct-price-section{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+          }
+
+          .product-name-section{
+            margin-top: 10px;
+            margin-bottom: 10px;
+          }
+
+          .product-name-section span{
+            font-size: 20px;
+            text-transform: capitalize;
+            font-weight: 600;
+          }
+          .product-price-section{
+            margin-top: 10px;
+            margin-bottom: 10px;
+          }
+          .product-price-section span{
+            font-size: 18px;
+            text-transform: capitalize;
+            font-weight: 600;
+          }
+
+
+          .product-size-qty-color-section{
+            width: 100%;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+          }
+
+          .product-size-qty-color-sub-section{
+            margin: 10px;
+            margin-left: 0px;
+            padding-right: 5px;
+          }
+
+          .product-size-qty-color-sub-section span{
+            font-size: 15px;
+          }
+
+
+          .product-size-qty-color-sub-section span span{
+            font-size: 15px;
+            font-weight: 600;
+          }
+
+          .place-order-section{
+            margin: 20px;
+            margin-top: 0;
+            width: 25rem;
+            
+          }
+
+          .billing-order-section{
+            width: 100%;
+          }
+
+          .billing-order-section{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            
+            padding: 15px;
+            margin-top: 10px;
+            padding-top: 0;
+          }
+
+          .billing-addres-section{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            border: 1.5px solid rgb(183, 183, 183);
+            border-radius: 20px;
+            padding: 10px;
+            padding-bottom: 0;
+            padding-top: 0;
+            transition: all 0.3s ease-out;
+            
+          }
+
+          .billing-addres-section:hover{
+            border: 1.5px solid rgb(36, 36, 36);
+          }
+
+          .billing-addres-section form{
+            width: 100%;
+          }
+
+          .billing-addres-sub-section{
+            width: 100%;
+            display: flex;
+            justify-content: start;
+            align-items: start;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            padding: 15px;
+
+            
+          }
+
+          .billing-addres-sub-section-title{
+            width: 100%;
+            display: flex;
+            justify-content: start;
+            align-items: start;
+            flex-direction: column;
+            flex-wrap: nowrap;
+          }
+
+          .billing-addres-sub-section-title span{
+            font-size: 20px;
+            font-weight: 600;
+          }
+
+          .address-selection-section{
+            margin-top: 10px;
+            margin-bottom: 10px;
+          }
+
+          .address-selection-sub-section span{
+            font-size: 15px;
+            color: rgb(117, 117, 117);
+            font-weight: 600;
+          }
+
+          .addres-action-btns{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            
+            margin-bottom: 20px;
+          }
+
+          .action-btn{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 10px;
+            padding-top: 0;
+            padding-bottom: 0;
+          }
+
+          .action-btn button{
+            width: 100%;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            padding: 15px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-size: 15px;
+            background-color: black;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            transition: all 0.3s ease-out;
+          }
+
+          .action-btn button:hover{
+            background-color: rgb(42, 42, 42);
+          }
+
+          .order-summary-section{
+            margin-top: 20px;
+            border: 1.5px solid rgb(183, 183, 183);
+            padding: 15px;
+            border-radius: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            transition: all 0.3s ease-out;
+          }
+
+          .order-summary-section:hover{
+            border: 1.5px solid rgb(36, 36, 36);
+          }
+
+          .order-summary-section-title{
+            width: 100%;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            margin-bottom: 10px;
+          }
+
+          .order-summary-section-title span{
+            font-size: 20px;
+            font-weight: 600;
+          }
+
+          .order-summery-sub-section{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            flex-wrap: nowrap;
+          }
+
+          .total-mrp-section{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3px;
+            margin-bottom: 3px;
+          }
+
+          .total-mrp-section-label span{
+            font-size: 15px;
+            color: rgb(109, 109, 109);
+            font-weight: 600;
+          }
+
+          .total-mrp-section-value span{
+            font-size: 17px;
+            color: rgb(0, 0, 0);
+            font-weight: 600;
+          }
+
+          .total-mrp-section-hero{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+          }
+
+          .divider{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 1.5px ;
+            background-color: #dadada;
+            margin-top: 10px;
+            margin-bottom: 10px;
+          }
+
+          .action-btn-v2{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            
+            padding-top: 0;
+            padding-bottom: 0;
+          }
+
+          .action-btn-v2 button{
+            width: 100%;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            padding: 15px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-size: 15px;
+            background-color: rgb(255, 44, 44);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            transition: all 0.3s ease-out;
+          }
+
+          .action-btn-v2 button:hover{
+            background-color: rgb(255, 91, 91);
+          }
+
+          .action-btn-v3{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            margin: 10px;
+          }
+
+          .action-btn-v3 button{
+            width: 100%;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            padding: 15px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-size: 15px;
+            background-color: black;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            transition: all 0.3s ease-out;
+          }
+
+          .action-btn-v3 button:hover{
+            background-color: rgb(42, 42, 42);
+          }
+
+          .modal-content {
+            padding: 20px;
+            max-width: 30rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            flex-flow: wrap;
+          }
+
+          
+          @media screen and (max-width:1000px){
+            .item-review-section {
+              width: 25rem;
+            }
+              .place-order-section {
+                margin: 20px;
+                margin-top: 0;
+                max-width: 20rem;
+              }
+              .product-name-section span {
+                font-size: 15px;
+              }
+
+              .product-price-section span {
+                font-size: 15px;
+              }
+
+              .product-size-qty-color-sub-section span {
+                font-size: 12px;
+            }
+            .product-size-qty-color-sub-section span span {
+              font-size: 12px;
+            }
+
+            .product-image-secion {
+              width: 80px;
+              height: 80px;
+              border: none;
+          }
+          }
+
+          @media screen and (max-width:768px){
+
+            .place-order-section {
+              margin: 20px;
+              margin-top: 0;
+              max-width: 25rem;
+            }
+          }
+
+          @media screen and (max-width:450px){
+
+
+              .product-image-secion {
+                width: 60px;
+                height: 60px;
+                border: none;
+              }
+              .product-name-section span {
+                font-size: 12px;
+              }
+
+              .product-size-qty-color-sub-section span {
+                font-size: 10px;
+              }
+
+              .product-size-qty-color-sub-section span span {
+                font-size: 10px;
+              }
+
+              .billing-addres-sub-section-title span {
+                font-size: 17px;
+                font-weight: 600;
+              }
+
+              .order-summary-section-title span {
+                font-size: 17px;
+                font-weight: 600;
+              }
+
+              .address-selection-sub-section span {
+                font-size: 13px;
+              }
+
+              .action-btn button {
+
+                font-size: 13px;
+                font-weight: 700;
+              }
+
+              .action-btn-v2 button {
+                font-size: 13px;
+                font-weight: 700;
+              }
+
+              .total-mrp-section {
+
+                margin-top: 0px;
+                margin-bottom: 0px;
+              }
+
+              .total-mrp-section-hero {
+
+                margin-top: 0px;
+                margin-bottom: 0px;
+              }
+
+              .total-mrp-section-label span {
+                font-size: 13px;
+              }
+
+              .total-mrp-section-value span {
+                font-size: 15px;
+                color: rgb(0, 0, 0);
+                font-weight: 600;
+              }
+
+          }
+          
+
+    </style>
+</head>
+
+<body>
+    <div class="checkout-page-parent">
+
+      <!-- <div class="checkout-page-parent-title">
+        <span>Checkout</span>
+      </div> -->
+        <div class="item-review-section">
+            
+               
+
+                    
+                    
+                        {% for c in cart_items %}
+
+
+                        <div class="product-image-and-details-section">
+                            <div class="product-image-secion">
+                                <img src="{{c.product.product_image.url}}" alt="Product-image">
+                            </div>
+
+                            <div class="product-details-section">
+                                
+
+                                <div class="prdouct-price-section">
+
+                                    <div class="product-name-section">
+                                        <span>{{c.product.title}}</span>
+                                    </div>
+
+                                    <div class="product-price-section">
+                                        <span>&#x20B9; {{mrp_amount}}</span>
+                                    </div>
+
+                                </div>
+
+                                <div class="product-size-qty-color-section">
+                                    <div class="product-size-qty-color-sub-section">
+                                        <span>size : <span>{{c.size}}</span></span>
+                                    </div>
+
+                                    <div class="product-size-qty-color-sub-section">
+                                        <span>qty : <span>{{c.quantity}}</span></span>
+                                    </div>
+
+                                    
+                                    <div class="product-size-qty-color-sub-section">
+                                        <span>color : <span>White</span></span>
+                                    </div>
+                                </div>
+
+
+                                <!-- <div class="mt-2">quantity: <span class="fw-bold">{{c.quantity}}</span></div>
+                                <div  class="mt-2">Size: <span class="fw-bold">{{c.size}}</span></div> -->
+                                
+                                <!-- <input type="text" placeholder="PROMOCODE" class="form-control">
+                                <button type="submit" class="btn btn-danger btn-sm">REDEEM</button> -->
+                            </div>
+                        </div>
+                    {% endfor %}
+                    
+              
+            
+        </div>
+
+
+        <div class="place-order-section">
+
+        
+
+
+    
+    <div class="billing-order-section">
+
+
+        <div class="billing-addres-section">
+            
+            <form class="needs-validation" action="/payment_method/" id="paymentForm">
+                {% csrf_token %}
+                {% for i in add %}
+                {% if forloop.first %}
+                
+                    
+                        <div class=" billing-addres-sub-section ">
+
+                            <div class="billing-addres-sub-section-title">
+                                <span>Selected address</span>
+                            </div>
+                            <!-- <div class="form-check mt-2 mb-2 custom-radio-box">
+                                <input class="form-check-input" type="radio" name="custid"
+                                    id="custadd{{forloop.counter}}" value="{{i.id}}" {% if forloop.first %}checked="checked"{% endif %} required>
+                                <label class="form-check-label fw-bold" for="custadd{{forloop.counter}}">Selected Address </label>
+                            </div> -->
+
+
+                            <div class="address-selection-section">
+                                <div class="address-selection-sub-section">
+                                    <span>{{i.first_name}}</span>
+                                </div>
+
+                                <div class="address-selection-sub-section">
+                                    <span>{{i.locality}}, {{i.city}}</span>
+                                </div>
+
+                                <div class="address-selection-sub-section">
+                                    <span>{{i.state}} - {{i.pincode}}</span>
+                                </div>
+
+                                <div class="address-selection-sub-section">
+                                    <span>{{i.mobile_number}}</span>
+                                </div>
+
+                                <div class="address-selection-sub-section">
+                                    <span>{{i.email}}</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    
+               
+                {% endif %}
+                {% endfor %}
+                <div class="addres-action-btns">
+                    <div class="action-btn">
+                        <button type="button"  data-bs-toggle="modal" data-bs-target="#addressbtn">Change Address</button>
+                    </div>
+
+                    <div class="action-btn">
+                        <button  data-bs-toggle="modal" data-bs-target="#addAddress" onclick="addressaddbtn(event)">
+                            Add New Address</button>
+                    </div>
+                </div>
+    
+            </div>
+
+
+            <div class="order-summary-section">
+                <div class="order-summary-section-title">
+                    <span>Summary</span>
+                </div>
+                <div class="order-summery-sub-section">
+
+                    <div class="total-mrp-section">
+                        <div class="total-mrp-section-label">
+                            <span>Total MRP </span>
+                        </div>
+
+                        <div class="total-mrp-section-value">
+                            <span>&#x20B9; {{mrp_amount}}</span>
+                        </div>
+                    </div>
+
+                    <div class="total-mrp-section">
+                        <div class="total-mrp-section-label">
+                            <span>Discount </span>
+                        </div>
+
+                        <div class="total-mrp-section-value">
+                            <span>-&#x20B9; {{discountonmrp}}</span>
+                        </div>
+                    </div>
+
+                    <div class="total-mrp-section">
+                        <div class="total-mrp-section-label">
+                            <span>Tax </span>
+                        </div>
+
+                        <div class="total-mrp-section-value">
+                            <span>&#x20B9; {{tax}}</span>
+                        </div>
+                    </div>
+
+                    <div class="total-mrp-section">
+                        <div class="total-mrp-section-label">
+                            <span>Delivery charges </span>
+                        </div>
+
+                        <div class="total-mrp-section-value">
+                            <span>&#x20B9; {{ship}}</span>
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="total-mrp-section-hero">
+                        <div class="total-mrp-section-label">
+                            <span>Total</span>
+                        </div>
+
+                        <div class="total-mrp-section-value">
+                            <span>&#x20B9; {{grand_total}}</span>
+                        </div>
+                    </div>
+                    <!-- <div class="total-mrp"><span>ITEM TOTAL MRP:</span><span class="fw-bold">Rs. {{mrp_amount}} </span></div>
+                    
+                    <div class="total-mrp"><span>DISCOUNT ADDED:</span><span class="fw-bold">Rs. {{discountonmrp}} </span></div>
+                     
+                    <div class="total-mrp"><span>TAX:</span><span class="fw-bold">Rs. {{tax}}</span></div>
+                    <div class="total-mrp"><span>DELIVERY FESS</span><span class="fw-bold">Rs. {{ship}}</span></div>
+                    <div class="total-mrp"><span>ITEM TOTAL MRP(including all taxes)</span><span class="fw-bold">Rs. {{grand_total}}</span></div> -->
+                </div>
+
+                <div class="action-btn-v2">
+                  <button type="submit" id="pay-btn">Checkout</button>
+              </div>
+            </div>
+
+
+
+                <div class="modal fade" id="addressbtn" tabindex="-1" aria-labelledby="addresslabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="addresslabel">Change Address</h1>
+                         
+                        </div>
+                        <div class="modal-body d-flex flex-wrap">
+                          
+                            {% csrf_token %}
+                            {% for i in add %}
+                            <div class="col-md-6 p-1">
+                                <div class="card">
+                                    <div class="card-body p-2">
+                                        <div class="form-check mt-2 custome-radio-box">
+                                            <input class="form-check-input" type="radio" name="custid"
+                                                id="custadd{{forloop.counter}}" value="{{i.id}}" {% if forloop.first %}checked="checked"{% endif %} required>
+                                            <label class="form-check-label fw-bold" for="custadd{{forloop.counter}}">
+                                                Address: {{ forloop.counter }} </label>
+                                        </div>
+            
+                                        <div class="save-details">
+                                            <div class="save-name">
+                                                <h6>{{i.first_name}}</h6>
+                                                <div class="save-position">
+                                                    
+                                                </div>
+                                            </div>
+            
+                                            <div class="save-address">
+                                                <p>{{i.locality}}, {{i.city}}</p>
+                                                <p>{{i.state}}</p>
+                                                
+                                            </div>
+            
+                                            <div class="mobile">
+                                                <p>{{i.mobile_number}}</p>
+                                                <p>{{i.email}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+
+                        </div>
+                            <div class="action-btn-v3">
+                                <button type="button"  data-bs-dismiss="modal">Close</button>
+                                <button type="button"  id="confirmBtn">Confirm</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+
+       
+        
+        {% comment %} <div class="row">
+            <div class="col-md-12">
+                <h3 class="mb-3">Payment</h3>
+                <div class="d-block my-3">
+                    <div class="form-check custome-radio-box">
+                        <input type="radio" value="cod" name="flexRadioDefault" id="debit">
+                        <label for="debit">COD</label>
+                    </div>
+                    <div class="custome-radio-box">
+                        <input value='razorpay' type="radio" name="" id="pay-btn">
+                        <label for="razorpay">Razorpay</label>
+                    </div>
+                </div> {% endcomment %}
+                
+            </div>
+        </div>
+
+
+    </form> <!-- Close the form here -->
+    </div>
+</div>
+        
+</div>
+    <!-- Cart Section End -->
+
+    <!-- Add Address Modal Start -->
+    <div class="modal fade add-address-modal" id="addAddress">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <h1 class="modal-title fs-5" id="addresslabel">Add New Address</h1>
+
+                <div class="modal-body">
+                    <form method='POST' action="{% url 'save_address1'%}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name" class="form-label font-light">Full Name</label>
+                            <input class="form-control" name='fname' type="text" placeholder="Enter Your Full Name"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label font-light">Mobile No.</label>
+                            <input class="form-control" type="number" name='mobile' placeholder="Enter Your Number"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="number" class="form-label font-light">Email</label>
+                            <input class="form-control" type="email" name='email' placeholder="Enter Your Email Address"
+                                required>
+                        </div>
+                        <div class="d-flex justify-content-evenly">
+                            <div class="mb-3">
+                                <label for="number" class="form-label font-light">Area</label>
+                                <input class="form-control" type="text" name='locality' placeholder="Enter area"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="number" class="form-label font-light">City</label>
+                                <input class="form-control" type="text" name='city' placeholder="Enter city" required>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-evenly">
+                            <div class="mb-3">
+                                <label for="number" class="form-label font-light">State</label>
+                                <input class="form-control" type="text" name='state' placeholder="Enter state" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="number" class="form-label font-light">Pincode</label>
+                                <input class="form-control" type="number" name='pincode' placeholder="Enter Pin Code"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="action-btn-v3">
+                            <button type="button" class=" modal-close-button"
+                                data-bs-dismiss="modal">Close</button>
+                            <button  type="submit">Save Address</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add Address Modal End -->
+
+
+
+    <!-- tap to top Section Start -->
+    <div class="tap-to-top">
+        <a href="#home">
+            <i class="fas fa-chevron-up"></i>
+        </a>
+    </div>
+    <!-- tap to top Section End -->
+
+    <div class="bg-overlay"></div>
+    <script>
+        function addressaddbtn(e){
+            e.preventDefault();
+        }
+    </script>
+   
+    
+   
+    <!-- latest jquery-->
+    <script src="{% static 'assets/js/jquery-3.5.1.min.js' %}"></script>
+
+    <!-- Bootstrap js -->
+    <script src="{% static 'assets/js/bootstrap/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- feather icon js -->
+    <script src="{% static 'assets/js/feather/feather.min.js' %}"></script>
+
+    <!-- lazyload js -->
+    <script src="{% static 'assets/js/lazysizes.min.js' %}"></script>
+
+    <!-- Slick js -->
+    <script src="{% static 'assets/js/slick/slick.js' %}"></script>
+    <script src="{% static 'assets/js/slick/slick-animation.min.js' %}"></script>
+    <script src="{% static 'assets/js/slick/custom_slick.js' %}"></script>
+
+    <!-- Notify js -->
+    <script src="{% static 'assets/js/bootstrap/bootstrap-notify.min.js' %}"></script>
+
+    <!-- script js -->
+    <script src="{% static 'assets/js/theme-setting.js' %}"></script>
+    <script src="{% static 'assets/js/script.js' %}"></script>
+
+    {% comment %} <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    var options = {
+    
+    // Enter the Key ID generated from the Dashboard
+    key: "{{ razorpay_merchant_key }}",
+    
+    // Amount is in currency subunits.
+    // Default currency is INR. Hence, 
+    // 50000 refers to 50000 paise
+    amount: "{{ razorpay_amount }}" , 
+    currency: "{{ currency }}",
+    
+    // Your/store name.
+    name: "VISHWARATNA", 
+    
+    // Pass the `id` obtained in the response of Step 1
+    order_id: "{{ razorpay_order_id }}", 
+    callback_url: "{{ callback_url }}",
+    };
+    
+    // initialise razorpay with the options.
+    var rzp1 = new Razorpay(options);
+    
+    // add event listener to the payment button.
+    document.getElementById("pay-btn").onclick = function (e) {
+    rzp1.open();
+    e.preventDefault();
+    };
+</script> {% endcomment %}
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      // Find the Confirm button
+      var confirmBtn = document.getElementById("confirmBtn");
+  
+      // Add click event listener to the Confirm button
+      confirmBtn.addEventListener("click", function() {
+          // Find the selected radio button
+          var selectedRadio = document.querySelector('input[name="custid"]:checked');
+  
+          // Extract the selected address details
+          var selectedAddress = selectedRadio.closest('.card').querySelector('.save-details').innerHTML;
+  
+          // Update the selected address section in the billing section
+          var billingAddressSection = document.querySelector('.billing-addres-sub-section');
+          billingAddressSection.innerHTML = selectedAddress;
+  
+          // Close the modal
+          var modal = document.getElementById("addressbtn");
+          var modalInstance = bootstrap.Modal.getInstance(modal);
+          modalInstance.hide();
+      });
+  });
+  </script>
+
+
+</body>
+
+</html>

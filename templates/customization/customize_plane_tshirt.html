@@ -1,0 +1,400 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="manifest" href="./manifest.json" />
+    <link
+      rel="icon"
+      href="/static/assets1/images/logos/vr_main.png"
+      type="image/x-icon"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="/static/assets1/images/logos/vr_main.png"
+    />
+    <meta name="theme-color" content="#e22454" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="Voxo" />
+    <meta
+      name="msapplication-TileImage"
+      content="/static/assets1/images/logos/vr_main.png"
+    />
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Voxo" />
+    <meta name="keywords" content="Voxo" />
+    <meta name="author" content="Voxo" />
+    <link
+      rel="icon"
+      href="/static/assets1/images/logos/vr_main.png"
+      type="image/x-icon"
+    />
+    <title>Customize Plane Tshirt</title>
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- bootstrap css -->
+    <link
+      id="rtl-link"
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/bootstrap.css"
+    />
+
+    <!-- font-awesome css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/font-awesome.css"
+    />
+
+    <!-- feather icon css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/feather-icon.css"
+    />
+
+    <!-- animation css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/animate.css"
+    />
+
+    <!-- slick css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/slick/slick-theme.css"
+    />
+
+    <!-- Theme css -->
+    <link
+      id="color-link"
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/demo2.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- icons -->
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+    />
+
+    <style>
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background-color: white;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background-color: rgb(255, 0, 0);
+        border-radius: 5px;
+        transition: all ease;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background-color: rgb(255, 156, 156);
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .animation {
+        background-color: gray;
+      }
+
+      .spacer {
+        height: 30px;
+      }
+
+      .marquee {
+        position: relative;
+        background-color: black;
+        color: white;
+        padding: 15px 0;
+        font-weight: 600;
+        font-size: 20px;
+        text-transform: uppercase;
+        overflow: hidden;
+      }
+
+      .marquee_inner {
+        display: flex;
+        width: fit-content;
+        flex: auto;
+        flex-direction: row;
+      }
+
+      .marquee_part {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        padding: 0 4px;
+      }
+
+      .animation-icon img {
+        margin-right: 15px;
+        margin-left: 15px;
+        width: 30px;
+        height: 30px;
+        transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+      }
+
+      .vr-logo {
+        width: 110px;
+      }
+
+      @media screen and (max-width: 1000px) {
+      }
+
+      @media screen and (max-width: 768px) {
+      }
+
+      @media screen and (max-width: 450px) {
+      }
+    </style>
+  </head>
+
+  <body>
+   
+
+    <!-- product section 2 start -->
+    <section class="ratio_asos pt-0">
+  <div class="container-fluid">
+    <div class="row">
+    <div class="col-sm-12 p-0">
+      <div class="product-wrapper product-style-2 row g-sm-4 g-3">
+        {% for i in all_data %}
+        <div class="col-xl-3 col-lg-4 col-6 " >
+          <div class="product-box single-product-section">
+            <div class="img-wrapper">
+                {% if i.product_image %}
+                <div class="front">
+                  <a href="/customization/{{i.prod_id}}/">
+                    <img src="{{i.product_image.url}}"
+                        class="bg-img blur-up lazyload" alt="">
+                  </a>
+                </div>
+                {% endif %}
+                {% if i.back_image %}
+                  <div class="back">
+                      <a href="/customization/{{i.prod_id}}/">
+                          <img src="{{i.back_image.url}}"
+                              class="bg-img blur-up lazyload" alt="">
+                      </a>
+                  </div>
+                {% endif %}
+<!--                 <div class="label-block">
+                  <h3 class="label label-black">New</h3>
+                  <h3 class="label label-theme">{{i.discount_percentage|floatformat:0}}% Off</h3>
+                </div> -->
+              <div class="cart-wrap">
+                <ul>
+                  <!-- <li>
+                    <a href="javascript:void(0)" 
+                      data-product-image=" {% if i.product_image %} {{ i.product_image.url }} {% endif %}"
+                      data-title="{{ i.title }}"
+                      data-discount-price="{{ i.actual_price }}"
+                      data-selling-price="{{ i.selling_price }}"
+                      data-product-type="{{ i.product_type }}"
+                      data-category="{{ i.category }}"
+                      data-description="{{ i.description }}"
+                      data-back-image=" {% if i.back_image %} {{ i.back_image.url }} {% endif %}"
+                      data-left-image=" {% if i.left_image %} {{ i.left_image.url }} {% endif %}"
+                      data-right-image="{% if i.right_image %} {{ i.right_image.url }} {% endif %}"
+                      onclick="openModal(this)">
+                       <i data-feather="eye"></i>
+                       
+                   </a>
+                </li> -->
+                <!-- <li>
+                  <a href="/customer_login/">
+                     <i style="font-size: 20px;" class="uil uil-shopping-cart-alt"></i>
+                 </a>
+              </li> -->
+                  
+                  <li >
+                    <form action="/add_wishlist/{{i.prod_id}}/" method="POST" class="mx-1">
+                      {% csrf_token %}
+                    <input type="hidden" id='prod_id' name='prod_id' value='{{i.prod_id}}'>
+                    <button  type="submit" name="action" value="add_wishlist" class="btn btn-solid hover-solid btn-animation">
+                      <i style="font-size: 20px;" data-feather="heart"></i>
+                      </button>
+                    </form>
+                    </li>
+                </ul>
+              </div>
+            </div>
+            <div class="product-details">
+              <div class="rating-details">
+                <!-- <span class="font-light grid-content text-center w-100" style="font-size:13px">{{ i.brand }}</span> -->
+                <div class="rating-details">
+                  <!-- <div class="rating my-2 d-inline-block">
+                      <div class="star-rating">
+                          {% for _ in "12345"|make_list %}
+                              {% if forloop.counter <= i.average_rating %}
+                                  <span class="star filled" style="font-size: 15px;">&#x2605;</span>  
+                              {% else %}
+                                  <span class="star" style="font-size: 15px;">&#9734;</span>
+                              {% endif %}
+                          {% endfor %}
+                          
+                      </div>
+                  </div> -->
+                </div>
+              </div>
+              <div class="main-price">
+                <a href="/customization/{{i.prod_id}}/" class="font-default">
+                  <span style="font-size: 13px; width:80%"  >{{ i.title }}</span>
+                </a>
+                <div class="listing-content">
+                  <span class="font-light">Regular Fit</span>
+                  <span class="font-light" style="font-size:13px" >
+                    {{ i.description }}
+                  </span>
+                </div>
+                <span class="theme-color">Rs.{{ i.selling_price }}</span>
+                <button
+                  onclick="location.href = 'cart.html';"
+                  class="btn listing-content"
+                >
+                  Add To Cart
+                </button>
+              </div>
+
+<!--               <div class="delivery-rating-section">
+                    
+                <div class="delivery-section">
+                  <span>Earliest Delivery</span>
+                </div>
+
+
+                </div> -->
+
+<!--                 {% if not i.average_rating or i.average_rating is None %}
+                <div class="ratings-section-no-star">
+                  <span>Waiting for reviews</span>
+                </div>
+                {% else %}
+                <div class="ratings-section">
+                  <i class="bi bi-star-fill"></i>                  
+                  <h4>{{i.average_rating}}</h4>
+
+                </div>
+                {% endif %} -->
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+    <!-- latest jquery-->
+    <script src="/static/assets1/js/jquery-3.5.1.min.js"></script>
+
+    <!-- Bootstrap js-->
+    <script src="/static/assets1/js/bootstrap/bootstrap.bundle.min.js"></script>
+
+    <!-- feather icon js-->
+    <script src="/static/assets1/js/feather/feather.min.js"></script>
+
+    <!-- lazyload js-->
+    <script src="/static/assets1/js/lazysizes.min.js"></script>
+
+    <!-- Slick js-->
+    <script src="/static/assets1/js/slick/slick.js"></script>
+    <script src="/static/assets1/js/slick/slick-animation.min.js"></script>
+    <script src="/static/assets1/js/slick/custom_slick.js"></script>
+
+    <!-- newsletter js -->
+    <script src="/static/assets1/js/newsletter.js"></script>
+
+    <!-- add to cart modal resize -->
+    <script src="/static/assets1/js/cart_modal_resize.js"></script>
+
+    <!-- Add To Home js -->
+    <script src="/static/assets1/js/pwa.js"></script>
+
+    <!-- add to cart modal resize -->
+    <script src="/static/assets1/js/cart_modal_resize.js"></script>
+
+    <!-- feather icon js-->
+    <script src="/static/assets1/js/timer1.js"></script>
+
+    <!-- notify js -->
+    <script src="/static/assets1/js/bootstrap/bootstrap-notify.min.js"></script>
+
+    <!-- script js -->
+    <script src="/static/assets1/js/theme-setting.js"></script>
+    <script src="/static/assets1/js/script.js"></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script>
+      let tween = gsap
+        .to(".marquee_part", {
+          xPercent: -100,
+          repeat: -1,
+          duration: 5,
+          ease: "linear",
+        })
+        .totalProgess(0.5);
+    </script>
+  </body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "seller_base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All cancel products</title>
+</head>
+<body>
+    <div class="page-wrapper compact-wrapper dark-sidebar" id="pageWrapper">
+        <div class="page-body-wrapper">
+          <div class="page-body">
+            <div class="title-header">  <h3>All cancel orders</h3> </div>
+            <div class="card">
+                <div class="row " >
+                    <div class="col-sm-12">
+                        <div class="table-responsive table-desi">
+                            <table class="table table-hover table-striped table-bordered text-center ">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Customer Name</th>
+                                        <th>Email</th>
+                                        <th>Mobile.No</th>
+                                        <th>Product Type</th>
+                                        <th>Category</th>
+                                        <th>Product Image</th>
+                                        <th>Product ID</th>
+                                        <th>Price</th>
+                                        <th>Order ID</th>
+                                        <th>Invoice.No</th>
+                                        <th>Payment Method</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Reason</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for orders in orders %}
+                                        <tr>
+                                            <td>{{orders.customer.first_name}}</td>
+                                            <td>{{orders.customer.email}}</td>
+                                            <td>{{orders.customer.mobile_number}}</td>
+                                            <td>{{orders.product.product_type}}</td>
+                                            <td>{{orders.product.category}}</td>
+                                            <td><img src="{{orders.product.product_image.url}}" height="100" width="100"></td>
+                                            <td>{{orders.product.prod_id}}</td>
+                                            <td>{{orders.total_cost}}</td>
+                                            <td>{{orders.order_id}}</td>
+                                            <td>{{orders.invoice_no}}</td>
+                                            <td>{{orders.payment_method}}</td>
+                                            <td>{{orders.Order_date}}</td>
+                                            <td>{% if orders.canceled %}Cancelled {% endif %}</td>
+                                            <td>{{orders.cancel_reason}}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+</body>
+</html>
+{% endblock %}

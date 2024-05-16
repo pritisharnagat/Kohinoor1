@@ -1,0 +1,181 @@
+{% extends "admin_base.html" %}
+  {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Blogs</title>
+</head>
+<body>
+  <div class="page-wrapper compact-wrapper dark-sidebar" id="pageWrapper">
+    <div class="page-body-wrapper">
+      <div class="page-body">
+        <div class="title-header"> <h5>Edit Blog</h5></div>
+        <div class="card">
+            <div class="row " >
+                <div class="col-sm-12">
+                
+                  <div class="card">
+                    <div class="card-body">
+                      <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row form-row">
+                          <div class="form-group col-md-6">
+                            <label>Blog Title</label>
+                            <input type="text" class="form-control" name = 'title' value="{{ blog.title }}">
+                          </div>
+                        
+                          <div class="form-group mt-2 col-md-6">
+                            <label>Add Image1</label>
+                            <input type="text" class="form-control" value="{{ blog.image1.url }}" readonly>
+                            <!-- <img src="{{ blog.image1.url }}" alt=""> -->
+                            <input type="file" class="form-control" name='image1' accept="image/png, image/jpeg">                         
+                            <small class="text-secondary">Recommended image size is <b>150px x 150px</b></small>
+                          </div> 
+                      
+
+                          <div class="form-group mt-2 col-md-6">
+                              <label>Add Image2</label>
+                              <input type="file" class="form-control" name='image2' accept="image/png, image/jpeg" >
+                              <small class="text-secondary">Recommended image size is <b>150px x 150px</b></small>
+                            </div>
+
+                          <div class="form-group mt-2 col-md-6">
+                          <label>Add Image3</label>
+                          <input type="file" class="form-control" name='image3' accept="image/png, image/jpeg" >
+                          <small class="text-secondary">Recommended image size is <b>150px x 150px</b></small>
+                          </div>
+                        </div>
+
+                        <div class="form-group mt-2">
+                          <label>Heading 1</label>
+                          <input name="heading1" class="form-control" value="{% if blog.heading1 %}{{ blog.heading1 }}{% endif %}"></input>
+                        </div>
+
+                        <div class="form-group mt-2">
+                          <label>Blog Content 1</label>
+                          <textarea name="content1" id="description" class="form-control" cols="300" rows="10" required style="height:100px">{{blog.content1}}</textarea>
+                        </div>
+
+                        <div class="form-group mt-2">
+                          <label>Heading 2</label>
+                          <input name="heading2" class="form-control" value="{% if blog.heading2 %}{{ blog.heading2 }}{% endif %}"></input>
+                        </div>
+
+                        <div class="form-group mt-2">
+                          <label>Blog Content 2</label>
+                          <textarea name="content2" id="description" class="form-control" cols="300" rows="10"  style="height:100px">{{blog.content2}}</textarea>
+                        </div>
+
+                        <div class="form-group mt-2">
+                          <label>Heading 3</label>
+                          <input name="heading3" value="{% if blog.heading3 %}{{ blog.heading3 }}{% endif %}" class="form-control"></input>
+                        </div>
+
+                        <div class="form-group mt-2">
+                          <label>Blog Content 3</label>
+                          <textarea name="content3" id="description" class="form-control" cols="300" rows="10"  style="height:100px">{{ blog.content3 }}</textarea>
+                        </div>
+
+                        <div class="form-group mt-2">
+                          <label>Heading 4</label>
+                          <input name="heading4" class="form-control" value="{% if blog.heading4 %}{{ blog.heading4 }}{% endif %}"></input>
+                        </div>
+
+                        <div class="form-group mt-2">
+                          <label>Blog Content 4</label>
+                          <textarea name="content4" id="description"  class="form-control" cols="300" rows="10"  style="height:100px">{{ blog.content4 }}</textarea>
+                        </div>
+
+                        <div class="form-group mt-2">
+                          <label>Heading 5</label>
+                          <input name="heading4" value="{% if blog.heading5 %}{{ blog.heading5 }}{% endif %}" class="form-control"></input>
+                        </div>
+
+                        <div class="form-group mt-2">
+                          <label>Blog Content 5</label>
+                          <textarea name="content5"  id="description" class="form-control" cols="300" rows="10"  style="height:100px">{{ blog.content5 }}</textarea>
+                        </div>
+
+                        <div class="form-group mt-2">
+                          <label>Heading 6</label>
+                          <input name="heading6" class="form-control" value="{% if blog.heading6 %}{{ blog.heading6 }}{% endif %}"></input>
+                        </div>
+
+                        <div class="form-group mt-2">
+                          <label>Blog Content 6</label>
+                          <textarea name="content6"  id="description" class="form-control" cols="300" rows="10"  style="height:100px">{{ blog.content6 }}</textarea>
+                        </div>
+
+                        <div class="form-group mt-2">
+                          <label>Heading 7</label>
+                          <input name="heading7" class="form-control" value="{% if blog.heading7 %}{{ blog.heading7 }}{% endif %}"></input>
+                        </div>
+
+                        <div class="form-group mt-2">
+                          <label>Blog Content 7</label>
+                          <textarea name="content7" id="description"  class="form-control" cols="300" rows="10"  style="height:100px">{{ blog.content7 }}</textarea>
+                        </div>
+
+                        <div class="form-group mt-2">
+                          <label>Heading 8</label>
+                          <input name="heading8" class="form-control" value="{% if blog.heading8 %}{{ blog.heading8 }}{% endif %}"></input>
+                        </div>
+
+                        <div class="form-group mt-2">
+                          <label>Blog Content 8</label>
+                          <textarea name="content8"  id="description" class="form-control" cols="300" rows="10"  style="height:100px">{{ blog.content8 }}</textarea>
+                        </div>
+
+                        <div class="form-group mt-2">
+                          <label>Heading 9</label>
+                          <input name="heading9" value="{% if blog.heading9 %}{{ blog.heading9 }}{% endif %}" class="form-control"></input>
+                        </div>
+
+                        <div class="form-group mt-2">
+                          <label>Blog Content 9</label>
+                          <textarea name="content9" id="description"  class="form-control" cols="300" rows="10"  style="height:100px">{{ blog.content9 }}</textarea>
+                        </div>
+
+                        <div class="form-group mt-2">
+                          <label>Heading 10</label>
+                          <input name="heading10" class="form-control" value="{% if blog.heading10 %}{{ blog.heading10 }}{% endif %}"></input>
+                        </div>
+
+                        <div class="form-group mt-2">
+                          <label>Blog Content 10</label>
+                          <textarea name="content10" id="description"  class="form-control" cols="300" rows="10"  style="height:100px">{{ blog.content10 }}</textarea>
+                        </div>
+
+                        <div>
+                            <button class="btn btn-primary mt-2" type="submit">save changes</button>
+                        </div>
+                        
+                      </form>
+                    </div>
+                  </div>
+                
+                <!-- /General -->
+                  
+              </div>
+            </div>
+            
+          </div>      
+        </div>
+        <!-- /Page Wrapper -->
+      
+          </div>
+      <!-- /Main Wrapper -->  
+</body>
+
+<script>
+    function displayFileName(input) {
+        var fileName = input.files[0].name;
+        document.getElementById('selectedFileName').innerText = 'Selected File: ' + fileName;
+    }
+</script>
+
+</html>
+
+{% endblock %}  

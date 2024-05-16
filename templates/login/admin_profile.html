@@ -1,0 +1,124 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'assets1\images\logos\vr_main.png' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'assets1\images\logos\vr_main.png' %}" type="image/x-icon">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .registration-container {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 4px;
+            margin-bottom: 12px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="registration-container">
+        <h2>Profile</h2>
+        <form enctype="multipart/form-data"  action="{% url 'admin_profile' %}" method="post">
+
+            {% csrf_token %}
+        <h4 class="card-title">Basic Information</h4>
+        <div class="row form-row">
+            <div class="col-md-12">
+                <div class="form-group">
+                     <div class="change-avatar">
+                        <div class="profile-img">
+                            {% if data1.image %}
+                                <img style="width:150px; border-radius:50%" src="{{ data1.image.url }}" alt="Admin Image">
+                            {% else %}
+                                <img src="{% static 'media/user_images/' %}" alt="Admin Image">
+                            {% endif %}
+                        </div>  
+                        <div class="upload-img">
+                            <div class="change-photo-btn">
+                                <span><i class="fa fa-upload"></i> Upload Photo</span>
+                                <input type="file" class="upload" value="{{ image }}" name="image">
+                            </div>
+                            <small class="form-text text-muted">Allowed JPG, GIF or PNG. Max size of 2MB</small>
+                            <button type="submit" class="btn btn-primary">Upload Photo</button>
+                        </div>
+                        </div> 
+                </div>
+            </div>
+
+               
+                <div class="col-12 col-md-6">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" name="first_name" value="{{data1.first_name}}" id="first_name" class="form-control" oninput="this.value = this.value.replace(/[^a-z A-Z]/g, '')">
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" name="last_name" value="{{data1.last_name}}" id="last_name" class="form-control" oninput="this.value = this.value.replace(/[^a-z A-Z]/g, '')">
+                    </div>
+                </div>
+                
+                
+            </div>
+            <div class="submit-section">
+                <!-- <input type="submit" class="btn btn-primary submit-btn">Save Changes</button> -->
+                <input type="submit" style="background-color: #00569d; color: #fff; " class="btn btn-primary submit-btn" value="Save" id="saveButton">
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
+
+
+
+
+

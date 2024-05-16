@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Horoscope API Request</title>
+</head>
+<body>
+    <h1>Horoscope API Request</h1>
+    
+    <form method="GET" action="{% url 'create_order_api' %}">  
+       
+        <label for="planet">Vendor Id :</label>
+        <input type="text" id="vendor_id" name="vendor_id" value="16793" readonly><br>
+        <label for="lang">Device From:</label>
+        <input type="text" id="device_from" name="device_from" value="4" required><br>
+        <label for="lang">product_name :</label>
+        <input type="text" id="product_name" name="product_name"  required><br>
+        <label for="lang">price :</label>
+        <input type="text" id="price" name="price"  required><br>
+        <label for="lang">Old Price :</label>
+        <input type="text" id="old_price" name="old_price"  required><br> 
+
+        <label for="dob">First Name:</label>
+        <input type="text" id="first_name" name="first_name"  required><br>
+        <label for="tob">Last name:</label>
+        <input type="text" id="last_name_name" name="last_name"  required><br>
+
+        <label for="lat">Mobile Number:</label>
+        <input type="text" id="mobile_no" name="mobile_no" required><br>
+
+        <label for="lang">Email :</label>
+        <input type="text" id="email" name="email"  required><br> 
+
+        
+
+
+        <label for="lang">address :</label>
+        <input type="text" id="address" name="address"  required><br>
+        <label for="lang">state :</label>
+        <input type="text" id="state" name="state"  required><br> 
+
+
+        <label for="lang">city :</label>
+        <input type="text" id="city" name="city"  required><br>
+        <label for="lang">zip_code :</label>
+        <input type="text" id="zip_code" name="zip_code"  required><br> 
+
+        <label for="lang">landmark :</label>
+        <input type="text" id="landmark" name="landmark"  required><br>
+        <label for="lang">payment method :</label>
+        <input type="text" id="payment_method" name="payment_method" value="4"  required><br> 
+
+        <label for="lang">qty :</label>
+        <input type="text" id="qty" name="qty"  required><br>
+
+       <label for="lon">Customer Id:</label>
+        <input type="text" id="custom_order_id" name="custom_order_id" value="124" required><br>
+
+        
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

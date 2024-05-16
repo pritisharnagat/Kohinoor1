@@ -1,0 +1,28 @@
+{% extends "admin_base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<div class="page-wrapper compact-wrapper dark-sidebar" id="pageWrapper">
+    <div class="page-body-wrapper">
+        <div class="page-body" style="margin-top: 200px;">
+            <h2>Razorpay Payment Settings</h2>
+            <form method="POST"  enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="RAZORPAY_KEY_ID">Razorpay Key ID:</label>
+                <input type="text" id="RAZORPAY_KEY_ID" name="razorpay_key_id" value="{{ razorpay_settings.razorpay_key_id }}" readonly>
+                
+                <label for="RAZORPAY_KEY_SECRET">Razorpay Key Secret:</label>
+                <input type="text" id="RAZORPAY_KEY_SECRET" name="rezorpay_key_secret" value="{{razorpay_settings.rezorpay_key_secret }}" readonly>
+            
+                <button type="submit">Save</button>
+            </form>
+            
+        </div>
+    </div>
+</div>
+</body>
+</html>
+{% endblock %}
+

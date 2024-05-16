@@ -1,0 +1,169 @@
+{% extends "admin_base.html" %}
+  {% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All cancel products</title>
+</head>
+<body>
+    <div class="page-wrapper compact-wrapper dark-sidebar" id="pageWrapper">
+        <div class="page-body-wrapper">
+          <div class="page-body">
+            <div class="title-header"> <h5>All cancel orders</h5> </div>
+            <input type="date" id="startDate">
+            <input type="date" id="endDate">
+            <button onclick="sortTableByDate()">Apply Filter</button>
+               <button id="export-btn" class="btn btn-primary">Export to Excel</button>
+            <div class="card">
+                <div class="row ">
+                    <div class="col-sm-12">
+                        <div class="table-responsive table-desi">
+                            <table class="table table-hover table-striped table-bordered text-center" id="dataTable">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Customer Name</th>
+                                        <th>Email</th>
+                                        <th>Mobile.No</th>
+                                        <th>Product Type</th>
+                                        <th>Category</th>
+                                        <th>Product Image</th>
+                                        <th>Product ID</th>
+                                        <th>Price</th>
+                                        <th>Order ID</th>
+                                        <th>Invoice.No</th>
+                                        <th>Payment Method</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Reason</th>
+                                        <th>Seller</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in data %}
+                                        <tr>
+                                            <td>{{i.customer.first_name}}</td>
+                                            <td>{{i.customer.email}}</td>
+                                            <td>{{i.customer.mobile_number}}</td>
+                                            <td>{{i.product.product_type}}</td>
+                                            <td>{{i.product.category}}</td>
+                                            <td><img src="{{i.product.product_image.url}}" height="100" width="100"></td>
+                                            <td>{{i.product.prod_id}}</td>
+                                            <td>{{i.total_cost}}</td>
+                                            <td>{{i.order_id}}</td>
+                                            <td>{{i.invoice_no}}</td>
+                                            <td>{{i.payment_method}}</td>
+                                            <td>{{i.canceled_at}}</td>
+                                            <td>{% if i.canceled %}Cancelled {% endif %}</td>
+                                            <td>{{i.canceled_reason}}</td>
+                                            <td>{{i.product.user}}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <script>
+        
+        document.getElementById("export-btn").addEventListener("click", function() {
+            var table = document.getElementById("dataTable");
+            var rows = table.querySelectorAll("tr");
+            var csvData = [];
+            
+            for (var i = 0; i < rows.length; i++) {
+                if (rows[i].style.display !== "none") { // Check if the row is displayed
+                    var row = [], cols = rows[i].querySelectorAll("td, th");
+    
+                    for (var j = 0; j < cols.length; j++) {
+                        row.push(cols[j].innerText);
+                    }
+    
+                    csvData.push(row.join(","));
+                }
+            }
+    
+            var csvString = csvData.join("\n");
+            var a = document.createElement("a");
+            a.href = "data:text/csv;charset=utf-8," + encodeURIComponent(csvString);
+            a.download = "table_data.csv";
+            a.style.display = "none";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        });
+    
+
+    </script>
+
+    <script>    
+        function searchTable() {
+            // Declare variables
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("dataTable"); // Corrected ID here
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td");
+                for (var j = 0; j < td.length; j++) {
+                    if (td[j]) {
+                        txtValue = td[j].textContent || td[j].innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                            break; // Break the inner loop, move to the next row
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+        }
+
+        
+        
+       
+    </script>
+
+
+
+<script>
+    function sortTableByDate() {
+        // Get the table and rows
+        var table = document.getElementById("dataTable");
+        var rows = table.getElementsByTagName("tr");
+        for (var i = 1; i < rows.length; i++) { 
+            rows[i].style.display = ""; 
+        }
+    
+        // Get the input dates
+        var startDateString = document.getElementById("startDate").value;
+        var endDateString = document.getElementById("endDate").value;
+    
+        // Parse the start date and end date strings into Date objects
+        var startDate = new Date(startDateString);
+        var endDate = new Date(endDateString);
+        // Loop through all table rows
+        for (var i = 1; i < rows.length; i++) { // Start from index 1 to skip the header row
+            var dateCell = new Date(rows[i].getElementsByTagName("td")[11].textContent || rows[i].getElementsByTagName("td")[11].innerText);
+            console.log(i + dateCell);
+            if (dateCell < startDate || dateCell > endDate) {
+                rows[i].style.display = "none"; 
+            } else {
+                rows[i].style.display = ""; 
+            }
+        }
+    }
+    
+</script>
+
+
+</body>
+</html>
+{% endblock %}

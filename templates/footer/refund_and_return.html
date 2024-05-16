@@ -1,0 +1,413 @@
+{% extends 'base.html' %}
+{% block title %}
+ Refund and Return
+{% endblock %}
+
+{% block content %}
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- bootstrap css -->
+    <link
+      id="rtl-link"
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/bootstrap.css"
+    />
+
+    <!-- font-awesome css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/font-awesome.css"
+    />
+
+    <!-- feather icon css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/feather-icon.css"
+    />
+
+    <!-- animation css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/animate.css"
+    />
+
+    <!-- slick css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/slick/slick-theme.css"
+    />
+
+    <!-- Theme css -->
+    <link
+      id="color-link"
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/demo2.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- icons -->
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+    />
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        font-family: "Poppines", sans-serif;
+      }
+
+      .randp-section {
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+      }
+
+      .randp-child-section {
+        max-width: 70rem;
+
+        padding: 20px;
+      }
+
+      .randp-child-section-title {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+        margin-bottom: 20px;
+      }
+      .randp-child-section-title h1 {
+        font-size: 48px;
+        color: #292929;
+      }
+
+      .randp-child-section-desc {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+      }
+
+      .randp-child-section-desc p {
+        line-height: 1.5;
+        font-size: 16px;
+        color: rgb(76, 76, 76);
+        text-align: justify;
+      }
+
+      .randp-child-section-desc p:hover {
+        color: rgb(0, 0, 0);
+      }
+
+      .randp-child-section-desc p a {
+        text-decoration: underline;
+        color: rgb(76, 76, 76);
+      }
+
+      .randp-sub-section {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+
+        margin-top: 15px;
+        margin-bottom: 15px;
+      }
+
+      .randp-sub-section-title {
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .randp-sub-section-title h2 {
+        font-size: 20px;
+        color: #292929;
+      }
+
+      .randp-sub-section-dec {
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: column;
+        flex-wrap: nowrap;
+      }
+
+      .randp-sub-section-dec p {
+        line-height: 1.5;
+        font-size: 14px;
+        color: rgb(76, 76, 76);
+        text-align: justify;
+      }
+
+      .randp-sub-section-dec p:hover {
+        color: rgb(0, 0, 0);
+      }
+
+      .randp-sub-section-dec ul {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: column;
+        flex-wrap: nowrap;
+      }
+
+      .randp-sub-section-dec ul li {
+        line-height: 1.5;
+        font-size: 14px;
+        color: rgb(76, 76, 76);
+        text-align: justify;
+      }
+
+      .randp-sub-section-dec ul li:hover {
+        color: rgb(0, 0, 0);
+      }
+
+      .randp-sub-section-dec ul li i {
+        font-size: 14px;
+      }
+
+      @media screen and (max-width: 1200px) {
+        .randp-child-section {
+          max-width: 60rem;
+        }
+      }
+
+      @media screen and (max-width: 1000px) {
+        .randp-child-section {
+          max-width: 45rem;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        .randp-child-section {
+          max-width: 40rem;
+        }
+        .randp-child-section-title h1 {
+          font-size: 35px;
+        }
+      }
+
+      @media screen and (max-width: 450px) {
+        .randp-child-section-desc p {
+          line-height: 1.5;
+          font-size: 13px;
+          color: rgb(41 41 41);
+        }
+        .randp-child-section-title h1 {
+          font-size: 25px;
+        }
+        .randp-sub-section-title h2 {
+          font-size: 17px;
+        }
+        .randp-sub-section-dec p {
+          line-height: 1.5;
+          font-size: 13px;
+        }
+        .randp-sub-section-dec ul li {
+          line-height: 1.5;
+          font-size: 13px;
+        }
+      }
+
+      @media screen and (max-width: 320px) {
+        .randp-child-section-desc p {
+          line-height: 1.5;
+          font-size: 13px;
+          color: rgb(41 41 41);
+        }
+        .randp-child-section-title h1 {
+          font-size: 25px;
+        }
+        .randp-sub-section-title h2 {
+          font-size: 17px;
+        }
+        .randp-sub-section-dec p {
+          line-height: 1.5;
+          font-size: 13px;
+        }
+        .randp-sub-section-dec ul li {
+          line-height: 1.5;
+          font-size: 13px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="randp-section">
+      <div class="randp-child-section">
+        <div class="randp-child-section-title">
+          <h1>Return Policy</h1>
+        </div>
+
+        <div class="randp-child-section-desc">
+          <p>
+            Thank you for your purchase. We hope you are happy with your
+            purchase. However, if you are not completely satisfied with your
+            purchase for any reason, you may return it to us for a full refund
+            only. Please see below for more information on our return policy.
+          </p>
+        </div>
+
+        <div class="randp-sub-section">
+          <div class="randp-sub-section-title">
+            <h2>Returns</h2>
+          </div>
+          <div class="randp-sub-section-dec">
+            <p>
+              You have [number of days] calendar days to return an item from the
+              date you received it. To be eligible for a return, your item must
+              be unused and in the same condition that you received it. Your
+              item must be in the original packaging.
+            </p>
+          </div>
+        </div>
+
+        <div class="randp-sub-section">
+          <div class="randp-sub-section-title">
+            <h2>Return Process</h2>
+          </div>
+          <div class="randp-sub-section-dec">
+            <p>
+              To return an item, please email customer service at
+              info@vishwaratna.in to obtain a Return Merchandise Authorization
+              (RMA) number. After receiving a RMA number, place the item
+              securely in its original packaging and include your proof of
+              purchase, then mail your return to the following address:
+              VishwaRatna Attn: Returns RMA # IT Park, Nagpur Nagpur,
+              Maharashtra 440011 India You may also use the prepaid shipping
+              label enclosed with your package. Return shipping charges will be
+              paid or reimbursed by us.
+            </p>
+          </div>
+        </div>
+
+        <div class="randp-sub-section">
+          <div class="randp-sub-section-title">
+            <h2>Refunds</h2>
+          </div>
+          <div class="randp-sub-section-dec">
+            <p>
+              Once we receive your item, we will inspect it and notify you that
+              we have received your returned item. We will immediately notify
+              you on the status of your refund after inspecting the item.
+            </p>
+          </div>
+        </div>
+
+        <div class="randp-sub-section">
+          <div class="randp-sub-section-title">
+            <h2>Refund Process</h2>
+          </div>
+          <div class="randp-sub-section-dec">
+            <p>
+              If your return is approved, we will initiate a refund to your
+              original payment method. You will receive the credit within a
+              certain number of days, depending on your card issuer's policies.
+            </p>
+          </div>
+        </div>
+
+        <div class="randp-sub-section">
+          <div class="randp-sub-section-title">
+            <h2>Exchanges</h2>
+          </div>
+          <div class="randp-sub-section-dec">
+            <p>
+              If you wish to exchange your item for a different one, please
+              contact us. You will be responsible for the shipping costs of the
+              new item.
+            </p>
+          </div>
+        </div>
+
+        <div class="randp-sub-section">
+          <div class="randp-sub-section-title">
+            <h2>Exceptions</h2>
+          </div>
+          <div class="randp-sub-section-dec">
+            <p>
+              For defective or damaged products, please contact us at the
+              contact details below to arrange a refund or exchange.
+            </p>
+          </div>
+        </div>
+
+        <div class="randp-sub-section">
+          <div class="randp-sub-section-title">
+            <h2>Contact Us</h2>
+          </div>
+          <div class="randp-sub-section-dec">
+            <p>
+              If you have any questions or suggestions about our Privacy Policy,
+              do not hesitate to contact us.
+            </p>
+
+            <ul>
+              <li>
+                <i class="uil uil-envelope-alt"></i> myvishwaratna@gmail.com
+              </li>
+
+              <li><i class="uil uil-phone"></i> 9511761157</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+{% endblock content %}

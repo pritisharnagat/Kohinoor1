@@ -1,0 +1,144 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- Bootstrap CSS link -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS for hover effect and attractiveness -->
+    <style>
+
+        #popup {
+            background-color: #dc3545;
+            color: #fff;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper compact-wrapper dark-sidebar" id="pageWrapper">
+        <div class="page-body-wrapper">
+          <div class="page-body" style="margin-top: 200px;">
+            <button id="export-btn" class="btn btn-primary">Export to Excel</button>
+            <input class="form-group" type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search..." style="width: 100%; padding: 15px;">
+
+            <div class="title-header"> <h5>Your Products</h5> </div>
+            <div class="card">
+                <div class="row " >
+                    <div class="col-sm-12">
+                        <div class="table-responsive table-desi">
+                            <table class="table table-hover table-striped table-bordered text-center vendor-table" id="vendor-table">
+                                <thead class="table-dark">
+    
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Brand</th>
+                                        <th>Product Type</th>
+                                        <th>Category</th>
+                                        <th>Colour</th>
+                                        <th>Size </th>
+                                        <th>Selling_price</th>
+                                        <th>Total Quantity</th>
+                                        <!-- <th>Ordered Quantity</th> -->
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for product in products %}
+                                    <tr>
+                                        <td>{{ product.title }}</td>
+                                        <td>{{ product.brand }}</td>
+                                        <td>{{ product.product_type }}</td>
+                                        <td>{{ product.category }}</td>
+                                        <td>{{ product.colour }}</td>
+                                        <td>{{ product.size }}</td>
+                                        <td>{{ product.selling_price }}</td>
+                                        <td>{{ product.total_quantity  }}</td>
+                                        <!-- <td>{{ product.total_ordered }}</td> -->
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Popup message for low quantity products -->
+                        <div id="popup">
+                            <p>Some of your products have low quantities!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- export to excel -->
+    <script>
+        document.getElementById("export-btn").addEventListener("click", function() {
+            var table = document.getElementById("vendor-table");
+            var rows = table.querySelectorAll("tr");
+            var csvData = [];
+            
+            for (var i = 0; i < rows.length; i++) {
+                if (rows[i].style.display !== "none") { // Check if the row is displayed
+                    var row = [], cols = rows[i].querySelectorAll("td, th");
+    
+                    for (var j = 0; j < cols.length; j++) {
+                        row.push(cols[j].innerText);
+                    }
+    
+                    csvData.push(row.join(","));
+                }
+            }
+    
+            var csvString = csvData.join("\n");
+            var a = document.createElement("a");
+            a.href = "data:text/csv;charset=utf-8," + encodeURIComponent(csvString);
+            a.download = "table_data.csv";
+            a.style.display = "none";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        });
+    
+    </script>    
+    
+    <!-- search bar -->
+        <script>
+            function searchTable() {
+                // Declare variables
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById("searchInput");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("vendor-table"); // Corrected ID here
+                tr = table.getElementsByTagName("tr");
+        
+                // Loop through all table rows, and hide those who don't match the search query
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td");
+                    for (var j = 0; j < td.length; j++) {
+                        if (td[j]) {
+                            txtValue = td[j].textContent || td[j].innerText;
+                            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                tr[i].style.display = "";
+                                break; // Break the inner loop, move to the next row
+                            } else {
+                                tr[i].style.display = "none";
+                            }
+                        }
+                    }
+                }
+            }
+        </script>
+    
+
+    <!-- Bootstrap JS link (optional, if you need Bootstrap JS functionality) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,612 @@
+{% extends 'base.html' %} {% block title %} View Wishlist {% endblock %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Your website description" />
+    <meta name="author" content="Your Name" />
+
+    <link
+      rel="icon"
+      href="/static/assets1/images/logos/vr_main.png"
+      type="image/x-icon"
+    />
+
+    <title>Wishlist</title>
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- bootstrap css -->
+    <link
+      id="rtl-link"
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/bootstrap.css"
+    />
+
+    <!-- font-awesome css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/font-awesome.css"
+    />
+
+    <!-- feather icon css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/feather-icon.css"
+    />
+
+    <!-- animation css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/animate.css"
+    />
+
+    <!-- slick css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/slick/slick-theme.css"
+    />
+
+    <!-- Theme css -->
+    <link
+      id="color-link"
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/demo2.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- icons -->
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Theme css -->
+    <link
+      id="color-link"
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/demo2.css' %}"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        font-family: "Roboto", sans-serif;
+
+      }
+
+      .wishlist-section-parent {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: column;
+        flex-wrap: wrap;
+        padding: 30px;
+      }
+
+      .wishlist-section-parent-title {
+        width: fit-content;
+        height: auto;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+      }
+
+      .wishlist-section-parent-title span {
+        font-size: 30px;
+        font-family: "Roboto", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      .wishlist-all-prod-section {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 15px;
+        
+        margin-top: 20px;
+      }
+
+      .wishlist-single-item-section {
+        width: 300px;
+        border: 1.5px solid rgb(198, 198, 198);
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        margin: 15px;
+        padding: 15px;
+        transition: all 0.4s ease-out;
+        background-color: white;
+      }
+
+      .wishlist-single-item-section:hover{
+        border: 1.5px solid rgb(80, 80, 80);
+        transform: translateY(-3px);
+      }
+
+      .product-img {
+        width: 200px;
+        height: 200px;
+      }
+
+      .product-img a img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .product-name-price-section {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        margin: 10px;
+        margin-bottom: 10px;
+      }
+
+      .product-name {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+      }
+
+      .product-name a span {
+        text-align: center;
+        width: fit-content;
+        font-size: 20px;
+        color: black;
+      }
+
+      .product-price{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+      }
+
+      .product-price span{
+        text-align: center;
+        width: fit-content;
+        font-size: 25px;
+        font-weight: 500;
+        color: black;
+      }
+
+      .wishlist-action-section{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+      }
+
+      .action-btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 10px;
+      }
+
+      .action-btn a button{
+        background-color: white;
+        padding: 15px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        font-size: 15px;
+        text-decoration: none;
+        
+        border: 1.5px solid rgb(198, 198, 198);
+        border-radius: 10px;
+        color: black;
+        font-weight: 400;
+        transition: all 0.2s ease-out;
+        
+      }
+
+      .action-btn a button:hover{
+        border: 1.5px solid rgba(80, 80, 80, 0);
+        background-color: black;
+        
+        color: white;
+      }
+
+      .action-remove-btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 10px;
+      }
+
+      .action-remove-btn a button{
+        background-color: white;
+        padding: 15px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        font-size: 15px;
+        text-decoration: none;
+        
+        border: 1.5px solid rgb(255, 191, 191);
+        border-radius: 10px;
+        color: black;
+        font-weight: 400;
+        transition: all 0.2s ease-out;
+      }
+
+      .action-remove-btn a button:hover{
+        border: 1.5px solid rgba(80, 80, 80, 0);
+        background-color: rgb(255, 44, 44);
+        
+        color: white;
+      }
+
+      
+
+      /*.cart-empty-msg-section {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+      }
+
+      .empty-bag-animation {
+        width: 500px;
+        height: auto;
+      }*/
+
+      .wishlist-else-ui{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+      }
+
+
+      .cart-empty-msg-section{
+        background-color: rgb(255, 246, 246);
+        width: fit-content;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        padding: 20px;
+        margin-top: 70px;
+        border-radius: 20px;
+        transition: all ;
+      }
+
+
+
+      .empty-bag-animation{
+        width: 400px;
+        height: 400px;
+        
+        margin-bottom: 10px;
+        background-color: transparent;
+        
+        
+
+      }
+
+      .explore-btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 10px;
+      }
+
+      .explore-btn a button{
+        
+        padding: 15px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        font-size: 15px;
+        text-decoration: none;
+        border: none;
+        
+        border-radius: 10px;
+        background-color: black;
+        
+        color: white;
+        font-weight: 400;
+        transition: all 0.3s ease-out;
+      }
+
+      .explore-btn a button:hover{
+        background-color: rgb(57, 57, 57);
+
+      }
+
+      @media screen and (max-width: 1000px) {
+      }
+
+      @media screen and (max-width: 768px) {
+      }
+
+      @media screen and (max-width: 450px) {
+        .wishlist-section-parent-title span {
+          font-size: 15px;
+        }
+
+        .product-img {
+          width: 100px;
+          height: 100px;
+        }
+        .product-name a span {
+          text-align: center;
+          width: fit-content;
+          font-size: 15px;
+          color: black;
+        }
+
+        .product-price span {
+
+          font-size: 20px;
+        }
+
+        .wishlist-action-section {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: row;
+          flex-wrap: wrap;
+        
+        }
+
+        .action-remove-btn {
+          width: 100%;
+
+          flex-wrap: wrap;
+          margin: 0px;
+        }
+
+        .action-btn {
+          width: 100%;
+
+          flex-wrap: wrap;
+          margin-top: 15px;
+          
+        }
+
+        .action-remove-btn a button {
+          background-color: white;
+          
+          width: 150px;
+          padding: 15px;
+          padding-top: 8px;
+          padding-bottom: 8px;
+          font-size: 10px;
+          text-decoration: none;
+          border: 1.5px solid rgb(255, 191, 191);
+          border-radius: 5px;
+        }
+
+        .action-btn a button{
+
+          font-size: 10px;
+          margin: 0;
+          width: 150px;
+          border-radius: 5px;
+        }
+
+        .empty-bag-animation{
+          width: 300px;
+          height: 300px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .empty-bag-animation {
+          width: 200px;
+          height: 200px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wishlist-section-parent">
+      {% if data %}
+      <div class="wishlist-section-parent-title">
+        <span>
+          Items In Your Wishlist ( <strong>{{ data|length }}</strong> )</span
+        >
+      </div>
+
+      <div class="wishlist-all-prod-section">
+        {% for d in data %}
+        <div class="wishlist-single-item-section">
+          <div class="product-img">
+            <a href="/prod_details/{{d.product.prod_id}}/">
+              <img
+                src="{{ d.product.product_image.url }}"
+                alt="Product Image"
+              />
+            </a>
+          </div>
+
+          <div class="product-name-price-section">
+            <div class="product-name">
+              <a href="/prod_details/{{d.product.prod_id}}/">
+                <span>{{ d.product.title }}</span>
+                
+              </a>
+            </div>
+            <!-- <div class="product-desc">
+            <span>{{ d.product.description }}</span>
+          </div> -->
+
+            <div class="product-price">
+              <span>&#8377</span>
+              <span>{{ d.product.actual_price }}</span>
+            </div>
+          </div>
+
+          <div class="wishlist-action-section">
+            <div class="action-remove-btn">
+              <a href="/remove_wishlist/{{d.id}}/"
+                ><button>Remove</button
+              ></a>
+            </div>
+
+            <div class="action-btn">
+              <a href="/add_cart/{{d.product.prod_id}}/">
+                <button>Add to cart</button>
+              </a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      {% else %}
+      
+
+      <div class="wishlist-else-ui">
+        <div class="wishlist-section-parent-title">
+          <span
+            >These are a few of your favourite things... or they will be, once
+            you Wishlist something.</span
+          >
+        </div>
+        <div class="cart-empty-msg-section ">
+          <dotlottie-player
+            class="empty-bag-animation"
+            src="https://lottie.host/c3e9ba00-7bef-4765-97b6-31b6937392e0/GU8XYyDzHn.json"
+            background="transparent"
+            speed="0.8"
+            loop
+            autoplay
+          >
+        
+          
+        </dotlottie-player>
+        <div class="explore-btn">
+          <a href="/tshirt/">
+            <button>Continue Shopping</button>
+          </a>
+        </div>
+
+
+        </div>
+      </div>
+      
+      {% endif %}
+    </div>
+
+    <script
+      src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+      type="module"
+    ></script>
+
+
+
+        <script>
+          // Get the title element
+          var titleElement = document.getElementById("productTitle");
+          var title = titleElement.innerText;
+        
+          // Split the title into words
+          var words = title.split(" ");
+        
+          // Check if the number of words exceeds the limit
+          if (words.length > 5) {
+            // Truncate the words after the 5th word
+            var truncatedWords = words.slice(0, 5);
+        
+            // Join the truncated words and add dots
+            var truncatedTitle = truncatedWords.join(" ") + "...";
+        
+            // Update the title element with the truncated title
+            titleElement.innerText = truncatedTitle;
+          }
+        </script>
+  </body>
+</html>
+
+{% endblock content %}

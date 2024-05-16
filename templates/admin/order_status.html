@@ -1,0 +1,153 @@
+{% extends "admin_base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>order status</title>
+    <style>
+        /* Style for the search input */
+        #searchInput {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #f8f8f8;
+        }
+
+        /* Style for the table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper compact-wrapper dark-sidebar" id="pageWrapper">
+        <div class="page-body-wrapper">
+          <div class="page-body">
+            <div class="title-header"> <h5> Orders Status</h5> </div>
+            <button id="export-btn" class="btn btn-primary">Export to Excel</button>
+            <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search...">
+            <div class="card">
+                <div class="row " >
+                    <div class="col-sm-12">
+                        <div class="table-responsive table-desi">
+                            <table class="table table-hover table-striped table-bordered text-center " id="dataTable">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Customer Name</th>
+                                        <th>Email</th>
+                                        <th>Contact No.</th>
+                                        <th>Order ID</th>
+                                        <th>Invoice no</th>
+                                        <th>Action</th>
+                                        <th>Status</th>
+                                    
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in all_orders %}
+                                        <tr>
+                                            <td>{{ i.customer.first_name}}  {{ i.customer.last_name}}</td>
+                                            <td>{{ i.customer.email }}</td>
+                                            <td>{{ i.customer.mobile_number }}</td>
+                                            <td>{{ i.order_id }}</td>
+                                            <td>{{i.invoice_no}}</td>
+                                            <td>
+                                                <a href="/view_order/{{i.id}}/">Track order</a>
+                                                 <td>{{ i.status }}</td>
+                                            </td>
+                                           <!--  <td>
+                                                <select name="status" onchange="updateStatus({{ i. }status}, this.value)">
+                                                    {% for status in status_choices %}
+                                                        <option value="{{ status.0 }}" {% if i.status == status.0 %} selected {% endif %}>{{ status.1 }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </td> -->
+                                        </tr>      
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <script>
+        function searchTable() {
+            var input, filter, table, tr, td, i, j;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("dataTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td");
+                for (j = 0; j < td.length; j++) {
+                    if (td[j]) {
+                        txtValue = td[j].textContent || td[j].innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                            break;
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script>
+        document.getElementById("export-btn").addEventListener("click", function() {
+            var table = document.getElementById("dataTable");
+            var rows = table.querySelectorAll("tr");
+            var csvData = [];
+            
+            for (var i = 0; i < rows.length; i++) {
+                if (rows[i].style.display !== "none") { // Check if the row is displayed
+                    var row = [], cols = rows[i].querySelectorAll("td, th");
+    
+                    for (var j = 0; j < cols.length; j++) {
+                        row.push(cols[j].innerText);
+                    }
+    
+                    csvData.push(row.join(","));
+                }
+            }
+    
+            var csvString = csvData.join("\n");
+            var a = document.createElement("a");
+            a.href = "data:text/csv;charset=utf-8," + encodeURIComponent(csvString);
+            a.download = "table_data.csv";
+            a.style.display = "none";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        });
+    </script>
+
+</body>
+</html>
+{% endblock %}

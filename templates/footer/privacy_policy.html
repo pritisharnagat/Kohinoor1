@@ -1,0 +1,576 @@
+{% extends 'base.html' %}
+{% block title %}
+ Privacy Policy
+{% endblock %}
+
+{% block content %}
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- bootstrap css -->
+    <link
+      id="rtl-link"
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/bootstrap.css"
+    />
+
+    <!-- font-awesome css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/font-awesome.css"
+    />
+
+    <!-- feather icon css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/feather-icon.css"
+    />
+
+    <!-- animation css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/animate.css"
+    />
+
+    <!-- slick css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/slick/slick-theme.css"
+    />
+
+    <!-- Theme css -->
+    <link
+      id="color-link"
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/demo2.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- icons -->
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+    />
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        font-family: "Poppines", sans-serif;
+      }
+
+      .pandp-section {
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+      }
+
+      .pandp-child-section {
+        max-width: 70rem;
+
+        padding: 20px;
+      }
+
+      .pandp-child-section-title {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+        margin-bottom: 20px;
+      }
+      .pandp-child-section-title h1 {
+        font-size: 48px;
+        color: #292929;
+      }
+
+      .pandp-child-section-desc {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+      }
+
+      .pandp-child-section-desc p {
+        line-height: 1.5;
+        font-size: 16px;
+        color: rgb(76, 76, 76);
+        text-align: justify;
+      }
+
+      .pandp-child-section-desc p:hover {
+        color: rgb(0, 0, 0);
+      }
+
+      .pandp-child-section-desc p a {
+        text-decoration: underline;
+        color: rgb(76, 76, 76);
+      }
+
+      .pandp-sub-section {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+
+        margin-top: 15px;
+        margin-bottom: 15px;
+      }
+
+      .pandp-sub-section-title {
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .pandp-sub-section-title h2 {
+        font-size: 20px;
+        color: #292929;
+      }
+
+      .pandp-sub-section-dec {
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: column;
+        flex-wrap: nowrap;
+      }
+
+      .pandp-sub-section-dec p {
+        line-height: 1.5;
+        font-size: 14px;
+        color: rgb(76, 76, 76);
+        text-align: justify;
+      }
+
+      .pandp-sub-section-dec p:hover {
+        color: rgb(0, 0, 0);
+      }
+
+      .pandp-sub-section-dec ul {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: column;
+        flex-wrap: nowrap;
+      }
+
+      .pandp-sub-section-dec ul li {
+        line-height: 1.5;
+        font-size: 14px;
+        color: rgb(76, 76, 76);
+        text-align: justify;
+      }
+
+      .pandp-sub-section-dec ul li:hover {
+        color: rgb(0, 0, 0);
+      }
+
+      .pandp-sub-section-dec ul li i {
+        font-size: 14px;
+      }
+
+      @media screen and (max-width: 1200px) {
+        .pandp-child-section {
+          max-width: 60rem;
+        }
+      }
+
+      @media screen and (max-width: 1000px) {
+        .pandp-child-section {
+          max-width: 45rem;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        .pandp-child-section {
+          max-width: 40rem;
+        }
+        .pandp-child-section-title h1 {
+          font-size: 35px;
+        }
+      }
+
+      @media screen and (max-width: 450px) {
+        .pandp-child-section-desc p {
+          line-height: 1.5;
+          font-size: 13px;
+          color: rgb(41 41 41);
+        }
+        .pandp-child-section-title h1 {
+          font-size: 25px;
+        }
+        .pandp-sub-section-title h2 {
+          font-size: 17px;
+        }
+        .pandp-sub-section-dec p {
+          line-height: 1.5;
+          font-size: 13px;
+        }
+        .pandp-sub-section-dec ul li {
+          line-height: 1.5;
+          font-size: 13px;
+        }
+      }
+
+      @media screen and (max-width: 320px) {
+        .pandp-child-section-desc p {
+          line-height: 1.5;
+          font-size: 13px;
+          color: rgb(41 41 41);
+        }
+        .pandp-child-section-title h1 {
+          font-size: 25px;
+        }
+        .pandp-sub-section-title h2 {
+          font-size: 17px;
+        }
+        .pandp-sub-section-dec p {
+          line-height: 1.5;
+          font-size: 13px;
+        }
+        .pandp-sub-section-dec ul li {
+          line-height: 1.5;
+          font-size: 13px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="pandp-section">
+      <div class="pandp-child-section">
+        <div class="pandp-child-section-title">
+          <h1>Privacy Policy</h1>
+        </div>
+
+        <div class="pandp-child-section-desc">
+          <p>
+            At Vishwa Ratna, accessible from
+            <a href="https://vishwaratna.in/">https://vishwaratna.in/</a>, one
+            of our main priorities is the privacy of our visitors. This Privacy
+            Policy document contains types of information that is collected and
+            recorded by Vishwa Ratna and how we use it. If you have additional
+            questions or require more information about our Privacy Policy, do
+            not hesitate to contact us. This Privacy Policy applies only to our
+            online activities and is valid for visitors to our website with
+            regards to the information that they shared and/or collect in Vishwa
+            Ratna. This policy is not applicable to any information collected
+            offline or via channels other than this website.Your privacy is
+            important to us. This Privacy Policy explains how we collect, use,
+            disclose, and safeguard your information when you visit our website.
+          </p>
+        </div>
+
+        <div class="pandp-sub-section">
+          <div class="pandp-sub-section-title">
+            <h2>Consent</h2>
+          </div>
+          <div class="pandp-sub-section-dec">
+            <p>
+              By using our website, you hereby consent to our Privacy Policy and
+              agree to its terms.
+            </p>
+          </div>
+        </div>
+
+        <div class="pandp-sub-section">
+          <div class="pandp-sub-section-title">
+            <h2>Information we collect</h2>
+          </div>
+          <div class="pandp-sub-section-dec">
+            <p>
+              The personal information that you are asked to provide, and the
+              reasons why you are asked to provide it, will be made clear to you
+              at the point we ask you to provide your personal information. If
+              you contact us directly, we may receive additional information
+              about you such as your name, email address, phone number, the
+              contents of the message and/or attachments you may send us, and
+              any other information you may choose to provide. When you register
+              for an Account, we may ask for your contact information, including
+              items such as name, company name, address, email address, and
+              telephone number.
+            </p>
+          </div>
+        </div>
+
+        <div class="pandp-sub-section">
+          <div class="pandp-sub-section-title">
+            <h2>How we use your information</h2>
+          </div>
+          <div class="pandp-sub-section-dec">
+            <p>
+              We use the information we collect in various ways, including to:
+            </p>
+
+            <ul>
+              <li>Provide, operate, and maintain our website</li>
+              <li>Improve, personalize, and expand our website</li>
+              <li>Understand and analyze how you use our website</li>
+              <li>
+                Develop new products, services, features, and functionality
+              </li>
+              <li>
+                Communicate with you, either directly or through one of our
+                partners, including for customer service, to provide you with
+                updates and other information relating to the website, and for
+                marketing and promotional purposes
+              </li>
+              <li>Send you emails</li>
+              <li>Find and prevent fraud</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pandp-sub-section">
+          <div class="pandp-sub-section-title">
+            <h2>Log Files</h2>
+          </div>
+          <div class="pandp-sub-section-dec">
+            <p>
+              Vishwa Ratna follows a standard procedure of using log files.
+              These files log visitors when they visit websites. All hosting
+              companies do this and a part of hosting services' analytics. The
+              information collected by log files include internet protocol (IP)
+              addresses, browser type, Internet Service Provider (ISP), date and
+              time stamp, referring/exit pages, and possibly the number of
+              clicks. These are not linked to any information that is personally
+              identifiable. The purpose of the information is for analyzing
+              trends, administering the site, tracking users' movement on the
+              website, and gathering demographic information.
+            </p>
+          </div>
+        </div>
+
+        <div class="pandp-sub-section">
+          <div class="pandp-sub-section-title">
+            <h2>Cookies and Web Beacons</h2>
+          </div>
+          <div class="pandp-sub-section-dec">
+            <p>
+              Like any other website, Vishwa Ratna uses "cookies". These cookies
+              are used to store information including visitors' preferences, and
+              the pages on the website that the visitor accessed or visited. The
+              information is used to optimize the users' experience by
+              customizing our web page content based on visitors' browser type
+              and/or other information.
+            </p>
+          </div>
+        </div>
+
+        <div class="pandp-sub-section">
+          <div class="pandp-sub-section-title">
+            <h2>Google DoubleClick DART Cookie</h2>
+          </div>
+          <div class="pandp-sub-section-dec">
+            <p>
+              Google is one of a third-party vendor on our site. It also uses
+              cookies, known as DART cookies, to serve ads to our site visitors
+              based upon their visit to www.website.com and other sites on the
+              internet. However, visitors may choose to decline the use of DART
+              cookies by visiting the Google ad and content network Privacy
+              Policy at the following URL –
+              <a href=" https://policies.google.com/technologies/ads">
+                https://policies.google.com/technologies/ads</a
+              >
+            </p>
+          </div>
+        </div>
+
+        <div class="pandp-sub-section">
+          <div class="pandp-sub-section-title">
+            <h2>Advertising Partners Privacy Policies</h2>
+          </div>
+          <div class="pandp-sub-section-dec">
+            <p>
+              You may consult this list to find the Privacy Policy for each of
+              the advertising partners of Vishwa Ratna.
+            </p>
+
+            <p>
+              Third-party ad servers or ad networks uses technologies like
+              cookies, JavaScript, or Web Beacons that are used in their
+              respective advertisements and links that appear on Vishwa Ratna,
+              which are sent directly to users' browser. They automatically
+              receive your IP address when this occurs. These technologies are
+              used to measure the effectiveness of their advertising campaigns
+              and/or to personalize the advertising content that you see on
+              websites that you visit.
+            </p>
+
+            <p>
+              Note that Vishwa Ratna has no access to or control over these
+              cookies that are used by third-party advertisers.
+            </p>
+          </div>
+        </div>
+
+        <div class="pandp-sub-section">
+          <div class="pandp-sub-section-title">
+            <h2>Third Party Privacy Policies</h2>
+          </div>
+          <div class="pandp-sub-section-dec">
+            <p>
+              Vishwa Ratna's Privacy Policy does not apply to other advertisers
+              or websites. Thus, we are advising you to consult the respective
+              Privacy Policies of these third-party ad servers for more detailed
+              information. It may include their practices and instructions about
+              how to opt-out of certain options. You can choose to disable
+              cookies through your individual browser options. To know more
+              detailed information about cookie management with specific web
+              browsers, it can be found at the browsers' respective websites.
+            </p>
+          </div>
+        </div>
+
+        <div class="pandp-sub-section">
+          <div class="pandp-sub-section-title">
+            <h2>CCPA Privacy Rights (Do Not Sell My Personal Information)</h2>
+          </div>
+          <div class="pandp-sub-section-dec">
+            <p>
+              Under the CCPA, among other rights, California consumers have the
+              right to: Request that a business that collects a consumer's
+              personal data disclose the categories and specific pieces of
+              personal data that a business has collected about consumers.
+              Request that a business delete any personal data about the
+              consumer that a business has collected. Request that a business
+              that sells a consumer's personal data, not sell the consumer's
+              personal data. If you make a request, we have one month to respond
+              to you. If you would like to exercise any of these rights, please
+              contact us.
+            </p>
+          </div>
+        </div>
+
+        <div class="pandp-sub-section">
+          <div class="pandp-sub-section-title">
+            <h2>GDPR Data Protection Rights</h2>
+          </div>
+          <div class="pandp-sub-section-dec">
+            <p>
+              We would like to make sure you are fully aware of all of your data
+              protection rights. Every user is entitled to the following: The
+              right to access – You have the right to request copies of your
+              personal data. We may charge you a small fee for this service. The
+              right to rectification – You have the right to request that we
+              correct any information you believe is inaccurate. You also have
+              the right to request that we complete the information you believe
+              is incomplete. The right to erasure – You have the right to
+              request that we erase your personal data, under certain
+              conditions. The right to restrict processing – You have the right
+              to request that we restrict the processing of your personal data,
+              under certain conditions. The right to object to processing – You
+              have the right to object to our processing of your personal data,
+              under certain conditions. The right to data portability – You have
+              the right to request that we transfer the data that we have
+              collected to another organization, or directly to you, under
+              certain conditions. If you make a request, we have one month to
+              respond to you. If you would like to exercise any of these rights,
+              please contact us.
+            </p>
+          </div>
+        </div>
+
+        <div class="pandp-sub-section">
+          <div class="pandp-sub-section-title">
+            <h2>Children's Information</h2>
+          </div>
+          <div class="pandp-sub-section-dec">
+            <p>
+              Another part of our priority is adding protection for children
+              while using the internet. We encourage parents and guardians to
+              observe, participate in, and/or monitor and guide their online
+              activity. Vishwa Ratna does not knowingly collect any Personal
+              Identifiable Information from children under the age of 13. If you
+              think that your child provided this kind of information on our
+              website, we strongly encourage you to contact us immediately and
+              we will do our best efforts to promptly remove such information
+              from our records.
+            </p>
+          </div>
+        </div>
+
+        <div class="pandp-sub-section">
+          <div class="pandp-sub-section-title">
+            <h2>Changes to This Privacy Policy</h2>
+          </div>
+          <div class="pandp-sub-section-dec">
+            <p>
+              We may update our Privacy Policy from time to time. Thus, we
+              advise you to review this page periodically for any changes. We
+              will notify you of any changes by posting the new Privacy Policy
+              on this page. These changes are effective immediately, after they
+              are posted on this page. Our Privacy Policy was created with the
+              help of the Privacy Policy Generator.
+            </p>
+          </div>
+        </div>
+
+        <div class="pandp-sub-section">
+          <div class="pandp-sub-section-title">
+            <h2>Contact Us</h2>
+          </div>
+          <div class="pandp-sub-section-dec">
+            <p>
+              If you have any questions or suggestions about our Privacy Policy,
+              do not hesitate to contact us.
+            </p>
+
+            <ul>
+              <li>
+                <i class="uil uil-envelope-alt"></i> myvishwaratna@gmail.com
+              </li>
+
+              <li><i class="uil uil-phone"></i> 9511761157</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+{% endblock content %}

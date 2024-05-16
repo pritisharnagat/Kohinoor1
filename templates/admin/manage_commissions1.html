@@ -1,0 +1,70 @@
+{% extends "admin_base.html" %}
+  {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="page-wrapper compact-wrapper dark-sidebar" id="pageWrapper">
+        <div class="page-body-wrapper">
+          <div class="page-body">
+            <div class="title-header"> <h5>Manage Commissions</h5> </div>
+            <div class="card">
+                <div class="row " >
+                    <div class="col-sm-12">
+                        <div class="table-responsive table-desi">
+                            <table class="table table-hover table-striped table-bordered text-center ">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Seller</th>
+                                        <th>Commission Plan</th>
+                                        <th>Product Category</th>
+                                        <th>Commission Type</th>
+                                        <th>Commission Amount</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for commission in pending_commissions %} 
+                                    <tr>
+                                        <td>{{ commission.seller_name }}</td>
+                                        <td>{{ commission.commission_plan }}</td>
+                                        <td>{{ commission.product_category }}</td>
+                                        <td>{{ commission.commission_type }}</td>
+                                        <td>
+                                            {% if commission.product_commission_percent %}
+                                                {{ commission.product_commission_percent }}%
+                                            {% endif %}
+                                            {% if commission.product_commission_rupees %}
+                                                ₹{{ commission.product_commission_rupees }}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <form action="{% url 'approve_commission' commission.id %}" method="post">
+                                                {% csrf_token %}
+                                                <input type="submit" value="Approve" class="btn btn-success">
+                                            </form>
+                                            <form action="{% url 'reject_commission' commission.id %}" method="post">
+                                                {% csrf_token %}
+                                                <input type="submit" value="Reject" class="btn btn-danger">
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    
+
+</body>
+</html>
+{% endblock %}  

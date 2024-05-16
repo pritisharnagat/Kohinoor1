@@ -1,0 +1,181 @@
+{% extends "admin_base.html" %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block content %}
+<style>
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+<div class="content">
+    <div class="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <h4 class="card-title">Email Settings</h4>
+                            <!-- <ul class="breadcrumbs">
+                                <li class="nav-home">
+                                    <a href="/">
+                                        <i class="flaticon-home"></i>
+                                    </a>
+                                </li>
+                                <li class="separator">
+                                    <i class="flaticon-right-arrow"></i>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#">Settings</a>
+                                </li>
+                                <li class="separator">
+                                    <i class="flaticon-right-arrow"></i>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/email-setting/">Email Settings</a>
+                                </li>
+                            </ul> -->
+                        </div>
+                    </div>
+
+                    {% comment %} {% if is_admin == True %} {% endcomment %}
+                        <div class="card-body">
+                            <form class="form-control" action="/email-setting/" method="POST" id="email_form"
+                                name="email_form" autocomplete="off">
+                                {% csrf_token %}
+                                
+
+                                <div class="card-body" style="margin-left: 300px;">
+                                    <div class="form-group form-show-validation row">
+                                        <label for="name" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">Email Type
+                                            <span class="required-label">*</span></label>
+                                        <div class="col-lg-6 col-md-11 col-sm-10">
+                                            <select name="email_type" class="form-control">
+                                                <option value="smtp">SMTP</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-show-validation row">
+                                        <label for="username" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">SMTP
+                                            Username <span class="required-label">*</span></label>
+                                        <div class="col-lg-6 col-md-11 col-sm-10">
+                                            <input type="text" class="form-control" id="smtp_username" name="smtp_username"
+                                                placeholder="Enter SMTP Username" value="{{ email_data.smtp_username }}"
+                                                required />
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-show-validation row">
+                                        <label for="username" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">SMTP
+                                            Password <span class="required-label">*</span></label>
+                                        <div class="col-lg-6 col-md-11 col-sm-10">
+                                            <input type="password" class="form-control" id="smtp_password"
+                                                name="smtp_password" placeholder="Enter SMTP Password"
+                                                value="{{ email_data.smtp_password }}" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-show-validation row">
+                                        <label for="username" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">SMTP
+                                            Server <span class="required-label">*</span></label>
+                                        <div class="col-lg-6 col-md-11 col-sm-10">
+                                            <input type="text" class="form-control" id="smtp_server" name="smtp_server"
+                                                placeholder="Enter SMTP Server" value="{{ email_data.smtp_server }}" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-show-validation row">
+                                        <label for="username" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">SMTP
+                                            Port <span class="required-label">*</span></label>
+                                        <div class="col-lg-6 col-md-11 col-sm-10">
+                                            <input type="text" class="form-control" id="smtp_port" name="smtp_port"
+                                                placeholder="Enter SMTP Port" value="{{ email_data.smtp_port }}" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-show-validation row">
+                                        <label for="username" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">SMTP
+                                            Security (TLS/SSL)<span class="required-label">*</span></label>
+                                        <div class="col-lg-6 col-md-11 col-sm-10">
+                                            <input type="text" class="form-control" id="smtp_security" name="smtp_security"
+                                                placeholder="Enter SMTP Security" value="{{ email_data.smtp_security }}"
+                                                required />
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="card-action">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="text-center mt-3 mb-3">
+                                                <input class="btn btn-primary" type="submit" value="Submit" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    {% comment %} {% else %} {% endcomment %}
+                      <div class="card-body permission-denied" style="display:none">
+                          <div class="permission-denied" style="padding: 5%">Permission Denied</div> 
+                      </div>
+                    {% comment %} {% endif %} {% endcomment %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SCRIPTS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.29.2/sweetalert2.all.js"></script>
+<script>
+    $("#email_form").validate({
+        rules: {
+            smtp_username: {
+                required: true,
+                email: true,
+            },
+            smtp_password: {
+                required: true,
+                minlength: 8,
+            },
+            smtp_server: {
+                required: true,
+            },
+            smtp_port: {
+                required: true,
+                digits: true,
+            },
+            smtp_security: {
+                required: true,
+            },
+        },
+        messages: {
+            smtp_username: {
+                required: "Username field is required",
+            },
+            smtp_password: {
+                required: "Password field is required",
+            },
+            smtp_server: {
+                required: "Server field is required",
+            },
+            smtp_port: {
+                required: "Port field is required",
+            },
+            smtp_security: {
+                required: "Security field is required",
+            },
+        },
+    });
+</script>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<!-- Atlantis DEMO methods, don't include it in your project! -->
+<script src="/static/assets/js/setting-demo2.js"></script>
+
+{% endblock javascripts %}

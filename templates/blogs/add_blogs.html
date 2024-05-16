@@ -1,0 +1,158 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Blogs</title>
+    <style>
+        .icon{
+            text-align: center;
+            background-color: #E22454;
+            color: white;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            border: none;
+            
+            margin-top: 15px;
+        }
+        .iconbox{
+            float: right;
+        }
+        .addhead{
+            display: none;
+        }
+        .iconbox:hover .addhead{
+            display: inline-block;
+            background-color: #E22454;
+            border-radius: 5px;
+            padding: 5px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper compact-wrapper dark-sidebar" id="pageWrapper">
+        <div class="page-body-wrapper">
+            <div class="page-body">
+                <div class="title-header">Add Blog</div>
+                    <div class="card">
+                    <div class="row m-1">
+                                 
+                        <form action="/add_blogs/" method="POST" enctype="multipart/form-data">
+
+                            {% csrf_token %}
+                            <div id="headings">
+                                <div class="row form-row">
+                                    <div class="form-group mt-2 col-md-6">
+                                        <label>Blog Title</label>
+                                        <input type="text" class="form-control" name = 'title'>
+                                    </div>
+                                    <div class="form-group mt-2 col-md-6">
+                                        <label>Add Image1</label>
+                                        <input type="file" class="form-control" name='image1' accept="image/png, image/jpeg" onchange="previewImage(event, 'img1')">
+                                        <small class="text-secondary">Recommended image size is <b>150px x 150px</b></small>
+                                        <div id="img1" style="display: flex; flex-wrap: wrap;"></div>
+                                    </div>
+
+                                    <div class="form-group mt-2 col-md-6">
+                                        <label>Add Image2</label>
+                                        <input type="file" class="form-control" name='image2' accept="image/png, image/jpeg" onchange="previewImage(event, 'img2')">
+                                        <small class="text-secondary">Recommended image size is <b>150px x 150px</b></small>
+                                        <div id="img2" style="display: flex; flex-wrap: wrap;"></div>
+                                    </div>
+
+                                    <div class="form-group mt-2 col-md-6">
+                                        <label>Add Image3</label>
+                                        <input type="file" class="form-control" name='image3' accept="image/png, image/jpeg" onchange="previewImage(event, 'img3')">
+                                        <small class="text-secondary">Recommended image size is <b>150px x 150px</b></small>
+                                        <div id="img3" style="display: flex; flex-wrap: wrap;"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label>Heading 1</label>
+                                    <input name="heading1" class="form-control"></input>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label>Blog Content 1</label>
+                                    <textarea name="content1" id="description" class="form-control" cols="300" rows="10" required style="height:100px"></textarea>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label>Heading 2</label>
+                                    <input name="heading2" class="form-control"></input>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label>Blog Content 2</label>
+                                    <textarea name="content2" id="description" class="form-control" cols="300" rows="10"  style="height:100px"></textarea>
+                                </div>
+                            </div> 
+                            <div class="iconbox">
+                                <span class="addhead">Add Heading</span>
+                                <button id="addheading" class="text-light fw-bold icon">+</button>
+                            </div>
+                            <div>
+                                <button class="btn btn-primary mt-5" type="submit">Add</button>
+                            </div>
+                            
+                        </form>
+                    </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var count=3;
+        document.getElementById("addheading").addEventListener("click", function(event){
+            event.preventDefault();
+            const div=document.createElement("div");
+            div.className="mt-1";
+            div.innerHTML=`
+                <div class="form-group mt-2">
+                    <label>Heading ${count}</label>
+                    <input name="heading${count}" class="form-control"></input>
+                </div>
+                <div class="form-group mt-2">
+                    <label>Blog Content ${count}</label>
+                    <textarea name="content${count}" id="description" class="form-control" cols="300" rows="10"  style="height:100px"></textarea>
+                </div>
+            `;
+            document.getElementById("headings").appendChild(div);
+            count++;
+           
+        });
+    </script>
+    <script>
+        function previewImage(event, previewId) {
+          var input = event.target;
+          var previewsContainer = document.getElementById(previewId);
+    
+          previewsContainer.innerHTML = '';
+      
+          if (input.files && input.files.length > 0) {
+            for (var i = 0; i < input.files.length; i++) {
+              var reader = new FileReader();
+              var filePreview = document.createElement(input.accept.includes("image") ? 'img' : 'video');
+              filePreview.style.maxWidth = '100%';
+              filePreview.style.maxHeight = '200px';
+              filePreview.style.margin = '5px';
+      
+              reader.onload = function (e) {
+                filePreview.src = e.target.result;
+                if (input.accept.includes("video")) {
+                  filePreview.controls = true;
+                  filePreview.loop = true;
+                }
+                previewsContainer.appendChild(filePreview);
+              };
+              reader.readAsDataURL(input.files[i]);
+            }
+          }
+        }
+      </script>
+</body>
+</html>
+{% endblock content %}
+

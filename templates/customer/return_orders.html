@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Return Order</title>
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- bootstrap css -->
+    <link
+      id="rtl-link"
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/bootstrap.css"
+    />
+
+    <!-- font-awesome css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/font-awesome.css"
+    />
+
+    <!-- feather icon css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/feather-icon.css"
+    />
+
+    <!-- animation css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/animate.css"
+    />
+
+    <!-- slick css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/vendors/slick/slick-theme.css"
+    />
+
+    <!-- Theme css -->
+    <link
+      id="color-link"
+      rel="stylesheet"
+      type="text/css"
+      href="/static/assets1/css/demo2.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- icons -->
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Theme css -->
+    <link
+      id="color-link"
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/demo2.css' %}"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .order-return-form-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 50px;
+        background: url("/static/sample/order-cancel-bg-sample.png");
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .order-return-form-section-parent-bg {
+        width: 85%;
+        height: 600px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .form-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .form-title span {
+        font-size: 40px;
+        font-weight: 300;
+        margin: 20px;
+        margin-bottom: 5px;
+        margin-top: 5px;
+      }
+
+      .form-sub-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .form-sub-title span {
+        font-size: 20px;
+        margin: 15px;
+        margin-top: 0;
+      }
+
+      .product-details {
+        display: flex;
+        justify-content: start;
+
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
+
+      .return-item-info {
+        display: flex;
+        justify-content: start;
+
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .order {
+        display: flex;
+        justify-content: start;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        padding: 15px;
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+
+      .order-label span {
+        font-size: 15px;
+        margin-right: 10px;
+      }
+
+      .order-value span {
+        font-size: 15px;
+      }
+
+      .product-img {
+        width: 70px;
+        height: auto;
+        margin: 20px;
+      }
+
+      .product-img img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .reason-select-section select {
+        width: 100%;
+      }
+
+      .option {
+        width: 100%;
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+
+      form {
+        max-width: 600px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /*
+
+      form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        margin: auto;
+      }*/
+
+      select {
+        border-radius: 10px;
+      }
+      select,
+      input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      .other-reason-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
+
+      .other-reason-section textarea {
+        width: 100%;
+        border: 1px solid rgba(0, 0, 0, 0.432);
+
+        border-radius: 10px;
+        padding: 15px;
+      }
+
+      .submit-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .submit-btn button {
+        width: 100%;
+        font-size: 17px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        background-color: #4caf50;
+        border: none;
+        border-radius: 8px;
+        color: white;
+        transition: all 0.2s ease-out;
+      }
+
+      .submit-btn button:hover {
+        transform: translateY(3px);
+      }
+
+      @media screen and (max-width: 1000px) {
+      }
+
+      @media screen and (max-width: 768px) {
+      }
+
+      @media screen and (max-width: 450px) {
+        .order-return-form-section {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding-top: 50px;
+          background: url("/static/sample/order-cancel-bg-sample-mobile.png");
+          background-size: contain;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+
+        .order-return-form-section-parent-bg {
+          width: 85%;
+          height: 600px;
+          display: flex;
+          justify-content: center;
+          align-items: start;
+        }
+
+        .form-title span {
+          font-size: 30px;
+          font-weight: 300;
+          margin: 20px;
+          margin-bottom: 5px;
+          margin-top: 5px;
+        }
+
+        .form-sub-title span {
+          font-size: 15px;
+          margin: 15px;
+          margin-bottom: 0;
+          margin-top: 0;
+          text-align: center;
+        }
+
+        label {
+          display: block;
+          margin-bottom: 10px;
+          font-size: 13px;
+        }
+
+        select {
+          width: 100%;
+          padding: 8px;
+          margin-bottom: 15px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+          font-size: 13px;
+        }
+
+        .submit-btn button {
+          width: 100%;
+          font-size: 12px;
+          padding-top: 8px;
+          padding-bottom: 8px;
+          background-color: #4caf50;
+          border: none;
+          border-radius: 5px;
+          color: white;
+          transition: all 0.2s ease-out;
+        }
+
+        .order-return-form {
+          margin-top: 130px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid order-return-form-section">
+      <div class="order-return-form-section-parent-bg">
+        <div class="order-return-form">
+          <div class="form-title">
+            <span>Return Order </span>
+          </div>
+          <div class="form-sub-title">
+            <span>Tell Us Why You're Returing Your Order!</span>
+          </div>
+
+          <form id="returnForm" method="post">
+            <div class="item-title">
+              <span>Item Details</span>
+            </div>
+            <div class="return-item-info">
+              <div class="product-img">
+                <img src="{{order.product.product_image.url}}" />
+              </div>
+
+              <div class="product-details">
+                <div class="order">
+                  <!-- <div class="order-label">
+                    <span>Order ID: </span>
+                  </div> -->
+                  <div class="order-value">
+                    <span>{{ order.customer }}</span>
+                  </div>
+                </div>
+
+                <div class="order">
+                  <!-- <div class="order-label">
+                    <span>Quantity </span>
+                  </div> -->
+                  <div class="order-value">
+                    <span>Product name</span>
+                  </div>
+                </div>
+
+                <!-- <div class="order">
+                  <div class="order-value">
+                    <span>product description</span>
+                  </div>
+                </div> -->
+
+                <div class="order">
+                  <div class="order-label">
+                    <span>Quantity :</span>
+                  </div>
+                  <div class="order-value">
+                    <span>{{ order.quantity }}</span>
+                  </div>
+                </div>
+
+                <div class="order">
+                  <div class="order-label">
+                    <span>Size :</span>
+                  </div>
+                  <div class="order-value">
+                    <span>XXl</span>
+                  </div>
+                </div>
+
+                <div class="order">
+                  <!-- <div class="order-label">
+                    <span> :</span>
+                  </div> -->
+                  <div class="order-value">
+                    <span>&#8377;{{ order.total_cost }}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="product-details">
+                <div class="order">
+                  <div class="order-label">
+                    <span>Order ID: </span>
+                  </div>
+                  <div class="order-value">
+                    <span>{{ order.order_id }}</span>
+                  </div>
+                </div>
+
+                <div class="order">
+                  <div class="order-label">
+                    <span>Product ID: </span>
+                  </div>
+                  <div class="order-value">
+                    <span>{{ order.product }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="return_reason">Select a reason for Return</label>
+              <select
+                id="return_reason"
+                name="return_reason"
+                required
+                onchange="showTextarea()"
+              >
+                <option value="" disabled selected>Select an option</option>
+                <option value="Damaged upon receipt">
+                  Damaged upon receipt
+                </option>
+                <option value="Wrong item received">Wrong item received</option>
+                <option value="Changed my mind">Changed my mind</option>
+                <option value="Defective product">Defective product</option>
+                <option value="Size/color not as expected">
+                  Size/color not as expected
+                </option>
+                <option value="Item doesn't fit">Item doesn't fit</option>
+                <option value="Ordered by mistake">Ordered by mistake</option>
+                <option value="other_reason">I have other reason</option>
+              </select>
+            </div>
+            <div
+              class="other-reason-section"
+              id="other_reason_textarea"
+              style="display: none"
+            >
+              <label class="text-center" for="other_reason_text"
+                >Please specify</label
+              >
+              <textarea
+                id="other_reason_text"
+                name="other_reason_text"
+              ></textarea>
+            </div>
+            <br />
+            <div class="submit-btn">
+              <button type="submit">Yes, Return Order</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- <form id="returnForm" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="return_reason">Return Reason:</label>
+          <select id="return_reason" name="return_reason" required>
+            <option value="" disabled selected>Select return reason</option>
+            <option value="damaged">Damaged</option>
+            <option value="wrong_item">Wrong Item</option>
+            <option value="changed_mind">Changed Mind</option>
+            
+          </select>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Return Order</button>
+      </form>
+    </div> -->
+
+    <script>
+      document
+        .getElementById("returnForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent the form from submitting
+          // Display a confirmation popup
+          if (confirm("Your return request has been submitted.")) {
+            // If the user clicks OK, submit the form
+            this.submit();
+          }
+        });
+    </script>
+
+    <script>
+      function showTextarea() {
+        var selectElement = document.getElementById("return_reason");
+        var otherReasonTextarea = document.getElementById(
+          "other_reason_textarea"
+        );
+        var otherReasonText = document.getElementById("other_reason_text");
+
+        if (selectElement.value === "other_reason") {
+          otherReasonTextarea.style.display = "block";
+          otherReasonText.required = true;
+        } else {
+          otherReasonTextarea.style.display = "none";
+          otherReasonText.required = false;
+        }
+      }
+    </script>
+  </body>
+</html>

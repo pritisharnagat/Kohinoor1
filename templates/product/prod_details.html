@@ -1,0 +1,4504 @@
+{% extends 'base.html' %}{% block title %} Product Details{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+<head>
+    <link
+      rel="icon"
+      href="/static/assets1/images/logos/vr_main.png"
+      type="image/x-icon"
+    />
+
+    <meta
+      name="msapplication-TileImage"
+      content="/static/assets1/images/logos/vr_main.png"
+    />
+    
+
+    <link
+      rel="icon"
+      href="/static/assets1/images/logos/vr_main.png"
+      type="image/x-icon"
+    />
+    
+    
+
+
+
+
+    <!-- icons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+
+    <!-- bootsrap icons -->
+
+    <!-- Option 1: Include in HTML -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+      <style>
+
+
+        body {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          overflow-x: hidden;
+          font-family: "Roboto", monospace;
+          
+        }
+
+
+  /* Styles for fullscreen image viewer */
+  #fullscreen-overlay {
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.877);
+    z-index: 1000;
+    text-align: center;
+    overflow: hidden; /* Enable vertical scrolling for the image */
+  }
+  #fullscreen-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 130px;
+    top: 0px;
+
+    transform: scale(2);
+    transition: transform 0.3s ease;
+    z-index: 1001;
+}
+  .modal-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    
+    background-color: white;
+    
+    color: black;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    z-index: 1002;
+    padding: 20px;
+
+  }
+
+  .modal-close-btn i{
+    font-size: 20px;
+  }
+
+    .exzoom .exzoom_nav {
+      margin-top: 10px;
+      overflow: hidden;
+      position: relative;
+      left: 0px; 
+    }
+
+
+    .color-button {
+      width: 30px;
+      height: 30px;
+      border: none;
+      border-radius: 50%;
+      margin: 5px;
+      cursor: pointer;
+  }
+  
+
+
+          .size-chart-section{
+            width: 100%;
+
+            display: flex;
+            justify-content: start;
+            align-items: start;
+            flex-direction: row;
+            flex-wrap: nowrap;
+
+
+          }
+
+          .size-chart-section span{
+            font-size: 13px;
+            margin-right: 10px;
+
+          }
+
+          .size-chart-section a{
+            font-size: 13px;
+            text-decoration: underline;
+            color: red;
+          }
+
+
+
+
+.size-chart_modal {
+  display: none;
+  position: fixed; 
+  z-index: 1; 
+  padding-top: 100px; 
+  left: 0;
+  top: 0;
+  width: 100%;   
+  height: 100%; 
+  overflow: hidden;
+  background-color: rgb(0,0,0);   
+  background-color: rgba(0,0,0,0.4); 
+  
+}
+
+
+.size-chart_modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border-radius: 20px;
+  width: 60%;
+  
+}
+
+
+
+.size-chart_close:hover,
+.size-chart_close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.size-chat-title-close{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+.size-chat-title-close p{
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+  .size-chat-title-close span{
+    font-size: 20px;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #000;
+    color: white;
+    transition: all 0.3s ease-out;
+  }
+
+  .size-chat-title-close span:hover{
+    background-color: #000;
+    color: white;
+    transform: translateY(-2px);
+    
+  }
+
+
+  
+  /* Add more color definitions for additional colors */
+  
+
+
+
+    
+
+
+          #exzoom {
+            width: 600px;
+            /*height: 400px;*/
+        }
+        .container { 
+         
+          max-width: 960px; 
+          display: flex;
+          justify-content: end;
+          align-items: center;
+        }
+        .hidden { 
+          display: none; 
+        }
+        
+
+          .color-buttons {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .color-button {
+            padding: 8px 16px;
+            margin: 4px;
+            border: none;
+            background-color: transparent;
+            color: white;
+            
+            cursor: pointer;
+            border: 2px solid rgb(190, 190, 190);
+            transition: all 0.4s ease-out;
+        }
+
+        .color-button:hover{
+          transform: scale(1.10);
+          border: 2px solid rgb(176, 176, 176);
+        }
+
+
+        
+        .color-button[disabled] {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .color-button:focus {
+            outline: none;
+        }
+        
+
+
+
+        
+        #sizebx{
+          display: flex;
+          justify-content: start;
+          align-items: start;
+          flex-direction: row;
+          flex-wrap: wrap;
+          padding: 10px;
+        }
+
+        .size-btn-input{
+          display: none;
+        }
+
+        .size-btn{
+
+         display: flex;
+         justify-content: center;
+         align-items: center;
+          border: 2px solid rgb(201, 201, 201);
+          background-color: white;
+          border-radius: 50%;
+          margin: 5px;
+          padding: 10px;
+          font-size: 15px;
+          font-weight: 400;
+          width: 50px;
+          height: 50px;
+          transition: all 0.2s ease-out;
+
+        }
+
+        .size-btn:hover{
+          transform: translateY(-3px);
+          border: 2px solid rgba(255, 0, 0, 0);
+          background-color: red;
+          
+          color: rgb(255, 255, 255);
+        }
+
+
+
+        .size-btn-input:checked + .size-btn {
+          border: 2px solid rgba(255, 0, 0, 0);
+          background-color: red;
+         
+          color: rgb(255, 255, 255);
+          transform: translateY(-3px);
+        }
+
+
+
+
+
+      
+      /* Add more styling as needed */
+      
+
+          .prod-image-section {
+            position: relative;
+            height: auto;
+            
+            z-index: 1;
+            transition: all 0.3s ease-in;
+          }
+          
+
+
+          
+
+          .accordion-container {
+            max-width: 80rem;
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+           
+          }
+          
+          .main .accordion {
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+        }
+          
+          .main .accordion-item {
+            padding: 0.5rem 0;
+            margin: 0;
+            overflow: hidden;
+            border: none;
+            outline: none;
+            transition: all 0.2s ease-out;
+            border-bottom: 2px solid #000000; /* Adjust color as needed */
+          }
+
+          .main .accordion-item.active{
+            border-bottom: 2px solid #ff0000;
+          }
+
+          .main .accordion-item:hover{
+            border-bottom: 2px solid #ff0000;
+          }
+
+          
+          .main .accordion-item .title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: inherit;
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: inherit;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            color: #333; /* Adjust color as needed */
+          }
+          
+          .main .accordion-item .title i.fas {
+            font-size: 0.9rem;
+            color: #333; /* Adjust color as needed */
+            transform: translateX(-50%) rotate(0);
+            transition: transform 0.15s ease;
+          }
+          
+          .main .accordion-item .paragraph {
+            font-family: inherit;
+            font-size:  1.25rem;
+            font-weight: normal;
+            line-height: inherit;
+            color: #333; /* Adjust color as needed */
+            display: none;
+            padding: 1rem 0;
+          }
+
+
+
+          
+          .main .accordion-item.active .title i.fas {
+            color: #ff0000; /* Adjust color as needed */
+            transform: translateX(-50%) rotate(180deg);
+          }
+          
+          .main .accordion-item.active .paragraph {
+            display: block;
+            transform: translateY(0%);
+          }
+
+          .paragraph{
+            text-align: justify;
+            line-height: 1.7;
+          }
+          
+
+          .paragraph ul{
+            display: flex;
+            justify-content: start;
+            align-items: start;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            
+          }
+
+          .paragraph ul li{
+            list-style: decimal;
+          }
+
+
+
+          .magnify > .magnify-lens {
+            width: 100px;
+            height: 100px;
+          }
+
+          html.magnifying > body {
+            overflow-x: hidden !important;
+          }
+          .magnify,
+          .magnify > .magnify-lens,
+          .magnify-mobile,
+          .lens-mobile { /* Reset */
+            min-width: 0;
+            min-height: 0;
+            animation: none;
+            border: none;
+            float: none;
+            margin: 0;
+            opacity: 1;
+            outline: none;
+            overflow: visible;
+            padding: 0;
+            text-indent: 0;
+            transform: none;
+            transition: none;
+          }
+          .magnify {
+            position: relative;
+            width: auto;
+            height: auto;
+            box-shadow: none;
+            display: inline-block;
+            z-index: inherit;
+          }
+          .magnify > .magnify-lens { /* Magnifying lens */
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 100%;
+            /* Multiple box shadows to achieve the glass lens effect */
+            box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.85),
+              0 0 7px 7px rgba(0, 0, 0, 0.25),
+              inset 0 0 40px 2px rgba(0, 0, 0, 0.25);
+            cursor: none;
+            display: none;
+            z-index: 99;
+          }
+          .magnify > .magnify-lens.loading {
+            background: #333 !important;
+            opacity: 0.8;
+          }
+          .magnify > .magnify-lens.loading:after { /* Loading text */
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            color: #fff;
+            content: 'Loading...';
+            font: italic normal 16px/1 Calibri, sans-serif;
+            letter-spacing: 1px;
+            margin-top: -8px;
+            text-align: center;
+            text-shadow: 0 0 2px rgba(51, 51, 51, 0.8);
+            text-transform: none;
+          }
+          
+
+
+
+          .card-wrapper{
+            position: sticky;
+            top: 10px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        img{
+            width: 100%;
+            display: block;
+        }
+        .img-display{
+            overflow: hidden;
+            width: 85%;
+        }
+        .img-showcase{
+            display: flex;
+            width: 400%;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+        .zoom-link {
+          display: inline-block;
+          position: relative;
+      }
+  
+      .zoom-link:hover .zoomed-image {
+          display: block;
+      }
+  
+      .zoomed-image {
+          display: none;
+          position: absolute;
+          top: 0;
+          left: 100%; /* Position it to the right of the cursor */
+          transform: translate(-100%, -100%); /* Offset it to align with the cursor */
+          max-width: 100%; /* Ensure it doesn't overflow horizontally */
+      }
+  
+      .zoomed-image img {
+          max-width: 100%; /* Ensure the image fits within the container */
+      }
+        .img-showcase img{
+            min-width: 100%;
+        }
+        .img-select{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          flex-wrap: wrap;
+          width: 10%;
+          margin-right: 10px;
+          border-radius: 15px;
+        }
+        .img-item{
+            margin: 0.3rem;
+        }
+        .img-item:nth-child(1),
+        .img-item:nth-child(2),
+        .img-item:nth-child(3){
+            margin-right: 0;
+        }
+        .img-item:hover{
+            opacity: 0.8;
+        }
+
+        .card{
+          border: none;
+        }
+
+
+
+
+        .product-imgs{
+          display: flex;
+          justify-content: start;
+          align-items: start;
+          flex-direction: row-reverse;
+          flex-wrap: nowrap;
+        }
+   
+
+        .img-display {
+          overflow: hidden;
+          
+      }
+
+
+          
+
+
+          /* Shrink the lens to half size */
+          .magnify > .magnify-lens {
+            width: 100px;
+            height: 100px;
+          }
+
+
+
+    
+          .animation {
+            background-color: gray;
+          }
+    
+          .spacer {
+            height: 30px;
+          }
+    
+          .marquee {
+            position: relative;
+            background-color: black;
+            color: white;
+            padding: 15px 0;
+            font-weight: 600;
+            font-size: 20px;
+            text-transform: uppercase;
+            overflow: hidden;
+          }
+    
+          .marquee_inner {
+            display: flex;
+            width: fit-content;
+            flex: auto;
+            flex-direction: row;
+          }
+    
+          .marquee_part {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            padding: 0 4px;
+          }
+    
+          .animation-icon img {
+            margin-right: 15px;
+            margin-left: 15px;
+            width: 30px;
+            height: 30px;
+            transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+          }
+    
+          .vr-logo {
+            width: 110px;
+          }
+
+
+          .prod-details-section{
+
+            padding-left: 25px;
+            padding-right: 25px;
+            margin: 0px;
+
+            margin-bottom: 50px;
+          }
+
+          .prod-images{
+            border: 2px solid red;
+
+          }
+
+          .product-img{
+            padding: 0;
+            margin: 5px;
+
+          }
+
+          .product-img img{
+            width: 100%;
+            height: 100%;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            
+          }
+
+
+          .prod-details-parent{
+            padding-top: 0px;
+            padding-left: 0px;
+            padding-right: 20px;
+          }
+
+
+          .prod-deails-child{
+            
+
+          }
+
+          .product-details-sub-child-title{
+            display: flex;
+            justify-content: start;
+            align-items: start;
+            flex-direction: column;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+          }
+
+          .product-title{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: nowrap;
+           
+            margin: 20px;
+            margin-bottom: 10px;
+            margin-top: 0;
+
+          }
+
+          .product-title h1{
+            font-size: 25px;
+            text-transform: capitalize;
+            font-weight: 500;
+            line-height: 1.3;
+          }
+
+          .product-category{
+            
+            margin: 20px;
+            margin-top: 0;
+            margin-bottom: 0;
+          }
+
+
+          .product-category h2{
+            position: relative;
+            font-size: 15px;
+            text-transform: uppercase;
+
+          }
+
+          .product-category i{
+            position: absolute;
+          }
+
+
+          .product-details-sub-child-desc{
+            width: 100%;
+            margin: 20px;
+            display: flex;
+            justify-content: start;
+            align-items: start;
+            flex-direction: column;
+            flex-wrap: nowrap;
+          }
+
+          .product-details-sub-child-desc h2{
+            text-align: justify;
+            font-size: 15px;
+            font-weight: 400;
+            padding: 0;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            line-height: 1.7;
+          }
+          .product-details-sub-child-desc span{
+            text-align: justify;
+            font-size: 20px;
+            font-weight: 500;
+            padding: 0;
+
+            line-height: 1.7;
+          }
+
+
+
+          .star-ratings-review-section{
+            margin: 20px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 100%;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: nowrap;
+          }
+
+
+          .star-ratings-section{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            margin-right: 10px;
+
+          }
+
+          .star-ratings-section h3{
+            font-size: 18px;
+            font-weight: 500;
+            color: #4b4b4b;
+
+          }
+
+          .star-ratings-section h3 i{
+            
+            color: #FFD700;
+            
+          }
+
+          .divider{
+            width: 2px;
+            border-radius: 5px;
+            height: 20px;
+            background-color: #b0b0b0;
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            margin-right: 10px;
+        }
+
+        .review-section{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          margin-right: 10px;
+        }
+
+        .review-section h3{
+          font-size: 18px;
+          font-weight: 500;
+          color: #4b4b4b;
+        }
+        
+
+
+
+
+          #average_star_prod-up{
+            margin: 20px;
+            margin-top: 0;
+            margin-bottom: 0;
+            cursor: none;
+
+          }
+
+          #average_star_prod-up label{
+            font-size: 25px;
+          }
+
+          .product-details-sub-child-price{
+            display: flex;
+            justify-content: start;
+            align-items: baseline;
+            flex-direction: row;
+            flex-wrap: wrap;
+            padding: 20px;
+            padding-top: 0;
+            padding-bottom: 0;
+
+
+          }
+
+          .selling-price h3{
+            font-size: 30px;
+            font-weight: 500;
+
+          }
+
+          .actual-price h3{
+            font-size: 20px;
+            text-decoration: line-through;
+            opacity: 0.5;
+            padding-left: 15px;
+
+            
+          }
+
+          .discount-price h3{
+            font-size: 20px;
+            font-weight: 500;
+            padding-left: 10px;
+            color: #ED0800;
+          }
+
+          .tax-details-section{
+            display: flex;
+            justify-content: start;
+            align-items: baseline;
+            flex-direction: row;
+            flex-wrap: wrap;
+            padding: 20px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+          }
+
+          .tax-details-section span{
+            font-size: 13px;
+            font-weight: 500;
+            color: rgb(0, 186, 12);
+          }
+
+          .stock-in-section{
+            display: flex;
+            justify-content: start;
+            align-items: baseline;
+            flex-direction: row;
+            flex-wrap: wrap;
+            padding: 20px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+
+          }
+
+          .stock-in-section span{
+            font-size: 13px;
+            font-weight: 500;
+            /* border: 1.5px solid green; */
+            padding: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-radius: 10px;
+            background-color: white;
+            padding-left: 0;
+            color: #000000;
+          }
+
+          .stock-in-section span i{
+            font-size: 15px;
+            margin-top: -6px;
+            margin-left: 5px;
+            color: rgb(0, 186, 12);
+          }
+
+
+
+          .ratings-review-section{
+            display: flex;
+            justify-content: start;
+            align-items: baseline;
+            flex-direction: row;
+            flex-wrap: wrap;
+            padding: 20px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+          }
+
+
+
+          .product-details-sub-child-size-section-2-chid{
+            display: flex;
+            justify-content: start;
+            align-items: start;
+            flex-direction: column;
+            flex-wrap: nowrap;
+          }
+
+          .product-details-sub-child-size-section-2-chid label{
+            font-size: 13px;
+            font-weight: 500;
+
+          }
+
+                      .size-chart-section{
+                width: 100%;
+
+                display: flex;
+                justify-content: start;
+                align-items: start;
+                flex-direction: row;
+                flex-wrap: nowrap;
+
+
+              }
+
+              .size-chart-section span{
+                font-size: 13px;
+                margin-right: 10px;
+
+              }
+
+              .size-chart-section a{
+                font-size: 13px;
+                text-decoration: underline;
+                color: red;
+              }
+
+
+
+
+              / The Modal (background) /
+    .size-chart_modal {
+      display: none; / Hidden by default /
+      position: fixed; / Stay in place /
+      z-index: 1; / Sit on top /
+      padding-top: 100px; / Location of the box /
+      left: 0;
+      top: 0;
+      width: 100%; / Full width /
+      height: 100%; / Full height /
+      overflow: auto; / Enable scroll if needed /
+      background-color: rgb(0,0,0); / Fallback color /
+      background-color: rgba(0,0,0,0.4); / Black w/ opacity /
+      
+    }
+
+    / Modal Content /
+    .size-chart_modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border-radius: 20px;
+      width: 60%;
+      
+    }
+
+
+
+    .size-chart_close:hover,
+    .size-chart_close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .size-chat-title-close{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      
+    }
+
+    .size-chat-title-close p{
+      margin-top: 10px;
+      margin-bottom: 20px;
+      margin-left: 10px;
+      font-size: 20px;
+    }
+
+      .size-chat-title-close span{
+        font-size: 20px;
+        padding: 10px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background-color: #000;
+        color: white;
+        transition: all 0.3s ease-out;
+      }
+
+      .size-chat-title-close span:hover{
+        background-color: #000;
+        color: white;
+        transform: translateY(-2px);
+        
+      }
+
+
+
+          .color-buttons-action{
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+          }
+
+
+          .color-buttons{
+            display: flex;
+            justify-content: start;
+            align-items: start;
+            flex-direction: row;
+            flex-wrap: wrap;
+            
+          }
+
+          .color-buttons label{
+            font-size: 15px;
+          }
+
+
+          .color-button{
+            
+            padding: 20px;
+            font-size: 15px;
+            text-transform: capitalize;
+            color: rgb(0, 0, 0);
+            width: 100%;
+            height: fit-content;
+            margin: 15px;
+
+            
+          }
+          .color-selection-section{
+            padding: 20px;
+          }
+
+
+
+          .color-button::before{
+            background-color: #ffdfdf;
+          }
+
+          .color-action-btn{
+            background-color: white;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: fit-content;
+            border-radius: 10px;
+          }
+
+
+          
+
+          .color-action-btn input{
+            border: 2px solid red;
+            width: fit-content;
+            border: none;
+            
+          }
+
+
+          .btn.active {
+            background-image: none;
+            outline: 0;
+            -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0);
+            box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0);
+            border: none;
+        }
+
+
+        .btn:active{
+          border: none;
+        }
+
+        .btn{
+          border: none;
+        }
+
+
+
+
+        .color-section{
+          width: 100%;
+        }
+
+          .product-details-sub-child-size-section-1 span{
+            font-size: 15px;
+            margin: 10px;
+            font-weight: bold;
+          }
+
+          .product-details-sub-child-size-section-1 button{
+            margin-left: 10px;
+            background-color: transparent;
+            
+            border: none;
+            color: red;
+            font-size: 15px;
+            font-weight: bold;
+          }
+
+          .product-details-sub-child-size-section-2{
+            display: flex;
+            justify-content: start;
+            align-self: center;
+            flex-direction: column;
+            flex-wrap: wrap;
+
+            margin: 20px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+
+          
+          }
+
+          .size{
+            background-color: rgb(240, 240, 240);
+            padding: 15px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 5px;
+            transition: all 0.2s ease-out;
+            
+          }
+
+          .size button{
+            
+            width: 20px;
+            padding: 0px;
+            background-color: transparent;
+            
+            border: none;
+
+            
+          }
+
+          .size:hover{
+            box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+            background-color: transparent;
+          }
+
+
+          .product-details-sub-child-size-section-2 select{
+            padding: 15px;
+            background-color: transparent;
+            border: 2px solid rgb(255, 176, 176);
+            
+            border-radius: 5px;
+            font-size: 15px;
+            width: 100%;
+            text-align: center;
+            transition: all ease 0.2s;
+            border-radius: 0;
+          }
+
+
+            select {
+              -webkit-appearance: none;
+              -moz-appearance: none;
+              background: transparent;
+              background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+              background-repeat: no-repeat;
+              background-position-x: 100%;
+              background-position-y: 10px;
+              
+              border-radius: 2px;
+              width: 100%;
+              padding: 1rem;
+
+            }
+
+            .product-details-sub-child-size-section-2 select:hover{
+              
+              border-radius: 10px;
+              border: 2px solid rgb(255, 0, 0);
+            }
+
+
+            
+
+          .product-details-sub-child-quantity{
+            
+
+            display: flex;
+            justify-content: start;
+            align-items: start;
+            flex-direction: column;
+            flex-wrap: nowrap;
+
+            width: 150px;
+
+            margin-top: 5px;
+            margin-bottom: 5px;
+            margin-left: 20px;
+          }
+
+          .quantity-label{
+            
+            margin-right: 15px;
+          }
+
+
+          .product-quantity{
+            padding: 9px;
+            background-color: white;
+            
+            
+            width: 130px;
+            border-radius: 10px;
+            border: 1.5px solid red;
+            
+           
+            transition: all 0.2s ease-out ;
+            
+            
+
+          }
+
+          .product-quantity:hover{
+            border-radius: 10px;
+            
+          }
+
+          .product-quantity span{
+            font-size: 15px;
+            font-weight: bold;
+          }
+
+          .product-quantity input{
+
+            border: none;
+            background-color: transparent;
+            width: 40px;
+            margin: 0px;
+            font-size: 15px;
+            padding-left: 5px;
+            
+          }
+
+          .product-quantity label{
+            margin-right: 15px;
+          }
+
+          .product-quantity button{
+            background: transparent;
+
+            padding-left: 5px;
+            padding-right: 5px;
+            width: 30px;
+            height: 30px;
+            border: none;
+            background-color: white;
+            transition: all 0.2s ease-out;
+            border-radius: 10px;
+            
+            color: rgb(0, 0, 0);
+            
+            
+          }
+          .product-quantity button i{
+            font-size: 15px;
+          }
+
+
+          .product-quantity button:hover{
+            
+            
+            background-color: red;
+            
+            color: white;
+          }
+
+
+
+
+
+
+
+
+
+            .action-btn-container{
+              display: flex;
+              justify-content: start;
+              align-items: center;
+              flex-direction: row;
+              flex-wrap: wrap;
+              padding: 0;
+            }
+
+
+
+            .action-btn{
+              width: 100%;
+            }
+
+
+
+          .action-btn button{
+            padding: 15px;
+            margin: 20px;
+            width: 95%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            font-size: 15px;
+            font-weight: bold;
+            background-color: white;
+            border-radius: 10px;
+            border: 2px solid rgb(255, 176, 176);
+            
+            transition: all 0.2s ease-out;
+          }
+
+          .action-btn button:hover{
+            background-color: #ED0800;
+            color: white;
+            border: 2px solid #ED0800;
+            
+          }
+
+
+          .action-btn button i{
+            font-size: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+          }
+
+
+          .action-btnv2 button{
+            padding: 15px;
+            margin: 20px;
+            width: 95%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            font-size: 15px;
+            font-weight: bold;
+            background-color: #ED0800;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            transition: all 0.2s ease-out;
+          }
+
+          .action-btnv2 button:hover{
+            
+            color: white;
+            
+            
+          }
+
+
+          .action-btnv2 button i{
+            font-size: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+          }
+
+
+
+          .action-buy-now-btn button{
+            padding: 15px;
+            margin: 15px;
+            width: 95%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            font-size: 15px;
+            font-weight: bold;
+            background-color: #ED0800;
+            border: 2px solid rgba(255, 176, 176, 0);
+            border-radius: 10px;
+            color: white;
+            transition: all 0.2s ease-out;
+          }
+
+          .action-buy-now-btn button:hover{
+            
+          }
+
+
+
+
+          .action-btn-wishlist{
+
+            background-color: white;
+
+            padding-top: 5px;
+            width: fit-content;
+            z-index: 0;
+          }
+
+
+          .action-btn-wishlist button{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            background-color: red;
+            color: white;
+            padding: 10px;
+            width: 50px;
+            height: 50px;
+
+            
+            border: 2px solid rgb(255, 0, 0);
+
+            border-radius: 50%;
+            
+            transition: all 0.2s ease-out;
+
+            
+          }
+
+          .action-btn-wishlist button i{
+            font-size: 20px;
+            
+          }
+
+          .action-btn-wishlist button:hover{
+            background-color: red;
+            color: white;
+
+            
+            border: 2px solid rgb(255, 0, 0);
+          }
+          
+
+
+
+
+
+
+          .product-delivery-input{
+            width: 100%;
+            margin: 15px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: nowrap;
+          }
+
+          .product-delivery-input form{
+            width: 100%;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            flex-direction: column;
+            flex-wrap: nowrap;
+          }
+
+
+          .delivery-action{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            border: 2px solid rgb(187, 187, 187);
+            padding: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            
+            
+          }
+
+          .delivery-action input{
+            width: 100%;
+            padding: 10px;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+          }
+
+
+          .delivery-action input:focus{
+
+            background-color: white;
+          }
+          .delivery-action button{
+            background-color: transparent;
+            border: none;
+            color: red;
+          }
+
+          .available-delivery-container{
+            width: 100%;
+            margin: 20px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            border: 1.5px solid rgb(220, 220, 220);
+            padding: 15px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: nowrap;
+          }
+
+          .available-delivery-container-info-v1-sub-section{
+            width: 100%;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            margin-top: 3px;
+            margin-bottom: 3px;
+          }
+
+          .icon{
+            margin: 10px;
+            margin-right: 20px;
+          }
+
+          .icon i{
+            font-size: 20px;
+            color: red;
+          }
+
+
+
+
+          .accordion-section {
+            margin-top: 15px;
+            margin-bottom: 15px;
+            z-index: 1;
+            border: 1.5px solid rgb(182, 182, 182);
+            border-radius: 15px;
+            background-color: white;
+            transition: all 0.3s ease-out;
+          }
+    
+          .accordion-section:hover {
+    
+            border: 1.5px solid black;
+          }
+    
+          .accordion {
+            background-color: #ffffff;
+            color: rgb(76, 76, 76);
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 20px;
+            transition: 0.6s ease-out;
+            border-bottom: 1px solid #ccc;
+            border-radius: 15px;
+          }
+    
+          .accordion:last-of-type {
+            border-bottom: 0;
+          }
+    
+          .active,
+          .accordion:hover {
+            background-color: #ffffff00;
+          }
+    
+          .accordion:after {
+            content: "\002B";
+            color: #000000;
+            font-weight: 1000;
+            float: right;
+            margin-left: 5px;
+            transition: all 0.3s ease-out;
+          }
+    
+          .active:after {
+            
+            content: "\2212";
+            transition: all 0.3s ease-out;
+          }
+    
+          .panel {
+            
+            background-color: #ffffff00;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            
+    
+          }
+          .panel h2 {
+            padding: 15px;
+            margin-bottom: 0;
+            font-weight: 300;
+            font-size: 15px;
+            color: #000000;
+            text-align: justify;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.5;
+          }
+
+          .panel h2 ol {
+            width: 100%;
+            display: flex;
+            justify-content: start;
+            align-items: start;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            padding: 0;
+          }
+
+
+ 
+
+          .product-spec-section{
+            width: 100%;
+            margin: 20px;
+          }
+
+          
+
+          .product-delivery-chlid{
+            margin: 15px;
+            margin-top: 0;
+            margin-bottom: 0;
+          }
+
+
+
+
+          .product-delivery-title{
+            padding: 20px;
+          }
+
+          .product-delivery-title span{
+            font-size: 20px;
+            margin-right: 15px;
+            font-weight: bold;
+          }
+
+          .product-delivery-title i{
+            font-size: 20px;
+          }
+
+
+
+
+
+
+
+
+ 
+
+
+
+          .product-sharing-chlid{
+            
+            height: auto;
+          }
+
+
+          .product-sharing-socails{
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            padding: 10px;
+          }
+
+          .whatsapp{
+            padding: 10px;
+            margin: 15px;
+            background-color: rgb(244, 244, 244);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            transition: all 0.2s ease-out;
+          }
+
+          .whatsapp:hover{
+            background-color: greenyellow;
+            box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+            color: white;
+            
+          }
+
+          .whatsapp i{
+            font-size: 20px;
+          }
+
+
+
+          .instagram{
+            padding: 10px;
+            margin: 15px;
+            background-color: rgb(244, 244, 244);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            transition: all 0.2s ease-out;
+          }
+
+          .instagram:hover{
+            background-color: rgb(255, 0, 0);
+            box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+            color: white;
+            
+          }
+
+          .instagram i{
+            font-size: 20px;
+          }
+
+
+
+          .twitter{
+            padding: 10px;
+            margin: 15px;
+            background-color: rgb(244, 244, 244);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            transition: all 0.2s ease-out;
+          }
+
+          .twitter:hover{
+            background-color: rgb(0, 0, 0);
+            box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+            color: white;
+            
+          }
+
+          .twitter i{
+            font-size: 20px;
+          }
+
+
+
+
+          .facebook{
+            padding: 10px;
+            margin: 15px;
+            background-color: rgb(244, 244, 244);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            transition: all 0.2s ease-out;
+          }
+
+          .facebook:hover{
+            background-color: rgb(0, 81, 255);
+            box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+            color: white;
+            
+          }
+
+          .facebook i{
+            font-size: 20px;
+          }
+
+
+
+
+          .telegram{
+            padding: 10px;
+            margin: 15px;
+            background-color: rgb(244, 244, 244);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            transition: all 0.2s ease-out;
+          }
+
+          .telegram:hover{
+            background-color: rgb(0, 47, 255);
+            box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+            color: white;
+            
+          }
+
+          .telegram i{
+            font-size: 20px;
+          }
+
+          
+
+          .product-offers-chlid{
+            
+          }
+
+
+          .product-offers-title{
+            padding: 20px;
+          }
+
+          .product-offers-title span{
+            font-size: 20px;
+            font-weight: bold;
+          }
+
+          .product-offers-title i{
+            font-size: 20px;
+            margin-left: 20px;
+          }
+
+          .product-offers-title p{
+            padding: 10px;
+          }
+
+
+          .item-desc-section{
+            padding: 20px;
+          }
+          
+          .item-desc-section span{
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+          }
+
+          .item-desc-section p{
+            text-align: justify;
+            font-size: 15px;
+            line-height: 1.5;
+          }
+
+          .prod-info-manu-section{
+            
+            padding: 20px;
+          }
+
+
+          .product-info-key{
+            font-size: 15px;
+            padding: 15px;
+            border-right: 2px solid black;
+          }
+
+          .product-info-value{
+            font-size: 15px;
+            padding: 15px;
+          }
+
+
+
+          .product-info span{
+            font-size: 20px;
+            font-weight: bold;
+            padding: 20px;
+          }
+
+
+
+          .manu-info span{
+            font-size: 20px;
+            font-weight: bold;
+            padding: 20px;
+          }
+
+
+
+
+
+
+
+
+
+
+          .star-rating {
+            display: inline-block;
+            }
+            
+            .star-rating input {
+            display: none;
+            }
+            
+            .star-rating label {
+            float: right;
+            cursor: pointer;
+            color: #ccc;
+            font-size: 30px;
+            }
+            
+            .star-rating label:before {
+            content: '\2605'; /* Unicode character for a star */
+            }
+            
+            .star-rating input:checked ~ label {
+            color: #ffdd00; /* Yellow color for selected stars */
+            }
+
+           
+            .average_star {
+                display: inline-block;
+                }
+                
+            .average_star input {
+            display: none;
+            }
+            
+            .average_star label {
+            float: right;
+            cursor: pointer;
+            color: #ccc;
+            font-size: 30px;
+            }
+            
+            .average_star label:before {
+            content: '\2605';
+            }
+            
+            .average_star input:checked ~ label {
+            color: #ffdd00; 
+            }
+    
+        
+            .star-review {
+                display: inline-block;
+            }
+            
+            .star-review input {
+                display: none;
+            }
+            
+            .star-review label {
+                float: right;
+                cursor: pointer;
+                color: #ccc;
+                font-size: 20px;
+            }
+            
+            .star-review label:before {
+                content: '\2605'; /* Unicode character for a star */
+            }
+            
+            .star-review input:checked ~ label {
+                color: #ffdd00; /* Yellow color for selected stars */
+            }
+
+
+        /* Add CSS styles for the saving review */
+        .star-rating {
+            display: inline-block;
+            }
+            
+            .star-rating input {
+            display: none;
+            }
+            
+            .star-rating label {
+            float: right;
+            cursor: pointer;
+            color: #ccc;
+            font-size: 30px;
+            }
+            
+            .star-rating label:before {
+            content: '\2605'; /* Unicode character for a star */
+            }
+            
+            .star-rating input:checked ~ label {
+            color: #ffdd00; /* Yellow color for selected stars */
+            }
+
+
+
+        /*.star-rating{
+          display: flex;
+          justify-content: start;
+          align-items: center;
+          flex-direction: row-reverse;
+          flex-wrap: wrap-reverse;
+        }
+
+
+        .rating-title{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          padding: 20px;
+        }*/
+
+        .rating-title span{
+          font-size: 20px;
+          font-weight: bold;
+          margin-right: 10px;
+        }
+
+        .rating-title-stars svg{
+          font-size: 20px;
+        }
+
+        .global-rating h5{
+          font-size: 18px;
+        
+        }
+
+
+
+
+
+        .review-btn button{
+          margin-top: 20px;
+          padding: 15px;
+          
+          font-size: 15px;
+          background-color: transparent;
+          border: 2px solid rgb(255, 167, 167);
+          border-radius: 15px;
+          transition: all 0.2s ease-out;
+        }
+
+        .review-btn button:hover{
+          background-color: red;
+          border: 2px solid red;
+          color: white;
+        }
+
+
+        .progress-bar-fill{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: row;
+          flex-wrap: wrap;
+          align-self: center;
+        }
+
+
+        .progress{
+          height: 25px;
+          align-self: center;
+          border-radius: 0;
+          width: 250px;
+          background-color: transparent;
+          border: 2px solid black;
+        }
+
+
+
+        .progress-bar{
+          background-color: black;
+          text-align: center;
+        }
+
+        .review-box{
+          margin: 20px;
+        }
+
+        .customer-section{
+          display: flex;
+          justify-content: start;
+          align-items: center;
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+
+        .customer-review-box-parent{
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          margin-top: 70px;
+          margin-bottom: 50px;
+        }
+
+        .customer-review-box-parent-title {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 25px;
+        }
+
+        .customer-review-box-parent-title span{
+          font-size: 30px;
+        }
+
+
+        .customer-review-section{
+          display: flex;
+          justify-content: start;
+          align-items: center;
+          flex-direction: row;
+          flex-wrap: wrap;
+
+          margin: 10px;
+        }
+
+        .customer-review-box{
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: start;
+          flex-direction: row;
+          flex-wrap: wrap;
+          border: 1.5px solid rgb(222, 222, 222);
+          margin-top: 10px;
+          margin-bottom: 10px;
+          border-radius: 20px;
+          padding-bottom: 50px;
+          padding-top: 20px;
+        }
+
+        .review-form-title{
+         
+        }
+
+
+        .review-form-title span{
+          font-size: 20px;
+          font-weight: bold;
+          text-align: center;
+        }
+
+
+        .customer-review-box h4{
+          font-size: 20px;
+          font-weight: bold;
+          text-transform: uppercase;
+        }
+
+        .review-star-name{
+          display: flex;
+          justify-content: start;
+          align-items: start;
+          flex-direction: column;
+          flex-wrap: wrap;
+          width: fit-content;
+        }
+
+
+        .user-name{
+          display: flex;
+          justify-content: start;
+          align-items: center;
+          width: 100%;
+        }
+
+        .user-name h4{
+          font-size: 17px;
+          font-weight: 500;
+        }
+
+
+
+
+        .customer-details{
+          width: 300px;
+          height: 100%;
+          padding: 15px;
+          border: 1.5px solid rgb(222, 222, 222);
+          margin-top: 20px;
+          background-color: white;
+          border-radius: 15px;
+          transition: all 0.4s ease-out;
+
+        }
+
+        .customer-details:hover{
+          border: 1.5px solid #ffdd00;
+        }
+
+
+
+
+        .customer-details p{
+          text-align: justify;
+        }
+
+        .review-desc{
+          display: flex;
+          justify-content: start;
+          align-items: start;
+          flex-direction: column;
+          flex-wrap: wrap;
+        }
+
+
+        .review-desc p{
+          width: fit-content;
+          font-size: 15px;
+          line-height: 1.6;
+        }
+
+         .review-desc img{
+          width: 150px;
+          height: auto;
+        }
+
+
+
+        .cat-csm-title {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          margin: 40px;
+          margin-bottom: 60px;
+          margin-left: 0;
+          margin-right: 0;
+        }
+
+        
+        
+        .cat-csm-title span{
+          font-size: 25px;
+          font-weight: 500;
+          text-transform: capitalize;
+          
+        }
+        
+        
+        .single-product-section{
+          border-radius: 20px;
+          padding: 15px;
+          box-shadow: 0px 0px 15px -3px rgba(0,0,0,0.1);
+          transition: all 0.2s ease-out;
+        }
+        
+        .single-product-section:hover{
+          transform: translateY(3px);
+          
+        }
+        
+        .product-details{
+          font-family: "Poppins", sans-serif;
+        }
+        
+        .main-price{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          flex-wrap: nowrap;
+        }
+
+        
+        .product-title a h2{
+          font-size: 13px;
+          line-height: 1.3;
+          text-transform: capitalize;
+          width: 100%;
+          text-wrap: wrap;
+          text-align: center;
+        }
+        
+        .product-price-section{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: row;
+          flex-wrap: wrap;
+          width: 100%;
+        }
+        
+        .product-discount-price{
+          display: flex;
+          justify-content: center;
+          align-items: baseline;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          margin-right: 10px;
+        }
+        
+        .product-discount-price span{
+          font-size: 18px;
+        }
+        
+        .product-actual-price{
+          display: flex;
+          justify-content: center;
+          align-items: baseline;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          
+        }
+        
+        .product-actual-price span{
+          font-size: 14px;
+          color: rgb(135, 135, 135);
+          text-decoration: line-through;
+        }
+
+
+        .no-reviews-message{
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: row;
+          flex-wrap: wrap;
+          
+        }
+
+        .lottie-animation{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 200px;
+          height: 200px;
+        }
+
+        .no-reviews-message span{
+          width: 200px;
+          height: 200px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+
+        
+
+        
+
+
+
+
+
+    
+
+          
+
+
+
+          
+
+          
+
+    
+          @media screen and (max-width: 1200px) {
+
+            #exzoom {
+              width: 400px;
+              /*height: 400px;*/
+          }
+          .container { 
+           
+            max-width: 960px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+
+
+            .product-title h1 {
+              font-size: 18px;
+              text-transform: capitalize;
+              font-weight: bold;
+          }
+
+          .product-category h2 {
+            position: relative;
+            font-size: 10px;
+            text-transform: uppercase;
+          }
+
+          .product-details-sub-child-desc{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+
+          }
+
+          .product-details-sub-child-desc h2 {
+            text-align: justify;
+            font-size: 12px;
+            padding: 20px;
+          }
+
+
+
+          .product-details-sub-child-size-section-2 {
+            display: flex;
+            justify-content: start;
+            align-self: center;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            margin-left: 10px;
+            width: 100%;
+            padding: 0  ;
+        }
+          }
+
+          @media screen and (max-width: 1000px) {
+            #exzoom {
+              width: 350px;
+              /*height: 400px;*/
+          }
+          .container { 
+           
+            max-width: 960px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          }
+    
+          @media screen and (max-width: 768px) {
+
+            #exzoom {
+              width: 300px;
+              /*height: 400px;*/
+          }
+          .container { 
+           
+            max-width: 960px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+
+          .color-button {
+            padding: 10px;
+          }
+
+          .size-btn {
+            width: 45px;
+            height: 45px;
+          }
+
+          .action-btn button {
+            font-size: 10px;
+          }
+
+          .action-btnv2 button {
+            font-size: 10px;
+          }
+
+          .accordion {
+            font-size: 15px;
+          }
+
+          .rating-title span {
+            font-size: 15px;
+          }
+
+            .product-info-key{
+                width: 150px;
+            }
+
+            .product-info-value{
+                width: 150px;
+            }
+
+
+
+            .product-imgs{
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-direction: column;
+              flex-wrap: nowrap;
+            }
+
+            
+            .img-select{
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-direction: row;
+              flex-wrap: nowrap;
+              width: 86%;
+              margin-right: 0px;
+              border-radius: 15px;
+            }
+
+
+            
+          }
+    
+          @media screen and (max-width: 450px) {
+
+            #exzoom {
+              width: 350px;
+              /*height: 400px;*/
+          }
+          .container { 
+           
+            max-width: 960px; 
+            display: flex;
+            justify-content: start;
+            align-items: center;
+          }
+
+          .exzoom .exzoom_nav {
+            margin-top: 10px;
+            overflow: hidden;
+            position: relative;
+            left: 0px;
+          }
+
+          .star-ratings-section h3 {
+            font-size: 11px;
+          }
+
+          .review-section h3 {
+            font-size: 15px;
+          }
+
+          .divider {
+
+            height: 15px;
+          }
+
+          .tax-details-section span {
+            font-size: 10px;
+          }
+
+          .color-button {
+            padding: 10px;
+          }
+
+
+
+            .prod-details-section {
+              padding: 0;
+          }
+
+
+            .img-display {
+              overflow: hidden;
+              width: 100%;
+            }
+
+
+            .img-select{
+              width: 100%;
+            }
+
+
+
+
+
+            .prod-details-section{
+                padding: 0;
+                margin: 0px;
+              }
+
+
+            .product-img img{
+                width: 100%;
+                height: 100%;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                
+              }
+
+              .product-title h1 {
+                font-size: 14px;
+                text-transform: uppercase;
+                font-weight: bold;
+            }
+
+                .product-title {
+                  margin: 18px;
+                  margin-bottom: 10px;
+                }
+
+
+                .product-category h2{
+                  font-size: 13px;
+                }
+
+              .product-details-sub-child-desc h2 {
+                text-align: justify;
+                font-size: 10px;
+            }
+
+            .product-details-sub-child-size-section-2 {
+              display: flex;
+              justify-content: start;
+              align-self: center;
+              flex-direction: column;
+              flex-wrap: nowrap;
+              margin-top: 15px;
+              margin-bottom: 0px;
+              /* margin-left: 10px; */
+              width: 100%;
+              padding: 0;
+          }
+
+          .size-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid rgb(201, 201, 201);
+            background-color: white;
+            border-radius: 50%;
+            margin: 5px;
+            padding: 10px;
+            font-size: 12px;
+            font-weight: 400;
+            width: 40px;
+            height: 40px;
+          }
+
+
+          .action-btn button {
+            padding: 15px;
+            margin: 20px;
+            margin-top: 10px;
+            margin-bottom: 5px;
+          }
+
+          .action-btnv2 button {
+            padding: 15px;
+            margin: 20px;
+            margin-top: 5px;
+            margin-bottom: 25px;
+          }
+
+            .product-details-sub-child-size-section-2 select {
+              padding: 15px;
+              background-color: transparent;
+              border: 2px solid rgba(0, 0, 0, 0.104);
+              border-radius: 5px;
+              font-size: 13px;
+              width: 100%;
+              text-align: center;
+              transition: all ease 0.2s;
+              border-radius: 0;
+          }
+
+
+              .action-buy-now-btn button {
+                padding: 10px;
+                margin-top: 0;
+                margin: 20px;
+                width: 96%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: row;
+                font-size: 10px;
+              }
+
+              .action-btn-wishlist button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+              }
+
+              .product-delivery-title span {
+                font-size: 15px;
+                margin-right: 15px;
+                font-weight: bold;
+              }
+              .product-delivery-title i {
+                font-size: 15px;
+              }
+
+
+
+
+              .product-offers-title span {
+                font-size: 15px;
+                font-weight: bold;
+              }
+              
+
+
+              .product-details-sub-child-desc h2 {
+                text-align: justify;
+                font-size: 13px;
+                padding: 0;
+              
+              }
+              .product-details-sub-child-desc {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                margin: 15px;
+                margin-left: 0;
+                margin-right: 0;
+              }
+
+              .main .accordion-item .paragraph {
+                font-family: inherit;
+                font-size: 13px;
+                font-weight: normal;
+                line-height: 1.7;
+                color: #333;
+                display: none;
+                padding: 1rem 0;
+              }
+
+
+              #average_star_prod-up label {
+                font-size: 18px;
+            }
+
+
+            .selling-price h3 {
+              font-size: 25px;
+              font-weight: 500;
+          }
+
+          .actual-price h3 {
+            font-size: 15px;
+            text-decoration: line-through;
+            opacity: 0.5;
+            padding-left: 15px;
+        }
+        .highlight {
+          background-color: red; 
+          color: white; 
+          border: 2px solid black;
+         
+      }
+
+
+      .delivery-action button{
+        font-size: 10px;
+      }
+
+      .delivery-action input {
+        height: fit-content;
+        padding: 15px;
+        background-color: transparent;
+        border: none;
+        font-size: 10px;
+    }
+
+
+
+
+    .product-details-sub-child-quantity {
+      width: 155px;
+    }
+
+    .action-btn-wishlist button {
+
+      padding: 10px;
+      width: 45px;
+      height: 45px;
+    }
+
+    .action-btn-wishlist button i {
+      font-size: 16px;
+    }
+    .delivery-action {
+      width: 100%;
+      height: 50px;
+    }
+
+
+     .product-title a h2 {
+            font-size: 15px;
+          }
+
+          .product-discount-price span {
+            font-size: 12px;
+          }
+
+          .product-actual-price span {
+            font-size: 10px;
+          }
+
+          .label-block{
+            padding: 0;
+            
+          }
+
+          .label {
+            padding: 4px 6px;
+            font-size: 8px;
+            border-radius: 5px;
+            z-index:0;
+          }
+
+          .product-spec-section {
+            width: 95%;
+           
+          }
+
+          .accordion {
+            font-size: 15px;
+          }
+
+          .review-box {
+            margin: 35px;
+          }
+
+          .icon {
+            margin: 5px;
+            margin-right: 20px;
+          }
+
+          .delivery-action input {
+            height: 100%;
+          }
+
+          .customer-review-box-parent {
+
+            margin-top: 20px;
+          }
+
+          .customer-details {
+            width: 320px;
+          }
+
+          .available-delivery-container {
+            width: 100%;
+            margin: 9px;
+          }
+
+          .customer-review-box-parent-title span {
+            font-size: 25px;
+          }
+          .user-name h4 {
+            font-size: 13px;
+          }
+          .review-desc p {
+            width: fit-content;
+            font-size: 10px;
+          }
+
+          .product-delivery-input {
+            width: 100%;
+            margin: 10px;
+          }
+
+          .no-reviews-message span{
+            width: 200px;
+            height: 30px;
+            font-size: 15px;
+          }
+
+          .no-reviews-message{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            flex-wrap: wrap;
+            
+          }
+
+
+
+              
+          }
+
+    </style> 
+</head>
+
+<body class="theme-color2 light ltr">
+
+
+    <div class="container-fluid ">
+        <div class="col-md-12 prod-details-section">
+            <div class="row d-flex flex-wrap  ">
+             
+                <div class="col-md-6 prod-image-section" >
+
+                  <div class="col-md-12 card-wrapper">
+                    <div class="container">
+                      <div class="exzoom hidden" id="exzoom">
+                        <div class="exzoom_img_box">
+                          <ul class='exzoom_img_ul'>
+                            <li>
+                              <img class="product-image" src="{{product.product_image.url}}" />
+
+                            </li>
+                            <li>
+                              
+                              {% if product.back_image %}
+                                <img class="product-image" src="{{product.back_image.url}}" />
+                              {% endif %}
+                            </li>
+
+
+                            <li>
+                              
+                              {% if product.left_image %}
+                                <img class="product-image" src="{{product.left_image.url}}" >
+                              {% endif %}
+                            </li>
+                            <li>
+                              
+                              {% if product.right_image %}
+                                <img class="product-image" src="{{product.right_image.url}}" >
+                              {% endif %}
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="exzoom_nav"></div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div id="fullscreen-overlay">
+                    
+                    <div >
+                      <button class="modal-close-btn" onclick="closeFullscreen()"><i class="uil uil-times"></i></button>
+                    </div>
+                    <img id="fullscreen-image" src="" alt="Fullscreen Image">
+                  </div>
+
+
+
+
+                  <!-- <div class = "card-wrapper ">
+                    <div class = "card">
+                     
+                      <div class = "product-imgs">
+                        <div class = "img-display">
+                          <div class = "img-showcase">
+                            
+                          
+                             
+                              <a href="{{product.product_image.url}}" class="zoom-link">
+                                <img src = "{{product.product_image.url}}" class="zoom" >
+                              </a>
+                            {% if product.back_image %}
+                            <a href="{{product.back_image.url}}" class="zoom-link">
+                              <img src = "{{product.back_image.url}}" class="zoom"  >
+                            </a>
+                            {% endif %}
+
+                            {% if product.left_image %}
+                            <a href="{{product.left_image.url}}" class="zoom-link">
+                              <img src = "{{product.left_image.url}}" class="zoom" >
+                            </a>
+                            {% endif %}
+                            
+                            {% if product.right_image %}
+                            <a href="{{product.right_image.url}}" class="zoom-link">
+                              <img src = "{{product.right_image.url}}" class="zoom" >
+                            </a>
+                            {% endif %}
+                          </div>
+                        </div>
+                        <div class = "img-select">
+                          <div class = "img-item">
+                            <a href = "#" data-id = "1">
+                              <img src = "{{product.product_image.url}}" alt = "shoe image">
+                            </a>
+                          </div>
+                          {% if product.back_image %}
+                          <div class = "img-item">
+                            <a href = "#" data-id = "2">
+                              <img src = "{{product.back_image.url}}" alt = "shoe image">
+                            </a>
+                          </div>
+                          {% endif %}
+                          {% if product.left_image %}
+                          <div class = "img-item">
+                            <a href = "#" data-id = "3">
+                              <img src = "{{product.left_image.url}}" alt = "shoe image">
+                            </a>
+                          </div>
+                          {% endif %}
+                          {% if product.right_image %}
+                          <div class = "img-item">
+                            <a href = "#" data-id = "4">
+                              <img src = "{{product.right_image.url}}" alt = "shoe image">
+                            </a>
+                          </div>
+                          {% endif %}
+                        </div>
+                      </div>
+                      
+                
+                    </div>
+                  </div> -->
+                    
+                </div>
+                <div class="col-md-5 prod-details-parent">
+                    <!-- product purchase section -->
+                    <div class="prod-deails-child">
+                        <div class="product-details-sub-child-title">
+                        
+                            <div class="product-title" style="justify-content: start;" >
+                                <h1>{{product.title}}</h1>
+                                
+                            </div>
+    
+                            <div class="product-category">
+                                <h2>{{product.category}}</span>
+                                <i class="uil uil-tag-alt"></i>
+                            </div>
+
+
+
+
+                        
+                        </div>
+                    
+
+                        <div class="star-ratings-review-section">
+                          {% if product.average_rating %}
+                          <div class="star-ratings-section">
+                            <h3><i class="uis uis-star"></i> {{product.average_rating}}</h3>
+                          </div>
+                          {% else %}
+                          <div class="star-ratings-section">
+                            <span><i class="uis uis-star"></i> </span>
+                          </div>
+                          {% endif %}
+
+                          <div class="divider"></div>
+                          {% if reviews_count %}
+                          <div class="review-section">
+                            <h3>{{reviews_count}} Reviews</h3>
+                          </div>
+                          {% else %}
+                          <div class="review-section">
+                            <span>No Reviews Yet</span>
+                          </div>
+                          {% endif %}
+                        </div>
+
+
+
+
+
+                    <div class="col-md-12 product-details-sub-child-price">
+
+                      <div class="selling-price">
+                        <h3>&#8377 {{product.selling_price}}</h3>
+                      </div>
+                      <div class="actual-price">
+                        <h3>&#8377 {{product.actual_price}}</h3>
+                      </div>
+
+                      <div class="discount-price">
+                        <h3>({{product.discount_percentage|floatformat:0}} %OFF)</h3>
+                      </div>
+                    </div>
+
+                    <div class="tax-details-section">
+                      <span>Inclusive of all taxes</span>
+                    </div>
+
+
+                    <div class="stock-in-section">
+                      {% if product.quantity|default_if_none:"0"|add:"0" <= 0 %}
+
+                      <span>Out of stock </span>
+                      {% else %}
+                      <span>In Stock <i class="bi bi-check-circle-fill"></i></span>
+                      {% endif %}
+                    </div>
+
+
+                    <!-- <p>Quantity: {{ product.quantity }}</p> -->
+
+
+
+                    <!-- <form action="/prod_details/{{prod_id}}/" method="POST">
+                      {% csrf_token %}
+                        <label for="color">Choose a color:</label>
+                        <select name="color" id="color">
+                          {% for color in available_colors %}
+                              <option value="{{ color.prod_id }}">{{ color.colour }}</option>
+                          {% endfor %}
+                      </select>
+                                            
+                    </form> -->
+
+
+
+
+
+                  <!-- <form action="/prod_details/{{prod_id}}/" method="POST">
+                    {% csrf_token %}
+                    <div class="color-selection-section">
+                      <label>SELECT COLOR</label>
+                      <div class="btn-group-toggle" data-toggle="buttons">
+                          {% for color in available_colors %}
+                              <label class="color-action-btn">
+                                  <input type="radio" name="color" value="{{ color.prod_id }}">{{ color.colour }}
+                              </label>
+                          {% endfor %}
+                      </div>
+                    </div>
+                </form> -->
+                
+                  
+                  
+
+
+
+
+
+
+
+
+
+                    <!-- <div class="col-md-12 ">
+
+                      
+                        <form action="/prod_details/{{prod_id}}/" method="POST" class="color-selection">
+                          {% csrf_token %}
+                            <select class="" name="color" id="color" >
+                              {% for color in available_colors %}
+                                  <option disabled selected value="Available Colors">Available Colors</option>
+                                  <option value="{{ color.prod_id }}">{{ color.colour }}</option>
+                              {% endfor %}
+                          </select> 
+                                                
+                        </form>
+                      
+                    </div> -->
+
+                    
+                  
+
+
+                    <div class="col-md-12 p-0">
+                        <form action='/add_to_cart/' method="POST">
+                            {% csrf_token %}
+
+                            
+                            <input type="hidden" id="prod_id" name="prod_id" value="{{ product.prod_id }}">
+
+
+
+
+
+                            
+                            <div class="col-md-12 p-0">
+
+                      
+                              <form action="{% url 'add_to_cart' %}" method="POST" class="color-selection">
+                                {% csrf_token %}
+                            
+
+                            
+
+                            
+                                <!-- Hidden Field for Product ID -->
+                                <input type="hidden" id="prod_id" name="prod_id" value="{{ product.prod_id }}">
+                                
+
+                                <!-- Color Selection -->
+                                <!-- <div class="col-md-12 product-details-sub-child-size-section-2">
+                                  <div class="product-details-sub-child-size-section-2-chid">
+                                    <label>Available Colors</label>
+                                    <div class="color-buttons" id="color-buttons">
+                                      {% for color in available_colors %}
+                                      <div class="color-buttons-action">
+                                        <button class="color-button {% if color.prod_id == default_prod_id %}highlight{% endif %}" data-value="{{ color.prod_id }}" data-color="{{ color.colour }}" onclick="changeColor(event, '{{ color.colour }}')">{{ color.colour }}</button>
+                                      </div>
+                                      {% endfor %}
+                                    </div>
+                                  </div>
+                                </div> -->
+                                
+                                <!-- <script>
+                                  function changeColor(event, newColor) {
+                                    // Prevent the default button behavior (e.g., form submission)
+                                    event.preventDefault();
+                                
+                                    // Get the button element that was clicked
+                                    var button = event.target;
+                                
+                                    // Set the background color of the button to the new color
+                                    button.style.backgroundColor = newColor;
+                                  }
+                                </script> -->
+                            
+                                <div class="col-md-12 product-details-sub-child-size-section-2">
+                                  <div class="product-details-sub-child-size-section-2-chid">
+                                      <label>Available Colors</label>
+                                      <div class="color-buttons" id="color-buttons">
+                                        {% for colour in unique_colors %}
+                                        <div class="color-buttons-action">
+                                            {% for prod_id, col in prod_ids_and_colours.items %}
+                                            {% if col == colour %}
+                                            <button class="color-button {% if prod_id == default_prod_id %}highlight{% endif %}" data-value="{{ prod_id }}" data-color="{{ colour }}" onclick="changecolor(event, '{{ prod_id }}')">
+                                              
+                                            </button>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+
+                                  </div>
+                              </div>
+
+                              
+                              <div class="col-md-12 product-details-sub-child-size-section-2">
+                                <input class="hidden" id="tsize" value="{{ sizes }}">
+                        
+                                  <div class="size-chart-section">
+                                  <span>Available Sizes</span>
+                                  <a href="#" id="mySizeChart">Size Chart <i class="uil uil-ruler"></i></a>
+  
+  
+                                  <div id="mySizeChartModal" class="size-chart_modal">
+  
+                                    <div class="size-chart_modal-content">
+
+                                      <div class="size-chat-title-close">
+                                        <p>Size Chart</p>
+                                        <span class="size-chart_close"><i class="uil uil-times"></i></span>
+                                        
+                                      </div>
+                                      <table class="table table-responsive">
+                                        <thead>
+                                          <tr>
+                                            <th>Size</th>
+                                            <th>Width (in)</th>
+                                            <th>Length (in)</th>
+                                            <th>Sleeve Length (in)</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>Small</td>
+                                            <td>20</td>
+                                            <td>27</td>
+                                            <td>8</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Medium</td>
+                                            <td>22</td>
+                                            <td>28</td>
+                                            <td>8.5</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Large</td>
+                                            <td>24</td>
+                                            <td>29</td>
+                                            <td>9</td>
+                                          </tr>
+                                          <tr>
+                                            <td>X-Large</td>
+                                            <td>26</td>
+                                            <td>30</td>
+                                            <td>9.5</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+
+                                    </div>
+                                  
+                                  </div>
+                                </div>
+                        <div id="sizebx"></div>
+                    </div>
+                    
+
+
+               
+                    <script>
+                      document.addEventListener('DOMContentLoaded', function() {
+                        const sizes = document.getElementById("tsize").value;
+                        const diffsizes = sizes.split(",");
+                        var sizebx = document.getElementById("sizebx");
+                    
+                        diffsizes.forEach(function(item, index) {
+                            var radio = document.createElement("input");
+                            var label = document.createElement("label");
+                            label.innerHTML = item;
+                            label.className = "size-btn";
+                            radio.type = "radio";
+                            radio.value = item;
+                            radio.name = "size";
+                            radio.className = "size-btn-input";
+                            radio.id = "size" + index; // Assign unique ID to each radio button
+                            if (index === 0) {
+                                radio.checked = true; // Automatically select the first size
+                                label.classList.add('selected'); // Add selected class to label
+                            }
+                            label.setAttribute("for", "size" + index); // Associate label with radio button
+                            sizebx.appendChild(radio);
+                            sizebx.appendChild(label);
+                        });
+                    });
+                    
+                      
+                    </script>
+                    
+
+                  
+                 
+
+                                <!-- <div class="col-md-12 product-details-sub-child-size-section-2">
+                                  
+                                      <input value="{{ product.size }}" id="tsize" class="hidden"></input>
+                                  
+                              <span>Available Size - </span>
+                              <div id="sizebx"></div>
+                          </div>
+
+
+                          <script>
+                            const sizes = document.getElementById("tsize").value;
+                            const diffsizes=sizes.split(",");
+                            var sizebx = document.getElementById("sizebx");
+                            diffsizes.map(function(item){
+                              var radio=document.createElement("input");
+                              var label=document.createElement("label");
+                              label.innerHTML=item;
+                              label.className="me-3";
+                              radio.type="radio";
+                              radio.value=item;
+                              radio.name="size";
+                              radio.className="form-check-input m-1 ";
+                              radio.innerHTML=item;
+                              sizebx.appendChild(radio);
+                              sizebx.appendChild(label);                                    
+                            })
+                            
+                          </script> -->
+
+
+
+
+
+
+                         
+                                
+
+                          
+
+                      
+
+                            <div class="row d-flex flex-nowrap">
+                                
+                              <div class="product-details-sub-child-quantity ">
+                                  
+                                <!-- <div class="quantity-label">
+                                  <label for="quantity">Qty</label>
+                                </div> -->
+                                  <div class="product-quantity">
+                                      
+                                      <button id="decrement" type="button"><i class="uil uil-minus"></i></button> 
+                                      <input class="text-center" type="number" id="quantity" name="quantity" value="1" min="1" readonly>
+                                      <button id="increment" type="button"><i class="uil uil-plus"></i></button>
+                                  </div>
+                              </div>
+
+                                <div class= "action-btn-wishlist">
+                                  {% if user.is_authenticated %}
+                                  <form action="/add_wishlist/{{prod_id}}/"  method="POST" >
+                                      {% csrf_token %}
+                                      <!-- <div class="product-buttons"> -->
+                                      {% if item_already_in_wish %}
+                                      <a href="/show_wishlist/"  >
+                                          
+                                      {% else %}
+                                      
+                                      <!-- <input type="hidden" id='item_id' name='prod_id' value='{{prod_id}}'> -->
+                                      <button id="cartEffect"  name="action" value="add_to_wishlist" type="submit">
+                                        <span><i class="bi bi-heart-fill"></i></span>  
+                                        
+                                      </button>
+                                      {% endif %}
+
+                                      <!-- </div> -->
+                                  </form>
+                                  {% else %}
+                                  <form action="/add_wish/{{product.prod_id}}/" >
+                                      <!-- <div class="product-buttons"> -->
+                                      <button id="cartEffect"  type="submit" class="btn btn-solid hover-solid btn-animation" style="border: 1px solid red; ">
+                                        <span><i class="bi bi-heart-fill"></i></span>   
+                                        
+                                      </button>
+
+                                  </form>
+                                  {% endif %}
+                                </div>
+                            </div>
+                          
+                          
+
+                                
+                                
+
+                                  
+                                
+  
+
+                            
+
+
+                                <div class="col-md-12 p-2 pt-0 pb-0">
+                                  <div class="row d-flex">
+                                                                    <!-- Add to Cart Button -->
+                                <div class="col-md-6  p-0">
+                                  
+                                {% if request.user.is_authenticated %}                                   <!-- Add to Cart Button -->
+                                
+                                  <div class="action-btn">
+                                      <button type="submit" name="action" value="add_to_cart">ADD TO CART</button>
+                                  </div>
+                                
+                                {% else %}
+                                <form action="/customer_before_login/{{product.prod_id}}/" method="POST">
+                                  {% csrf_token %}
+                                  <input type="hidden" name="prod_id" value="{{product.prod_id}}">
+                                 
+                                    <div class="action-btn">
+                                        <button type="submit">ADD TO CART</button>
+                                    </div>
+                                  
+                                </form>
+                                {% endif %}
+                              </div>
+                              
+                              <!-- Buy Now Button -->
+                              <div class="col-md-6  p-0">
+                                {% if request.user.is_authenticated %} 
+                                  <div class="action-btnv2">
+                                      <button id="buyNowButton" type="submit" name="action" value="buy_now">BUY IT NOW</button>
+                                  </div>
+                                  {% else %}
+                                  <form action="/customer_before_login/{{product.prod_id}}/" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="prod_id" value="{{product.prod_id}}">
+                                   
+                                      <div class="action-btn">
+                                          <button type="submit">BUY IT NOW</button>
+                                      </div>
+                                    
+                                  </form>
+                                  {% endif %}
+                              </div>
+                                  </div>
+                                </div>
+                          
+                            </form>
+ 
+                          </div>
+                            
+                    </div>
+                    </div>
+
+
+
+                    <div class="col-md-12 product-delivery-input ">
+                      <form method="GET" onsubmit="return checkDeliveryAvailability()" class="mx-1">
+                          <div class="delivery-action">
+                              <input type="text" id="pincode" name='pincode' placeholder="Enter a PIN code">
+                              <button type="submit">CHECK</button>
+                          </div>
+                          <p id="availabilityMessage"></p>
+                          {% if msg %}
+                          <p>{{ msg }}</p>
+                          {% endif %}
+                      </form>
+                  </div>
+                  
+                  <div id="productAvailabilityInfo" style="display: none;">
+
+
+                    <div class="available-delivery-container">
+                      <div class="available-delivery-container-info-v1">
+                        <div class="available-delivery-container-info-v1-sub-section">
+                          <div class="icon">
+                            <i class="bi bi-truck"></i>
+                          </div>
+                          <div class="info">
+                            <span>Delivered In 3-4 Days</span>
+                          </div>
+                        </div>
+
+                        <div class="available-delivery-container-info-v1-sub-section">
+                          <div class="icon">
+                            <i class="bi bi-phone"></i>
+                          </div>
+                          <div class="info">
+                            <span>Pay on delivery available</span>
+                          </div>
+                        </div>
+
+                        <div class="available-delivery-container-info-v1-sub-section">
+                          <div class="icon">
+                            <i class="bi bi-arrow-left-right"></i>
+                          </div>
+                          <div class="info">
+                            <span>Easy 14 days return is available</span>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+
+
+                  <div class="col-md-12 product-details-sub-child-desc">
+
+                    <span>
+                      About this item
+                    </span>
+                    <h2>
+                        {{product.description}}
+                    </h2>
+
+                  </div>
+                  
+
+                    <!-- <div class="col-md-12 product-delivery-input ">
+                      <form method="GET" onsubmit="return checkDeliveryAvailability()" class="mx-1">
+                                  
+                                      <div class="delivery-action">
+                                        <input type="text" id="pincode" name='pincode' placeholder="PIN CODE">
+                                      <button type="submit" onclick="checkDeliveryAvailability()">CHECK<i class="uil uil-arrow-up-right"></i></button>
+                                      </div>
+
+                                  <p id="availabilityMessage"></p>
+                                  {% if msg %}
+                                      <p>{{ msg }}</p>
+                                  {% endif %}
+                              </form>
+                  </div> -->
+
+
+                    <!-- <div class="col-md-12 product-delivery-chlid p-0">
+                      <div class="col-md-12 product-delivery-title">
+                          <span>CHECK DELIVERY</span><i class="uil uil-truck"></i>
+                          
+                      </div>
+  
+  
+                      <div class="col-md-12 product-delivery-input ">
+                          <form method="GET" onsubmit="return checkDeliveryAvailability()" class="mx-1">
+                                      
+                                          <div class="delivery-action">
+                                            <input type="text" id="pincode" name='pincode' placeholder="PIN CODE">
+                                          <button type="submit" onclick="checkDeliveryAvailability()">CHECK<i class="uil uil-arrow-up-right"></i></button>
+                                          </div>
+  
+                                      <p id="availabilityMessage"></p>
+                                      {% if msg %}
+                                          <p>{{ msg }}</p>
+                                      {% endif %}
+                                  </form>
+                      </div>
+                  </div> -->
+
+
+
+                  <!-- <div class="col-md-12 product-offers-chlid">
+                    <div class="col-md-12 product-offers-title">
+                        <span>BEST OFFERS</span><i class="uil uil-tag-alt"></i>
+                        <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, neque?</P>
+                        <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, cumque.</P>
+                    </div>
+                </div> -->
+
+                <div class="col-md-12 product-spec-section">
+                  <div class="accordion-section">
+                    <button class="accordion">
+                      Product Story
+                    </button>
+                    <div class="panel">
+
+                      <h2>
+                        {{product.product_story}}
+                      </h2>
+
+
+                      
+                    </div>
+                  </div>
+
+
+
+                  <div class="accordion-section">
+                    <button class="accordion">
+                      Special Feature 
+                    </button>
+                    <div class="panel">
+
+                      <h2>
+                        {{product.special_feature}}
+                      </h2>
+
+
+                      
+                    </div>
+                  </div>
+
+                  <div class="accordion-section">
+                    <button class="accordion">
+                      Instructions 
+                    </button>
+                    <div class="panel">
+
+                      <h2>
+                        <!-- {{product.product_instruction}} -->
+                        <ol>
+                          <li>1. Use a soft cycle and machine wash cold water from the inside out.</li>
+                          <li>2. Opt for a gentle detergent instead of harsh chemicals like bleach.</li>
+                          <li>3. For optimal results, either hang dry or tumble dry on low.</li>
+                          <li>4. Reduce creases on the print by ironing from the inside out on low heat.</li>
+                          <li>5. If you follow these easy procedures, your T-shirt will remain vibrant and high-quality for years!</li>
+                        </ol>
+                        
+
+
+                       
+                      </h2>
+
+
+                      
+                    </div>
+                  </div>
+
+                  <div class="accordion-section">
+                    <button class="accordion">
+                      Refund & Return
+                    </button>
+                    <div class="panel">
+
+                      <h2>
+                      
+                      Returns
+                      You have [number of days, e.g., 30 days] to return an item from the date you received it.
+                      To be eligible for a return, your item must be unused and in the same condition that you received it.
+                      Your item must be in the original packaging.
+                      Your item needs to have the receipt or proof of purchase.
+
+                                             
+                      </h2>
+
+                      <h2>
+                        
+                      Refunds
+                      Once we receive your item, we will inspect it and notify you that we have received your returned item.
+                      We will immediately notify you on the status of your refund after inspecting the item.
+                      If your return is approved, we will initiate a refund to your credit card (or original method of payment).
+                      You will receive the credit within a certain amount of days, depending on your card issuer's policies.
+                      </h2>
+
+
+                      
+                    </div>
+                  </div>
+                </div>
+
+
+
+                {% if review_condition %}
+                  <div class="col-md-12 mt-lg-5">
+                    <div class="col-md-12">
+                      <div class="col-md-12 rating-title text-center">
+                        <span>RATINGS</span>
+                        <!-- <div class="rating-title-stars">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                          </svg><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                          </svg><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                          </svg><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                          </svg><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                          </svg>
+                        </div> -->
+                      </div>
+                      <div class="rating text-center">
+                        <div class="average_star ">
+                            <input type="radio" id="average_star5" name="average_rating" value="5" {% if average_rating|floatformat == '5' %}checked{% endif %} disabled>
+                            <label for="average_star5"></label>
+                            <input type="radio" id="average_star4" name="average_rating" value="4" {% if average_rating|floatformat == '4' %}checked{% endif %} disabled>
+                            <label for="average_star4"></label>
+                            <input type="radio" id="average_star3" name="average_rating" value="3" {% if average_rating|floatformat == '3' %}checked{% endif %} disabled>
+                            <label for="average_star3"></label>
+                            <input type="radio" id="average_star2" name="average_rating" value="2" {% if average_rating|floatformat == '2' %}checked{% endif %} disabled>
+                            <label for="average_star2"></label>
+                            <input type="radio" id="average_star1" name="average_rating" value="1" {% if average_rating|floatformat == '1' %}checked{% endif %} disabled>
+                            <label for="average_star1"></label>
+                        </div>
+                    </div>
+                    <!-- {% if average_rating %}
+                    <div class="global-rating">
+                        <h5 class="font-light">{{ average_rating }} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                          <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                        </svg>RATINGS</h5>
+                    </div>
+                    {% else %}
+                    <div class="global-rating">
+                        <h5 class="font-light">0<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                          <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                        </svg>Ratings</h5>
+                    </div>
+                    {% endif %} -->
+                    <!-- <ul class="col-md-12 rating-progess text-center">
+                        {% for star_value, percentage in star_ratings.items %}
+                        <div class="col-md-12 ">
+                          <li class="progress-bar-fill">
+                            <div class="col-md-12">
+                              
+                            <div class="col-md-2 text-center">
+                              <span class="me-3">{{ star_value }}<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                              </svg></span>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 60%"
+                                    aria-valuenow="79" aria-valuemin="0" aria-valuemax="100">
+                                </div>
+                            </div>
+                            </div>
+                            <div class="col-md-2">
+                              <span>{{ percentage }}%</span>
+                            </div>
+                            </div>
+                        </li>
+                        </div>
+                        {% endfor %}
+                        
+                    </ul> -->
+                      
+                        
+                    </div>
+                  </div>
+                 
+                    
+                    {% if not has_review %}
+                    <div class="col-md-12 pb-5 ">
+
+
+                      <div class="review-box col-md-12">
+                        <div class="review-form-title ">
+                          <span>GIVE YOUR RATINGS AND REVIEW</span>
+                        </div>
+                        <form method="post" class="row g-4" enctype="multipart/form-data" id="reviewForm">
+                          {% csrf_token %}
+                          <div class="star-rating">
+                      
+                              <input type="radio" id="star5" name="review_star" value="5" {% if review.review_star == '5' %}checked{% endif %}>
+                              <label for="star5"></label>
+                              <input type="radio" id="star4" name="review_star" value="4" {% if review.review_star == '4' %}checked{% endif %}>
+                              <label for="star4"></label>
+                              <input type="radio" id="star3" name="review_star" value="3" {% if review.review_star == '3' %}checked{% endif %}>
+                              <label for="star3"></label>
+                              <input type="radio" id="star2" name="review_star" value="2" {% if review.review_star == '2' %}checked{% endif %}>
+                              <label for="star2"></label>
+                              <input type="radio" id="star1" name="review_star" value="1" {% if review.review_star == '1' %}checked{% endif %}>
+                              <label for="star1"></label>
+                          </div>
+                          <div class="col-12 col-md-6">
+                              <label class="mb-1" for="name">Name</label>
+                              <input type="text" name="name" class="form-control" id="name"
+                                  placeholder="Enter your name" value="" required>
+                          </div>
+
+                          <div class="col-12 col-md-6">
+                              <label class="mb-1" for="email">Email Address</label>
+                              <input type="email" name="email" class="form-control" id="email" placeholder="Email Address"
+                              value="" required>
+                          </div>
+
+                          <div class="col-12">
+                              <label class="mb-1" for="review">Review</label>
+                              <textarea class="form-control" name="review" placeholder="Leave a comment here"
+                                  id="comments" style="height: 100px" value="" required></textarea>
+                          </div>
+
+                          <div class="col-12">
+                              <label for="customer_image">Upload Product Photo</label>
+                              <input type="file" class="form-control" name="customer_image"id="customer_image" accept="image/*">
+                          </div>
+                          
+                          <input type="hidden" name="product_id" value="{{ product.id }}">
+                          
+                          <div class="col-12">
+                              <button type="submit" class="btn default-light-theme default-theme default-theme-2 rounded-2">Submit</button>
+                          </div> 
+                        </form>                        
+                    </div>
+                </div> 
+                {% endif %}
+                {% endif %}
+               
+                   
+          </div>
+
+          
+
+          
+
+                 <!-- <div class="customer-review-box-parent" >
+
+                  
+                  <div class="customer-review-box-parent-title">
+                    <span>Customer Reviews</span>
+                  </div>
+                  <div class="customer-review-box">
+                    
+                    {% for review in reviews %} 
+                    <div class="customer-section">
+                      
+                        
+                        <div class="customer-review-section">
+                          <div class="customer-details">
+                            <div class="review-star-name">
+
+                              
+                              <div class="user-name">
+                                <span>{{ review.name }} </span>
+                              </div>
+                            <div class="star-review">
+                                <input type="radio" id="star5_{{ review.id }}" name="review_star{{ review.id }}" value="5" {% if review.review_star == '5' %}checked{% endif %} disabled>
+                                <label for="star5_{{ review.id }}"></label>
+                                <input type="radio" id="star4_{{ review.id }}" name="review_star{{ review.id }}" value="4" {% if review.review_star == '4' %}checked{% endif %} disabled>
+                                <label for="star4_{{ review.id }}"></label>
+                                <input type="radio" id="star3_{{ review.id }}" name="review_star{{ review.id }}" value="3" {% if review.review_star == '3' %}checked{% endif %} disabled>
+                                <label for="star3_{{ review.id }}"></label>
+                                <input type="radio" id="star2_{{ review.id }}" name="review_star{{ review.id }}" value="2" {% if review.review_star == '2' %}checked{% endif %} disabled>
+                                <label for="star2_{{ review.id }}"></label>
+                                <input type="radio" id="star1_{{ review.id }}" name="review_star{{ review.id }}" value="1" {% if review.review_star == '1' %}checked{% endif %} disabled>
+                                <label for="star1_{{ review.id }}"></label>
+                            </div>
+                            </div>
+
+                            
+                            
+                            
+                            <div class="review-desc">
+                              <p>{{ review.review }} </p>
+                            </div>
+
+                            {% comment %} <p class="date-custo font-light">- Sep 08, 2021</p> {% endcomment %}
+                        </div>
+
+                        <div class="customer-order-image">
+                          <img src="" alt="">
+                        </div>
+                        </div>
+                        
+                       
+                    </div>
+                    {% endfor %}
+                    </div>
+                </div>  -->
+
+
+                <div class="customer-review-box-parent">
+                  <div class="customer-review-box-parent-title">
+                    <span>Customer Reviews</span>
+                  </div>
+                
+                  <div class="customer-review-box">
+                    {% if reviews %}
+                      {% for review in reviews %}
+                      <div class="customer-section">
+                        <div class="customer-review-section">
+                          <div class="customer-details">
+                            <div class="review-star-name">
+                              <div class="user-name">
+                                <h4>{{ review.name }}</h4>
+                              </div>
+                              <div class="star-review">
+                                <input type="radio" id="star5_{{ review.id }}" name="review_star{{ review.id }}" value="5" {% if review.review_star == '5' %}checked{% endif %} disabled>
+                                <label for="star5_{{ review.id }}"></label>
+                                <input type="radio" id="star4_{{ review.id }}" name="review_star{{ review.id }}" value="4" {% if review.review_star == '4' %}checked{% endif %} disabled>
+                                <label for="star4_{{ review.id }}"></label>
+                                <input type="radio" id="star3_{{ review.id }}" name="review_star{{ review.id }}" value="3" {% if review.review_star == '3' %}checked{% endif %} disabled>
+                                <label for="star3_{{ review.id }}"></label>
+                                <input type="radio" id="star2_{{ review.id }}" name="review_star{{ review.id }}" value="2" {% if review.review_star == '2' %}checked{% endif %} disabled>
+                                <label for="star2_{{ review.id }}"></label>
+                                <input type="radio" id="star1_{{ review.id }}" name="review_star{{ review.id }}" value="1" {% if review.review_star == '1' %}checked{% endif %} disabled>
+                                <label for="star1_{{ review.id }}"></label>
+                            </div>
+                            </div>
+                            <div class="review-desc">
+                              <p>{{ review.review }}</p>
+                              {% if review.customer_image %}
+                                  <img class="review-image" src="{{ review.customer_image.url }}">
+                              {% endif %}
+                          </div>
+                          
+                          {% if review.email == request.user.email %}
+                           <a href="/update_reviews/{{review.product}}/{{review.id}}/"><button class="btn btn-primary me-2">Edit</button></a>
+                          {% endif %}
+                          </div>
+                          <div class="customer-order-image">
+                            <img src="" alt="">
+                          </div>
+                        </div>
+                      </div>
+                      {% endfor %}
+                    {% else %}
+                      <div class="no-reviews-message">
+                        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+
+                        <dotlottie-player class="lottie-animation" src="https://lottie.host/88626077-70f0-489c-a096-9f2eb0585af2/FU40pRQn4Z.json" background="transparent" speed="1"  loop autoplay></dotlottie-player>
+                        <span>Waiting for your reviews</span>
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="col-md-12 col-lg-12 col-sm-12">
+           <div class="col-md-12 cat-csm-title">
+            <span>You May Also Like</span>
+          </div>
+        </div>
+
+       
+
+        <div class="col-md-12">
+          
+
+    <section class="ratio_asos pt-0 mb-5" >
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12 p-0">
+            <div class="product-wrapper product-style-2 row g-sm-4 g-3">
+              {% for i in data %}
+              <div class="col-xl-3 col-lg-4 col-6 " >
+                <div class="product-box single-product-section">
+                  <div class="img-wrapper">
+                    {% if i.product_image %}
+                    <div class="front">
+                      <a href="/prod_details/{{i.prod_id}}/">
+                        <img src="{{i.product_image.url}}"
+                            class="bg-img blur-up lazyload" alt="">
+                      </a>
+                    </div>
+                    {% endif %}
+                    {% if i.back_image %}
+                      <div class="back">
+                          <a href="/prod_details/{{i.prod_id}}/">
+                              <img src="{{i.back_image.url}}"
+                                  class="bg-img blur-up lazyload" alt="">
+                          </a>
+                      </div>
+                    {% endif %}
+                <div class="label-block">
+                  <h3 class="label label-black">New</h3>
+                  <h3 class="label label-theme">{{i.discount_percentage|floatformat:0}}% Off</h3>
+                </div>
+                    <div class="cart-wrap">
+                      <ul>
+  
+                      <!-- <li>
+                         {% if user.is_authenticated %}
+                        <form action='/add_to_cart/' method="POST">
+                          {% csrf_token %}
+                        <div class="col text-center">
+                            <input type="hidden" id='prod_id' name='prod_id' value='{{ i.prod_id }}'>
+                            <button id="cartEffect" style="border:none;" type="submit" name="action" value="add_to_cart" ><i style="font-size: 20px;" class="uil uil-shopping-cart-alt"></i></button>
+                        </div>
+                        {% else %}
+                        
+                        <a href="{% url 'customer_login' %}" style="padding:0; width:0; height:0">
+                          <button style="border:none;" value="add_to_cart"><i style="font-size: 20px;" class="uil uil-shopping-cart-alt"></i></button>
+                        </a>
+                        
+                         {% endif %}
+                      </form>
+                    </li> -->
+                        
+                        <li >
+                          {% if user.is_authenticated %}
+                              <form action="/add_wishlist/{{i.prod_id}}/" method="POST">
+                                  {% csrf_token %}
+                                  {% if item_already_in_wish %}
+                                      <a href="/show_wishlist/">WISHLIST</a>
+                                  {% else %}
+                                      <input type="hidden" id='item_id' name='prod_id' value='{{i.prod_id}}'>
+                                      <button id="cartEffect" style="border:none;" type="submit">
+                                          
+                                          <i style="font-size: 20px;"  class="uil uil-heart"></i>
+                                      </button>
+                                  {% endif %}
+                              </form>
+                          {% else %}
+                          <form action="/customer_login/">
+                            <button style="border:none;" type="submit">
+                              
+                              <i style="font-size: 20px;"  class="uil uil-heart"></i>
+                          </button>
+                          </form>
+                
+                          {% endif %}
+                          </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="product-details">
+                    <div class="rating-details">
+                      <div class="rating-details">
+
+                      </div>
+                    </div>
+                    <div class="main-price">
+                      <div class="product-title">
+                        <a href="/prod_details/{{i.prod_id}}/" class="font-default text-center">
+                          <h2>{{ i.title }}</h2>
+                        </a>
+                      </div>
+                  <div class="product-price-section">
+                    <div class="product-discount-price">
+                      <h3>&#8377 {{ i.selling_price }}</h3>
+                    </div>
+  
+                    <div class="product-actual-price">
+                      <h3>&#8377 {{i.actual_price}}</h3>
+                    </div>
+                  </div>
+                      <button
+                        onclick="location.href = 'cart.html';"
+                        class="btn listing-content"
+                      >
+                        Add To Cart
+                      </button>
+                    </div>
+
+                    <div class="delivery-rating-section">
+                      
+                      <div class="delivery-section">
+                        <span>Earliest Delivery</span>
+                      </div>
+
+                      </div>
+
+                      {% if not i.average_rating or i.average_rating is None %}
+                      <div class="ratings-section-no-star">
+                        <span>Waiting for reviews</span>
+                      </div>
+                      {% else %}
+                      <div class="ratings-section">
+                        <i class="bi bi-star-fill"></i>                        
+                        <h4>{{i.average_rating}}</h4>
+                      </div>
+                      {% endif %}
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+        </div>
+
+        
+   
+
+
+
+
+  
+
+
+
+    <script>
+      function checkDeliveryAvailability() {
+        var userEnteredPincode = document.getElementById("pincode").value;
+        var isValidPincode = /^4400[0-3][0-7]$/.test(userEnteredPincode);
+    
+        var messageElement = document.getElementById("availabilityMessage");
+        var productAvailabilityInfo = document.getElementById("productAvailabilityInfo");
+    
+        if (isValidPincode) {
+            messageElement.textContent = "Product is available in this area ✅";
+            messageElement.style.color = "green";
+            productAvailabilityInfo.style.display = "block"; // Show product availability info
+        } else {
+            messageElement.textContent = "Product is not available in this area.";
+            messageElement.style.color = "red";
+            productAvailabilityInfo.style.display = "none"; // Hide product availability info
+        }
+    
+        // Returning false to prevent the form submission
+        return false;
+    }
+    
+    </script>
+
+
+
+
+
+
+  <script>
+
+
+
+
+            const imgs = document.querySelectorAll('.img-select a');
+        const imgBtns = [...imgs];
+        let imgId = 1;
+
+        imgBtns.forEach((imgItem) => {
+            imgItem.addEventListener('click', (event) => {
+                event.preventDefault();
+                imgId = imgItem.dataset.id;
+                slideImage();
+            });
+        });
+
+        function slideImage(){
+            const displayWidth = document.querySelector('.img-showcase img:first-child').clientWidth;
+
+            document.querySelector('.img-showcase').style.transform = `translateX(${- (imgId - 1) * displayWidth}px)`;
+        }
+
+        window.addEventListener('resize', slideImage);
+    </script>
+
+
+
+    
+    
+
+    <!-- Bootstrap js-->
+    <script src="/static/assets1/js/bootstrap/bootstrap.bundle.min.js"></script>
+
+
+
+    <!-- script js -->
+    <script src="/static/assets1/js/theme-setting.js"></script>
+    <script src="/static/assets1/js/script.js"></script>
+
+     <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer">
+        
+      </script>
+
+
+    <script>
+        $('#btn').click(function() {
+            $('#modelWindow').modal('show');
+         });
+    </script>
+    <script>
+    $(document).ready(function(){
+        $(".size button").click(function(){
+            var selectedSize = $(this).parent().attr('value');
+            $("#selected_size").val(selectedSize);
+        });
+    });
+</script>
+
+<script>
+  // Accordion Action
+const accordionItem = document.querySelectorAll(".accordion-item");
+
+accordionItem.forEach((el) =>
+  el.addEventListener("click", () => {
+    if (el.classList.contains("active")) {
+      el.classList.remove("active");
+    } else {
+      accordionItem.forEach((el2) => el2.classList.remove("active"));
+      el.classList.add("active");
+    }
+  })
+);
+
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      var sizeSelect = document.getElementById('sizeSelect');
+      var buyNowButton = document.getElementById('buyNowButton');
+      // Disable Buy Now button initially
+      buyNowButton.disabled = false;
+      // Add change event listener to size dropdown
+      sizeSelect.addEventListener('change', function() {
+          // Enable Buy Now button when size is selected
+          buyNowButton.disabled = sizeSelect.value === '';
+      });
+      // Prevent form submission if size is not selected
+      buyNowButton.addEventListener('click', function(event) {
+          if (sizeSelect.value === '') {
+              event.preventDefault();
+              console.log("Please select a size before proceeding to Buy Now.");
+              alert("Please select a size before proceeding to Buy Now.");
+          }
+      });
+  });
+</script>
+
+
+<script>
+           document.getElementById('increment').addEventListener('click', function() {
+        var quantityInput = document.getElementById('quantity');
+        quantityInput.value = parseInt(quantityInput.value) + 1;
+    });
+
+    document.getElementById('decrement').addEventListener('click', function() {
+        var quantityInput = document.getElementById('quantity');
+        if (parseInt(quantityInput.value) > 1) {
+            quantityInput.value = parseInt(quantityInput.value) - 1;
+        }
+    });
+
+  </script>
+
+  <script>
+
+    
+      function changecolor(e, clrid){
+        e.preventDefault();
+        console.log(clrid);
+        window.location.href = '/prod_details/' + clrid + '/';
+      }
+      // JavaScript to handle color selection
+      
+
+
+
+    
+  </script>
+
+
+
+
+  <script>
+    // Get all product images
+    var productImages = document.querySelectorAll('.product-image');
+  
+    // Add click event listener to each image
+    productImages.forEach(function(image) {
+      image.addEventListener('click', function() {
+        openFullscreen(image.src);
+      });
+    });
+  
+    // Open fullscreen mode with zoom
+    function openFullscreen(imageSrc) {
+      var fullscreenImage = document.getElementById('fullscreen-image');
+      fullscreenImage.src = imageSrc;
+      document.getElementById('fullscreen-overlay').style.display = 'block';
+      document.body.style.overflow = 'hidden'; // Disable scrolling
+      setTimeout(function() {
+        fullscreenImage.style.transform = 'scale(1.8)';
+      }, 100); // Delay to ensure transition effect
+    }
+  
+    // Close fullscreen mode
+    function closeFullscreen() {
+      var fullscreenImage = document.getElementById('fullscreen-image');
+      fullscreenImage.style.transform = 'scale(1.5)'; // Reset zoom level
+      document.getElementById('fullscreen-overlay').style.display = 'none';
+      document.body.style.overflow = ''; // Enable scrolling
+    }
+  
+    // Add click event listener to the close button
+    document.querySelector('.modal-close-btn').addEventListener('click', function() {
+      closeFullscreen();
+    });
+  </script>
+  
+  
+
+<script>
+// This function sets the background color of color buttons based on their data-color attribute
+function setButtonColors() {
+  var colorButtons = document.querySelectorAll('.color-button');
+  colorButtons.forEach(function(button) {
+      var color = button.getAttribute('data-color');
+      button.style.backgroundColor = color;
+      button.textContent = ''; // Clear text content
+  });
+}
+
+// Call the function to set button colors when the page loads
+window.onload = setButtonColors;
+
+</script>
+
+
+<!-- delivery modal  -->
+
+<script>
+  let openModalBtn = document.getElementById("openModalBtn");
+let modal = document.getElementById("myModal");
+let closeModalBtn = document.getElementById("closeModalBtn");
+
+openModalBtn.addEventListener("click", function() {
+    modal.style.display = "block";
+});
+
+closeModalBtn.addEventListener("click", function() {
+    modal.style.display = "none";
+});
+
+window.addEventListener("click", function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+});
+
+</script>
+
+<script>
+  var acc = document.getElementsByClassName("accordion");
+  var i;
+
+  for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function () {
+          // Close all accordion items
+          var allAccordions = document.getElementsByClassName("accordion");
+          for (var j = 0; j < allAccordions.length; j++) {
+              var panel = allAccordions[j].nextElementSibling;
+              if (allAccordions[j] !== this && allAccordions[j].classList.contains("active")) {
+                  allAccordions[j].classList.remove("active");
+                  panel.style.maxHeight = null;
+              }
+          }
+
+          // Toggle the active class and expand or collapse the clicked accordion
+          this.classList.toggle("active");
+          var panel = this.nextElementSibling;
+          if (panel.style.maxHeight) {
+              panel.style.maxHeight = null;
+          } else {
+              panel.style.maxHeight = panel.scrollHeight + "px";
+          }
+      });
+  }
+</script>
+
+<!-- size chart modal script -->
+
+
+<script>
+  // Get the modal
+var ebModal = document.getElementById('mySizeChartModal');
+
+// Get the button that opens the modal
+var ebBtn = document.getElementById("mySizeChart");
+
+// Get the <span> element that closes the modal
+var ebSpan = document.getElementsByClassName("size-chart_close")[0];
+
+// When the user clicks the button, open the modal 
+ebBtn.onclick = function() {
+    ebModal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+ebSpan.onclick = function() {
+    ebModal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == ebModal) {
+        ebModal.style.display = "none";
+    }
+}
+</script>
+
+<script>
+    // Function to check the size of the selected image
+    function checkImageSize(input) {
+        if (input.files && input.files[0]) {
+            var fileSize = input.files[0].size; // Size of the selected file in bytes
+            var maxSize = 1048576; // Maximum allowed size (1 MB in bytes)
+
+            if (fileSize > maxSize) {
+                // Display error message if the file size exceeds the maximum allowed size
+                alert("Please select an image smaller than 1 MB.");
+                // Clear the file input to prevent submission
+                input.value = '';
+            }
+        }
+    }
+
+    // Attach an event listener to the file input
+    document.getElementById('customer_image').addEventListener('change', function() {
+        // Call the function to check the size of the selected image
+        checkImageSize(this);
+    });
+</script>
+
+
+
+
+
+</body>
+
+</html>
+
+{% endblock content %}
+{% block script %}
+ {% endblock script %}

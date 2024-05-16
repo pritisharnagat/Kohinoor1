@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Order</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h3 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h3>Order Details</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Total Cost</th>
+                <th>Payment method</th>
+                <th>Order ID</th>
+                <th>Order Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ order_details.product.title }}</td>
+                <td>{{ order_details.quantity }}</td>
+                <td>{{ order_details.total_cost }}</td>
+                <td>{{ order_details.payment_method }}</td>
+                <td>{{ order_details.order_id }}</td>
+                <td>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div>
+                            <label for="status">Order Status:</label>
+                            <select name="status" id="status">
+                                <option value="Accepted" {% if order_details.status == "Accepted" %} selected {% endif %}>Accepted</option>
+                                <option value="Packed" {% if order_details.status == "Packed" %} selected {% endif %}>Packed</option>
+                                <option value="On The Way" {% if order_details.status == "On The Way" %} selected {% endif %}>On The Way</option>
+                                <option value="Delivered" {% if order_details.status == "Delivered" %} selected {% endif %}>Delivered</option>
+                                <option value="Cancel" {% if order_details.status == "Cancel" %} selected {% endif %}>Cancel</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="location">Location:</label>
+                            <input type="text" id="location" name="location" placeholder="Location Update" required />
+                        </div>
+                        <button type="submit">Submit</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,601 @@
+{% extends "admin_base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    {% comment %} <link rel="stylesheet" href="{% static 'css/style.css' %}"> {% endcomment %}
+    <title>Add Product</title>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+   
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+
+        }
+        
+        .container {
+            width:70%;
+            margin-right: 100px;
+            margin-top:210px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            float:right;
+            
+
+            
+        }
+
+        .container form{
+           
+            display: flex;
+            justify-content: start;
+            align-items: baseline;
+            flex-direction: column;
+            flex-wrap: nowrap;
+        }
+        
+        .inputRow{
+            width:48%;
+        }
+        
+        .formbox {
+            display:flex;
+            flex-wrap:wrap;
+            gap: 15px;
+        }
+        
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-control, .form-select{
+            padding:10px;   
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            border: 1px solid #A6A6A6;
+            border-radius: 8px;
+        }
+        
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top:20px;
+            
+            
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .upload-section{
+            width: 100%;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .file-upload-section{
+            width: 100%;
+            display: flex;
+            justify-content: start;
+            align-items: start;
+            flex-direction: column;
+            flex-wrap: nowrap;
+        }
+
+        .action-btns{
+            width: 100%;
+            display: flex;
+            justify-content: start;
+            align-items: start;
+            flex-direction: column;
+            flex-wrap: nowrap;
+        }
+        @media screen and (max-width: 700px){
+            .inputRow{
+                width:100%;
+            }  
+        }
+    </style>
+
+    <style>
+    #adddataModal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+    }
+
+    #adddataModal > div {
+        width: 50rem;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+
+    .sample-sheet-modal{
+        
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+    .sample-sheet-modal-sub-section{
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+    .close{
+        cursor: pointer;
+       
+        
+    }
+
+</style>
+
+
+
+      <script>
+        function previewImage(event, previewId) {
+          var input = event.target;
+          var previewsContainer = document.getElementById(previewId);
+    
+          previewsContainer.innerHTML = '';
+      
+          if (input.files && input.files.length > 0) {
+            for (var i = 0; i < input.files.length; i++) {
+              var reader = new FileReader();
+              var filePreview = document.createElement(input.accept.includes("image") ? 'img' : 'video');
+              filePreview.style.maxWidth = '100%';
+              filePreview.style.maxHeight = '200px';
+              filePreview.style.margin = '5px';
+      
+              reader.onload = function (e) {
+                filePreview.src = e.target.result;
+                if (input.accept.includes("video")) {
+                  filePreview.controls = true;
+                  filePreview.loop = true;
+                }
+                previewsContainer.appendChild(filePreview);
+              };
+              reader.readAsDataURL(input.files[i]);
+            }
+          }
+        }
+      </script>
+      
+</head>
+<body>
+    <div class="container">
+         <form method="post" enctype="multipart/form-data" action="{% url 'admin_add_product' %}">
+            {% csrf_token %}
+            <div class="upload-section">
+                <div class="file-upload-section">
+
+                    <input type="file" id="file-upload" name="myfile" required>
+                    <p>The upload data should be in CSV format.</p> 
+                </div>
+
+                <div class="action-btns">
+                    <button type="submit" class="btn btn-danger w-25" >Upload</button> 
+
+                </div>
+            </div>              
+                  
+        </form>
+
+                    <button id="#adddataModal" class="btn btn-danger w-25">
+                        Sample Sheet
+                    </button>
+
+        <div id="adddataModal">
+
+            <div>
+                <div class="sample-sheet-modal">
+                    <div class="sample-sheet-modal-title">
+                        <h2>Import Sample Sheet </h2>
+                        <span id="closeModal"  onclick="closeModal();" style="font-size: 20px; color:#f1e5f1; cursor: pointer; visibility:hidden">✕</span>
+                        <span id="closeModal" class="close" onclick="closeModal();"><button><i class="uil uil-times"></i></button></span>
+
+                    </div>
+
+                    <div class="sample-sheet-modal-sub-section">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <img src="{% static 'assets/images/img_sample.png' %}" alt="Image description" width="550" height="400">
+                            <p style="color:red;">The upload data should be in CSV format.</p>
+                            <!-- <input type="file" name="myfile">
+                            <button type="submit">Upload</button> -->
+                            <button onclick="downloadSampleCSV()">Download Sample Sheet</button>
+                            <!-- <button><a href="{% url 'excel_export_view' %}">Download Excel Format</a></button> -->
+                        </form>
+                        
+                    </div>
+                </div>
+                 
+            </div>
+        </div>
+
+        <script>
+            function downloadSampleCSV() {
+                // Create a hidden anchor element
+                var link = document.createElement('a');
+                
+                // Set the href attribute to the path of the sample sheet file
+                link.href = "{% static 'vibe_tara_sample_sheet.xlsx' %}";
+                // Set the download attribute to specify the filename
+                link.download = "vibe_tara_sample_sheet.xlsx";
+                // Programmatically click the anchor element to initiate the download
+                link.click();
+            }
+        </script>
+
+        <script>
+            function closeModal() {
+                var modal = document.getElementById('adddataModal');
+                modal.style.display = "none";
+            }
+        </script>
+
+
+
+        <div class="fw-bold text-center">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Add single product
+              </button>
+  
+          <!-- Modal -->
+          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <!-- 
+                    
+                   -->
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" enctype="multipart/form-data" action="{% url 'add_product' %}">
+                        <div class="fw-bold text-center">
+                            <h2>Add Product</h2>
+                        </div>
+                        <!-- <form id="productForm" method="post" enctype="multipart/form-data"> -->
+                            {% csrf_token %}
+                            <div class="formbox">
+                                <div class="inputRow">
+                                    <label for="skuId">SKU ID:</label>
+                                    <input type="text" class="form-control" id="skuId" name="skuId" required>
+                                </div>
+                                <div class="inputRow">
+                                    <label for="brand">Brand:</label>
+                                    <input type="text" class="form-control" id="brand" name="brand" required>
+                                </div>
+                                <div class="inputRow">
+                                    <label for="productId">Product ID:</label>
+                                    <input type="text" class="form-control" id="productId" name="productId" required>
+                                </div>
+                                <div class="inputRow">
+                                    <label for="size">Size:</label>
+                                    <!-- <input type="text" class="form-control" id="size" name="size"> -->
+                                    <select class="form-control" id="size" name="size">
+                                        <option value="x">X</option>
+                                        <option value="m">M</option>
+                                        <option value="l">L</option>
+                                        <option value="xl">XL</option>
+                                        <option value="xxl">XXL</option>
+                                    </select>
+                                </div>
+                                <div class="inputRow">
+                                    <label for="colour">Colour:</label>
+                                    <input type="text" class="form-control" id="colour" name="colour">
+                                </div>
+                                <div class="inputRow">
+                                    <label for="title">Title:</label>
+                                    <input type="text" class="form-control" id="title" name="title">
+                                </div>
+                                <div class="inputRow">
+                                    <label for="product_image">Product Image:</label>
+                                    <input type="file" class="form-control p-" id="product_image" name="product_image" accept="image/*" onchange="previewImage(event, 'prodpreview')">
+                                    <div id="prodpreview" style="display: flex; flex-wrap: wrap;"></div>
+                                </div>
+                                <div class="inputRow">
+                                    <label for="back_image">Back Image:</label>
+                                    <input type="file" class="form-control" id="back_image" name="back_image" accept="image/*" onchange="previewImage(event, 'backpreview')">
+                                    <div id="backpreview" style="display: flex; flex-wrap: wrap;"></div>
+                                </div>
+                                <div class="inputRow">
+                                    <label for="left_image">Left Image:</label>
+                                    <input type="file" class="form-control" id="left_image" name="left_image" accept="image/*" onchange="previewImage(event, 'leftpreview')">
+                                    <div id="leftpreview" style="display: flex; flex-wrap: wrap;"></div>
+                                </div>
+                                <div class="inputRow">
+                                    <label for="right_image">Right Image:</label>
+                                    <input type="file" class="form-control" id="right_image" name="right_image" accept="image/*" onchange="previewImage(event, 'rightpreview')">
+                                    <div id="rightpreview" style="display: flex; flex-wrap: wrap;"></div>
+                                </div>
+                                <div class="inputRow">
+                                    <label class=" form-label form-label-title">Upload Video</label>
+                                    <input type="file" class="form-control" name="product_video" accept="video/*" onchange="previewImage(event, 'videopreview')">
+                                    <div id="videopreview" style="display: flex; flex-wrap: wrap;"></div>
+                                </div>
+                                <div class="inputRow">
+                                    <label for="description">Description:</label>
+                                    <textarea class="form-control" id="description" name="description"></textarea>
+                                </div>
+                                <div class="inputRow">
+                                    <label for="productType">Product Type:</label>
+                                    <input type="text" class="form-control" id="productType" name="productType">
+                                </div>
+                                <div class="inputRow">
+                                    <label for="category">Category:</label>
+                                    <input type="text" class="form-control" id="category" name="category">
+                                </div>
+                                <div class="inputRow">
+                                    <label for="subCategory">Sub Category:</label>
+                                    <!-- <input type="text" class="form-control" id="subCategory" name="subCategory"> -->
+                                    <select class="form-control" id="subCategory" name="subCategory">
+                                        <option value="minimalisttees">Minimalisttees</option>
+                                        <option value="quote_tshirts">Quote Tshirts</option>
+                                        <option value="Signature_tshirts">Signature Tshirts</option>
+                                        <option value="inspirationaltees">Inspirationaltees</option>
+                                        <option value="graphictees">Graphictees</option>
+                                    </select>
+                                </div>
+                                <div class="inputRow">
+                                    <label for="actual_price">Actual Price:</label>
+                                    <input type="number" class="form-control" id="actual_price" name="actual_price">
+                                </div>
+                                <div class="inputRow">
+                                    <label for="discountType">Discount Type:</label>
+                                    <select class="form-control" id="discountType" name="discountType">
+                                        <option value="rupees">Rupees</option>
+                                        <option value="percentage">Percent</option>
+                                    </select>
+                                </div>
+                                <div class="inputRow">
+                                    <label for="discount_price">Discount Price:</label>
+                                    <input type="number" class="form-control" id="discount_price" name="discount_price">
+                                </div>
+                                <div class="inputRow">
+                                    <label for="quantity">Quantity:</label>
+                                    <input type="number" class="form-control" id="quantity" name="quantity">
+                                </div>
+                                <div class="inputRow">
+                                    <label for="gender">Gender:</label>
+                                    <!-- <input type="text" class="form-control" id="gender" name="gender"> -->
+                                    <select class="form-control" id="gender" name="gender">
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    </select>
+                                </div>
+                                <div class="inputRow">
+                                    <label for="productInstruction">Product Instruction:</label>
+                                    <textarea class="form-control" id="productInstruction" name="productInstruction"></textarea>
+                                </div>
+                                <div class="inputRow">
+                                    <label for="manufacturer">Manufacturer:</label>
+                                    <input type="text" class="form-control" id="manufacturer" name="manufacturer">
+                                </div>
+                                <div class="inputRow">
+                                    <label for="modelName">Model Name:</label>
+                                    <input type="text" class="form-control" id="modelName" name="modelName">
+                                </div>
+                                <div class="inputRow">
+                                    <label for="modelNumber">Model Number:</label>
+                                    <input type="text" class="form-control" id="modelNumber" name="modelNumber">
+                                </div>
+                                <div class="inputRow">
+                                    <label for="ageRangeDescription">Age Range Description:</label>
+                                    <input type="text" class="form-control" id="ageRangeDescription" name="ageRangeDescription">
+                                </div>
+                                <div class="inputRow">
+                                    <label for="bulletPoint">Bullet Point:</label>
+                                    <textarea class="form-control" id="bulletPoint" name="bulletPoint"></textarea>
+                                </div>
+                                <div class="inputRow">
+                                    <label for="specialFeature">Special Feature:</label>
+                                    <textarea class="form-control" id="specialFeature" name="specialFeature"></textarea>
+                                </div>
+                                <div class="inputRow">
+                                    <label for="materialType">Material Type:</label>
+                                    <input type="text" class="form-control" id="materialType" name="materialType">
+                                </div>
+                                <div class="inputRow">
+                                    <label for="manufacturerContact">Manufacturer Contact:</label>
+                                    <input type="text" class="form-control" id="manufacturerContact" name="manufacturerContact">
+                                </div>
+                                <div class="inputRow">
+                                    <label for="productStory">Product Story:</label>
+                                    <textarea class="form-control" id="productStory" name="productStory"></textarea>
+                                </div>
+                                <!-- <div class="inputRow">
+                                    <label for="discountPercentage">Discount Percentage:</label>
+                                    <input type="number" class="form-control" id="discountPercentage" name="discountPercentage">
+                                </div>     -->
+                                <div class="text-center">
+                                    <button type="submit">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                        
+                </div>
+
+              </div>
+            </div>
+          </div>
+      </div>
+      
+
+        <!--     <h2>Add Product</h2>
+        </div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="formbox">
+                <div class="inputRow">
+                    <label for="title">Title:</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Title" required>
+                </div>
+                <div class="inputRow">
+                    <label for="brand">Brand:</label>
+                    <input type="text" class="form-control" id="brand" name="brand" placeholder="Brand" required>
+                </div>
+                <div class="inputRow">
+                    <label for="category">Category:</label>
+                    <select id="category" class="form-select" name="category" required>
+                            <option>tshirt</option>
+                            <option>books</option>
+                            <option>watchs</option>
+                            <option>mugs</option>
+                    </select>
+                </div>
+                <div class="inputRow">
+                    <label for="product_type">Product Type:</label>
+                    <select id="product_type" class="form-select" name="product_type" required>
+                            <option>tshirt</option>
+                            <option>kurta</option>
+                            <option>books</option>
+                            <option>mugs</option>
+                    </select>
+                </div>
+                <div class="inputRow">
+                    <label for="product_image">Product Image:</label>
+                    <input type="file" class="form-control p-" id="product_image" name="product_image" accept="image/*" onchange="previewImage(event, 'prodpreview')">
+                    <div id="prodpreview" style="display: flex; flex-wrap: wrap;"></div>
+                </div>
+                <div class="inputRow">
+                    <label for="back_image">Back Image:</label>
+                    <input type="file" class="form-control" id="back_image" name="back_image" accept="image/*" onchange="previewImage(event, 'backpreview')">
+                    <div id="backpreview" style="display: flex; flex-wrap: wrap;"></div>
+                </div>
+                <div class="inputRow">
+                    <label for="left_image">Left Image:</label>
+                    <input type="file" class="form-control" id="left_image" name="left_image" accept="image/*" onchange="previewImage(event, 'leftpreview')">
+                    <div id="leftpreview" style="display: flex; flex-wrap: wrap;"></div>
+                </div>
+                <div class="inputRow">
+                    <label for="right_image">Right Image:</label>
+                    <input type="file" class="form-control" id="right_image" name="right_image" accept="image/*" onchange="previewImage(event, 'rightpreview')">
+                    <div id="rightpreview" style="display: flex; flex-wrap: wrap;"></div>
+                </div>
+                <div class="inputRow">
+                    <label class=" form-label form-label-title">Upload Video</label>
+                    <input type="file" class="form-control" name="product_video" accept="video/*" onchange="previewImage(event, 'videopreview')">
+                    <div id="videopreview" style="display: flex; flex-wrap: wrap;"></div>
+                </div>
+                <div class="inputRow">
+                    <label for="description">Description:</label>
+                    <textarea id="description" class="form-control" name="description" placeholder="Description" required></textarea>
+                </div>
+                <div class="inputRow">
+                    <label for="selling_price">Selling Price:</label>
+                    <input type="number" class="form-control" id="selling_price" name="selling_price" placeholder="Selling Price" required oninput="calculateDiscount()">
+                </div>
+                <div class="inputRow">
+                    <label for="discount_type">Discount Type:</label>
+                    <select class="form-control" id="discount_type" name="discount_type" required oninput="calculateDiscount()">
+                        <option value="rupees">Rupees</option>
+                        <option value="percent">Percent</option>
+                    </select>
+                </div>
+                <div class="inputRow">
+                    <label for="discount_price">Discount Price:</label>
+                    <input type="number" class="form-control" id="discount_price" name="discount_price" placeholder="Discount Price" required oninput="calculateDiscount()">
+                </div>
+                
+                <div class="inputRow">
+                    <label for="discount_price">Actual Price:</label>
+                    <input type="number" class="form-control" id="actual_price" name="actual_price" placeholder="Actual Price" required readonly>
+                </div>
+            </div>
+        </div>
+            
+            <div class="text-center">
+                <button type="submit">Submit</button>
+             </div>
+        </form>
+    </div> -->
+
+    <script>
+        function calculateDiscount() {
+            var sellingPrice = parseFloat(document.getElementById('selling_price').value);
+            var discountPrice = parseFloat(document.getElementById('discount_price').value);
+            var discountType = document.getElementById('discount_type').value;
+            var actualPrice;
+    
+            if (discountType === 'rupees') {
+                actualPrice = sellingPrice - discountPrice;
+            } else if (discountType === 'percent') {
+                var discountPercentage = discountPrice; // Assuming discountPrice directly represents percentage
+                actualPrice =  (sellingPrice * (discountPercentage / 100));
+            }
+    
+            document.getElementById('actual_price').value = actualPrice.toFixed(2);
+        }
+    </script>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var modal = document.getElementById('adddataModal');
+        var btn = document.getElementById('#adddataModal');
+        var closeBtn = document.getElementById('closeModal');
+
+        btn.onclick = function () {
+            modal.style.display = "flex";
+        }
+
+        closeBtn.onclick = function () {
+            modal.style.display = "flex";
+        }
+
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    });
+</script>
+  <script>
+        var upform = document.getElementById("upform");
+        upform.addEventListener("submit", function(){
+            //alert("added");
+            Swal.fire({
+                title: "Uploded",
+                text: "Succesfully Added",
+                icon: "success",
+                timer: 5000
+              });
+        });
+    </script> 
+
+
+</body>
+</html>
+
+{% endblock %}

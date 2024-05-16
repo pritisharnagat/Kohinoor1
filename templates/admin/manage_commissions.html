@@ -1,0 +1,126 @@
+{% extends "admin_base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Commissions</title>
+    <style>
+        /* Styling for the search bar */
+        .search-container {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .search-container input[type=text] {
+            padding: 10px;
+            margin: 5px;
+            width: 50%;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .search-container input[type=text]:focus {
+            outline: none;
+            border: 2px solid dodgerblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper compact-wrapper dark-sidebar" id="pageWrapper">
+        <div class="page-body-wrapper">
+            <div class="page-body">
+                <div class="title-header">
+                    <h5>Manage Commissions</h5>
+                </div>
+                <div class="search-container">
+                    <!-- Improved search bar -->
+                    <input type="text" id="searchInput" placeholder="Search by Seller Name">
+                </div>
+                <div class="card">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="table-responsive table-desi">
+                                <table class="table table-hover table-striped table-bordered text-center" id="commissionTable">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>Seller</th>
+                                            <th>Email</th>
+                                            <th>Commission Plan</th>
+                                            <th>Product Category</th>
+                                            <th>Commission Type</th>
+                                            <th>Commission Amount</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for commission in all_commissions %}
+                                            <tr>
+                                                <td>{{ commission.seller_name }}</td>
+                                                <td>{{ commission.seller_email }}</td>
+                                                <td>{{ commission.commission_plan }}</td>
+                                                <td>{{ commission.product_category }}</td>
+                                                <td>{{ commission.commission_type }}</td>
+                                                <td>
+                                                    {% if commission.product_commission_percent %}
+                                                        {{ commission.product_commission_percent }}%
+                                                    {% endif %}
+                                                    {% if commission.product_commission_rupees %}
+                                                        ₹{{ commission.product_commission_rupees }}
+                                                    {% endif %}
+                                                </td>
+                                                <td>{{ commission.status }}</td>
+                                                <td>
+                                                    {% if commission.status == 'Pending' %}
+                                                        <form action="{% url 'approve_commission' commission.id %}" method="post">
+                                                            {% csrf_token %}
+                                                            <button style="color: black;" type="submit" class="btn btn-success">Approve</button>
+                                                        </form>
+                                                        <form action="{% url 'reject_commission' commission.id %}" method="post">
+                                                            {% csrf_token %}
+                                                            <button style="color:black" type="submit" class="btn btn-danger">Reject</button>
+                                                        </form>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for search functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.getElementById('searchInput');
+            const rows = document.querySelectorAll('#commissionTable tbody tr');
+
+            searchInput.addEventListener('input', function (event) {
+                const searchText = event.target.value.trim().toLowerCase();
+
+                rows.forEach(row => {
+                    const sellerName = row.cells[0].textContent.trim().toLowerCase();
+                    const sellerEmail = row.cells[1].textContent.trim().toLowerCase();
+
+                    if (sellerName.includes(searchText) || sellerEmail.includes(searchText)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+{% endblock %}

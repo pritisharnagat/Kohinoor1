@@ -1,0 +1,118 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Tracking</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0c0202;
+            margin: 0;
+            padding: 0;
+        }
+
+        .page-wrapper {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+              
+        .order-details,
+        .tracking-status,
+        .tracking-details {
+            margin-bottom: 20px;
+        }
+
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .table th,
+        .table td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        
+        <div class="order-details">
+            <h1>Order Tracking</h1>
+            <p>Product Name: {{ order.product.title }}</p>
+            <p>Order Number: {{ order.order_id }}</p>
+            <p>Brand: {{ order.product.brand }}</p>
+            <p>Order Placed Date: {{ order.Order_date }}</p>
+        </div>
+
+        <div class="tracking-status">
+            <h2>Tracking Status</h2>
+            <div class="progress">
+                {% if order.status == 'Accepted' %}
+                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ order.status }}</div>
+                {% elif order.status == 'Packed' %}
+                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">{{ order.status }}</div>
+                {% elif order.status == 'On The Way' %}
+                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">{{ order.status }}</div>
+                {% elif order.status == 'Delivered' %}
+                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ order.status }}</div>
+                {% elif order.status == 'Cancel' %}
+                    <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ order.status }}</div>
+                {% endif %}
+            </div>
+            
+            <div>
+                <h5>{{ order.status }}</h5>
+            </div>  
+            <!-- <div>
+                <h5>{{ order.update_location }}</h5>
+            </div>    
+            <div>
+                <h5>{{ order.datetime }}</h5>
+            </div>          -->
+                     
+        </div>
+
+        <div class="tracking_details">
+            <h2>Tracking Details</h2>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <!-- <th>Time</th> -->
+                            <th>Location</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in tracking_details %}
+                        <tr>
+                            <td>{{ i.date_time }}</td>
+                            <td>{{ i.location }}</td>
+                            <td>{{i.remark}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

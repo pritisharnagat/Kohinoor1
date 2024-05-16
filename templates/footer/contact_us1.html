@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Vishwa Ratna</title>
+    <style>
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+        }
+
+    </style>
+</head>
+<body>
+
+    <h2>Contact Us</h2>
+
+    <form method="post" action="">
+        {% csrf_token %}
+        
+        <!-- Input fields for the form data -->
+        <label for="first_name" class="form-label">First Name:</label>
+        <input type="text" class="form-control mb-2" id="first_name" name="first_name" required>
+        
+        <label for="last_name" class="form-label">Last Name:</label>
+        <input type="text" class="form-control mb-2" id="last_name" name="last_name" required>
+        
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" class="form-control mb-2" id="email" name="email" required>
+        
+        <label for="comment" class="form-label">Comment:</label>
+        <textarea id="comment" class="form-control mb-2" name="comment" rows="4" required></textarea>
+
+        <button type="submit" class="btn btn-danger rounded">Submit</button>
+    </form>
+
+</body>
+</html>
+
+{% endblock %}

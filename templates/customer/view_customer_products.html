@@ -1,0 +1,49 @@
+{% extends "admin_base.html" %}
+  {% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Approved Products</title>
+</head>
+<body>
+    <div class="page-wrapper compact-wrapper dark-sidebar" id="pageWrapper">
+        <div class="page-body-wrapper">
+            <div class="page-body">
+                <div class="title-header"> <h5>Admin Approved Products</h5> </div>
+                <div class="card">
+                <div class="row">
+                    <div class="col-sm-12">
+                    <div class="table-responsive table-desi">
+                        <table class="table table-hover table-striped table-bordered text-center">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>date_of_birth</th>
+                                    <th>locality</th>
+                                    <th>city</th>
+                                    <th>pincode</th>
+                                    <th>state</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                    <tr>
+                                        
+                                        <td>{{ product.date_of_birth }}</td>
+                                        <td>{{ product.locality }}</td>
+                                        <td>{{ product.city }}</td>
+                                        <td>{{ product.pincode }}</td>
+                                        <td>{{ product.state }}</td>
+                                    </tr>
+                             
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</body>
+</html>
+{% endblock %}
